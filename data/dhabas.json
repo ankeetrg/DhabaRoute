@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-21T20:17:30.134Z",
+  "generatedAt": "2026-04-21T20:27:37.510Z",
   "count": 157,
   "dhabas": [
     {
@@ -153,10 +153,7 @@
       "featured": false,
       "needsReview": true,
       "published": true,
-      "source": "Google Maps",
-      "lat": 24.1573,
-      "lng": -99.9554,
-      "coordAccuracy": "csv"
+      "source": "Google Maps"
     },
     {
       "id": "d0009",
@@ -174,10 +171,7 @@
       "featured": false,
       "needsReview": true,
       "published": true,
-      "source": "Google Maps",
-      "lat": 24.9079,
-      "lng": -100.5752,
-      "coordAccuracy": "csv"
+      "source": "Google Maps"
     },
     {
       "id": "d0010",
@@ -2855,10 +2849,7 @@
       "featured": false,
       "needsReview": true,
       "published": true,
-      "source": "Google Maps",
-      "lat": 23.6349,
-      "lng": -98.3549,
-      "coordAccuracy": "csv"
+      "source": "Google Maps"
     },
     {
       "id": "d0147",
