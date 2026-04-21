@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-21T19:46:30.172Z",
+  "generatedAt": "2026-04-21T20:17:30.134Z",
   "count": 157,
   "dhabas": [
     {
@@ -14,7 +14,7 @@
         "Death Valley"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -111,7 +111,7 @@
         "Bathrooms"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -131,7 +131,7 @@
         "Bathrooms"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -196,7 +196,7 @@
       ],
       "priority": "Medium",
       "routeHint": "Right off I-40 Arizona",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -260,7 +260,7 @@
       ],
       "priority": "Medium",
       "routeHint": "Right off I-40, Jalebis",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -439,7 +439,7 @@
       ],
       "priority": "Medium",
       "routeHint": "Takeout, I-80, Nebraska",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -1046,7 +1046,7 @@
         "Minnesota"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -1202,7 +1202,7 @@
         "Washington"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -1705,7 +1705,7 @@
         "Arizona"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -1745,7 +1745,7 @@
         "Nevada"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -1823,7 +1823,7 @@
         "California"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -1864,7 +1864,7 @@
         "Texas"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -1962,7 +1962,7 @@
         "Wyoming"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -2351,7 +2351,7 @@
       ],
       "priority": "Medium",
       "routeHint": "I-40",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
@@ -3064,7 +3064,7 @@
         "California"
       ],
       "priority": "Medium",
-      "featured": false,
+      "featured": true,
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
