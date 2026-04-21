@@ -17,20 +17,26 @@ export const metadata: Metadata = {
 };
 
 // ── Photos — verified 200 ───────────────────────────────────────────────
-// All six confirmed with `curl -s -o /dev/null -w "%{http_code}"`.
+// All confirmed with `curl -s -o /dev/null -w "%{http_code}"`.
 // To swap: replace the photo-{id} segment; keep the ?w=...&q=80 params.
 const IMG = {
-  hero:      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1800&q=80",
-  tawa:      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=1600&q=80",
-  chai:      "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=1000&q=80",
-  cart:      "https://images.unsplash.com/photo-1567337710282-00832b415979?w=1000&q=80",
-  truck:     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+  // Delhi roadside night market — bunting lights, food carts, wide atmospheric
+  hero:      "https://images.unsplash.com/photo-1744309426266-95154c03303d?w=1800&q=80",
+  // "Sardharji Ka Dhaba" — real dhaba frontage, Punjabi/Hindi signage
+  tawa:      "https://images.unsplash.com/photo-1774979160994-3306b4872084?w=1600&q=80",
+  // String lights strung across a narrow alley at night, mural glowing at end
+  chai:      "https://images.unsplash.com/photo-1705211384938-690f65f13955?w=1000&q=80",
+  // Man at a glowing roadside cart after dark, motorbikes parked nearby
+  cart:      "https://images.unsplash.com/photo-1734120113786-a3a99b51d6bc?w=1000&q=80",
+  // Two cooks cross-legged at roadside, frying in wide steel pans
+  truck:     "https://images.unsplash.com/photo-1646578524934-b74df048cb53?w=1600&q=80",
+  // Empty American interstate at sunset — visual bridge from India to here
   usHighway: "https://images.unsplash.com/photo-1547234935-80c7145ec969?w=2000&q=80",
 };
 
 // Applied to every photo. Warm, slightly faded, documentary.
 const PHOTO_FILTER = {
-  filter: "saturate(0.65) contrast(1.12) brightness(0.97)",
+  filter: "saturate(0.72) contrast(1.08) brightness(0.95)",
 };
 
 export default function WhatIsADhabaPage() {
@@ -44,7 +50,7 @@ export default function WhatIsADhabaPage() {
         <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full">
           <img
             src={IMG.hero}
-            alt="A roadside kitchen lit up after dark, people gathered around the stall."
+            alt="A Delhi roadside market after dark — food carts lit up, bunting lights strung overhead, people moving through the night."
             style={PHOTO_FILTER}
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -104,7 +110,7 @@ export default function WhatIsADhabaPage() {
         <figure className="relative overflow-hidden rounded-2xl">
           <img
             src={IMG.tawa}
-            alt="A cook flipping roti on a wide tawa over open flame, smoke rising."
+            alt="The frontage of Sardharji Ka Dhaba — Punjabi and Hindi signage above the entrance, two staff standing outside."
             style={PHOTO_FILTER}
             className="block w-full h-auto aspect-[16/9] object-cover"
           />
@@ -145,7 +151,7 @@ export default function WhatIsADhabaPage() {
         <figure className="relative overflow-hidden rounded-2xl">
           <img
             src={IMG.truck}
-            alt="A brightly hand-painted Punjabi freight truck on a rural road."
+            alt="Two cooks sitting cross-legged at the roadside, frying food in wide steel pans over open flame."
             style={PHOTO_FILTER}
             className="block w-full h-auto aspect-[16/9] object-cover"
           />
@@ -186,7 +192,7 @@ export default function WhatIsADhabaPage() {
           <figure className="relative overflow-hidden rounded-xl aspect-[4/5]">
             <img
               src={IMG.chai}
-              alt="Chai being poured from height into small cups, steam rising."
+              alt="String lights strung across a narrow alley at night, a brightly painted shrine glowing at the far end."
               style={PHOTO_FILTER}
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -194,7 +200,7 @@ export default function WhatIsADhabaPage() {
           <figure className="relative overflow-hidden rounded-xl aspect-[4/5]">
             <img
               src={IMG.cart}
-              alt="People gathered at a roadside food stall, mid-conversation."
+              alt="A man sits beside a glowing roadside food cart after dark, motorbikes parked nearby."
               style={PHOTO_FILTER}
               className="absolute inset-0 h-full w-full object-cover"
             />
