@@ -1,0 +1,164 @@
+/* Leaflet's grid, controls, and attribution. @import must precede all other
+   rules per CSS spec — PostCSS processes this first regardless of position,
+   but keeping it here is correct and future-safe. */
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: light;
+  /* Consistent map height: at least 280px, up to 44vw, max 520px. */
+  --map-h: clamp(280px, 44vw, 520px);
+}
+
+html,
+body {
+  background: theme("colors.paper.DEFAULT");
+  color: theme("colors.ink.DEFAULT");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* No decorative gradients — the canvas stays calm. */
+
+/* Deep-blue focus ring — reads as "interactive" without competing with the
+   saffron CTA. */
+:focus-visible {
+  outline: 2px solid theme("colors.ocean.DEFAULT");
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Suppress the native search-cancel button — our clear button looks better */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ── Utilities ────────────────────────────────────────────────── */
+
+@layer utilities {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+  /* Hide scrollbar on horizontally-scrolling chip rows. */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Map pin preview card — enters with a short upward settle.
+     Respects prefers-reduced-motion via the global override at the bottom. */
+  .animate-slide-up {
+    animation: dr-slide-up 160ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes dr-slide-up {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up { animation: none; }
+}
+
+/* ── Map container ────────────────────────────────────────────── */
+
+.leaflet-container {
+  font-family: inherit;
+  background: theme("colors.paper.soft");
+  height: var(--map-h);
+}
+
+/* Soften Leaflet chrome to match the palette */
+.leaflet-control-attribution {
+  background: rgba(250, 247, 242, 0.88) !important;
+  font-size: 9px !important;
+  color: theme("colors.ink.muted") !important;
+  padding: 1px 6px !important;
+}
+.leaflet-bar {
+  border: 1px solid theme("colors.paper.warm") !important;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04) !important;
+}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background-color: theme("colors.paper.DEFAULT");
+  color: theme("colors.ink.DEFAULT");
+  border-bottom-color: theme("colors.paper.warm");
+}
+.leaflet-bar a:hover {
+  background-color: theme("colors.paper.soft");
+}
+
+/* ── Map markers ──────────────────────────────────────────────── */
+
+/* Dhaba pin — muted saffron teardrop */
+.dr-pin {
+  display: block;
+  position: relative;
+  width: 28px;
+  height: 34px;
+}
+.dr-pin::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: #E46A2E; /* clay-500 */
+  border: 2.5px solid #FAF7F2;
+  box-shadow: 0 1px 3px rgba(17, 17, 17, 0.25), 0 0 0 0.5px rgba(17, 17, 17, 0.06);
+  transition: background 120ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+.dr-pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FAF7F2;
+  transform: translateX(-50%);
+  transition: background 120ms ease;
+}
+
+/* Active / selected state — darker saffron, slightly larger, ocean ring */
+.dr-pin--active::before {
+  background: #C95820; /* clay-600 */
+  transform: rotate(-45deg) scale(1.16);
+  box-shadow:
+    0 2px 6px rgba(17, 17, 17, 0.28),
+    0 0 0 2px #FAF7F2,
+    0 0 0 4px rgba(44, 95, 141, 0.55); /* ocean focus halo */
+}
+.dr-pin--active::after {
+  background: #FAF7F2;
+}
+
+/* User location — pulsing ocean dot */
+.dr-user {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2C5F8D;
+  border: 3px solid #FAF7F2;
+  box-shadow: 0 0 0 4px rgba(44, 95, 141, 0.22);
+  animation: drUserPulse 2.4s ease-in-out infinite;
+}
+@keyframes drUserPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(44, 95, 141, 0.22); }
+  50%      { box-shadow: 0 0 0 11px rgba(44, 95, 141, 0.06); }
+}

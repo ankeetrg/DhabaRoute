@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /tmp/dhaba_numbers)",
+      "Bash(unzip -l DhabaRoute_Clean_Framer.numbers)",
+      "Bash(python3 -c \"import numbers_parser\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3)",
+      "Bash(npm --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(awk -F',' 'NR==1{print NF, $0}' /Users/samsonwinz/Documents/Claude/Projects/DhabaRoute/data/dhabas.csv)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/_next/static/chunks/app/page.js)",
+      "Bash(curl -sv http://localhost:3000/)",
+      "Bash(npx next *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "Bash(node -e \"const d = require\\('./data/dhabas.json'\\); console.log\\('count:', d.count, 'dhabas:', d.dhabas.length, 'first:', JSON.stringify\\(d.dhabas[0]\\).slice\\(0,200\\)\\)\")",
+      "Bash(curl -s http://localhost:3000/_next/static/)",
+      "Bash(curl -v http://localhost:3000/dhabas/fort-amargosa-punjabi-dhaba)",
+      "Bash(kill 94199 94200)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('scripts',{}\\), indent=2\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node scripts/build-data.mjs)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/dhabas/fort-amargosa-punjabi-dhaba)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

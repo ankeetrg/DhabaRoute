@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Next.js dev server",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "export PATH=/Users/samsonwinz/.nvm/versions/node/v20.20.2/bin:$PATH && npm run dev"],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}
