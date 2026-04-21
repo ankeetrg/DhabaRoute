@@ -52,7 +52,12 @@
       "Bash(npm view *)",
       "Bash(npm install *)",
       "Bash(node scripts/update-coords.mjs)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "WebFetch(domain:roadsandkingdoms.com)",
+      "WebFetch(domain:www.smithsonianmag.com)",
+      "WebFetch(domain:www.whetstonemagazine.com)",
+      "WebFetch(domain:www.thecookaway.com)",
+      "WebFetch(domain:unsplash.com)"
     ]
   }
 }
