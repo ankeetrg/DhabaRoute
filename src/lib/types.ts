@@ -48,3 +48,10 @@ export interface Coords {
   lat: number;
   lng: number;
 }
+
+// Display fallback for dhabas that don't yet have a curator-written blurb.
+// Kept short + action-oriented: it signals what kind of place this is and
+// redirects users to Maps where the authoritative info (hours, reviews,
+// photos) lives. Centralised so the card + detail page never drift.
+export const DEFAULT_DHABA_DESCRIPTION =
+  "Authentic Punjabi dhaba. Open in Maps for hours and details.";

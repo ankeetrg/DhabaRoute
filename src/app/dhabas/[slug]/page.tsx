@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
+import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
 import { Tag } from "@/components/Tag";
 import { DhabaCard } from "@/components/DhabaCard";
+import { DhabaDetailMap } from "@/components/DhabaDetailMap";
 
 type RouteParams = Promise<{ slug: string }>;
 
@@ -79,21 +81,22 @@ export default async function DhabaDetailPage({
         ) : null}
       </header>
 
+      {/* Full map with a single pre-selected pin — anchors the page with a
+          concrete location before the reader drops into the About block. */}
+      {dhaba.lat != null && dhaba.lng != null ? (
+        <section className="mt-7">
+          <DhabaDetailMap dhaba={dhaba} />
+        </section>
+      ) : null}
+
       <section className="mt-8 grid gap-5 lg:grid-cols-[1.6fr_1fr]">
         <div className="rounded-2xl bg-white border border-paper-warm p-6 sm:p-7 shadow-card">
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
             About
           </h2>
-          {dhaba.description ? (
-            <p className="mt-2 text-[15px] text-ink-soft leading-relaxed">
-              {dhaba.description}
-            </p>
-          ) : (
-            <p className="mt-2 text-[14px] text-ink-muted leading-relaxed">
-              We&apos;re still collecting driver notes for this stop. Open it
-              in Maps for photos, hours, and reviews direct from Google.
-            </p>
-          )}
+          <p className="mt-2 text-[15px] text-ink-soft leading-relaxed">
+            {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
+          </p>
 
           <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-5 text-[14px]">
             {dhaba.routeHint ? (

@@ -55,6 +55,13 @@ function SubmitForm() {
       method="POST"
       className="mt-8 rounded-2xl bg-white border border-paper-warm p-6 sm:p-8 shadow-card space-y-5"
     >
+      {/* Formspree routing — _replyto sets the destination inbox for the
+          submission email, _subject sets the subject line. These are
+          submitted as hidden inputs rather than form config so the repo
+          contains the routing and it's easy to audit. */}
+      <input type="hidden" name="_replyto" value="dhabaroute@gmail.com" />
+      <input type="hidden" name="_subject" value="New Dhaba Submission — DhabaRoute" />
+
       <Field
         id="dhaba-name"
         name="name"

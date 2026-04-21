@@ -1,6 +1,6 @@
 import {
-  ALL_FILTER_TAGS,
   getAllDhabas,
+  getAllUsedTags,
   getFeaturedDhabas,
   getHighPriorityDhabas,
 } from "@/lib/dhabas";
@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <HomeInteractive dhabas={all} filterTags={ALL_FILTER_TAGS} />
+      <HomeInteractive dhabas={all} filterTags={getAllUsedTags()} />
 
       <DhabaRow
         title="Featured dhabas"

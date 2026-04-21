@@ -14,12 +14,24 @@ export function Header() {
             Dhaba<span className="text-clay-500">Route</span>
           </span>
         </Link>
-        <Link
-          href="/submit"
-          className="text-[13px] font-medium text-clay-600 hover:text-clay-700 transition"
-        >
-          + Submit a Dhaba
-        </Link>
+        {/* Right-side nav: an editorial link + the submit CTA. Kept on one
+            row and tight so the header stays quiet on mobile. The essay
+            link is the secondary item (neutral ink), submit is primary
+            (clay). */}
+        <nav className="flex items-center gap-4 sm:gap-5">
+          <Link
+            href="/what-is-a-dhaba"
+            className="text-[13px] font-medium text-ink-soft hover:text-ink transition whitespace-nowrap"
+          >
+            What is a Dhaba?
+          </Link>
+          <Link
+            href="/submit"
+            className="text-[13px] font-medium text-clay-600 hover:text-clay-700 transition whitespace-nowrap"
+          >
+            + Submit
+          </Link>
+        </nav>
       </div>
     </header>
   );

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is a Dhaba? — DhabaRoute</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #FAF7F2; color: #1a1410; }
+
+  .header { padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e8e0d5; background: rgba(250,247,242,0.92); position: sticky; top: 0; z-index: 10; }
+  .logo { font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .logo-dot { width: 24px; height: 24px; background: #c2622a; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .logo-dot svg { width: 12px; height: 12px; fill: white; }
+  .logo em { color: #c2622a; font-style: normal; }
+  .nav-link { font-size: 13px; color: #c2622a; font-weight: 500; text-decoration: none; }
+
+  /* Hero — raw, gritty, real */
+  .hero {
+    position: relative;
+    height: 480px;
+    overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    /* Real dhaba roadside scene — dusty, smoky, authentic */
+    background-image: url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1400&q=75');
+    background-size: cover; background-position: center 40%;
+    filter: saturate(0.75) contrast(1.1);
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,6,2,0.92) 0%, rgba(10,6,2,0.4) 55%, transparent 100%);
+  }
+  .hero-content { position: relative; z-index: 1; padding: 40px 32px; max-width: 680px; }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #e8a265; margin-bottom: 10px; }
+  .hero-title { font-size: clamp(32px, 5.5vw, 52px); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; color: #fff; margin-bottom: 14px; }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.65; max-width: 500px; }
+
+  .container { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+  .container-wide { max-width: 1020px; margin: 0 auto; padding: 0 24px; }
+
+  /* Intro — editorial, grounded */
+  .intro { padding: 56px 0 40px; }
+  .intro p { font-size: 17px; line-height: 1.8; color: #2e2218; margin-bottom: 22px; }
+  .intro p:first-child { font-size: 19px; }
+
+  /* Raw photo grid — uneven, editorial */
+  .photo-section { padding: 8px 0 56px; }
+  .photo-grid-raw {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 220px 160px;
+    gap: 6px;
+  }
+  .photo-grid-raw img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.8) contrast(1.05);
+  }
+  .photo-grid-raw img:first-child { grid-column: 1 / 2; grid-row: 1 / 3; }
+  .photo-grid-raw img:nth-child(2) { grid-column: 2 / 4; }
+  .photo-grid-raw img:nth-child(3) { }
+  .photo-grid-raw img:nth-child(4) { }
+
+  .photo-caption-row { display: flex; gap: 6px; margin-top: 6px; }
+  .photo-caption-row span { font-size: 11px; color: #9a8a7a; font-style: italic; flex: 1; text-align: center; }
+
+  /* Pull quote */
+  .pull-quote { margin: 40px 0; padding: 28px 32px; border-left: 3px solid #c2622a; background: #f5ede3; border-radius: 0 12px 12px 0; }
+  .pull-quote p { font-size: 19px; font-style: italic; line-height: 1.6; color: #1e140a; }
+
+  /* Body sections */
+  .body-section { padding: 0 0 48px; }
+  .body-section h2 { font-size: 23px; font-weight: 700; letter-spacing: -0.01em; color: #1a1410; margin-bottom: 14px; }
+  .body-section p { font-size: 16px; line-height: 1.8; color: #2e2218; margin-bottom: 18px; }
+  .body-section strong { color: #1a1410; font-weight: 600; }
+
+  /* Three candid photos */
+  .three-raw { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 28px 0 40px; }
+  .three-raw img {
+    width: 100%; height: 200px; object-fit: cover;
+    filter: saturate(0.75) contrast(1.08);
+  }
+  .three-raw figure figcaption { font-size: 11px; color: #9a8a7a; margin-top: 5px; font-style: italic; }
+
+  /* Requirements — clean card */
+  .requirements { background: #fff; border: 1px solid #e0d5c8; border-radius: 16px; padding: 36px; margin: 0 0 56px; }
+  .requirements h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .requirements .sub { font-size: 14px; color: #7a6a5a; margin-bottom: 24px; line-height: 1.55; }
+  .req-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .req-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f0e8de; font-size: 14px; color: #2a1e16; line-height: 1.55; }
+  .req-item:last-child { border-bottom: none; }
+  .req-icon { font-size: 18px; margin-top: 1px; flex-shrink: 0; width: 26px; text-align: center; }
+  .req-strong { font-weight: 600; display: block; margin-bottom: 2px; }
+  .req-note { font-size: 13px; color: #9a8a7a; margin-top: 16px; padding-top: 16px; border-top: 1px solid #f0e8de; }
+
+  /* CTA */
+  .cta-section { text-align: center; padding: 16px 0 80px; }
+  .cta-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .cta-section p { font-size: 15px; color: #6a5a4a; margin-bottom: 24px; }
+  .btn { display: inline-block; padding: 14px 28px; background: #c2622a; color: white; font-size: 15px; font-weight: 600; border-radius: 10px; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-dot">
+      <svg viewBox="0 0 16 16"><path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z"/></svg>
+    </div>
+    <span>Dhaba<em>Route</em></span>
+  </div>
+  <a href="/submit" class="nav-link">+ Submit a Dhaba</a>
+</header>
+
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">The Culture</p>
+    <h1 class="hero-title">What is a Dhaba?</h1>
+    <p class="hero-sub">Roadside kitchens born on the Grand Trunk Road — built for drivers, not critics.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="intro">
+    <p>If you've driven the highways of Punjab, you've stopped at one without knowing its name. A dhaba is a roadside restaurant — not quite a diner, not quite a home kitchen, but something in between. Born along the Grand Trunk Road, one of Asia's oldest trade routes, dhabas grew up serving the people who needed them most: truckers running overnight hauls, bus drivers on long routes, laborers heading home.</p>
+    <p>The setup is unfussy by design. Plastic chairs. Mismatched steel plates. A tandoor in the corner that never fully cools down. A dal that's been going since morning. Roti pulled straight off the griddle and slapped on your plate. Nobody's plating anything. Nobody's taking a photo. You eat, you drink your chai, you get back on the road.</p>
+  </div>
+</div>
+
+<!-- Raw photo grid -->
+<div class="container-wide">
+  <div class="photo-section">
+    <div class="photo-grid-raw">
+      <!-- Candid, real dhaba photos — dusty, smoky, lived-in -->
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&q=70" alt="Roadside dhaba stall" />
+      <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=70" alt="Dhaba cooking outside" />
+      <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&q=70" alt="Simple plates of food" />
+      <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&q=70" alt="Chai in a glass" />
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="pull-quote">
+    <p>"A dhaba doesn't exist to impress you. It exists to feed you — and get you back on the road."</p>
+  </div>
+
+  <div class="body-section">
+    <h2>Built for people going somewhere</h2>
+    <p>What makes a dhaba different from a restaurant isn't the food — it's the intention. The portions are big because drivers need energy, not aesthetics. The prices are low because the people eating there are working people. There's no ambiance, no playlist, no "concept." There's a cook who's been doing this for twenty years and a menu that hasn't changed because it doesn't need to.</p>
+    <p>The staples are always there: <strong>butter chicken</strong>, <strong>dal makhani</strong>, <strong>aloo paratha</strong> with a smear of butter and a side of achaar. Lassi in a steel glass. Chai poured from a height into a kulhad — the clay cup you throw on the ground when you're done. Nobody cleans it. It's clay. It's fine.</p>
+  </div>
+
+  <!-- Three candid photos -->
+  <div class="three-raw">
+    <figure>
+      <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=65" alt="Paratha on a tawa" />
+      <figcaption>Paratha on the tawa — no frills, all flavor</figcaption>
+    </figure>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1605197788044-976ca3cc6c41?w=400&q=65" alt="Steel plate of dal" />
+      <figcaption>Dal that's been simmering since morning</figcaption>
+    </figure>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&q=65" alt="Chai glass" />
+      <figcaption>Chai. Always chai.</figcaption>
+    </figure>
+  </div>
+
+  <div class="body-section">
+    <h2>From the Grand Trunk Road to I-40</h2>
+    <p>In North America, dhabas have followed the Punjabi diaspora — turning up in travel centers off I-40, at gas stations along the I-5 corridor through California's Central Valley, tucked into strip malls near truck routes in Texas and Indiana. The charpoys are gone. The parking lots fit eighteen-wheelers instead of bullock carts. But the food and the vibe are the same.</p>
+    <p>These places don't advertise. They don't need to. Word spreads through CB radio channels and WhatsApp groups of drivers. A handwritten sign. A packed lot of semis at 2am. That's how you know it's good. DhabaRoute exists to collect that word-of-mouth in one place — so any driver can find the next real meal on their route.</p>
+  </div>
+
+  <!-- Requirements -->
+  <div class="requirements">
+    <h2>What counts as a Dhaba?</h2>
+    <p class="sub">We review every submission before it goes live. Here's what earns a listing — and what doesn't.</p>
+    <ul class="req-list">
+      <li class="req-item">
+        <span class="req-icon">🍛</span>
+        <div>
+          <span class="req-strong">Real Indian or Punjabi food</span>
+          Curries, dal, roti, biryani, parathas — made fresh, not from a packet. Fast-casual chains don't count.
+        </div>
+      </li>
+      <li class="req-item">
+        <span class="req-icon">🚛</span>
+        <div>
+          <span class="req-strong">Built for drivers and travelers</span>
+          Truck parking, a highway location, or inside a travel center. If a semi can't pull in, it probably isn't a dhaba.
+        </div>
+      </li>
+      <li class="req-item">
+        <span class="req-icon">📍</span>
+        <div>
+          <span class="req-strong">A real, operating business</span>
+          Must have a Google Maps listing. This lets drivers verify hours and get directions.
+        </div>
+      </li>
+      <li class="req-item">
+        <span class="req-icon">🚫</span>
+        <div>
+          <span class="req-strong">Not a fine dining restaurant</span>
+          Dhabas are unpretentious food for people on the move. If there's valet parking, it's not a dhaba.
+        </div>
+      </li>
+    </ul>
+    <p class="req-note">Every submission is reviewed by a human before it goes live. We'd rather have 150 real dhabas than 500 questionable ones.</p>
+  </div>
+
+  <div class="cta-section">
+    <h2>Know a spot we're missing?</h2>
+    <p>Two minutes to submit. Helps every driver on that route.</p>
+    <a href="/submit" class="btn">Submit a Dhaba →</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-21T20:27:37.510Z",
+  "generatedAt": "2026-04-21T22:09:19.696Z",
   "count": 157,
   "dhabas": [
     {
@@ -18,8 +18,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 36.5775,
-      "lng": -116.4336,
+      "lat": 36.63359,
+      "lng": -116.370218,
       "coordAccuracy": "csv"
     },
     {
@@ -38,8 +38,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 42.1333,
-      "lng": -105.9231,
+      "lat": 41.47372,
+      "lng": -105.923083,
       "coordAccuracy": "csv"
     },
     {
@@ -57,8 +57,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 43.074,
-      "lng": -79.0664,
+      "lat": 43.111212,
+      "lng": -79.066422,
       "coordAccuracy": "csv"
     },
     {
@@ -76,8 +76,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 43.7493,
-      "lng": -79.6449,
+      "lat": 43.702202,
+      "lng": -79.644936,
       "coordAccuracy": "csv"
     },
     {
@@ -95,8 +95,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.14,
-      "lng": -104.82,
+      "lat": 41.725234,
+      "lng": -108.100572,
       "coordAccuracy": "csv"
     },
     {
@@ -115,8 +115,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.2125,
-      "lng": -100.2217,
+      "lat": 35.255951,
+      "lng": -100.22165,
       "coordAccuracy": "csv"
     },
     {
@@ -135,8 +135,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.233,
-      "lng": -99.88,
+      "lat": 35.232872,
+      "lng": -99.879991,
       "coordAccuracy": "csv"
     },
     {
@@ -153,7 +153,10 @@
       "featured": false,
       "needsReview": true,
       "published": true,
-      "source": "Google Maps"
+      "source": "Google Maps",
+      "lat": 31.565142,
+      "lng": -99.955359,
+      "coordAccuracy": "csv"
     },
     {
       "id": "d0009",
@@ -171,7 +174,10 @@
       "featured": false,
       "needsReview": true,
       "published": true,
-      "source": "Google Maps"
+      "source": "Google Maps",
+      "lat": 32.408935,
+      "lng": -100.575201,
+      "coordAccuracy": "csv"
     },
     {
       "id": "d0010",
@@ -194,8 +200,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.198,
-      "lng": -111.651,
+      "lat": 35.234613,
+      "lng": -109.411749,
       "coordAccuracy": "csv"
     },
     {
@@ -218,8 +224,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 32.222,
-      "lng": -110.969,
+      "lat": 32.32949,
+      "lng": -109.395291,
       "coordAccuracy": "csv"
     },
     {
@@ -236,8 +242,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 30.7348,
-      "lng": -106.2618,
+      "lat": 31.803568,
+      "lng": -106.261752,
       "coordAccuracy": "csv"
     },
     {
@@ -258,8 +264,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.2436,
-      "lng": -102.4266,
+      "lat": 35.236012,
+      "lng": -102.427473,
       "coordAccuracy": "csv"
     },
     {
@@ -279,8 +285,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.085,
-      "lng": -106.65,
+      "lat": 35.180709,
+      "lng": -103.682733,
       "coordAccuracy": "csv"
     },
     {
@@ -300,8 +306,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.222,
-      "lng": -101.835,
+      "lat": 35.307202,
+      "lng": -102.700109,
       "coordAccuracy": "csv"
     },
     {
@@ -320,8 +326,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.492,
-      "lng": -99.902,
+      "lat": 40.720514,
+      "lng": -96.603866,
       "coordAccuracy": "csv"
     },
     {
@@ -339,8 +345,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.8095,
-      "lng": -90.2902,
+      "lat": 41.779617,
+      "lng": -90.29021,
       "coordAccuracy": "csv"
     },
     {
@@ -357,8 +363,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 38.8219,
-      "lng": -91.9534,
+      "lat": 38.947222,
+      "lng": -91.953429,
       "coordAccuracy": "csv"
     },
     {
@@ -376,8 +382,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.9267,
-      "lng": -79.2111,
+      "lat": 37.933619,
+      "lng": -79.21106,
       "coordAccuracy": "csv"
     },
     {
@@ -398,8 +404,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.961,
-      "lng": -82.999,
+      "lat": 39.580997,
+      "lng": -83.641192,
       "coordAccuracy": "csv"
     },
     {
@@ -417,8 +423,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.556,
-      "lng": -84.3146,
+      "lat": 39.555931,
+      "lng": -84.314636,
       "coordAccuracy": "csv"
     },
     {
@@ -437,8 +443,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 40.925,
-      "lng": -98.342,
+      "lat": 41.149511,
+      "lng": -102.966061,
       "coordAccuracy": "csv"
     },
     {
@@ -459,8 +465,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.222,
-      "lng": -101.835,
+      "lat": 35.245825,
+      "lng": -101.389232,
       "coordAccuracy": "csv"
     },
     {
@@ -482,8 +488,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 30.438,
-      "lng": -84.281,
+      "lat": 30.297469,
+      "lng": -92.891417,
       "coordAccuracy": "csv"
     },
     {
@@ -505,8 +511,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 32.725,
-      "lng": -97.321,
+      "lat": 32.532093,
+      "lng": -93.251328,
       "coordAccuracy": "csv"
     },
     {
@@ -524,8 +530,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 30.9475,
-      "lng": -94.372,
+      "lat": 32.500341,
+      "lng": -94.372027,
       "coordAccuracy": "csv"
     },
     {
@@ -543,8 +549,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 34.9214,
-      "lng": -91.1326,
+      "lat": 34.921299,
+      "lng": -91.132602,
       "coordAccuracy": "csv"
     },
     {
@@ -563,8 +569,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 30.9831,
-      "lng": -90.5148,
+      "lat": 30.93728,
+      "lng": -90.514849,
       "coordAccuracy": "csv"
     },
     {
@@ -583,8 +589,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 29.6883,
-      "lng": -89.7382,
+      "lat": 30.427824,
+      "lng": -89.738243,
       "coordAccuracy": "csv"
     },
     {
@@ -603,8 +609,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 28.8083,
-      "lng": -89.0938,
+      "lat": 30.361749,
+      "lng": -89.093839,
       "coordAccuracy": "csv"
     },
     {
@@ -623,8 +629,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 26.5603,
-      "lng": -80.1836,
+      "lat": 25.841205,
+      "lng": -80.183566,
       "coordAccuracy": "csv"
     },
     {
@@ -643,8 +649,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 28.0998,
-      "lng": -82.2878,
+      "lat": 28.127455,
+      "lng": -82.287776,
       "coordAccuracy": "csv"
     },
     {
@@ -662,8 +668,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 28.0484,
-      "lng": -82.4444,
+      "lat": 28.060051,
+      "lng": -82.444351,
       "coordAccuracy": "csv"
     },
     {
@@ -681,8 +687,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.4993,
-      "lng": -81.6944,
+      "lat": 35.157244,
+      "lng": -84.876135,
       "coordAccuracy": "csv"
     },
     {
@@ -700,8 +706,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3414,
-      "lng": -80.7645,
+      "lat": 35.254302,
+      "lng": -80.764526,
       "coordAccuracy": "csv"
     },
     {
@@ -719,8 +725,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 38.7147,
-      "lng": -86.0624,
+      "lat": 39.711061,
+      "lng": -86.062374,
       "coordAccuracy": "csv"
     },
     {
@@ -738,8 +744,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 33.7484,
-      "lng": -94.8524,
+      "lat": 30.853336,
+      "lng": -94.852371,
       "coordAccuracy": "csv"
     },
     {
@@ -757,8 +763,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.0388,
-      "lng": -77.4638,
+      "lat": 39.036902,
+      "lng": -77.463782,
       "coordAccuracy": "csv"
     },
     {
@@ -776,8 +782,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.1884,
-      "lng": -74.2635,
+      "lat": 40.556846,
+      "lng": -74.263507,
       "coordAccuracy": "csv"
     },
     {
@@ -795,8 +801,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 40.7684,
-      "lng": -73.5251,
+      "lat": 40.801249,
+      "lng": -73.533083,
       "coordAccuracy": "csv"
     },
     {
@@ -814,8 +820,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.76,
-      "lng": -87.6824,
+      "lat": 41.859391,
+      "lng": -87.682413,
       "coordAccuracy": "csv"
     },
     {
@@ -833,8 +839,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.807,
-      "lng": -83.3959,
+      "lat": 39.93005,
+      "lng": -83.395923,
       "coordAccuracy": "csv"
     },
     {
@@ -852,8 +858,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 40.5234,
-      "lng": -82.691,
+      "lat": 40.523829,
+      "lng": -82.691038,
       "coordAccuracy": "csv"
     },
     {
@@ -871,8 +877,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.0407,
-      "lng": -77.1236,
+      "lat": 41.040701,
+      "lng": -77.123599,
       "coordAccuracy": "csv"
     },
     {
@@ -890,8 +896,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.6499,
-      "lng": -82.99,
+      "lat": 42.306471,
+      "lng": -82.989997,
       "coordAccuracy": "csv"
     },
     {
@@ -909,8 +915,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 34.9698,
-      "lng": -90.9425,
+      "lat": 34.969751,
+      "lng": -90.942467,
       "coordAccuracy": "csv"
     },
     {
@@ -928,8 +934,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.1944,
-      "lng": -90.4842,
+      "lat": 35.199933,
+      "lng": -90.484212,
       "coordAccuracy": "csv"
     },
     {
@@ -947,8 +953,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.0588,
-      "lng": -94.2806,
+      "lat": 37.053111,
+      "lng": -94.280614,
       "coordAccuracy": "csv"
     },
     {
@@ -967,8 +973,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 36.5593,
-      "lng": -95.1681,
+      "lat": 36.559302,
+      "lng": -95.16815,
       "coordAccuracy": "csv"
     },
     {
@@ -986,8 +992,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.0421,
-      "lng": -94.587,
+      "lat": 39.042021,
+      "lng": -94.587034,
       "coordAccuracy": "csv"
     },
     {
@@ -1005,8 +1011,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.6383,
-      "lng": -93.4898,
+      "lat": 41.667533,
+      "lng": -93.489766,
       "coordAccuracy": "csv"
     },
     {
@@ -1025,8 +1031,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.7068,
-      "lng": -92.7473,
+      "lat": 41.701787,
+      "lng": -92.747264,
       "coordAccuracy": "csv"
     },
     {
@@ -1044,8 +1050,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.4871,
-      "lng": -94.1103,
+      "lat": 45.487136,
+      "lng": -94.110324,
       "coordAccuracy": "csv"
     },
     {
@@ -1063,8 +1069,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.7035,
-      "lng": -107.9979,
+      "lat": 41.703547,
+      "lng": -107.997947,
       "coordAccuracy": "csv"
     },
     {
@@ -1083,8 +1089,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.8168,
-      "lng": -108.3054,
+      "lat": 45.783238,
+      "lng": -108.507222,
       "coordAccuracy": "csv"
     },
     {
@@ -1102,8 +1108,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.7795,
-      "lng": -111.1666,
+      "lat": 45.777041,
+      "lng": -111.179366,
       "coordAccuracy": "csv"
     },
     {
@@ -1122,8 +1128,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 47.1771,
-      "lng": -122.0947,
+      "lat": 47.109792,
+      "lng": -122.309179,
       "coordAccuracy": "csv"
     },
     {
@@ -1142,8 +1148,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 47.3729,
-      "lng": -122.2023,
+      "lat": 47.372343,
+      "lng": -122.204147,
       "coordAccuracy": "csv"
     },
     {
@@ -1162,8 +1168,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 47.0963,
-      "lng": -118.3491,
+      "lat": 47.096329,
+      "lng": -118.349135,
       "coordAccuracy": "csv"
     },
     {
@@ -1181,8 +1187,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.5361,
-      "lng": -122.8865,
+      "lat": 45.51558,
+      "lng": -122.94999,
       "coordAccuracy": "csv"
     },
     {
@@ -1200,8 +1206,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.5152,
-      "lng": -122.6784,
+      "lat": 45.496466,
+      "lng": -122.767981,
       "coordAccuracy": "csv"
     },
     {
@@ -1219,8 +1225,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.5229,
-      "lng": -122.9898,
+      "lat": 45.510144,
+      "lng": -122.867464,
       "coordAccuracy": "csv"
     },
     {
@@ -1238,8 +1244,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.2692,
-      "lng": -122.8641,
+      "lat": 45.281626,
+      "lng": -122.825737,
       "coordAccuracy": "csv"
     },
     {
@@ -1257,8 +1263,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.5059,
-      "lng": -122.5737,
+      "lat": 45.50588,
+      "lng": -122.573719,
       "coordAccuracy": "csv"
     },
     {
@@ -1276,8 +1282,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.3942,
-      "lng": -121.6441,
+      "lat": 45.66035,
+      "lng": -120.765225,
       "coordAccuracy": "csv"
     },
     {
@@ -1295,8 +1301,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.6299,
-      "lng": -120.8968,
+      "lat": 44.96182,
+      "lng": -123.037551,
       "coordAccuracy": "csv"
     },
     {
@@ -1314,8 +1320,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.0658,
-      "lng": -122.9996,
+      "lat": 45.062355,
+      "lng": -123.01009,
       "coordAccuracy": "csv"
     },
     {
@@ -1334,8 +1340,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 44.6628,
-      "lng": -123.1361,
+      "lat": 44.666941,
+      "lng": -123.123537,
       "coordAccuracy": "csv"
     },
     {
@@ -1353,8 +1359,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 44.8996,
-      "lng": -123.034,
+      "lat": 44.899632,
+      "lng": -123.034041,
       "coordAccuracy": "csv"
     },
     {
@@ -1373,8 +1379,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 44.3559,
-      "lng": -123.0048,
+      "lat": 44.355865,
+      "lng": -123.004837,
       "coordAccuracy": "csv"
     },
     {
@@ -1392,8 +1398,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 40.5304,
-      "lng": -122.3865,
+      "lat": 40.54471,
+      "lng": -122.340774,
       "coordAccuracy": "csv"
     },
     {
@@ -1412,8 +1418,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.7781,
-      "lng": -122.1979,
+      "lat": 39.907768,
+      "lng": -122.197865,
       "coordAccuracy": "csv"
     },
     {
@@ -1432,8 +1438,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 38.9888,
-      "lng": -122.0601,
+      "lat": 38.946593,
+      "lng": -122.060068,
       "coordAccuracy": "csv"
     },
     {
@@ -1451,8 +1457,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.6723,
-      "lng": -121.5174,
+      "lat": 37.691463,
+      "lng": -121.517367,
       "coordAccuracy": "csv"
     },
     {
@@ -1470,8 +1476,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.838,
-      "lng": -121.3068,
+      "lat": 37.837973,
+      "lng": -121.306784,
       "coordAccuracy": "csv"
     },
     {
@@ -1489,8 +1495,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.7251,
-      "lng": -121.1543,
+      "lat": 37.706121,
+      "lng": -121.154284,
       "coordAccuracy": "csv"
     },
     {
@@ -1508,8 +1514,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.9422,
-      "lng": -121.2194,
+      "lat": 37.942243,
+      "lng": -121.219373,
       "coordAccuracy": "csv"
     },
     {
@@ -1527,8 +1533,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3305,
-      "lng": -118.9922,
+      "lat": 35.330452,
+      "lng": -118.992233,
       "coordAccuracy": "csv"
     },
     {
@@ -1546,8 +1552,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.301,
-      "lng": -118.994,
+      "lat": 35.300975,
+      "lng": -118.99398,
       "coordAccuracy": "csv"
     },
     {
@@ -1566,8 +1572,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3871,
-      "lng": -118.9566,
+      "lat": 35.387051,
+      "lng": -118.956552,
       "coordAccuracy": "csv"
     },
     {
@@ -1585,8 +1591,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.5085,
-      "lng": -119.16,
+      "lat": 35.508615,
+      "lng": -119.159979,
       "coordAccuracy": "csv"
     },
     {
@@ -1605,8 +1611,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3661,
-      "lng": -119.1839,
+      "lat": 35.286033,
+      "lng": -119.183922,
       "coordAccuracy": "csv"
     },
     {
@@ -1624,8 +1630,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.0053,
-      "lng": -119.0117,
+      "lat": 35.277391,
+      "lng": -119.01173,
       "coordAccuracy": "csv"
     },
     {
@@ -1643,8 +1649,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3593,
-      "lng": -118.9626,
+      "lat": 35.361924,
+      "lng": -118.962558,
       "coordAccuracy": "csv"
     },
     {
@@ -1663,8 +1669,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3426,
-      "lng": -118.9054,
+      "lat": 35.348765,
+      "lng": -118.905374,
       "coordAccuracy": "csv"
     },
     {
@@ -1682,8 +1688,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 34.9601,
-      "lng": -119.6907,
+      "lat": 35.666032,
+      "lng": -119.69073,
       "coordAccuracy": "csv"
     },
     {
@@ -1703,8 +1709,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 32.2648,
-      "lng": -109.2225,
+      "lat": 32.271697,
+      "lng": -109.24328,
       "coordAccuracy": "csv"
     },
     {
@@ -1723,8 +1729,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 32.7595,
-      "lng": -111.5553,
+      "lat": 32.774817,
+      "lng": -111.620435,
       "coordAccuracy": "csv"
     },
     {
@@ -1743,8 +1749,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.4151,
-      "lng": -114.0585,
+      "lat": 35.081319,
+      "lng": -114.058524,
       "coordAccuracy": "csv"
     },
     {
@@ -1762,8 +1768,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 34.8366,
-      "lng": -114.2112,
+      "lat": 34.789783,
+      "lng": -114.211165,
       "coordAccuracy": "csv"
     },
     {
@@ -1781,8 +1787,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 33.5163,
-      "lng": -112.532,
+      "lat": 33.510982,
+      "lng": -112.531998,
       "coordAccuracy": "csv"
     },
     {
@@ -1800,8 +1806,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 30.9537,
-      "lng": -94.3587,
+      "lat": 32.500594,
+      "lng": -94.358706,
       "coordAccuracy": "csv"
     },
     {
@@ -1821,8 +1827,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3564,
-      "lng": -118.9131,
+      "lat": 35.356365,
+      "lng": -118.913051,
       "coordAccuracy": "csv"
     },
     {
@@ -1840,8 +1846,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 38.4455,
-      "lng": -121.8233,
+      "lat": 38.459481,
+      "lng": -121.838561,
       "coordAccuracy": "csv"
     },
     {
@@ -1862,8 +1868,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 28.869,
-      "lng": -94.1537,
+      "lat": 33.260131,
+      "lng": -94.153743,
       "coordAccuracy": "csv"
     },
     {
@@ -1881,8 +1887,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.3125,
-      "lng": -78.0576,
+      "lat": 39.31191,
+      "lng": -78.057641,
       "coordAccuracy": "csv"
     },
     {
@@ -1901,8 +1907,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 30.5044,
-      "lng": -90.4612,
+      "lat": 30.47691,
+      "lng": -90.456576,
       "coordAccuracy": "csv"
     },
     {
@@ -1920,8 +1926,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.7066,
-      "lng": -106.1523,
+      "lat": 35.075898,
+      "lng": -106.152251,
       "coordAccuracy": "csv"
     },
     {
@@ -1940,8 +1946,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 42.8864,
-      "lng": -78.8784,
+      "lat": 41.294904,
+      "lng": -105.642158,
       "coordAccuracy": "csv"
     },
     {
@@ -1960,8 +1966,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.1584,
-      "lng": -104.3581,
+      "lat": 41.158562,
+      "lng": -104.358085,
       "coordAccuracy": "csv"
     },
     {
@@ -1979,8 +1985,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 34.4116,
-      "lng": -117.3945,
+      "lat": 34.411244,
+      "lng": -117.394538,
       "coordAccuracy": "csv"
     },
     {
@@ -1998,8 +2004,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.7354,
-      "lng": -122.6345,
+      "lat": 41.735667,
+      "lng": -122.650991,
       "coordAccuracy": "csv"
     },
     {
@@ -2017,8 +2023,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 38.4561,
-      "lng": -92.2884,
+      "lat": 37.092884,
+      "lng": -94.009985,
       "coordAccuracy": "csv"
     },
     {
@@ -2037,8 +2043,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.5156,
-      "lng": -94.1144,
+      "lat": 35.512829,
+      "lng": -94.114421,
       "coordAccuracy": "csv"
     },
     {
@@ -2056,8 +2062,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.4278,
-      "lng": -99.1458,
+      "lat": 35.471311,
+      "lng": -99.145774,
       "coordAccuracy": "csv"
     },
     {
@@ -2075,8 +2081,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.8705,
-      "lng": -83.4126,
+      "lat": 39.91145,
+      "lng": -83.41263,
       "coordAccuracy": "csv"
     },
     {
@@ -2094,8 +2100,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 26.7367,
-      "lng": -97.0129,
+      "lat": 33.615707,
+      "lng": -97.012915,
       "coordAccuracy": "csv"
     },
     {
@@ -2113,8 +2119,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.9339,
-      "lng": -87.0635,
+      "lat": 36.108853,
+      "lng": -87.063475,
       "coordAccuracy": "csv"
     },
     {
@@ -2133,8 +2139,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 36.6758,
-      "lng": -119.7383,
+      "lat": 36.680283,
+      "lng": -119.738252,
       "coordAccuracy": "csv"
     },
     {
@@ -2152,8 +2158,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 36.5022,
-      "lng": -119.4238,
+      "lat": 36.502241,
+      "lng": -119.423787,
       "coordAccuracy": "csv"
     },
     {
@@ -2172,8 +2178,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.0213,
-      "lng": -119.6738,
+      "lat": 35.622167,
+      "lng": -119.673846,
       "coordAccuracy": "csv"
     },
     {
@@ -2192,8 +2198,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 32.1838,
-      "lng": -107.7742,
+      "lat": 32.266158,
+      "lng": -107.774245,
       "coordAccuracy": "csv"
     },
     {
@@ -2211,8 +2217,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 26.742,
-      "lng": -97.6362,
+      "lat": 33.34705,
+      "lng": -97.636156,
       "coordAccuracy": "csv"
     },
     {
@@ -2230,8 +2236,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.0079,
-      "lng": -110.1336,
+      "lat": 34.906776,
+      "lng": -110.133578,
       "coordAccuracy": "csv"
     },
     {
@@ -2250,8 +2256,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 32.3182,
-      "lng": -86.9023,
+      "lat": 32.624419,
+      "lng": -88.207159,
       "coordAccuracy": "csv"
     },
     {
@@ -2269,8 +2275,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.871,
-      "lng": -99.5448,
+      "lat": 40.696974,
+      "lng": -99.544802,
       "coordAccuracy": "csv"
     },
     {
@@ -2288,8 +2294,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 40.7426,
-      "lng": -113.9695,
+      "lat": 40.745559,
+      "lng": -113.969476,
       "coordAccuracy": "csv"
     },
     {
@@ -2307,8 +2313,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 34.8188,
-      "lng": -116.6094,
+      "lat": 34.818752,
+      "lng": -116.609423,
       "coordAccuracy": "csv"
     },
     {
@@ -2326,8 +2332,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 34.9033,
-      "lng": -113.9076,
+      "lat": 35.235502,
+      "lng": -113.907637,
       "coordAccuracy": "csv"
     },
     {
@@ -2349,8 +2355,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.2954,
-      "lng": -99.5948,
+      "lat": 35.340451,
+      "lng": -99.594793,
       "coordAccuracy": "csv"
     },
     {
@@ -2368,8 +2374,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.2718,
-      "lng": -100.1401,
+      "lat": 35.227947,
+      "lng": -100.140078,
       "coordAccuracy": "csv"
     },
     {
@@ -2387,8 +2393,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.1242,
-      "lng": -103.3314,
+      "lat": 35.114765,
+      "lng": -103.331433,
       "coordAccuracy": "csv"
     },
     {
@@ -2406,8 +2412,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 34.5854,
-      "lng": -101.4022,
+      "lat": 35.281858,
+      "lng": -101.402236,
       "coordAccuracy": "csv"
     },
     {
@@ -2425,8 +2431,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 38.8842,
-      "lng": -86.1997,
+      "lat": 39.71349,
+      "lng": -86.199714,
       "coordAccuracy": "csv"
     },
     {
@@ -2445,8 +2451,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.849,
-      "lng": -86.258,
+      "lat": 39.552634,
+      "lng": -86.611956,
       "coordAccuracy": "csv"
     },
     {
@@ -2465,8 +2471,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.8696,
-      "lng": -107.9054,
+      "lat": 35.180705,
+      "lng": -107.905386,
       "coordAccuracy": "csv"
     },
     {
@@ -2484,8 +2490,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 40.7248,
-      "lng": -85.4788,
+      "lat": 40.765201,
+      "lng": -85.478843,
       "coordAccuracy": "csv"
     },
     {
@@ -2503,8 +2509,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.4667,
-      "lng": -85.4321,
+      "lat": 39.837526,
+      "lng": -85.432139,
       "coordAccuracy": "csv"
     },
     {
@@ -2523,8 +2529,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.0842,
-      "lng": -94.5133,
+      "lat": 37.124307,
+      "lng": -94.432468,
       "coordAccuracy": "csv"
     },
     {
@@ -2542,8 +2548,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.3255,
-      "lng": -93.1032,
+      "lat": 37.331333,
+      "lng": -93.103208,
       "coordAccuracy": "csv"
     },
     {
@@ -2561,8 +2567,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3115,
-      "lng": -119.0022,
+      "lat": 35.311639,
+      "lng": -119.002172,
       "coordAccuracy": "csv"
     },
     {
@@ -2580,8 +2586,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 36.9109,
-      "lng": -119.9023,
+      "lat": 36.827535,
+      "lng": -119.902277,
       "coordAccuracy": "csv"
     },
     {
@@ -2599,8 +2605,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3532,
-      "lng": -119.1621,
+      "lat": 35.272932,
+      "lng": -119.162142,
       "coordAccuracy": "csv"
     },
     {
@@ -2618,8 +2624,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 40.1971,
-      "lng": -76.7276,
+      "lat": 40.355257,
+      "lng": -76.727584,
       "coordAccuracy": "csv"
     },
     {
@@ -2637,8 +2643,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.906,
-      "lng": -119.1749,
+      "lat": 39.604026,
+      "lng": -119.174937,
       "coordAccuracy": "csv"
     },
     {
@@ -2657,8 +2663,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 33.4731,
-      "lng": -108.8395,
+      "lat": 35.504149,
+      "lng": -108.839486,
       "coordAccuracy": "csv"
     },
     {
@@ -2677,8 +2683,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 30.9874,
-      "lng": -104.5575,
+      "lat": 31.068915,
+      "lng": -104.557467,
       "coordAccuracy": "csv"
     },
     {
@@ -2697,8 +2703,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.6975,
-      "lng": -85.1457,
+      "lat": 39.848768,
+      "lng": -85.145723,
       "coordAccuracy": "csv"
     },
     {
@@ -2716,8 +2722,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 32.3076,
-      "lng": -110.9445,
+      "lat": 32.134677,
+      "lng": -110.944537,
       "coordAccuracy": "csv"
     },
     {
@@ -2735,8 +2741,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.2775,
-      "lng": -75.6125,
+      "lat": 40.583745,
+      "lng": -75.612547,
       "coordAccuracy": "csv"
     },
     {
@@ -2754,8 +2760,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 36.5951,
-      "lng": -82.1887,
+      "lat": 36.672596,
+      "lng": -82.112306,
       "coordAccuracy": "csv"
     },
     {
@@ -2773,8 +2779,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 45.2639,
-      "lng": -122.8649,
+      "lat": 45.28032,
+      "lng": -122.813942,
       "coordAccuracy": "csv"
     },
     {
@@ -2793,8 +2799,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.1246,
-      "lng": -114.9249,
+      "lat": 41.124,
+      "lng": -114.924883,
       "coordAccuracy": "csv"
     },
     {
@@ -2812,8 +2818,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 27.3289,
-      "lng": -95.0956,
+      "lat": 33.213123,
+      "lng": -95.095586,
       "coordAccuracy": "csv"
     },
     {
@@ -2831,8 +2837,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 27.9281,
-      "lng": -96.1969,
+      "lat": 33.062138,
+      "lng": -96.196885,
       "coordAccuracy": "csv"
     },
     {
@@ -2849,7 +2855,10 @@
       "featured": false,
       "needsReview": true,
       "published": true,
-      "source": "Google Maps"
+      "source": "Google Maps",
+      "lat": 32.575874,
+      "lng": -98.354929,
+      "coordAccuracy": "csv"
     },
     {
       "id": "d0147",
@@ -2866,8 +2875,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 39.3945,
-      "lng": -85.8229,
+      "lat": 38.686926,
+      "lng": -85.822862,
       "coordAccuracy": "csv"
     },
     {
@@ -2885,8 +2894,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.5941,
-      "lng": -119.341,
+      "lat": 45.671029,
+      "lng": -120.725328,
       "coordAccuracy": "csv"
     },
     {
@@ -2904,8 +2913,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.4241,
-      "lng": -87.4003,
+      "lat": 41.583936,
+      "lng": -87.400345,
       "coordAccuracy": "csv"
     },
     {
@@ -2923,8 +2932,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 26.7394,
-      "lng": -97.655,
+      "lat": 33.344241,
+      "lng": -97.655001,
       "coordAccuracy": "csv"
     },
     {
@@ -2942,8 +2951,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 41.0316,
-      "lng": -78.0057,
+      "lat": 40.986824,
+      "lng": -78.005678,
       "coordAccuracy": "csv"
     },
     {
@@ -2961,8 +2970,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 32.566,
-      "lng": -94.3455,
+      "lat": 29.823365,
+      "lng": -94.345483,
       "coordAccuracy": "csv"
     },
     {
@@ -2981,8 +2990,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.2436,
-      "lng": -102.4266,
+      "lat": 35.233995,
+      "lng": -102.394008,
       "coordAccuracy": "csv"
     },
     {
@@ -3000,8 +3009,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3992,
-      "lng": -119.396,
+      "lat": 35.399237,
+      "lng": -119.395998,
       "coordAccuracy": "csv"
     },
     {
@@ -3019,8 +3028,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 35.3563,
-      "lng": -118.914,
+      "lat": 35.356257,
+      "lng": -118.913961,
       "coordAccuracy": "csv"
     },
     {
@@ -3038,8 +3047,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 37.0154,
-      "lng": -121.0433,
+      "lat": 37.054307,
+      "lng": -121.043273,
       "coordAccuracy": "csv"
     },
     {
@@ -3059,8 +3068,8 @@
       "needsReview": true,
       "published": true,
       "source": "Google Maps",
-      "lat": 36.3502,
-      "lng": -119.4919,
+      "lat": 36.310904,
+      "lng": -119.491914,
       "coordAccuracy": "csv"
     }
   ]

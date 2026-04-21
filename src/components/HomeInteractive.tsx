@@ -51,10 +51,29 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
     });
   }, [dhabas, query, activeTags]);
 
-  const ranked: RankedDhaba[] = useMemo(
+  const rankedMatches: RankedDhaba[] = useMemo(
     () => rankByDistance(filtered, geo.coords),
     [filtered, geo.coords],
   );
+
+  // Fallback list — every dhaba ranked by distance, ignoring filters/search.
+  // Used when matches come up empty so the user never hits a dead end.
+  const rankedAll: RankedDhaba[] = useMemo(
+    () => rankByDistance(dhabas, geo.coords),
+    [dhabas, geo.coords],
+  );
+
+  // Active query/filters produced zero matches → show nearest dhabas instead
+  // with a banner so the user knows why the list isn't exactly what they
+  // typed. Keeps the page useful for a 2-second glance.
+  const hasFilters = activeTags.size > 0 || query.length > 0;
+  const isFallback = hasFilters && rankedMatches.length === 0;
+  const ranked: RankedDhaba[] = isFallback ? rankedAll : rankedMatches;
+
+  // When fallback is active, the map should mirror the list so pins and cards
+  // stay in sync — otherwise the map would go empty under a "nothing matches"
+  // filter while the list shows nearest.
+  const mapDhabas: Dhaba[] = isFallback ? dhabas : filtered;
 
   // Resolve the currently selected dhaba once so both the map and the
   // preview card read from the same ranked set (keeps distance in sync).
@@ -83,21 +102,11 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
     });
   }, []);
 
-  const clearFilters = useCallback(() => {
-    setActiveTags(new Set());
-    setQuery("");
-  }, []);
+  // filterTags now comes from the dataset directly (see dhabas.getAllUsedTags),
+  // so every chip is guaranteed to match at least one row — no dead filters.
+  const presentTags = filterTags;
 
-  // Only surface chips for tags that at least one dhaba actually carries.
-  // Prevents filter chips from producing guaranteed-empty results when the
-  // CSV hasn't been enriched yet.
-  const presentTags = useMemo(() => {
-    const inData = new Set(dhabas.flatMap((d) => d.tags));
-    return filterTags.filter((t) => inData.has(t));
-  }, [dhabas, filterTags]);
-
-  const hasFilters = activeTags.size > 0 || query.length > 0;
-  const mappableCount = filtered.filter((d) => d.lat != null && d.lng != null).length;
+  const mappableCount = mapDhabas.filter((d) => d.lat != null && d.lng != null).length;
 
   // Coverage is sparse when most listings lack coords — threshold picked so
   // that a handful of mapped pins doesn't dominate a long list visually.
@@ -115,7 +124,7 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
               pin is clicked. */}
           <div className="relative">
             <MapView
-              dhabas={filtered}
+              dhabas={mapDhabas}
               userLocation={geo.coords}
               selectedId={selectedId}
               onSelect={setSelectedId}
@@ -139,52 +148,67 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
               <PinLegendItem color="bg-ocean" label="You" />
             </div>
             <span className="tabular-nums">
-              {filtered.length > mappableCount
-                ? `${mappableCount} of ${filtered.length} on map`
+              {mapDhabas.length > mappableCount
+                ? `${mappableCount} of ${mapDhabas.length} on map`
                 : `${mappableCount} on map`}
             </span>
           </div>
         </div>
       ) : (
-        <NoPinsNote filteredCount={filtered.length} hasFilters={hasFilters} />
+        <NoPinsNote filteredCount={mapDhabas.length} hasFilters={hasFilters} />
       )}
     </div>
   );
 
+  const listHeading = isFallback
+    ? "Showing nearest dhabas"
+    : hasFilters
+    ? "Matching dhabas"
+    : geo.coords
+    ? "Nearest dhabas"
+    : "All dhabas";
+
   const listSection = (
     <div className="container-page mt-7">
-      <div className="flex items-baseline justify-between mb-3.5">
+      <div className="flex items-baseline justify-between mb-2">
         <h2 className="text-[15px] sm:text-base font-semibold tracking-tight text-ink">
-          {hasFilters
-            ? "Matching dhabas"
-            : geo.coords
-            ? "Nearest dhabas"
-            : "All dhabas"}
+          {listHeading}
         </h2>
         <p className="text-[11.5px] text-ink-muted tabular-nums" aria-live="polite" aria-atomic>
           {ranked.length} {ranked.length === 1 ? "stop" : "stops"}
         </p>
       </div>
 
-      {ranked.length === 0 ? (
-        <EmptyState />
-      ) : (
-        <ul
-          role="list"
-          className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {ranked.slice(0, 30).map((d) => (
-            <li key={d.id} data-dhaba-id={d.id}>
-              <DhabaCard
-                dhaba={d}
-                distanceLabel={d.distanceKm != null ? formatDistance(d.distanceKm) : undefined}
-                isSelected={d.id === selectedId}
-                onActivate={() => setSelectedId(d.id)}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Fallback note — the list is always populated (never empty state) so
+          the driver always has somewhere to go. */}
+      {isFallback ? (
+        <p className="mb-3 text-[12.5px] text-ink-muted leading-snug">
+          No exact matches for your search.{" "}
+          <button
+            type="button"
+            onClick={() => { setQuery(""); setActiveTags(new Set()); }}
+            className="font-medium text-clay-600 hover:text-clay-700 underline-offset-2 hover:underline transition"
+          >
+            Clear filters
+          </button>
+        </p>
+      ) : null}
+
+      <ul
+        role="list"
+        className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {ranked.slice(0, 30).map((d) => (
+          <li key={d.id} data-dhaba-id={d.id}>
+            <DhabaCard
+              dhaba={d}
+              distanceLabel={d.distanceKm != null ? formatDistance(d.distanceKm) : undefined}
+              isSelected={d.id === selectedId}
+              onActivate={() => setSelectedId(d.id)}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 
@@ -208,13 +232,12 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
       <div className="sticky top-[57px] z-20 bg-paper/90 backdrop-blur-md border-b border-paper-warm">
         <div className="container-page py-3 space-y-2.5">
           <SearchBar query={query} setQuery={setQuery} />
-          {presentTags.length > 0 || hasFilters ? (
+          {presentTags.length > 0 ? (
             <FilterChips
               tags={presentTags}
               active={activeTags}
               toggle={toggleTag}
-              hasFilters={hasFilters}
-              clear={clearFilters}
+              clearTags={() => setActiveTags(new Set())}
             />
           ) : null}
         </div>
@@ -303,17 +326,37 @@ function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) =
 }
 
 function FilterChips({
-  tags, active, toggle, hasFilters, clear,
+  tags, active, toggle, clearTags,
 }: {
   tags: TagType[];
   active: Set<string>;
   toggle: (t: string) => void;
-  hasFilters: boolean;
-  clear: () => void;
+  clearTags: () => void;
 }) {
+  // "All" acts as the implicit empty-selection state — clicking it clears
+  // every tag filter. It's rendered active when no tag is selected so the
+  // chip row always has a visible anchor. min-w-max + no-wrap keeps the row
+  // on one line and horizontally scrollable on mobile.
+  const noneActive = active.size === 0;
   return (
     <div className="-mx-5 sm:-mx-8 overflow-x-auto no-scrollbar">
       <ul role="list" className="flex gap-2 px-5 sm:px-8 min-w-max">
+        <li>
+          <button
+            type="button"
+            onClick={clearTags}
+            aria-pressed={noneActive}
+            className={[
+              "inline-flex items-center h-9 px-3.5 rounded-full whitespace-nowrap",
+              "text-[12px] font-medium border transition select-none",
+              noneActive
+                ? "bg-clay-600 text-white border-clay-600 shadow-cta"
+                : "bg-white text-ink-soft border-paper-warm hover:border-clay-300 hover:text-ink",
+            ].join(" ")}
+          >
+            All
+          </button>
+        </li>
         {tags.map((tag) => {
           const on = active.has(tag);
           return (
@@ -323,12 +366,11 @@ function FilterChips({
                 onClick={() => toggle(tag)}
                 aria-pressed={on}
                 className={[
-                  "inline-flex items-center h-9 px-3.5 rounded-full",
+                  "inline-flex items-center h-9 px-3.5 rounded-full whitespace-nowrap",
                   "text-[12px] font-medium border transition select-none",
                   on
-                    // Selected: saffron on saffron-tinted paper — premium,
-                    // reads "active" without the heavy filled pill look.
-                    ? "bg-clay-50 text-clay-700 border-clay-300"
+                    // Filled clay — premium saffron anchor per spec (#c2622a ≈ clay-600).
+                    ? "bg-clay-600 text-white border-clay-600 shadow-cta"
                     : "bg-white text-ink-soft border-paper-warm hover:border-clay-300 hover:text-ink",
                 ].join(" ")}
               >
@@ -337,17 +379,6 @@ function FilterChips({
             </li>
           );
         })}
-        {hasFilters ? (
-          <li>
-            <button
-              type="button"
-              onClick={clear}
-              className="inline-flex items-center h-9 px-3 rounded-full text-[12px] font-medium text-ink-muted hover:text-ink transition"
-            >
-              Clear
-            </button>
-          </li>
-        ) : null}
       </ul>
     </div>
   );
@@ -446,15 +477,6 @@ function NoPinsNote({
           ? `Showing all ${filteredCount} dhabas in the list below. Open any in Maps for directions.`
           : "Adjust your filters to see available dhabas."}
       </p>
-    </div>
-  );
-}
-
-function EmptyState() {
-  return (
-    <div className="py-14 text-center">
-      <p className="text-ink font-medium">No dhabas match.</p>
-      <p className="mt-1 text-[13px] text-ink-muted">Try different keywords or clear the filters.</p>
     </div>
   );
 }

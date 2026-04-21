@@ -60,6 +60,22 @@ export const ALL_FILTER_TAGS: Tag[] = [
   "Buffet",
 ];
 
+// Every unique tag actually present in the dataset, sorted by frequency
+// (most common first) so the filter bar leads with the tags drivers hit
+// most often. Falls back to alphabetical when counts tie so order is stable.
+// Data-driven — new tags in the CSV show up automatically without code changes.
+export function getAllUsedTags(): Tag[] {
+  const counts = new Map<string, number>();
+  for (const d of loadPayload().dhabas) {
+    for (const t of d.tags) {
+      counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+  }
+  return Array.from(counts.entries())
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([t]) => t as Tag);
+}
+
 // Re-exported for server-side callers; client components should import
 // directly from "@/lib/map-config" to avoid pulling node:fs into the bundle.
 export { DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM } from "./map-config";

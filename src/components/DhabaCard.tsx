@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Dhaba } from "@/lib/types";
+import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
 import { Tag } from "./Tag";
 
 // Scanning order for a driver at a glance:
@@ -87,12 +88,11 @@ export function DhabaCard({
       ) : null}
 
       {/* Description — supportive only. Muted, 2-line clamp, leading tight.
-          Hidden entirely when absent so minimal cards don't carry empty space. */}
-      {dhaba.description ? (
-        <p className="mt-2.5 text-[12.5px] leading-snug text-ink-muted line-clamp-2">
-          {dhaba.description}
-        </p>
-      ) : null}
+          Always rendered (with a shared fallback) so every card carries the
+          same scanning hierarchy — no gaps that feel "half-filled". */}
+      <p className="mt-2.5 text-[12.5px] leading-snug text-ink-muted line-clamp-2">
+        {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
+      </p>
 
       {/* Maps CTA — saffron primary, the single strongest action on the card.
           relative z-10 keeps it above the card's invisible link overlay. */}
@@ -108,7 +108,7 @@ export function DhabaCard({
               "shadow-cta hover:bg-clay-600 active:scale-[0.99] transition",
             ].join(" ")}
           >
-            Open in Maps
+            Get Directions
             <svg aria-hidden viewBox="0 0 12 12" className="w-3 h-3 flex-none opacity-90">
               <path d="M3 1h8v8M11 1L1 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             </svg>

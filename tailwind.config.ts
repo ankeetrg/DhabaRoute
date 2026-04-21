@@ -30,7 +30,7 @@ const config: Config = {
           300: "#E69E6F",
           400: "#E88247",
           500: "#E46A2E", // primary CTA & highlights
-          600: "#C95820", // hover/active
+          600: "#C2622A", // hover/active — spec anchor (#c2622a)
           700: "#A84619",
           800: "#833717",
           900: "#5C2712",
