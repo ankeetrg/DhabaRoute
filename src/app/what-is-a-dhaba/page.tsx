@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// "What is a Dhaba" — a short, warm explainer page.
+// "What is a Dhaba" — a warm editorial explainer.
 //
-// Voice: conversational but not casual. Short sentences. Plain words.
-// The goal isn't literary — it's to make a first-time visitor feel at
-// home and understand why these places matter. Photos do the mood work
-// so the copy can stay simple.
+// Voice: specific and sensory. Paragraphs over bullet fragments.
+// The goal is for someone who has never heard the word "dhaba" to finish
+// reading and feel like they've been there — and want to find one.
 //
-// Structure follows the editorial brief:
-//   1. Opening hook (feeling, not definition)
-//   2. What is a dhaba (plain answer)
-//   3. Roots in road culture
-//   4. The experience
-//   5. From India to North America
-//   6. Why it matters
-//   7. Close
+// Photos: all verified 200 from images.unsplash.com CDN (checked with
+// curl --head). Filter stack makes everything read as one consistent set.
 
 export const metadata: Metadata = {
   title: "What is a Dhaba?",
@@ -23,24 +16,19 @@ export const metadata: Metadata = {
     "A dhaba is a roadside kitchen — simple food, fresh chai, and a warm welcome. Born on India's Grand Trunk Road, now found along highways across the US and Canada.",
 };
 
-// ── Photos ─────────────────────────────────────────────────────────────
-// Unsplash short-IDs picked from candid documentary searches. One place
-// to swap if any image goes stale. `U()` keeps the URL construction
-// consistent across tiles.
-const U = (id: string, size: string) =>
-  `https://source.unsplash.com/${id}/${size}`;
-
+// ── Photos — verified 200 ───────────────────────────────────────────────
+// All six confirmed with `curl -s -o /dev/null -w "%{http_code}"`.
+// To swap: replace the photo-{id} segment; keep the ?w=...&q=80 params.
 const IMG = {
-  hero:       U("_-luqYQSnTA", "1800x1000"),  // warm night street stall
-  tawa:       U("bKrLCNjS_oQ", "1600x1000"),  // cook on a wide tawa
-  truck:      U("d_su8Ugdmj0", "1600x1000"),  // hand-painted Punjabi truck
-  chai:       U("hfdncZdKbWI", "1000x1200"),  // vendor pouring chai
-  cart:       U("yOIHawAsRqA", "1000x1200"),  // people at a food cart
-  usHighway:  U("iscEFQJzJiM", "2000x1100"),  // empty US interstate at sunset
+  hero:      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1800&q=80",
+  tawa:      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=1600&q=80",
+  chai:      "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=1000&q=80",
+  cart:      "https://images.unsplash.com/photo-1567337710282-00832b415979?w=1000&q=80",
+  truck:     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+  usHighway: "https://images.unsplash.com/photo-1547234935-80c7145ec969?w=2000&q=80",
 };
 
-// Shared look for every photo — warm, slightly faded, documentary.
-// Kept as a plain object so the filter travels inline with each <img>.
+// Applied to every photo. Warm, slightly faded, documentary.
 const PHOTO_FILTER = {
   filter: "saturate(0.65) contrast(1.12) brightness(0.97)",
 };
@@ -48,14 +36,15 @@ const PHOTO_FILTER = {
 export default function WhatIsADhabaPage() {
   return (
     <article className="pb-20">
+
       {/* ───────────────────────────────────────────────────────────── */}
-      {/* 1. OPENING — feeling first. No definition yet.                */}
+      {/* 1. OPENING — feeling first                                    */}
       {/* ───────────────────────────────────────────────────────────── */}
       <section className="relative w-full overflow-hidden bg-ink">
         <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full">
           <img
             src={IMG.hero}
-            alt="A roadside kitchen lit up after dark, steam rising from the pans."
+            alt="A roadside kitchen lit up after dark, people gathered around the stall."
             style={PHOTO_FILTER}
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -84,7 +73,7 @@ export default function WhatIsADhabaPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────── */}
-      {/* 2. WHAT IS A DHABA — plain answer, one short section.         */}
+      {/* 2. WHAT IS A DHABA                                            */}
       {/* ───────────────────────────────────────────────────────────── */}
       <section className="bg-paper-soft border-b border-paper-warm">
         <div className="container-page max-w-3xl py-10 sm:py-20">
@@ -94,24 +83,28 @@ export default function WhatIsADhabaPage() {
           <h2 className="mt-2 text-[26px] sm:text-[32px] leading-[1.15] tracking-tight font-semibold text-ink">
             A dhaba is a roadside restaurant.
           </h2>
-          <p className="mt-5 text-[16.5px] sm:text-[17.5px] leading-[1.6] text-ink-soft">
-            You&rsquo;ll find one where the highway slows down.
+          <p className="mt-5 text-[16.5px] sm:text-[17px] leading-[1.72] text-ink-soft">
+            You&rsquo;ll find one where the highway slows down — next to a
+            truck stop, a fuel plaza, or a small town just off an exit. The
+            kitchen is usually open before dawn and long after dark. The
+            menu doesn&rsquo;t change much from year to year, because it
+            doesn&rsquo;t need to.
           </p>
-          <p className="mt-2.5 text-[16.5px] sm:text-[17.5px] leading-[1.6] text-ink-soft">
-            Next to a truck stop. A fuel plaza. A small town just off an exit.
-          </p>
-          <p className="mt-5 text-[16.5px] sm:text-[17.5px] leading-[1.6] text-ink-soft">
-            Fresh food. Generous portions. A welcome that&rsquo;s part of the meal.
+          <p className="mt-4 text-[16.5px] sm:text-[17px] leading-[1.72] text-ink-soft">
+            The food is fresh — cooked that day, usually without a
+            refrigerator in sight, because the best dhabas don&rsquo;t
+            need one. Generous portions. Honest prices. And a welcome
+            that comes standard, whoever you are.
           </p>
         </div>
       </section>
 
-      {/* Photo break — cook on the tawa. No caption; the image speaks. */}
+      {/* Photo — cook on the tawa */}
       <section className="container-page mt-14 sm:mt-20">
         <figure className="relative overflow-hidden rounded-2xl">
           <img
             src={IMG.tawa}
-            alt="A cook flipping roti on a wide tawa over open flame."
+            alt="A cook flipping roti on a wide tawa over open flame, smoke rising."
             style={PHOTO_FILTER}
             className="block w-full h-auto aspect-[16/9] object-cover"
           />
@@ -119,7 +112,7 @@ export default function WhatIsADhabaPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────── */}
-      {/* 3. ROOTS IN ROAD CULTURE — Grand Trunk Road, why drivers.     */}
+      {/* 3. ROOTS IN ROAD CULTURE                                      */}
       {/* ───────────────────────────────────────────────────────────── */}
       <section className="container-page max-w-3xl mt-12 sm:mt-24">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-clay-600">
@@ -128,27 +121,31 @@ export default function WhatIsADhabaPage() {
         <h2 className="mt-2 text-[24px] sm:text-[30px] leading-[1.15] tracking-tight font-semibold text-ink">
           Built along the Grand Trunk Road
         </h2>
-
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          Dhabas grew up along the Grand Trunk Road — a thousand miles of
-          highway across northern India.
+        <p className="mt-5 text-[16.5px] leading-[1.72] text-ink-soft">
+          Dhabas grew up along the Grand Trunk Road — one of the oldest
+          trade routes in the world, running more than a thousand miles
+          across northern India from the Himalayas to Bangladesh. The
+          road moved grain, salt, soldiers, and pilgrims for centuries.
+          The dhabas moved with it, staking out the spots where truckers
+          would need to stop.
         </p>
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          Built for truck drivers. A hot meal. Chai. A few quiet minutes
-          before the next leg.
-        </p>
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          Over time, they became part of the journey itself — not just a
-          place to eat, but a reason to stop.
+        <p className="mt-4 text-[16.5px] leading-[1.72] text-ink-soft">
+          They were built around the tandoor — a clay oven sunk into the
+          ground — and designed for people who had been on the road since
+          before sunrise. A hot meal. Chai. Somewhere to sit for twenty
+          minutes before the next leg. Over time, they became part of the
+          journey itself. Not just a place to eat, but a reason to stop.
+          The old rule still holds: if you want to know how good a dhaba
+          is, count the trucks parked outside, not the cars.
         </p>
       </section>
 
-      {/* Photo break — painted truck. Connects road culture + aesthetic. */}
+      {/* Photo — painted truck */}
       <section className="container-page mt-12 sm:mt-16">
         <figure className="relative overflow-hidden rounded-2xl">
           <img
             src={IMG.truck}
-            alt="A brightly painted Punjabi freight truck on a rural road."
+            alt="A brightly hand-painted Punjabi freight truck on a rural road."
             style={PHOTO_FILTER}
             className="block w-full h-auto aspect-[16/9] object-cover"
           />
@@ -156,7 +153,7 @@ export default function WhatIsADhabaPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────── */}
-      {/* 4. THE EXPERIENCE — what makes a dhaba feel different.        */}
+      {/* 4. THE EXPERIENCE                                              */}
       {/* ───────────────────────────────────────────────────────────── */}
       <section className="container-page max-w-3xl mt-12 sm:mt-24">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-clay-600">
@@ -165,24 +162,31 @@ export default function WhatIsADhabaPage() {
         <h2 className="mt-2 text-[24px] sm:text-[30px] leading-[1.15] tracking-tight font-semibold text-ink">
           Fresh food, no pretense
         </h2>
-
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          Food cooked the same day. Hot roti off the tawa. Dal simmering
-          since morning. Chai from a pot that never empties.
+        <p className="mt-5 text-[16.5px] leading-[1.72] text-ink-soft">
+          You smell a dhaba before you see it — charcoal smoke, cumin
+          hitting hot oil, something slow-simmered that&rsquo;s been
+          going since morning. The dal has been on the fire for hours.
+          The roti gets slapped onto the tawa in front of you, puffs up,
+          chars at the edges, and lands on your plate still hot enough
+          to burn your fingers. The waiter doesn&rsquo;t write anything
+          down.
         </p>
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          Plates are heavy. Prices are fair. Nobody rushes you out.
+        <p className="mt-4 text-[16.5px] leading-[1.72] text-ink-soft">
+          Everything arrives on a steel thali heavy enough to feel
+          substantial — dal, sabzi, roti, raw onion on the side. Chai
+          comes in a small cup, poured from height so it froths. Plates
+          are generous. Prices are fair. Nobody&rsquo;s rushing you out.
         </p>
-        <p className="mt-5 text-[17px] leading-[1.5] text-ink font-medium">
+        <p className="mt-4 text-[17px] leading-[1.5] text-ink font-medium">
           A dhaba is a place to pause. Not just a place to eat.
         </p>
 
-        {/* Small 2-photo grid — chai + cart, side by side. */}
+        {/* 2-photo grid — chai + people at stall */}
         <div className="mt-8 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4">
           <figure className="relative overflow-hidden rounded-xl aspect-[4/5]">
             <img
               src={IMG.chai}
-              alt="A vendor pouring chai from height into small cups."
+              alt="Chai being poured from height into small cups, steam rising."
               style={PHOTO_FILTER}
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -190,7 +194,7 @@ export default function WhatIsADhabaPage() {
           <figure className="relative overflow-hidden rounded-xl aspect-[4/5]">
             <img
               src={IMG.cart}
-              alt="People gathered around a roadside food cart."
+              alt="People gathered at a roadside food stall, mid-conversation."
               style={PHOTO_FILTER}
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -199,7 +203,7 @@ export default function WhatIsADhabaPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────── */}
-      {/* 5. FROM INDIA TO NORTH AMERICA — the bridge.                  */}
+      {/* 5. FROM INDIA TO NORTH AMERICA                                */}
       {/* ───────────────────────────────────────────────────────────── */}
       <section className="container-page max-w-3xl mt-12 sm:mt-24">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-clay-600">
@@ -208,29 +212,24 @@ export default function WhatIsADhabaPage() {
         <h2 className="mt-2 text-[24px] sm:text-[30px] leading-[1.15] tracking-tight font-semibold text-ink">
           From India to North America
         </h2>
-
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          Punjabi truckers brought it with them to North America.
+        <p className="mt-5 text-[16.5px] leading-[1.72] text-ink-soft">
+          Punjabi truckers brought the dhaba with them when they came to
+          drive in North America. The same community that had been hauling
+          goods across the Grand Trunk Road found its way to I-5, I-40,
+          the 401, and the long flat stretches in between. They brought
+          the food with them — because the road was the same, even if
+          the landscape had changed.
         </p>
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          Today you&rsquo;ll find them along I-40, I-5, the 401, and
-          plenty of stretches in between.
-        </p>
-        <p className="mt-2.5 text-[16.5px] leading-[1.65] text-ink-soft">
-          At truck stops. In strip malls. Inside gurdwaras that stay open late.
-        </p>
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          The menu is familiar. The welcome is the same.
-        </p>
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          Most don&rsquo;t have websites. Many aren&rsquo;t on any map.
-        </p>
-        <p className="mt-2.5 text-[16.5px] leading-[1.65] text-ink-soft">
-          DhabaRoute is how you find them.
+        <p className="mt-4 text-[16.5px] leading-[1.72] text-ink-soft">
+          Today you&rsquo;ll find them at truck stops, in strip malls,
+          and inside gurdwaras that stay open late for anyone who walks
+          in. The menu is familiar. The welcome is the same. Most
+          don&rsquo;t have websites, and many aren&rsquo;t on any
+          standard map. DhabaRoute is how you find them.
         </p>
       </section>
 
-      {/* Full-bleed US highway — the visual handoff from India to here. */}
+      {/* Full-bleed US highway — visual bridge from India to here */}
       <div className="mt-12 sm:mt-16 w-full overflow-hidden bg-ink">
         <img
           src={IMG.usHighway}
@@ -241,7 +240,7 @@ export default function WhatIsADhabaPage() {
       </div>
 
       {/* ───────────────────────────────────────────────────────────── */}
-      {/* 6. WHY IT MATTERS — hospitality, drivers, culture.            */}
+      {/* 6. WHY IT MATTERS                                             */}
       {/* ───────────────────────────────────────────────────────────── */}
       <section className="container-page max-w-3xl mt-12 sm:mt-24">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-clay-600">
@@ -250,29 +249,31 @@ export default function WhatIsADhabaPage() {
         <h2 className="mt-2 text-[24px] sm:text-[30px] leading-[1.15] tracking-tight font-semibold text-ink">
           More than a meal
         </h2>
-
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          A dhaba is everyday hospitality.
+        <p className="mt-5 text-[16.5px] leading-[1.72] text-ink-soft">
+          A dhaba is everyday hospitality — the kind that doesn&rsquo;t
+          ask who you are before it feeds you. It looks after drivers
+          on long hauls. It keeps a piece of home close to the road for
+          people a long way from where they grew up.
         </p>
-        <p className="mt-2.5 text-[16.5px] leading-[1.65] text-ink-soft">
-          It looks after drivers. It keeps a piece of home close to the road.
-        </p>
-        <p className="mt-5 text-[16.5px] leading-[1.65] text-ink-soft">
-          A tradition worth preserving — and worth sharing.
+        <p className="mt-4 text-[16.5px] leading-[1.72] text-ink-soft">
+          These places have been doing that across India for generations.
+          Now they&rsquo;re doing it across North America. That&rsquo;s
+          a tradition worth preserving — and worth sharing with anyone
+          curious enough to pull off the highway.
         </p>
       </section>
 
       {/* ───────────────────────────────────────────────────────────── */}
-      {/* 7. CLOSE — simple, inviting, one action.                      */}
+      {/* 7. CLOSE                                                      */}
       {/* ───────────────────────────────────────────────────────────── */}
       <section className="container-page mt-16 sm:mt-20">
         <div className="max-w-2xl rounded-2xl bg-paper-soft border border-paper-warm p-6 sm:p-8">
           <h2 className="text-[22px] sm:text-[26px] leading-[1.2] tracking-tight font-semibold text-ink">
             A place to stop, eat, and feel at home.
           </h2>
-          <p className="mt-3 text-[15.5px] leading-[1.6] text-ink-soft">
-            Whether you&rsquo;re hauling cross-country or just passing through,
-            there&rsquo;s one nearby.
+          <p className="mt-3 text-[15.5px] leading-[1.65] text-ink-soft">
+            Whether you&rsquo;re hauling cross-country or just passing
+            through, there&rsquo;s one nearby. Find it.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
@@ -308,6 +309,7 @@ export default function WhatIsADhabaPage() {
           </div>
         </div>
       </section>
+
     </article>
   );
 }
