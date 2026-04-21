@@ -51,7 +51,7 @@ export default function SubmitPage() {
 function SubmitForm() {
   return (
     <form
-      action="https://formspree.io/f/YOUR_FORM_ID"
+      action="https://formspree.io/f/mgornaje"
       method="POST"
       className="mt-8 rounded-2xl bg-white border border-paper-warm p-6 sm:p-8 shadow-card space-y-5"
     >
