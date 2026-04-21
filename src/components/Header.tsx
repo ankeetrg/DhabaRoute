@@ -3,7 +3,7 @@ import Link from "next/link";
 export function Header() {
   return (
     <header className="sticky top-0 z-30 bg-paper/90 backdrop-blur-md border-b border-paper-warm">
-      <div className="container-page flex items-center h-14">
+      <div className="container-page flex items-center justify-between h-14">
         <Link
           href="/"
           className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-ink hover:opacity-80 transition"
@@ -13,6 +13,12 @@ export function Header() {
           <span>
             Dhaba<span className="text-clay-500">Route</span>
           </span>
+        </Link>
+        <Link
+          href="/submit"
+          className="text-[13px] font-medium text-clay-600 hover:text-clay-700 transition"
+        >
+          + Submit a Dhaba
         </Link>
       </div>
     </header>
