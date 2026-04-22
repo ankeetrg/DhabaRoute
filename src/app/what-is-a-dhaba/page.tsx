@@ -17,19 +17,19 @@ export const metadata: Metadata = {
 };
 
 // ── Photos — verified 200 ───────────────────────────────────────────────
-// All confirmed with `curl -s -o /dev/null -w "%{http_code}"`.
-// To swap: replace the photo-{id} segment; keep the ?w=...&q=80 params.
+// All from Wikimedia Commons (freely licensed). Verified with curl --head.
+// To swap: get the direct upload.wikimedia.org URL from the file's Commons page.
 const IMG = {
-  // Delhi roadside night market — bunting lights, food carts, wide atmospheric
-  hero:      "https://images.unsplash.com/photo-1744309426266-95154c03303d?w=1800&q=80",
-  // "Sardharji Ka Dhaba" — real dhaba frontage, Punjabi/Hindi signage
-  tawa:      "https://images.unsplash.com/photo-1774979160994-3306b4872084?w=1600&q=80",
-  // String lights strung across a narrow alley at night, mural glowing at end
-  chai:      "https://images.unsplash.com/photo-1705211384938-690f65f13955?w=1000&q=80",
-  // Man at a glowing roadside cart after dark, motorbikes parked nearby
-  cart:      "https://images.unsplash.com/photo-1734120113786-a3a99b51d6bc?w=1000&q=80",
-  // Two cooks cross-legged at roadside, frying in wide steel pans
-  truck:     "https://images.unsplash.com/photo-1646578524934-b74df048cb53?w=1600&q=80",
+  // Cook silhouetted in dhaba doorway, Palampur — Hindi signage, mountains beyond
+  hero:      "https://upload.wikimedia.org/wikipedia/commons/6/6c/The_Dhaba_of_Palampur.jpg",
+  // Bharawan Da Dhaba, Amritsar — est. 1912, bold signage, auto-rickshaws outside
+  tawa:      "https://upload.wikimedia.org/wikipedia/commons/4/41/Street_with_Vegetarian_Dhaba_Restaurant%2C_Amritsar%2C_Punjab%2C_India_-_September_2014.jpg",
+  // Flour-dusted roti work surface — rolling pin, dough, fresh rotis on steel plate
+  chai:      "https://upload.wikimedia.org/wikipedia/commons/4/4a/Tandoor_rotis.jpg",
+  // Small roadside stall, Varanasi — woman cooking, man eating outside, raw and candid
+  cart:      "https://upload.wikimedia.org/wikipedia/commons/0/0e/Varanasi_673_-_dhaba_%2833262795054%29.jpg",
+  // Haveli Dhaba, Maujgarh, Punjab — "Traditional Punjabi Veg. Restaurant", outdoor seating
+  truck:     "https://upload.wikimedia.org/wikipedia/commons/2/26/Photograph_of_the_Sartaj_Haveli_dhaba_in_Maujgarh%2C_Punjab%2C_India%2C_8_April_2023.jpg",
   // Empty American interstate at sunset — visual bridge from India to here
   usHighway: "https://images.unsplash.com/photo-1547234935-80c7145ec969?w=2000&q=80",
 };
@@ -50,7 +50,7 @@ export default function WhatIsADhabaPage() {
         <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full">
           <img
             src={IMG.hero}
-            alt="A Delhi roadside market after dark — food carts lit up, bunting lights strung overhead, people moving through the night."
+            alt="A cook silhouetted in the open doorway of a dhaba in Palampur — Hindi signage overhead, mountains visible beyond."
             style={PHOTO_FILTER}
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -104,7 +104,7 @@ export default function WhatIsADhabaPage() {
         <figure className="relative overflow-hidden rounded-2xl">
           <img
             src={IMG.tawa}
-            alt="The frontage of Sardharji Ka Dhaba — Punjabi and Hindi signage above the entrance, two staff standing outside."
+            alt="Bharawan Da Dhaba in Amritsar — established 1912, bold red and white signage on the building facade, auto-rickshaws parked outside."
             style={PHOTO_FILTER}
             className="block w-full h-auto aspect-[16/9] object-cover"
           />
@@ -138,7 +138,7 @@ export default function WhatIsADhabaPage() {
         <figure className="relative overflow-hidden rounded-2xl">
           <img
             src={IMG.truck}
-            alt="Two cooks sitting cross-legged at the roadside, frying food in wide steel pans over open flame."
+            alt="Haveli Dhaba in Maujgarh, Punjab — red banner reading 'The Traditional Punjabi Veg. Restaurant', canopy seating in the foreground."
             style={PHOTO_FILTER}
             className="block w-full h-auto aspect-[16/9] object-cover"
           />
@@ -178,7 +178,7 @@ export default function WhatIsADhabaPage() {
           <figure className="relative overflow-hidden rounded-xl aspect-[4/5]">
             <img
               src={IMG.chai}
-              alt="String lights strung across a narrow alley at night, a brightly painted shrine glowing at the far end."
+              alt="A flour-dusted roti-making surface at a dhaba — rolling pin, raw dough, and fresh rotis resting on a steel plate."
               style={PHOTO_FILTER}
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -186,7 +186,7 @@ export default function WhatIsADhabaPage() {
           <figure className="relative overflow-hidden rounded-xl aspect-[4/5]">
             <img
               src={IMG.cart}
-              alt="A man sits beside a glowing roadside food cart after dark, motorbikes parked nearby."
+              alt="A small roadside dhaba stall in Varanasi — a woman cooking behind the counter, a man seated at a table outside."
               style={PHOTO_FILTER}
               className="absolute inset-0 h-full w-full object-cover"
             />

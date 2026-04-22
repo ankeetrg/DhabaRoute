@@ -40,7 +40,13 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
     const q = query.trim().toLowerCase();
     return dhabas.filter((d) => {
       if (activeTags.size > 0) {
-        const ok = Array.from(activeTags).every((t) => d.tags.includes(t));
+        // OR / union semantics — a dhaba matches if it has ANY of the
+        // selected tags. Multi-select is additive (broader results), not
+        // subtractive. With tag frequency being low (most dhabas have 1–3
+        // tags), AND semantics would collapse to zero matches for 2+ chips
+        // and trip the fallback, which incorrectly showed all pins on the
+        // map. See bug: "map breaks when multiple chips selected."
+        const ok = d.tags.some((t) => activeTags.has(t));
         if (!ok) return false;
       }
       if (!q) return true;

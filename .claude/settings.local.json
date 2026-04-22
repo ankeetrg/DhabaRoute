@@ -60,7 +60,18 @@
       "WebFetch(domain:unsplash.com)",
       "Bash(curl -v https://unsplash.com/s/photos/tandoor-cooking-india -H 'User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36')",
       "Bash(curl -s -I https://unsplash.com/s/photos/tandoor-cooking-india -H 'User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36')",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(mkdir -p /tmp/dhaba-wiki)",
+      "Bash(curl -s -o /tmp/dhaba-wiki/amritsar.jpg \"https://upload.wikimedia.org/wikipedia/commons/4/41/Street_with_Vegetarian_Dhaba_Restaurant%2C_Amritsar%2C_Punjab%2C_India_-_September_2014.jpg\")",
+      "Bash(curl -s -o /tmp/dhaba-wiki/amrik.jpg \"https://upload.wikimedia.org/wikipedia/commons/c/c8/Amrik_Sukhdev_Dhaba.jpg\")",
+      "Bash(curl -s -o /tmp/dhaba-wiki/roadside.jpg \"https://upload.wikimedia.org/wikipedia/commons/f/fa/Roadside_Dhaba_-_panoramio.jpg\")",
+      "Bash(curl -s -o /tmp/dhaba-wiki/tandoor.jpg \"https://upload.wikimedia.org/wikipedia/commons/4/4a/Tandoor_rotis.jpg\")",
+      "Bash(curl -s -o /tmp/dhaba-wiki/dhaba26.jpg \"https://upload.wikimedia.org/wikipedia/commons/d/de/Dhaba_%2827310769359%29.jpg\")",
+      "Bash(curl -s -o /tmp/dhaba-wiki/palampur.jpg \"https://upload.wikimedia.org/wikipedia/commons/6/6c/The_Dhaba_of_Palampur.jpg\")",
+      "Bash(curl -s -o /tmp/dhaba-wiki/sartaj.jpg \"https://upload.wikimedia.org/wikipedia/commons/2/26/Photograph_of_the_Sartaj_Haveli_dhaba_in_Maujgarh%2C_Punjab%2C_India%2C_8_April_2023.jpg\")",
+      "Bash(curl -s -o /tmp/dhaba-wiki/jnu.jpg \"https://upload.wikimedia.org/wikipedia/commons/d/d9/Ganga_Dhaba%2C_JNU.jpg\")",
+      "Bash(curl -s -o /tmp/dhaba-wiki/varanasi.jpg \"https://upload.wikimedia.org/wikipedia/commons/0/0e/Varanasi_673_-_dhaba_%2833262795054%29.jpg\")"
     ]
   }
 }
