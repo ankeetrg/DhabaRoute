@@ -254,7 +254,7 @@ export default async function DhabaDetailPage({
               Get there
             </h2>
             {dhaba.address ? (
-              <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.address.replace(/, USA$/, "")}</p>
+              <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.address.replace(/,\s*USA$/, "")}</p>
             ) : dhaba.routeHint ? (
               <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.routeHint}</p>
             ) : null}
@@ -281,7 +281,7 @@ export default async function DhabaDetailPage({
               </h2>
               <a
                 href={`tel:${dhaba.phone.replace(/\D/g, "")}`}
-                className="mt-2 inline-flex items-center gap-1.5 text-[15px] font-medium text-ink hover:text-clay-600 transition"
+                className="mt-2 inline-flex items-center gap-1.5 text-[16px] font-medium text-ink hover:text-clay-600 transition"
               >
                 <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5 flex-none text-clay-500">
                   <path d="M3.6 1C2.7 1 2 1.7 2 2.6v.9c0 5.8 4.7 10.5 10.5 10.5h.9c.9 0 1.6-.7 1.6-1.6v-1.9a.5.5 0 00-.3-.5l-2.5-1a.5.5 0 00-.6.2l-.8 1.2a8.5 8.5 0 01-4.2-4.2l1.2-.8a.5.5 0 00.2-.6l-1-2.5A.5.5 0 005.5 1H3.6z"/>
@@ -303,7 +303,7 @@ export default async function DhabaDetailPage({
                   const time = rest.join(":").trim();
                   return (
                     <li key={day} className="flex justify-between gap-3 text-[13px]">
-                      <span className="text-ink-muted w-24 flex-none">{day}</span>
+                      <span className="text-ink-muted w-28 flex-none">{day}</span>
                       <span className="text-ink text-right">{time || "Closed"}</span>
                     </li>
                   );

@@ -29,10 +29,16 @@ interface Props {
   filterTags: TagType[];
 }
 
+type ViewMode = "split" | "list" | "map";
+
 export function HomeInteractive({ dhabas, filterTags }: Props) {
   const [query, setQuery] = useState("");
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  // Explicit view toggle — default "split" matches the prior auto-behavior.
+  // Mobile users often prefer "list", desktop power-users "map". Giving
+  // an explicit control removes ambiguity.
+  const [viewMode, setViewMode] = useState<ViewMode>("split");
 
   const geo = useGeolocation();
 
@@ -191,24 +197,27 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
         <h2 className="text-[15px] sm:text-base font-semibold tracking-tight text-ink">
           {listHeading}
         </h2>
-        <p className="text-[11.5px] text-ink-muted tabular-nums" aria-live="polite" aria-atomic>
+        <p className="text-[13px] text-ink-muted tabular-nums" aria-live="polite" aria-atomic>
           {ranked.length} {ranked.length === 1 ? "stop" : "stops"}
         </p>
       </div>
 
       {/* Fallback note — the list is always populated (never empty state) so
-          the driver always has somewhere to go. */}
+          the driver always has somewhere to go. Clay-tinted so it reads as
+          an advisory, not ambient text. */}
       {isFallback ? (
-        <p className="mb-3 text-[12.5px] text-ink-muted leading-snug">
-          No exact matches for your search.{" "}
-          <button
-            type="button"
-            onClick={() => { setQuery(""); setActiveTags(new Set()); }}
-            className="font-medium text-clay-600 hover:text-clay-700 underline-offset-2 hover:underline transition"
-          >
-            Clear filters
-          </button>
-        </p>
+        <div className="mb-3 rounded-xl border border-clay-100 bg-clay-50 px-3.5 py-2.5">
+          <p className="text-[12.5px] text-clay-700 leading-snug">
+            No exact matches for your search.{" "}
+            <button
+              type="button"
+              onClick={() => { setQuery(""); setActiveTags(new Set()); }}
+              className="font-semibold text-clay-700 hover:text-clay-800 underline-offset-2 hover:underline transition"
+            >
+              Clear filters
+            </button>
+          </p>
+        </div>
       ) : null}
 
       <ul
@@ -236,34 +245,53 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
       // is sparse so the list gets visual priority.
       style={
         {
-          "--map-h": listFirst
-            ? "clamp(200px, 28vw, 320px)"
-            : "clamp(280px, 44vw, 520px)",
+          "--map-h":
+            viewMode === "map"
+              ? "clamp(400px, 60vw, 600px)"
+              : listFirst
+              ? "clamp(200px, 28vw, 320px)"
+              : "clamp(280px, 44vw, 520px)",
         } as React.CSSProperties
       }
     >
-      {/* ── Sticky toolbar: search + filter chips ── */}
+      {/* ── Sticky toolbar: search + filter chips + view toggle ── */}
       {/* Positioned under the site header (top-14 = 56px). Stays visible
           while the user scrolls through the card list. */}
       {/* top-[57px] = header h-14 (56px) + 1px border-b — prevents 1px overlap */}
       <div className="sticky top-[57px] z-20 bg-paper/90 backdrop-blur-md border-b border-paper-warm">
         <div className="container-page py-3 space-y-2.5">
           <SearchBar query={query} setQuery={setQuery} />
-          {presentTags.length > 0 ? (
-            <FilterChips
-              tags={presentTags}
-              active={activeTags}
-              toggle={toggleTag}
-              clearTags={() => setActiveTags(new Set())}
-            />
-          ) : null}
+          <div className="flex items-center gap-3">
+            {presentTags.length > 0 ? (
+              <div className="flex-1 min-w-0">
+                <FilterChips
+                  tags={presentTags}
+                  active={activeTags}
+                  toggle={toggleTag}
+                  clearTags={() => setActiveTags(new Set())}
+                />
+              </div>
+            ) : <div className="flex-1" />}
+            {hasAnyPins ? (
+              <ViewToggle mode={viewMode} setMode={setViewMode} />
+            ) : null}
+          </div>
         </div>
       </div>
 
-      {/* When map coverage is sparse, show the list first and treat the map
-          as a supplementary element. Keeps the page useful while we enrich
-          coordinates. */}
-      {listFirst ? (
+      {/* View mode controls which sections render.
+          - "list": list only (phone-first reading)
+          - "map":  map only, full height (desktop power-users)
+          - "split": current auto-behavior. Sparse coverage puts list first. */}
+      {viewMode === "list" ? (
+        listSection
+      ) : viewMode === "map" ? (
+        hasAnyPins ? mapSection : (
+          <div className="container-page mt-4">
+            <NoPinsNote filteredCount={mapDhabas.length} hasFilters={hasFilters} />
+          </div>
+        )
+      ) : listFirst ? (
         <>
           {listSection}
           {hasAnyPins ? (
@@ -319,9 +347,9 @@ function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) =
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className={[
-          "w-full h-11 pl-10 pr-10 rounded-full",
+          "w-full h-12 pl-10 pr-10 rounded-full",
           "bg-paper-soft border border-paper-warm",
-          "text-[14px] text-ink placeholder:text-ink-muted/75",
+          "text-[15px] text-ink placeholder:text-ink-muted/75",
           "focus:bg-paper focus:border-ocean focus:ring-2 focus:ring-ocean/20",
           "focus:outline-none transition",
         ].join(" ")}
@@ -356,47 +384,52 @@ function FilterChips({
   // on one line and horizontally scrollable on mobile.
   const noneActive = active.size === 0;
   return (
-    <div className="-mx-5 sm:-mx-8 overflow-x-auto no-scrollbar">
-      <ul role="list" className="flex gap-2 px-5 sm:px-8 min-w-max">
-        <li>
-          <button
-            type="button"
-            onClick={clearTags}
-            aria-pressed={noneActive}
-            className={[
-              "inline-flex items-center h-9 px-3.5 rounded-full whitespace-nowrap",
-              "text-[12px] font-medium border transition select-none",
-              noneActive
-                ? "bg-clay-600 text-white border-clay-600 shadow-cta"
-                : "bg-white text-ink-soft border-paper-warm hover:border-clay-300 hover:text-ink",
-            ].join(" ")}
-          >
-            All
-          </button>
-        </li>
-        {tags.map((tag) => {
-          const on = active.has(tag);
-          return (
-            <li key={tag}>
-              <button
-                type="button"
-                onClick={() => toggle(tag)}
-                aria-pressed={on}
-                className={[
-                  "inline-flex items-center h-9 px-3.5 rounded-full whitespace-nowrap",
-                  "text-[12px] font-medium border transition select-none",
-                  on
-                    // Filled clay — premium saffron anchor per spec (#c2622a ≈ clay-600).
-                    ? "bg-clay-600 text-white border-clay-600 shadow-cta"
-                    : "bg-white text-ink-soft border-paper-warm hover:border-clay-300 hover:text-ink",
-                ].join(" ")}
-              >
-                {tag}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+    // The right-side fade gradient hints that the row is scrollable on mobile.
+    // pointer-events-none so it never swallows a chip tap. Masked to the last
+    // 32px by after:w-8; matches the paper background so it fades cleanly.
+    <div className="relative after:absolute after:right-0 after:top-0 after:h-full after:w-8 after:bg-gradient-to-l after:from-paper after:to-transparent after:pointer-events-none">
+      <div className="overflow-x-auto no-scrollbar">
+        <ul role="list" className="flex gap-2 min-w-max pr-8">
+          <li>
+            <button
+              type="button"
+              onClick={clearTags}
+              aria-pressed={noneActive}
+              className={[
+                "inline-flex items-center h-10 px-4 rounded-full whitespace-nowrap",
+                "text-[12.5px] font-medium border transition select-none",
+                noneActive
+                  ? "bg-clay-600 text-white border-clay-600 shadow-cta"
+                  : "bg-white text-ink-soft border-paper-warm hover:border-clay-300 hover:text-ink",
+              ].join(" ")}
+            >
+              All
+            </button>
+          </li>
+          {tags.map((tag) => {
+            const on = active.has(tag);
+            return (
+              <li key={tag}>
+                <button
+                  type="button"
+                  onClick={() => toggle(tag)}
+                  aria-pressed={on}
+                  className={[
+                    "inline-flex items-center h-10 px-4 rounded-full whitespace-nowrap",
+                    "text-[12.5px] font-medium border transition select-none",
+                    on
+                      // Filled clay — premium saffron anchor per spec (#c2622a ≈ clay-600).
+                      ? "bg-clay-600 text-white border-clay-600 shadow-cta"
+                      : "bg-white text-ink-soft border-paper-warm hover:border-clay-300 hover:text-ink",
+                  ].join(" ")}
+                >
+                  {tag}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -494,6 +527,79 @@ function NoPinsNote({
           ? `Showing all ${filteredCount} dhabas in the list below. Open any in Maps for directions.`
           : "Adjust your filters to see available dhabas."}
       </p>
+    </div>
+  );
+}
+
+// Three-way view toggle — list · split · map. Styled as a segmented pill
+// group; the active segment gets the clay CTA treatment so it reads as the
+// current selection at a glance. The map option is only rendered when there
+// are actually pins to show (hasAnyPins gates it at the call site).
+function ViewToggle({
+  mode,
+  setMode,
+}: {
+  mode: ViewMode;
+  setMode: (m: ViewMode) => void;
+}) {
+  const items: { id: ViewMode; label: string; icon: React.ReactNode }[] = [
+    {
+      id: "list",
+      label: "List view",
+      icon: (
+        <svg viewBox="0 0 14 14" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <path d="M2 4h10M2 7h10M2 10h10" />
+        </svg>
+      ),
+    },
+    {
+      id: "split",
+      label: "Split view",
+      icon: (
+        <svg viewBox="0 0 14 14" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round">
+          <rect x="2" y="2.5" width="10" height="9" rx="1" />
+          <path d="M7 2.5v9" />
+        </svg>
+      ),
+    },
+    {
+      id: "map",
+      label: "Map view",
+      icon: (
+        <svg viewBox="0 0 14 14" className="w-3.5 h-3.5" fill="currentColor">
+          <path d="M7 1.5a3.5 3.5 0 00-3.5 3.5c0 2.6 3.1 5.7 3.3 5.85a.3.3 0 00.4 0c.2-.15 3.3-3.25 3.3-5.85A3.5 3.5 0 007 1.5zm0 4.9A1.4 1.4 0 118.4 5 1.4 1.4 0 017 6.4z" />
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <div
+      role="tablist"
+      aria-label="View mode"
+      className="flex-none inline-flex items-center rounded-full border border-paper-warm bg-white p-0.5"
+    >
+      {items.map((it) => {
+        const active = mode === it.id;
+        return (
+          <button
+            key={it.id}
+            role="tab"
+            type="button"
+            aria-selected={active}
+            aria-label={it.label}
+            onClick={() => setMode(it.id)}
+            className={[
+              "inline-flex items-center justify-center w-9 h-9 rounded-full transition",
+              active
+                ? "bg-clay-500 text-white shadow-cta"
+                : "text-ink-muted hover:text-ink",
+            ].join(" ")}
+          >
+            {it.icon}
+          </button>
+        );
+      })}
     </div>
   );
 }
