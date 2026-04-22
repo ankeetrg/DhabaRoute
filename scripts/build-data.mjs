@@ -146,6 +146,10 @@ function main() {
     // Combined "lat, lng" column — header literally contains a comma.
     // We look for any column whose normalised name is "latlng".
     combined    : findCol(rawHeader, "lat, lng", "lat,lng", "latlng", "lat/lng"),
+    // Places API enriched columns (added by scripts/enrich-places.mjs)
+    phone       : findCol(rawHeader, "Phone"),
+    hours       : findCol(rawHeader, "Hours"),
+    address     : findCol(rawHeader, "Address"),
   };
 
   // Report which columns were found / missing (helps diagnose header drift).
@@ -222,6 +226,21 @@ function main() {
                       : priorityRaw === "low"  ? "Low"
                       : "Medium";
 
+    // ── Places-enriched fields ───────────────────────────────────────────────
+    // phone: raw string from CSV, e.g. "(661) 555-1234"
+    const phone = COL.phone !== -1 ? get(COL.phone).trim() || undefined : undefined;
+
+    // hours: pipe-delimited weekday strings written by enrich-places.mjs
+    // e.g. "Monday: 6:00 AM – 10:00 PM | Tuesday: ..."
+    // Split back into an array; omit if empty.
+    const rawHours = COL.hours !== -1 ? get(COL.hours).trim() : "";
+    const hours = rawHours
+      ? rawHours.split("|").map((s) => s.trim()).filter(Boolean)
+      : undefined;
+
+    // address: formatted address string from Places API
+    const address = COL.address !== -1 ? get(COL.address).trim() || undefined : undefined;
+
     out.push({
       id           : `d${String(r).padStart(4, "0")}`,
       slug,
@@ -238,6 +257,9 @@ function main() {
       lat,
       lng,
       coordAccuracy,
+      phone,
+      hours,
+      address,
     });
   }
 

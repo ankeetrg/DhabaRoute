@@ -233,37 +233,72 @@ export default async function DhabaDetailPage({
           ) : null}
         </div>
 
-        <aside className="rounded-2xl bg-white border border-paper-warm p-6 sm:p-7 flex flex-col shadow-card">
-          <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
-            Get there
-          </h2>
-          {dhaba.routeHint ? (
-            <p className="mt-3 text-[15px] text-ink leading-snug">
-              <span className="font-medium">{dhaba.routeHint}</span>
-            </p>
-          ) : null}
-          {dhaba.mapsUrl ? (
-            <a
-              href={dhaba.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-ink-muted hover:text-clay-600 transition underline-offset-4 hover:underline"
-            >
-              <svg
-                aria-hidden
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="w-3 h-3 flex-none"
+        <aside className="rounded-2xl bg-white border border-paper-warm p-6 sm:p-7 flex flex-col gap-5 shadow-card">
+
+          {/* ── Get there ── */}
+          <div>
+            <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+              Get there
+            </h2>
+            {dhaba.address ? (
+              <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.address}</p>
+            ) : dhaba.routeHint ? (
+              <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.routeHint}</p>
+            ) : null}
+            {dhaba.mapsUrl ? (
+              <a
+                href={dhaba.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1.5 text-[13px] text-ink-muted hover:text-clay-600 transition underline-offset-4 hover:underline"
               >
-                <path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z" />
-              </svg>
-              Open in Google Maps ↗
-            </a>
-          ) : (
-            <p className="mt-3 text-[13px] text-ink-muted">
-              Maps link not available yet.
-            </p>
-          )}
+                <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3 h-3 flex-none">
+                  <path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z" />
+                </svg>
+                Open in Google Maps ↗
+              </a>
+            ) : null}
+          </div>
+
+          {/* ── Phone ── */}
+          {dhaba.phone ? (
+            <div>
+              <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+                Phone
+              </h2>
+              <a
+                href={`tel:${dhaba.phone.replace(/\D/g, "")}`}
+                className="mt-2 inline-flex items-center gap-1.5 text-[15px] font-medium text-ink hover:text-clay-600 transition"
+              >
+                <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5 flex-none text-clay-500">
+                  <path d="M3.6 1C2.7 1 2 1.7 2 2.6v.9c0 5.8 4.7 10.5 10.5 10.5h.9c.9 0 1.6-.7 1.6-1.6v-1.9a.5.5 0 00-.3-.5l-2.5-1a.5.5 0 00-.6.2l-.8 1.2a8.5 8.5 0 01-4.2-4.2l1.2-.8a.5.5 0 00.2-.6l-1-2.5A.5.5 0 005.5 1H3.6z"/>
+                </svg>
+                {dhaba.phone}
+              </a>
+            </div>
+          ) : null}
+
+          {/* ── Hours ── */}
+          {dhaba.hours && dhaba.hours.length > 0 ? (
+            <div>
+              <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+                Hours
+              </h2>
+              <ul className="mt-2 space-y-1">
+                {dhaba.hours.map((line) => {
+                  const [day, ...rest] = line.split(":");
+                  const time = rest.join(":").trim();
+                  return (
+                    <li key={day} className="flex justify-between gap-3 text-[13px]">
+                      <span className="text-ink-muted w-24 flex-none">{day}</span>
+                      <span className="text-ink text-right">{time || "Closed"}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : null}
+
         </aside>
       </section>
 

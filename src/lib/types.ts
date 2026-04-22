@@ -31,6 +31,11 @@ export interface Dhaba {
   lat?: number;
   lng?: number;
   coordAccuracy?: CoordAccuracy;
+  // Places API enriched fields
+  phone?: string;
+  // hours: array of 7 strings, one per weekday e.g. "Monday: 6:00 AM – 10:00 PM"
+  hours?: string[];
+  address?: string;
 }
 
 // Dhaba augmented with user-relative data (distance from current location).
