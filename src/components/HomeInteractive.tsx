@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Dhaba, RankedDhaba, Tag as TagType } from "@/lib/types";
 import { rankByDistance, formatDistance } from "@/lib/geo";
 import { useGeolocation } from "@/lib/useGeolocation";
+import { getOpenStatus } from "@/lib/isOpenNow";
 import { DhabaCard } from "./DhabaCard";
 import { Tag } from "./Tag";
 
@@ -618,6 +619,24 @@ function MapPinPreview({
   distanceLabel?: string;
   onDismiss: () => void;
 }) {
+  // Today-at-a-glance info — derived client-side from the viewer's clock.
+  // Same trade-off as the card: right for drivers in/near the dhaba's
+  // timezone, off by ±3h for far-away browsing. Good enough until we
+  // persist timezone per listing.
+  const openStatus = getOpenStatus(dhaba.hours);
+  const today = new Date().toLocaleDateString("en-US", { weekday: "long" });
+  const todayLine = dhaba.hours?.find((h) => h.startsWith(today));
+  // "Monday: 6:00 AM – 10:00 PM" → day short + trimmed time
+  const todaySummary = (() => {
+    if (!todayLine) return null;
+    const short = today.slice(0, 3);
+    const rest = todayLine.split(":").slice(1).join(":").trim();
+    // Compact the redundant ":00"s so "6:00 AM – 10:00 PM" → "6 AM – 10 PM".
+    // Only strips :00 — preserves :15/:30/:45 etc.
+    const compact = rest.replace(/:00(\s*(AM|PM))/gi, "$1");
+    return `${short}: ${compact}`;
+  })();
+
   return (
     <div
       // Floats at the bottom of the map. pointer-events-none on the wrapper
@@ -629,7 +648,7 @@ function MapPinPreview({
     >
       <div
         className={[
-          "pointer-events-auto mx-auto max-w-xl",
+          "pointer-events-auto mx-auto max-w-xl min-w-[240px]",
           "rounded-2xl bg-white border border-paper-warm shadow-cardHover",
           "p-3.5 animate-slide-up",
         ].join(" ")}
@@ -677,36 +696,77 @@ function MapPinPreview({
           </ul>
         ) : null}
 
-        {/* Actions — saffron primary (Open in Maps), neutral secondary (Details).
-            h-11 keeps both thumb-friendly on mobile. */}
+        {/* Info strip — open status · today's hours · tap-to-call. Mirrors
+            the Google Maps sidebar pattern: decision-support info visible
+            without leaving the map. Only renders when at least one field
+            has data. */}
+        {openStatus !== "unknown" || todaySummary || dhaba.phone ? (
+          <div className="mt-2.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[13px] leading-none">
+            {openStatus === "open" ? (
+              <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-leaf">
+                <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-leaf" />
+                Open now
+              </span>
+            ) : openStatus === "closed" ? (
+              <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-clay-700">
+                <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-clay-500" />
+                Closed
+              </span>
+            ) : null}
+
+            {todaySummary ? (
+              <span className="text-[12.5px] text-ink-muted tabular-nums truncate">
+                {todaySummary}
+              </span>
+            ) : null}
+
+            {dhaba.phone ? (
+              <a
+                href={`tel:${dhaba.phone.replace(/\D/g, "")}`}
+                className="inline-flex items-center gap-1 text-[13px] font-medium text-clay-600 hover:text-clay-700 transition tabular-nums"
+              >
+                <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3 h-3 flex-none">
+                  <path d="M3.6 1C2.7 1 2 1.7 2 2.6v.9c0 5.8 4.7 10.5 10.5 10.5h.9c.9 0 1.6-.7 1.6-1.6v-1.9a.5.5 0 00-.3-.5l-2.5-1a.5.5 0 00-.6.2l-.8 1.2a8.5 8.5 0 01-4.2-4.2l1.2-.8a.5.5 0 00.2-.6l-1-2.5A.5.5 0 005.5 1H3.6z" />
+                </svg>
+                {dhaba.phone}
+              </a>
+            ) : null}
+          </div>
+        ) : null}
+
+        {/* Actions — the site's guiding principle is to keep users on
+            dhabaroute.com, so the primary button now routes to the detail
+            page (full hours, description, contribute form). Google Maps is
+            demoted to a quiet ghost icon next to it, for the rare case the
+            user really does want turn-by-turn now. */}
         <div className="mt-3 flex items-center gap-2">
+          <Link
+            href={`/dhabas/${dhaba.slug}`}
+            className={[
+              "flex-1 inline-flex items-center justify-center gap-1.5 h-11 rounded-xl",
+              "bg-clay-500 text-white text-[13px] font-semibold",
+              "shadow-cta hover:bg-clay-600 active:scale-[0.99] transition",
+            ].join(" ")}
+          >
+            View details →
+          </Link>
           {dhaba.mapsUrl ? (
             <a
               href={dhaba.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Open in Google Maps"
               className={[
-                "flex-1 inline-flex items-center justify-center gap-1.5 h-11 rounded-xl",
-                "bg-clay-500 text-white text-[13px] font-semibold",
-                "shadow-cta hover:bg-clay-600 active:scale-[0.99] transition",
+                "flex-none inline-flex items-center justify-center w-11 h-11 rounded-xl",
+                "bg-white border border-paper-warm text-ink-soft",
+                "hover:border-clay-300 hover:text-ink active:scale-[0.99] transition",
               ].join(" ")}
             >
-              Open in Maps
-              <svg aria-hidden viewBox="0 0 12 12" className="w-3 h-3 flex-none opacity-90">
-                <path d="M3 1h8v8M11 1L1 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4">
+                <path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z" />
               </svg>
             </a>
           ) : null}
-          <Link
-            href={`/dhabas/${dhaba.slug}`}
-            className={[
-              "inline-flex items-center justify-center h-11 px-4 rounded-xl",
-              "bg-white border border-paper-warm text-ink-soft text-[13px] font-medium",
-              "hover:border-clay-300 hover:text-ink active:scale-[0.99] transition",
-            ].join(" ")}
-          >
-            Details
-          </Link>
         </div>
       </div>
     </div>

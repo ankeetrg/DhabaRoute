@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTelegramUrl } from "@/lib/telegram";
 
 // Compact hero — sits above the search without competing with it.
 // Headline stays short and factual; the list + map do the heavy lifting.
@@ -9,7 +10,11 @@ interface HeroProps {
   count: number;
 }
 
-export function Hero({ count }: HeroProps) {
+export async function Hero({ count }: HeroProps) {
+  // Null when the bot token is missing or the API call fails — we
+  // then skip the Telegram secondary link entirely.
+  const telegramUrl = await getTelegramUrl();
+
   return (
     <section className="container-page pt-6 sm:pt-8 pb-1">
       <h1 className="text-[20px] sm:text-[22px] font-semibold tracking-tight text-ink leading-[1.15]">
@@ -25,6 +30,16 @@ export function Hero({ count }: HeroProps) {
       >
         New here? Learn what a dhaba is →
       </Link>
+      {telegramUrl ? (
+        <a
+          href={telegramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-[13px] text-clay-600 hover:text-clay-700 underline-offset-4 hover:underline transition mt-1"
+        >
+          Get route updates on our Telegram bot →
+        </a>
+      ) : null}
     </section>
   );
 }

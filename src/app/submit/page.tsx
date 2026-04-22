@@ -50,7 +50,7 @@ export default async function SubmitPage({
       <p className="mt-8 text-[13px] text-ink-muted">
         Spot an error on an existing listing?{" "}
         <a
-          href="mailto:samsonwinzmedia@gmail.com?subject=DhabaRoute correction"
+          href="mailto:dhabaroute@gmail.com?subject=DhabaRoute correction"
           className="underline underline-offset-4 hover:text-ink"
         >
           Email us directly.
