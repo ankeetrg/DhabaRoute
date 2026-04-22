@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Dhaba, RankedDhaba, Tag as TagType } from "@/lib/types";
 import { rankByDistance, formatDistance } from "@/lib/geo";
 import { useGeolocation } from "@/lib/useGeolocation";
@@ -384,12 +384,37 @@ function FilterChips({
   // chip row always has a visible anchor. min-w-max + no-wrap keeps the row
   // on one line and horizontally scrollable on mobile.
   const noneActive = active.size === 0;
+  const scrollRef = useRef<HTMLDivElement>(null);
+  // atEnd includes the "no overflow" case so the fade disappears when the
+  // row fits fully (e.g. desktop with few tags). Updated on scroll + resize +
+  // whenever the tag list changes.
+  const [atEnd, setAtEnd] = useState(true);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const update = () => {
+      // 1px tolerance for sub-pixel rounding; ditto the end check.
+      const noOverflow = el.scrollWidth <= el.clientWidth + 1;
+      const reachedEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
+      setAtEnd(noOverflow || reachedEnd);
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [tags.length]);
+
   return (
-    // The right-side fade gradient hints that the row is scrollable on mobile.
-    // pointer-events-none so it never swallows a chip tap. Masked to the last
-    // 32px by after:w-8; matches the paper background so it fades cleanly.
-    <div className="relative after:absolute after:right-0 after:top-0 after:h-full after:w-8 after:bg-gradient-to-l after:from-paper after:to-transparent after:pointer-events-none">
-      <div className="overflow-x-auto no-scrollbar">
+    // Wrapper is relative so the absolute fade overlay sits on the right edge.
+    // The fade signals "scroll for more" on mobile and at any width where the
+    // chip row overflows. Hidden (opacity-0) once the user reaches the end so
+    // it doesn't clip the final chip cosmetically after they've found the end.
+    <div className="relative">
+      <div ref={scrollRef} className="overflow-x-auto no-scrollbar">
         <ul role="list" className="flex gap-2 min-w-max pr-8">
           <li>
             <button
@@ -431,6 +456,15 @@ function FilterChips({
           })}
         </ul>
       </div>
+      <div
+        aria-hidden
+        className={[
+          "pointer-events-none absolute right-0 inset-y-0 w-10",
+          "bg-gradient-to-l from-paper to-transparent",
+          "transition-opacity duration-150",
+          atEnd ? "opacity-0" : "opacity-100",
+        ].join(" ")}
+      />
     </div>
   );
 }
