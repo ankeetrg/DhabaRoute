@@ -57,7 +57,10 @@
       "WebFetch(domain:www.smithsonianmag.com)",
       "WebFetch(domain:www.whetstonemagazine.com)",
       "WebFetch(domain:www.thecookaway.com)",
-      "WebFetch(domain:unsplash.com)"
+      "WebFetch(domain:unsplash.com)",
+      "Bash(curl -v https://unsplash.com/s/photos/tandoor-cooking-india -H 'User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36')",
+      "Bash(curl -s -I https://unsplash.com/s/photos/tandoor-cooking-india -H 'User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36')",
+      "WebSearch"
     ]
   }
 }

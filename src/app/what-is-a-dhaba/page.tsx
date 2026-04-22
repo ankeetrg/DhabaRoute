@@ -87,20 +87,14 @@ export default function WhatIsADhabaPage() {
             The short answer
           </p>
           <h2 className="mt-2 text-[26px] sm:text-[32px] leading-[1.15] tracking-tight font-semibold text-ink">
-            A dhaba is a roadside restaurant.
+            A dhaba is a roadside kitchen.
           </h2>
           <p className="mt-5 text-[16.5px] sm:text-[17px] leading-[1.72] text-ink-soft">
-            You&rsquo;ll find one where the highway slows down — next to a
-            truck stop, a fuel plaza, or a small town just off an exit. The
-            kitchen is usually open before dawn and long after dark. The
-            menu doesn&rsquo;t change much from year to year, because it
-            doesn&rsquo;t need to.
+            Dal that&rsquo;s been cooking since morning. Roti off the tawa.
+            Chai in a steel glass. Nobody&rsquo;s plating anything.
           </p>
           <p className="mt-4 text-[16.5px] sm:text-[17px] leading-[1.72] text-ink-soft">
-            The food is fresh — cooked that day, usually without a
-            refrigerator in sight, because the best dhabas don&rsquo;t
-            need one. Generous portions. Honest prices. And a welcome
-            that comes standard, whoever you are.
+            You sit down, you eat, you get back on the road.
           </p>
         </div>
       </section>
@@ -128,21 +122,14 @@ export default function WhatIsADhabaPage() {
           Built along the Grand Trunk Road
         </h2>
         <p className="mt-5 text-[16.5px] leading-[1.72] text-ink-soft">
-          Dhabas grew up along the Grand Trunk Road — one of the oldest
-          trade routes in the world, running more than a thousand miles
-          across northern India from the Himalayas to Bangladesh. The
-          road moved grain, salt, soldiers, and pilgrims for centuries.
-          The dhabas moved with it, staking out the spots where truckers
-          would need to stop.
+          They started along the Grand Trunk Road in northern India —
+          built for truck drivers who needed a hot meal and somewhere
+          to rest.
         </p>
         <p className="mt-4 text-[16.5px] leading-[1.72] text-ink-soft">
-          They were built around the tandoor — a clay oven sunk into the
-          ground — and designed for people who had been on the road since
-          before sunrise. A hot meal. Chai. Somewhere to sit for twenty
-          minutes before the next leg. Over time, they became part of the
-          journey itself. Not just a place to eat, but a reason to stop.
-          The old rule still holds: if you want to know how good a dhaba
-          is, count the trucks parked outside, not the cars.
+          Simple setup. A tandoor in the corner, a few plastic chairs,
+          a cook who&rsquo;s had the same menu for twenty years because
+          it doesn&rsquo;t need to change.
         </p>
       </section>
 
@@ -169,19 +156,18 @@ export default function WhatIsADhabaPage() {
           Fresh food, no pretense
         </h2>
         <p className="mt-5 text-[16.5px] leading-[1.72] text-ink-soft">
-          You smell a dhaba before you see it — charcoal smoke, cumin
-          hitting hot oil, something slow-simmered that&rsquo;s been
-          going since morning. The dal has been on the fire for hours.
-          The roti gets slapped onto the tawa in front of you, puffs up,
-          chars at the edges, and lands on your plate still hot enough
-          to burn your fingers. The waiter doesn&rsquo;t write anything
-          down.
+          I grew up eating at dhabas in India. When I moved to the US
+          and started driving cross-country, I got a craving for that
+          food. Not restaurant Indian food — dhaba food. I spent hours
+          on Google trying to find them. They&rsquo;re out there, but
+          there was no map, no list, nothing.
         </p>
         <p className="mt-4 text-[16.5px] leading-[1.72] text-ink-soft">
-          Everything arrives on a steel thali heavy enough to feel
-          substantial — dal, sabzi, roti, raw onion on the side. Chai
-          comes in a small cup, poured from height so it froths. Plates
-          are generous. Prices are fair. Nobody&rsquo;s rushing you out.
+          Eventually I found one off an interstate. Hand-painted sign.
+          Trucks parked outside. I walked in and it smelled exactly
+          right. Steel plates, plastic chairs, a guy behind the counter
+          who didn&rsquo;t need to ask what I wanted. For a while I
+          wasn&rsquo;t on a road trip in America. I was just home.
         </p>
         <p className="mt-4 text-[17px] leading-[1.5] text-ink font-medium">
           A dhaba is a place to pause. Not just a place to eat.
@@ -219,19 +205,15 @@ export default function WhatIsADhabaPage() {
           From India to North America
         </h2>
         <p className="mt-5 text-[16.5px] leading-[1.72] text-ink-soft">
-          Punjabi truckers brought the dhaba with them when they came to
-          drive in North America. The same community that had been hauling
-          goods across the Grand Trunk Road found its way to I-5, I-40,
-          the 401, and the long flat stretches in between. They brought
-          the food with them — because the road was the same, even if
-          the landscape had changed.
+          Punjabi truckers brought dhaba culture to the US. You&rsquo;ll
+          find them off I-40, I-5, I-80 — tucked into travel centers,
+          strip malls, truck stops. Most don&rsquo;t have websites. Word
+          spreads through WhatsApp groups and packed parking lots at 2am.
         </p>
         <p className="mt-4 text-[16.5px] leading-[1.72] text-ink-soft">
-          Today you&rsquo;ll find them at truck stops, in strip malls,
-          and inside gurdwaras that stay open late for anyone who walks
-          in. The menu is familiar. The welcome is the same. Most
-          don&rsquo;t have websites, and many aren&rsquo;t on any
-          standard map. DhabaRoute is how you find them.
+          I&rsquo;ve been to several of the dhabas on this list
+          personally. I built DhabaRoute because no directory like this
+          existed. These places deserve to be found.
         </p>
       </section>
 
