@@ -50,12 +50,17 @@ export function MapView({
   selectedId,
   onSelect,
 }: MapViewProps) {
-  // Guard: only dhabas with numeric lat/lng become markers. Everything else
-  // is safely ignored so missing coords never crash the map.
+  // Guard: only dhabas with finite numeric lat/lng become markers. Everything
+  // else is safely ignored so missing *or corrupted* coords never crash the
+  // map — typeof NaN === "number" in JS, so we also check !isNaN.
   const mappable = useMemo(
     () =>
       dhabas.filter(
-        (d) => typeof d.lat === "number" && typeof d.lng === "number",
+        (d) =>
+          typeof d.lat === "number" &&
+          !isNaN(d.lat) &&
+          typeof d.lng === "number" &&
+          !isNaN(d.lng),
       ),
     [dhabas],
   );

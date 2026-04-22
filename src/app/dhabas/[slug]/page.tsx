@@ -3,125 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
 import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
+import { distanceKm } from "@/lib/geo";
 import { Tag } from "@/components/Tag";
 import { DhabaCard } from "@/components/DhabaCard";
 import { DhabaDetailMap } from "@/components/DhabaDetailMap";
+import { ContributeForm } from "@/components/ContributeForm";
 
 type RouteParams = Promise<{ slug: string }>;
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
-}
-
-// ── ContributeForm ────────────────────────────────────────────────────────────
-// Posted to the same Formspree endpoint as /submit so all community
-// contributions land in one inbox. Hidden fields carry the dhaba context
-// so Samson knows which listing to update when he reviews the email.
-//
-// File inputs: Formspree supports file attachments up to 10 MB per file.
-// Users can attach multiple photos at once; menu is a separate upload slot
-// so Samson can distinguish them in the email.
-
-function ContributeForm({
-  dhabaTitle,
-  dhabaSlug,
-}: {
-  dhabaTitle: string;
-  dhabaSlug: string;
-}) {
-  return (
-    <form
-      action="https://formspree.io/f/mgornaje"
-      method="POST"
-      encType="multipart/form-data"
-      className="mt-5 space-y-4"
-    >
-      {/* Formspree routing */}
-      <input type="hidden" name="_replyto" value="dhabaroute@gmail.com" />
-      <input
-        type="hidden"
-        name="_subject"
-        value={`Community contribution — ${dhabaTitle}`}
-      />
-      <input
-        type="hidden"
-        name="_next"
-        value={`https://dhabaroute.com/dhabas/${dhabaSlug}?contributed=true`}
-      />
-      {/* Dhaba context so Samson knows which listing to update */}
-      <input type="hidden" name="dhaba_title" value={dhabaTitle} />
-      <input type="hidden" name="dhaba_slug" value={dhabaSlug} />
-
-      {/* Photos */}
-      <div>
-        <label
-          htmlFor={`photos-${dhabaSlug}`}
-          className="block text-[12px] font-semibold uppercase tracking-[0.07em] text-ink-muted mb-1.5"
-        >
-          Photos <span className="normal-case font-normal">(optional)</span>
-        </label>
-        <p className="text-[12px] text-ink-muted mb-1.5">
-          Food, signage, parking lot — anything helpful. Up to 10 MB per file.
-        </p>
-        <input
-          id={`photos-${dhabaSlug}`}
-          name="photos"
-          type="file"
-          accept="image/*"
-          multiple
-          className="block w-full text-[13px] text-ink-soft file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[12px] file:font-semibold file:bg-paper-soft file:text-ink-soft hover:file:bg-paper-warm cursor-pointer"
-        />
-      </div>
-
-      {/* Menu */}
-      <div>
-        <label
-          htmlFor={`menu-${dhabaSlug}`}
-          className="block text-[12px] font-semibold uppercase tracking-[0.07em] text-ink-muted mb-1.5"
-        >
-          Menu <span className="normal-case font-normal">(optional)</span>
-        </label>
-        <p className="text-[12px] text-ink-muted mb-1.5">
-          Photo of the menu board or a PDF. We&rsquo;ll add it to the listing.
-        </p>
-        <input
-          id={`menu-${dhabaSlug}`}
-          name="menu"
-          type="file"
-          accept="image/*,.pdf"
-          className="block w-full text-[13px] text-ink-soft file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[12px] file:font-semibold file:bg-paper-soft file:text-ink-soft hover:file:bg-paper-warm cursor-pointer"
-        />
-      </div>
-
-      {/* Notes */}
-      <div>
-        <label
-          htmlFor={`notes-${dhabaSlug}`}
-          className="block text-[12px] font-semibold uppercase tracking-[0.07em] text-ink-muted mb-1.5"
-        >
-          Notes <span className="normal-case font-normal">(optional)</span>
-        </label>
-        <textarea
-          id={`notes-${dhabaSlug}`}
-          name="notes"
-          rows={2}
-          placeholder="Hours, best dish, truck parking, anything useful…"
-          className="w-full rounded-xl border border-paper-warm bg-paper px-4 py-3 text-[14px] text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-clay-400 resize-none"
-        />
-      </div>
-
-      <button
-        type="submit"
-        className={[
-          "inline-flex h-10 items-center justify-center px-5 rounded-xl",
-          "bg-clay-500 text-white text-[13px] font-semibold tracking-[-0.005em]",
-          "shadow-cta hover:bg-clay-600 active:scale-[0.99] transition",
-        ].join(" ")}
-      >
-        Send contribution
-      </button>
-    </form>
-  );
 }
 
 export async function generateMetadata({
@@ -152,13 +43,37 @@ export default async function DhabaDetailPage({
   const dhaba = getDhabaBySlug(slug);
   if (!dhaba) notFound();
 
-  const related = getAllDhabas()
-    .filter(
-      (d) =>
-        d.slug !== dhaba.slug &&
-        d.tags.some((t) => dhaba.tags.includes(t)),
-    )
-    .slice(0, 3);
+  // Similar stops: first try tag-based matches. If the current dhaba has no
+  // tags — or no other dhaba shares any tag — we'd otherwise hide the
+  // section entirely. Fall back to proximity (if coords are known) or just
+  // array order so the section always gives the driver somewhere else to go.
+  const others = getAllDhabas().filter((d) => d.slug !== dhaba.slug);
+  const tagRelated = others.filter((d) =>
+    d.tags.some((t) => dhaba.tags.includes(t)),
+  );
+
+  let related = tagRelated.slice(0, 3);
+  if (related.length === 0) {
+    if (dhaba.lat != null && dhaba.lng != null) {
+      const here = { lat: dhaba.lat, lng: dhaba.lng };
+      related = [...others]
+        .map((d) => {
+          if (typeof d.lat !== "number" || typeof d.lng !== "number") {
+            return { d, km: Number.POSITIVE_INFINITY };
+          }
+          return { d, km: distanceKm(here, { lat: d.lat, lng: d.lng }) };
+        })
+        .sort((a, b) => a.km - b.km)
+        .slice(0, 3)
+        .map((x) => x.d);
+    } else {
+      related = others.slice(0, 3);
+    }
+  }
+
+  // Only render the "Get there" section if we have at least one signal —
+  // otherwise we were showing an empty header with no content underneath.
+  const hasGetThere = Boolean(dhaba.address || dhaba.routeHint);
 
   return (
     <article className="container-page pt-5 sm:pt-8 pb-14">
@@ -248,30 +163,33 @@ export default async function DhabaDetailPage({
 
         <aside className="rounded-2xl bg-white border border-paper-warm p-6 sm:p-7 flex flex-col gap-5 shadow-card">
 
-          {/* ── Get there ── */}
-          <div>
-            <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
-              Get there
-            </h2>
-            {dhaba.address ? (
-              <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.address.replace(/,\s*USA$/, "")}</p>
-            ) : dhaba.routeHint ? (
-              <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.routeHint}</p>
-            ) : null}
-            {dhaba.mapsUrl ? (
-              <a
-                href={dhaba.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1.5 text-[13px] text-ink-muted hover:text-clay-600 transition underline-offset-4 hover:underline"
-              >
-                <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3 h-3 flex-none">
-                  <path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z" />
-                </svg>
-                Open in Google Maps ↗
-              </a>
-            ) : null}
-          </div>
+          {/* ── Get there ── (hidden entirely when we have no address and
+              no route hint — an empty header is worse than nothing) */}
+          {hasGetThere ? (
+            <div>
+              <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+                Get there
+              </h2>
+              {dhaba.address ? (
+                <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.address.replace(/,\s*USA$/, "")}</p>
+              ) : dhaba.routeHint ? (
+                <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.routeHint}</p>
+              ) : null}
+              {dhaba.mapsUrl ? (
+                <a
+                  href={dhaba.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-1.5 text-[13px] text-ink-muted hover:text-clay-600 transition underline-offset-4 hover:underline"
+                >
+                  <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3 h-3 flex-none">
+                    <path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z" />
+                  </svg>
+                  Open in Google Maps ↗
+                </a>
+              ) : null}
+            </div>
+          ) : null}
 
           {/* ── Phone ── */}
           {dhaba.phone ? (
@@ -298,11 +216,24 @@ export default async function DhabaDetailPage({
                 Hours
               </h2>
               <ul className="mt-2 space-y-1">
-                {dhaba.hours.map((line) => {
-                  const [day, ...rest] = line.split(":");
-                  const time = rest.join(":").trim();
+                {dhaba.hours.map((line, idx) => {
+                  // Split on the FIRST colon only — the time half often
+                  // contains a colon too ("Monday: 8:00 AM – 5:00 PM").
+                  // If the raw string has no colon at all (unexpected
+                  // format like "Monday 8am–5pm"), render it verbatim
+                  // so the user sees real data instead of a broken split.
+                  const colonAt = line.indexOf(":");
+                  if (colonAt === -1) {
+                    return (
+                      <li key={`${line}-${idx}`} className="text-[13px] text-ink">
+                        {line}
+                      </li>
+                    );
+                  }
+                  const day = line.slice(0, colonAt);
+                  const time = line.slice(colonAt + 1).trim();
                   return (
-                    <li key={day} className="flex justify-between gap-3 text-[13px]">
+                    <li key={`${day}-${idx}`} className="flex justify-between gap-3 text-[13px]">
                       <span className="text-ink-muted w-28 flex-none">{day}</span>
                       <span className="text-ink text-right">{time || "Closed"}</span>
                     </li>

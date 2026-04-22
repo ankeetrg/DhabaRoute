@@ -165,12 +165,14 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
               />
             ) : null}
           </div>
-          {/* Compact legend under the map */}
+          {/* Compact legend under the map. Semantic <dl> pairs dots (dt)
+              with their labels (dd) so screen readers announce the mapping
+              instead of orphan "dhaba"/"you" tokens. */}
           <div className="mt-2 flex items-center justify-between text-[12px] text-ink-muted">
-            <div className="flex items-center gap-4">
+            <dl aria-label="Map legend" className="flex items-center gap-4 m-0">
               <PinLegendItem color="bg-clay-500" label="Dhaba" />
               <PinLegendItem color="bg-ocean" label="You" />
-            </div>
+            </dl>
             <span className="tabular-nums">
               {mapDhabas.length > mappableCount
                 ? `${mappableCount} of ${mapDhabas.length} on map`
@@ -344,8 +346,17 @@ function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) =
         type="search"
         inputMode="search"
         autoComplete="off"
-        placeholder="Search by name, highway, or city"
+        // Placeholder now hints at tag-style queries ("Vegetarian",
+        // "Truck Parking") via the word "cuisine" — tags are searchable
+        // via the hay string below, but users had no way to discover it.
+        placeholder="Search by name, highway, city, or cuisine"
         value={query}
+        // On mobile, tapping the virtual keyboard's Enter/Go key committed
+        // the query but left the keyboard up, covering the results. Blur
+        // the input on Enter to dismiss the keyboard so results are visible.
+        onKeyDown={(e) => {
+          if (e.key === "Enter") e.currentTarget.blur();
+        }}
         onChange={(e) => setQuery(e.target.value)}
         className={[
           "w-full h-12 pl-10 pr-10 rounded-full",
@@ -481,12 +492,7 @@ function LocationBanner({ geo }: { geo: ReturnType<typeof useGeolocation> }) {
   }
 
   if (geo.status === "locating") {
-    return (
-      <div className="inline-flex items-center gap-1.5 text-[12px] text-ink-muted">
-        <span className="w-1.5 h-1.5 rounded-full bg-ink-muted/50 flex-none animate-pulse" aria-hidden />
-        Finding your location…
-      </div>
-    );
+    return <LocatingBanner />;
   }
 
   if (geo.status === "denied") {
@@ -534,12 +540,44 @@ function LocationBanner({ geo }: { geo: ReturnType<typeof useGeolocation> }) {
   );
 }
 
-function PinLegendItem({ color, label }: { color: string; label: string }) {
+// Shown while `geo.status === "locating"`. Starts as a quiet pulsing line,
+// and after 5 seconds adds a secondary message so drivers on slow/indoor
+// GPS aren't left wondering whether the page froze. The parent swaps this
+// out as soon as the status flips away from "locating" (granted/denied/
+// error), so the slow-message is auto-dismissed on resolution.
+function LocatingBanner() {
+  const [isSlow, setIsSlow] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setIsSlow(true), 5000);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <span aria-hidden className={`inline-block w-2 h-2 rounded-full ${color}`} />
-      {label}
-    </span>
+    <div className="flex flex-col gap-1" aria-live="polite">
+      <div className="inline-flex items-center gap-1.5 text-[12px] text-ink-muted">
+        <span className="w-1.5 h-1.5 rounded-full bg-ink-muted/50 flex-none animate-pulse" aria-hidden />
+        Finding your location…
+      </div>
+      {isSlow ? (
+        <p className="text-[12px] text-ink-muted leading-snug">
+          Location is taking longer than expected — you can still browse all dhabas.
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function PinLegendItem({ color, label }: { color: string; label: string }) {
+  // Each legend entry is a <dt>/<dd> pair inside the parent <dl> — the dot
+  // is the term (the visual glyph) and the label is its description. Kept
+  // inline-flex so it still reads as a single row.
+  return (
+    <div className="inline-flex items-center gap-1.5">
+      <dt className="contents">
+        <span aria-hidden className={`inline-block w-2 h-2 rounded-full ${color}`} />
+      </dt>
+      <dd className="m-0">{label}</dd>
+    </div>
   );
 }
 

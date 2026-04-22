@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Client-side form wrapper. The form itself is uncontrolled (native HTML
 // inputs POSTed to Formspree), so we don't track values in React state.
@@ -14,6 +14,11 @@ import { useEffect, useRef } from "react";
 // ignore it for common fields, which is why we also reset explicitly.
 export function SubmitForm() {
   const formRef = useRef<HTMLFormElement>(null);
+  // Guards against double-submits on slow networks. Once the browser starts
+  // navigating to Formspree the component unmounts, so we never need to flip
+  // this back for the happy path. If the user comes back via bfcache, the
+  // pageshow handler below resets the form and we reset this state too.
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     formRef.current?.reset();
@@ -21,6 +26,7 @@ export function SubmitForm() {
     const onPageShow = (event: PageTransitionEvent) => {
       if (event.persisted) {
         formRef.current?.reset();
+        setIsSubmitting(false);
       }
     };
     window.addEventListener("pageshow", onPageShow);
@@ -33,6 +39,8 @@ export function SubmitForm() {
       action="https://formspree.io/f/mgornaje"
       method="POST"
       autoComplete="off"
+      onSubmit={() => setIsSubmitting(true)}
+      aria-busy={isSubmitting}
       className="mt-8 rounded-2xl bg-white border border-paper-warm p-6 sm:p-8 shadow-card space-y-5"
     >
       {/* Formspree routing — _replyto sets the destination inbox for the
@@ -90,9 +98,10 @@ export function SubmitForm() {
 
       <button
         type="submit"
-        className="w-full h-12 rounded-xl bg-clay-500 text-white text-[14px] font-semibold tracking-[-0.005em] shadow-cta hover:bg-clay-600 active:scale-[0.99] transition"
+        disabled={isSubmitting}
+        className="w-full h-12 rounded-xl bg-clay-500 text-white text-[14px] font-semibold tracking-[-0.005em] shadow-cta hover:bg-clay-600 active:scale-[0.99] transition disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
       >
-        Submit for review
+        {isSubmitting ? "Sending…" : "Submit for review"}
       </button>
     </form>
   );
