@@ -21,6 +21,7 @@ const DATA_PATH = join(ROOT, "data", "dhabas.json");
 const OUT_DIR   = join(ROOT, "posts");
 
 const { dhabas } = JSON.parse(readFileSync(DATA_PATH, "utf8"));
+const totalCount = dhabas.length;
 
 // ── Pick dhaba ────────────────────────────────────────────────────────────────
 // Rotate through featured dhabas based on week number so the same one
@@ -72,7 +73,7 @@ ${tags ? `Amenities: ${tags}` : ""}
 
 ---
 
-We've mapped 157 dhabas so far across the US and Canada. If you know one we're missing, you can [submit it here](https://dhabaroute.com/submit) — takes 2 minutes.
+We've mapped ${totalCount} dhabas so far across the US and Canada. If you know one we're missing, you can [submit it here](https://dhabaroute.com/submit) — takes 2 minutes.
 
 What's the best dhaba you've stopped at? Drop it in the comments.
 `.trim();
@@ -95,7 +96,7 @@ ${desc}
 
 ${tags ? `✅ ${tags.split(", ").join("  ✅ ")}` : ""}
 
-Find it and 156 more authentic Indian dhabas at dhabaroute.com — the free directory built for drivers on the move.
+Find it and ${totalCount - 1} more authentic Indian dhabas at dhabaroute.com — the free directory built for drivers on the move.
 
 Know a spot we're missing? Link in bio to submit.
 
@@ -105,7 +106,7 @@ Know a spot we're missing? Link in bio to submit.
 // ── Twitter/X thread ──────────────────────────────────────────────────────────
 const twitterThread = `
 TWEET 1:
-There are 157 authentic Indian dhabas along US truck routes that most people have never heard of.
+There are ${totalCount} authentic Indian dhabas along US truck routes that most people have never heard of.
 
 They don't advertise. Word spreads through WhatsApp groups and CB radio.
 
@@ -132,7 +133,7 @@ They followed the Punjabi diaspora from the Grand Trunk Road to I-40, I-5, and e
 ---
 
 TWEET 4:
-157 dhabas mapped. All free to browse.
+${totalCount} dhabas mapped. All free to browse.
 
 Know one we're missing? Submit it → dhabaroute.com/submit
 
@@ -147,7 +148,7 @@ ${location ? `📍 ${location}` : ""}
 ${desc}
 ${tags ? `\nAmenities: ${tags}` : ""}
 
-This is one of 157 authentic Indian dhabas we've mapped along US and Canadian truck routes at DhabaRoute.com — a free directory built for drivers who don't have time to scroll through Yelp.
+This is one of ${totalCount} authentic Indian dhabas we've mapped along US and Canadian truck routes at DhabaRoute.com — a free directory built for drivers who don't have time to scroll through Yelp.
 
 View it here: ${siteUrl}
 Google Maps: ${mapsUrl}

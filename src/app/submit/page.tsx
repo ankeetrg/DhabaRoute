@@ -7,7 +7,13 @@ export const metadata: Metadata = {
     "Know a dhaba we're missing? Share the spot — name, location, and anything a driver should know.",
 };
 
-export default function SubmitPage() {
+export default async function SubmitPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ submitted?: string }>;
+}) {
+  const { submitted } = await searchParams;
+
   return (
     <div className="container-page pt-8 pb-20 max-w-2xl">
       <nav aria-label="Breadcrumb" className="text-[13px] text-ink-muted">
@@ -33,7 +39,13 @@ export default function SubmitPage() {
         </p>
       </header>
 
-      <SubmitForm />
+      {submitted === "true" ? (
+        <div className="rounded-xl bg-leaf-soft border border-leaf-line text-leaf px-4 py-3 text-[14px] mt-6">
+          Thanks — we&rsquo;ll review your submission and it&rsquo;ll go live within a day or two.
+        </div>
+      ) : (
+        <SubmitForm />
+      )}
 
       <p className="mt-8 text-[13px] text-ink-muted">
         Spot an error on an existing listing?{" "}
@@ -58,9 +70,11 @@ function SubmitForm() {
       {/* Formspree routing — _replyto sets the destination inbox for the
           submission email, _subject sets the subject line. These are
           submitted as hidden inputs rather than form config so the repo
-          contains the routing and it's easy to audit. */}
+          contains the routing and it's easy to audit. _next redirects the
+          user back here with ?submitted=true so we can show a success banner. */}
       <input type="hidden" name="_replyto" value="dhabaroute@gmail.com" />
       <input type="hidden" name="_subject" value="New Dhaba Submission — DhabaRoute" />
+      <input type="hidden" name="_next" value="https://dhabaroute.com/submit?submitted=true" />
 
       <Field
         id="dhaba-name"

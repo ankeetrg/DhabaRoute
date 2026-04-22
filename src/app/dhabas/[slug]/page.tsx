@@ -43,6 +43,11 @@ function ContributeForm({
         name="_subject"
         value={`Community contribution — ${dhabaTitle}`}
       />
+      <input
+        type="hidden"
+        name="_next"
+        value={`https://dhabaroute.com/dhabas/${dhabaSlug}?contributed=true`}
+      />
       {/* Dhaba context so Samson knows which listing to update */}
       <input type="hidden" name="dhaba_title" value={dhabaTitle} />
       <input type="hidden" name="dhaba_slug" value={dhabaSlug} />
@@ -137,10 +142,13 @@ export async function generateMetadata({
 
 export default async function DhabaDetailPage({
   params,
+  searchParams,
 }: {
   params: RouteParams;
+  searchParams: Promise<{ contributed?: string }>;
 }) {
   const { slug } = await params;
+  const { contributed } = await searchParams;
   const dhaba = getDhabaBySlug(slug);
   if (!dhaba) notFound();
 
@@ -180,7 +188,12 @@ export default async function DhabaDetailPage({
           <ul className="mt-4 flex flex-wrap gap-1.5" role="list">
             {dhaba.tags.map((t) => (
               <li key={t}>
-                <Tag label={t} />
+                <Link
+                  href={`/?tag=${encodeURIComponent(t)}`}
+                  className="hover:opacity-80 transition"
+                >
+                  <Tag label={t} />
+                </Link>
               </li>
             ))}
           </ul>
@@ -225,7 +238,7 @@ export default async function DhabaDetailPage({
             ) : null}
           </dl>
 
-          {dhaba.needsReview ? (
+          {dhaba.needsReview && !dhaba.featured ? (
             <p className="mt-6 inline-flex items-center gap-1.5 text-[11px] text-ink-muted">
               <span aria-hidden className="w-1 h-1 rounded-full bg-haldi" />
               Community-submitted · pending review
@@ -241,7 +254,7 @@ export default async function DhabaDetailPage({
               Get there
             </h2>
             {dhaba.address ? (
-              <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.address}</p>
+              <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.address.replace(/, USA$/, "")}</p>
             ) : dhaba.routeHint ? (
               <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.routeHint}</p>
             ) : null}
@@ -308,10 +321,18 @@ export default async function DhabaDetailPage({
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
             Been here?
           </h2>
-          <p className="mt-2 text-[15px] text-ink-soft leading-relaxed">
-            Share a photo or menu — help other drivers know what to expect.
-          </p>
-          <ContributeForm dhabaTitle={dhaba.title} dhabaSlug={dhaba.slug} />
+          {contributed === "true" ? (
+            <p className="mt-4 rounded-xl bg-leaf-soft border border-leaf-line text-leaf px-4 py-3 text-[14px]">
+              Thanks for contributing — we&rsquo;ll add it to the listing soon.
+            </p>
+          ) : (
+            <>
+              <p className="mt-2 text-[15px] text-ink-soft leading-relaxed">
+                Share a photo or menu — help other drivers know what to expect.
+              </p>
+              <ContributeForm dhabaTitle={dhaba.title} dhabaSlug={dhaba.slug} />
+            </>
+          )}
         </div>
       </section>
 

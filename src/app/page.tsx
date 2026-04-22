@@ -21,7 +21,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero />
+      <Hero count={all.length} />
       <HomeInteractive dhabas={all} filterTags={getAllUsedTags()} />
 
       <DhabaRow

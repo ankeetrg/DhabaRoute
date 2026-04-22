@@ -94,27 +94,27 @@ export function DhabaCard({
         {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
       </p>
 
-      {/* Maps CTA — saffron primary, the single strongest action on the card.
-          relative z-10 keeps it above the card's invisible link overlay. */}
-      {dhaba.mapsUrl ? (
-        <div className="mt-auto pt-4 relative z-10">
-          <a
-            href={dhaba.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={[
-              "flex w-full items-center justify-center gap-1.5 h-11 rounded-xl",
-              "bg-clay-500 text-white text-[13px] font-semibold",
-              "shadow-cta hover:bg-clay-600 active:scale-[0.99] transition",
-            ].join(" ")}
+      {/* "View details" cue — signals the card is clickable without adding
+          a second interactive target. The entire card surface is the action
+          (via the title's after:inset-0 overlay link). Industry standard:
+          Yelp, Airbnb, Google Maps, TripAdvisor — the card IS the action. */}
+      <div className="mt-auto pt-3">
+        <span className="text-[11.5px] text-ink-muted group-hover:text-clay-600 transition flex items-center gap-1">
+          View details
+          <svg
+            aria-hidden
+            viewBox="0 0 12 12"
+            className="w-2.5 h-2.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            Get Directions
-            <svg aria-hidden viewBox="0 0 12 12" className="w-3 h-3 flex-none opacity-90">
-              <path d="M3 1h8v8M11 1L1 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            </svg>
-          </a>
-        </div>
-      ) : null}
+            <path d="M1 6h10M7 2l4 4-4 4" />
+          </svg>
+        </span>
+      </div>
     </article>
   );
 }

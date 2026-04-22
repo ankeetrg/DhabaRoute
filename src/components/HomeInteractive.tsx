@@ -99,6 +99,17 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, [selectedId]);
 
+  // Deep-link support — clicking a tag on a detail page navigates here
+  // with ?tag=X. On mount, pre-activate that chip so the list + map
+  // filter immediately to matching dhabas. Runs once; later edits to
+  // the chip state are driven by user interaction.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const tag = params.get("tag");
+    if (tag) setActiveTags(new Set([tag]));
+  }, []);
+
   const toggleTag = useCallback((tag: string) => {
     setActiveTags((prev) => {
       const next = new Set(prev);
