@@ -13,6 +13,112 @@ export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
+// ── ContributeForm ────────────────────────────────────────────────────────────
+// Posted to the same Formspree endpoint as /submit so all community
+// contributions land in one inbox. Hidden fields carry the dhaba context
+// so Samson knows which listing to update when he reviews the email.
+//
+// File inputs: Formspree supports file attachments up to 10 MB per file.
+// Users can attach multiple photos at once; menu is a separate upload slot
+// so Samson can distinguish them in the email.
+
+function ContributeForm({
+  dhabaTitle,
+  dhabaSlug,
+}: {
+  dhabaTitle: string;
+  dhabaSlug: string;
+}) {
+  return (
+    <form
+      action="https://formspree.io/f/mgornaje"
+      method="POST"
+      encType="multipart/form-data"
+      className="mt-5 space-y-4"
+    >
+      {/* Formspree routing */}
+      <input type="hidden" name="_replyto" value="dhabaroute@gmail.com" />
+      <input
+        type="hidden"
+        name="_subject"
+        value={`Community contribution — ${dhabaTitle}`}
+      />
+      {/* Dhaba context so Samson knows which listing to update */}
+      <input type="hidden" name="dhaba_title" value={dhabaTitle} />
+      <input type="hidden" name="dhaba_slug" value={dhabaSlug} />
+
+      {/* Photos */}
+      <div>
+        <label
+          htmlFor={`photos-${dhabaSlug}`}
+          className="block text-[12px] font-semibold uppercase tracking-[0.07em] text-ink-muted mb-1.5"
+        >
+          Photos <span className="normal-case font-normal">(optional)</span>
+        </label>
+        <p className="text-[12px] text-ink-muted mb-1.5">
+          Food, signage, parking lot — anything helpful. Up to 10 MB per file.
+        </p>
+        <input
+          id={`photos-${dhabaSlug}`}
+          name="photos"
+          type="file"
+          accept="image/*"
+          multiple
+          className="block w-full text-[13px] text-ink-soft file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[12px] file:font-semibold file:bg-paper-soft file:text-ink-soft hover:file:bg-paper-warm cursor-pointer"
+        />
+      </div>
+
+      {/* Menu */}
+      <div>
+        <label
+          htmlFor={`menu-${dhabaSlug}`}
+          className="block text-[12px] font-semibold uppercase tracking-[0.07em] text-ink-muted mb-1.5"
+        >
+          Menu <span className="normal-case font-normal">(optional)</span>
+        </label>
+        <p className="text-[12px] text-ink-muted mb-1.5">
+          Photo of the menu board or a PDF. We&rsquo;ll add it to the listing.
+        </p>
+        <input
+          id={`menu-${dhabaSlug}`}
+          name="menu"
+          type="file"
+          accept="image/*,.pdf"
+          className="block w-full text-[13px] text-ink-soft file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[12px] file:font-semibold file:bg-paper-soft file:text-ink-soft hover:file:bg-paper-warm cursor-pointer"
+        />
+      </div>
+
+      {/* Notes */}
+      <div>
+        <label
+          htmlFor={`notes-${dhabaSlug}`}
+          className="block text-[12px] font-semibold uppercase tracking-[0.07em] text-ink-muted mb-1.5"
+        >
+          Notes <span className="normal-case font-normal">(optional)</span>
+        </label>
+        <textarea
+          id={`notes-${dhabaSlug}`}
+          name="notes"
+          rows={2}
+          placeholder="Hours, best dish, truck parking, anything useful…"
+          className="w-full rounded-xl border border-paper-warm bg-paper px-4 py-3 text-[14px] text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-clay-400 resize-none"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className={[
+          "inline-flex h-10 items-center justify-center px-5 rounded-xl",
+          "bg-clay-500 text-white text-[13px] font-semibold tracking-[-0.005em]",
+          "shadow-cta hover:bg-clay-600 active:scale-[0.99] transition",
+        ].join(" ")}
+      >
+        Send contribution
+      </button>
+    </form>
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -94,7 +200,7 @@ export default async function DhabaDetailPage({
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
             About
           </h2>
-          <p className="mt-2 text-[15px] text-ink-soft leading-relaxed">
+          <p className="mt-3 text-[17px] sm:text-[18px] text-ink-soft leading-[1.75]">
             {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
           </p>
 
@@ -131,38 +237,47 @@ export default async function DhabaDetailPage({
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
             Get there
           </h2>
-          <p className="mt-2 text-[14px] text-ink-soft leading-relaxed">
-            One tap for directions, hours, and reviews in Google Maps.
-          </p>
+          {dhaba.routeHint ? (
+            <p className="mt-3 text-[15px] text-ink leading-snug">
+              <span className="font-medium">{dhaba.routeHint}</span>
+            </p>
+          ) : null}
           {dhaba.mapsUrl ? (
-            <div className="mt-5">
-              <a
-                href={dhaba.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={[
-                  "inline-flex w-full h-12 items-center justify-center gap-2 rounded-xl",
-                  "bg-clay-500 text-white text-[14px] font-semibold tracking-[-0.005em]",
-                  "shadow-cta hover:bg-clay-600 active:scale-[0.99] transition",
-                ].join(" ")}
+            <a
+              href={dhaba.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-ink-muted hover:text-clay-600 transition underline-offset-4 hover:underline"
+            >
+              <svg
+                aria-hidden
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                className="w-3 h-3 flex-none"
               >
-                <svg
-                  aria-hidden
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="w-4 h-4"
-                >
-                  <path d="M10 2a6 6 0 00-6 6c0 4.2 5.3 9.4 5.5 9.6a.7.7 0 001 0C10.7 17.4 16 12.2 16 8a6 6 0 00-6-6zm0 8.2a2.2 2.2 0 110-4.4 2.2 2.2 0 010 4.4z" />
-                </svg>
-                Open in Google Maps
-              </a>
-            </div>
+                <path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z" />
+              </svg>
+              Open in Google Maps ↗
+            </a>
           ) : (
-            <p className="mt-5 text-[13px] text-ink-muted">
+            <p className="mt-3 text-[13px] text-ink-muted">
               Maps link not available yet.
             </p>
           )}
         </aside>
+      </section>
+
+      {/* ── Community contributions ─────────────────────────────────── */}
+      <section className="mt-10">
+        <div className="max-w-2xl rounded-2xl bg-white border border-paper-warm p-6 sm:p-7 shadow-card">
+          <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+            Been here?
+          </h2>
+          <p className="mt-2 text-[15px] text-ink-soft leading-relaxed">
+            Share a photo or menu — help other drivers know what to expect.
+          </p>
+          <ContributeForm dhabaTitle={dhaba.title} dhabaSlug={dhaba.slug} />
+        </div>
       </section>
 
       {related.length > 0 ? (

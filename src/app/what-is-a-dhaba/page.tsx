@@ -186,19 +186,23 @@ export default function WhatIsADhabaPage() {
         {/* 2-photo grid — chai + people at stall */}
         <div className="mt-8 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4">
           <figure className="relative overflow-hidden rounded-xl aspect-[4/5]">
-            <img
+            <Image
               src={IMG.chai}
               alt="A flour-dusted roti-making surface at a dhaba — rolling pin, raw dough, and fresh rotis resting on a steel plate."
               style={PHOTO_FILTER}
               className="absolute inset-0 h-full w-full object-cover"
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1280px) 40vw, 500px"
             />
           </figure>
           <figure className="relative overflow-hidden rounded-xl aspect-[4/5]">
-            <img
+            <Image
               src={IMG.cart}
               alt="A small roadside dhaba stall in Varanasi — a woman cooking behind the counter, a man seated at a table outside."
               style={PHOTO_FILTER}
               className="absolute inset-0 h-full w-full object-cover"
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1280px) 40vw, 500px"
             />
           </figure>
         </div>
@@ -229,11 +233,14 @@ export default function WhatIsADhabaPage() {
 
       {/* Full-bleed US highway — visual bridge from India to here */}
       <div className="mt-12 sm:mt-16 w-full overflow-hidden bg-ink">
-        <img
+        <Image
           src={IMG.usHighway}
           alt="An empty American interstate at sunset, stretching toward the horizon."
           style={PHOTO_FILTER}
           className="block w-full h-auto aspect-[21/9] object-cover"
+          width={2000}
+          height={857}
+          sizes="100vw"
         />
       </div>
 
