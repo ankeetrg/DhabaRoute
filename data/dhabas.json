@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T02:25:14.529Z",
+  "generatedAt": "2026-04-22T02:49:08.538Z",
   "count": 157,
   "dhabas": [
     {
@@ -20,7 +20,18 @@
       "source": "Google Maps",
       "lat": 36.63359,
       "lng": -116.370218,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(775) 990-9232",
+      "hours": [
+        "Monday: 9:00 AM – 8:30 PM",
+        "Tuesday: 9:00 AM – 8:30 PM",
+        "Wednesday: 9:00 AM – 8:30 PM",
+        "Thursday: 9:00 AM – 8:30 PM",
+        "Friday: 9:00 AM – 8:30 PM",
+        "Saturday: 9:00 AM – 8:30 PM",
+        "Sunday: 9:00 AM – 8:30 PM"
+      ],
+      "address": "5317 US-95 E Highway 95, Amargosa Valley, NV 89020, USA"
     },
     {
       "id": "d0002",
@@ -40,7 +51,18 @@
       "source": "Google Maps",
       "lat": 41.47372,
       "lng": -105.923083,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(307) 745-8130",
+      "hours": [
+        "Monday: 8:30 AM – 7:30 PM",
+        "Tuesday: 8:30 AM – 7:30 PM",
+        "Wednesday: 8:30 AM – 7:30 PM",
+        "Thursday: 8:30 AM – 7:30 PM",
+        "Friday: 8:30 AM – 7:30 PM",
+        "Saturday: 8:30 AM – 7:30 PM",
+        "Sunday: 8:30 AM – 7:30 PM"
+      ],
+      "address": "168 Hunt Rd, Laramie, WY 82070, USA"
     },
     {
       "id": "d0003",
@@ -59,7 +81,18 @@
       "source": "Google Maps",
       "lat": 43.111212,
       "lng": -79.066422,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(905) 938-8030",
+      "hours": [
+        "Monday: 12:00 PM – 12:00 AM",
+        "Tuesday: 12:00 PM – 12:00 AM",
+        "Wednesday: 12:00 PM – 12:00 AM",
+        "Thursday: 12:00 PM – 12:00 AM",
+        "Friday: 12:00 PM – 12:00 AM",
+        "Saturday: 12:00 PM – 2:00 AM",
+        "Sunday: 12:00 PM – 12:00 AM"
+      ],
+      "address": "5039 Centre St, Niagara Falls, ON L2G 3N6, Canada"
     },
     {
       "id": "d0004",
@@ -78,7 +111,18 @@
       "source": "Google Maps",
       "lat": 43.702202,
       "lng": -79.644936,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(905) 956-3442",
+      "hours": [
+        "Monday: 9:00 AM – 10:00 PM",
+        "Tuesday: 9:00 AM – 12:00 AM",
+        "Wednesday: 9:00 AM – 12:00 AM",
+        "Thursday: 9:00 AM – 12:00 AM",
+        "Friday: 9:00 AM – 12:00 AM",
+        "Saturday: 9:00 AM – 12:00 AM",
+        "Sunday: 9:00 AM – 12:00 AM"
+      ],
+      "address": "2855 Derry Rd E, Mississauga, ON L4T 1A6, Canada"
     },
     {
       "id": "d0005",
@@ -97,7 +141,18 @@
       "source": "Google Maps",
       "lat": 41.725234,
       "lng": -108.100572,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(227) 226-8106",
+      "hours": [
+        "Monday: 8:00 AM – 1:00 AM",
+        "Tuesday: 8:00 AM – 1:00 AM",
+        "Wednesday: 8:00 AM – 1:00 AM",
+        "Thursday: 8:00 AM – 1:00 AM",
+        "Friday: 8:00 AM – 1:00 AM",
+        "Saturday: 8:00 AM – 1:00 AM",
+        "Sunday: 8:00 AM – 1:00 AM"
+      ],
+      "address": "16610 Red Desert Rd EXIT 165, Wamsutter, WY 82336, USA"
     },
     {
       "id": "d0006",
@@ -117,7 +172,18 @@
       "source": "Google Maps",
       "lat": 35.255951,
       "lng": -100.22165,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 216-1663",
+      "hours": [
+        "Monday: 7:00 AM – 1:00 AM",
+        "Tuesday: 7:00 AM – 1:00 AM",
+        "Wednesday: 7:00 AM – 1:00 AM",
+        "Thursday: 7:00 AM – 1:00 AM",
+        "Friday: 7:00 AM – 1:00 AM",
+        "Saturday: 7:00 AM – 1:00 AM",
+        "Sunday: 7:00 AM – 1:00 AM"
+      ],
+      "address": "301 I-40 Suite 1, Shamrock, TX 79079, USA"
     },
     {
       "id": "d0007",
@@ -137,7 +203,18 @@
       "source": "Google Maps",
       "lat": 35.232872,
       "lng": -99.879991,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 256-5209",
+      "hours": [
+        "Monday: 7:00 AM – 11:00 PM",
+        "Tuesday: 7:00 AM – 11:00 PM",
+        "Wednesday: 7:00 AM – 11:00 PM",
+        "Thursday: 7:00 AM – 11:00 PM",
+        "Friday: 7:00 AM – 11:00 PM",
+        "Saturday: 7:00 AM – 11:00 PM",
+        "Sunday: 7:00 AM – 11:00 PM"
+      ],
+      "address": "16421 I-40, Shamrock, TX 79079, USA"
     },
     {
       "id": "d0008",
@@ -156,7 +233,18 @@
       "source": "Google Maps",
       "lat": 31.565142,
       "lng": -99.955359,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(325) 732-2042",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 9:00 PM"
+      ],
+      "address": "22693 US-83, Paint Rock, TX 76866, USA"
     },
     {
       "id": "d0009",
@@ -177,7 +265,18 @@
       "source": "Google Maps",
       "lat": 32.408935,
       "lng": -100.575201,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 686-4389",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "12825 S Interstate Hwy 20, Roscoe, TX 79545, USA"
     },
     {
       "id": "d0010",
@@ -202,7 +301,18 @@
       "source": "Google Maps",
       "lat": 35.234613,
       "lng": -109.411749,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(929) 667-5300",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "U.S. Rte 66, Sanders, AZ 86512, USA"
     },
     {
       "id": "d0011",
@@ -226,7 +336,9 @@
       "source": "Google Maps",
       "lat": 32.32949,
       "lng": -109.395291,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(520) 847-2511",
+      "address": "1275 E Business Loop, San Simon, AZ 85632, USA"
     },
     {
       "id": "d0012",
@@ -244,7 +356,18 @@
       "source": "Google Maps",
       "lat": 31.803568,
       "lng": -106.261752,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(915) 667-3899",
+      "hours": [
+        "Monday: Closed",
+        "Tuesday: Closed",
+        "Wednesday: 5:00 – 6:30 PM",
+        "Thursday: 5:00 – 8:30 PM",
+        "Friday: 5:00 – 8:30 PM",
+        "Saturday: Closed",
+        "Sunday: Closed"
+      ],
+      "address": "11705 Montwood Dr, El Paso, TX 79936, USA"
     },
     {
       "id": "d0013",
@@ -266,7 +389,18 @@
       "source": "Google Maps",
       "lat": 35.236012,
       "lng": -102.427473,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 267-2325",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "3650 I-40 Service Rd, Vega, TX 79092, USA"
     },
     {
       "id": "d0014",
@@ -287,7 +421,18 @@
       "source": "Google Maps",
       "lat": 35.180709,
       "lng": -103.682733,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(575) 515-0333",
+      "hours": [
+        "Monday: 8:00 AM – 8:00 PM",
+        "Tuesday: 8:00 AM – 8:00 PM",
+        "Wednesday: 8:00 AM – 8:00 PM",
+        "Thursday: 8:00 AM – 8:00 PM",
+        "Friday: 8:00 AM – 8:00 PM",
+        "Saturday: 8:00 AM – 8:00 PM",
+        "Sunday: 8:00 AM – 8:00 PM"
+      ],
+      "address": "2080 S Mountain Rd, Tucumcari, NM 88401, USA"
     },
     {
       "id": "d0015",
@@ -308,7 +453,18 @@
       "source": "Google Maps",
       "lat": 35.307202,
       "lng": -102.700109,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 386-9992",
+      "hours": [
+        "Monday: 8:00 AM – 8:00 PM",
+        "Tuesday: 8:00 AM – 8:00 PM",
+        "Wednesday: 8:00 AM – 8:00 PM",
+        "Thursday: 8:00 AM – 8:00 PM",
+        "Friday: 8:00 AM – 8:00 PM",
+        "Saturday: 8:00 AM – 8:00 PM",
+        "Sunday: 8:00 AM – 8:00 PM"
+      ],
+      "address": "300 U.S. Rte 66 lot 2, Adrian, TX 79001, USA"
     },
     {
       "id": "d0016",
@@ -328,7 +484,18 @@
       "source": "Google Maps",
       "lat": 40.720514,
       "lng": -96.603866,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(402) 476-0367",
+      "hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 1:30 PM, 5:00 – 7:30 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "5640 Hidcote Dr, Lincoln, NE 68516, USA"
     },
     {
       "id": "d0017",
@@ -347,7 +514,18 @@
       "source": "Google Maps",
       "lat": 41.779617,
       "lng": -90.29021,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(563) 244-3300",
+      "hours": [
+        "Monday: 11:00 AM – 2:00 PM, 4:00 – 9:00 PM",
+        "Tuesday: 11:00 AM – 2:00 PM, 4:00 – 9:00 PM",
+        "Wednesday: 11:00 AM – 2:00 PM, 4:00 – 9:00 PM",
+        "Thursday: 11:00 AM – 2:00 PM, 4:00 – 9:00 PM",
+        "Friday: 11:00 AM – 2:00 PM, 4:00 – 9:00 PM",
+        "Saturday: 11:00 AM – 2:00 PM, 4:00 – 9:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "2300 Lincoln Hwy, Clinton, IA 52732, USA"
     },
     {
       "id": "d0018",
@@ -365,7 +543,18 @@
       "source": "Google Maps",
       "lat": 38.947222,
       "lng": -91.953429,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(314) 707-4307",
+      "hours": [
+        "Monday: 10:00 AM – 9:30 PM",
+        "Tuesday: 10:00 AM – 9:30 PM",
+        "Wednesday: 10:00 AM – 9:30 PM",
+        "Thursday: 10:00 AM – 9:30 PM",
+        "Friday: 10:00 AM – 9:30 PM",
+        "Saturday: 10:00 AM – 9:30 PM",
+        "Sunday: 10:00 AM – 8:30 PM"
+      ],
+      "address": "Parking Lot, 3391 County Rd 211, Kingdom City, MO 65262, USA"
     },
     {
       "id": "d0019",
@@ -384,7 +573,18 @@
       "source": "Google Maps",
       "lat": 37.933619,
       "lng": -79.21106,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(540) 280-6419",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "722 Oakland Cir, Raphine, VA 24472, USA"
     },
     {
       "id": "d0020",
@@ -406,7 +606,18 @@
       "source": "Google Maps",
       "lat": 39.580997,
       "lng": -83.641192,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(209) 884-2521",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 9:00 PM"
+      ],
+      "address": "11546 Allen Rd, Jeffersonville, OH 43128, USA"
     },
     {
       "id": "d0021",
@@ -425,7 +636,18 @@
       "source": "Google Maps",
       "lat": 39.555931,
       "lng": -84.314636,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(513) 476-2173",
+      "hours": [
+        "Monday: 10:00 AM – 9:00 PM",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 9:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "1111 William C Good Blvd, Franklin, OH 45005, USA"
     },
     {
       "id": "d0022",
@@ -445,7 +667,18 @@
       "source": "Google Maps",
       "lat": 41.149511,
       "lng": -102.966061,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(308) 524-9596",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "574 Chase Blvd, Sidney, NE 69162, USA"
     },
     {
       "id": "d0023",
@@ -467,7 +700,18 @@
       "source": "Google Maps",
       "lat": 35.245825,
       "lng": -101.389232,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 256-5209",
+      "hours": [
+        "Monday: 7:00 AM – 11:00 PM",
+        "Tuesday: 7:00 AM – 11:00 PM",
+        "Wednesday: 7:00 AM – 11:00 PM",
+        "Thursday: 7:00 AM – 11:00 PM",
+        "Friday: 7:00 AM – 11:00 PM",
+        "Saturday: 7:00 AM – 11:00 PM",
+        "Sunday: 7:00 AM – 11:00 PM"
+      ],
+      "address": "16421 I-40, Shamrock, TX 79079, USA"
     },
     {
       "id": "d0024",
@@ -490,7 +734,18 @@
       "source": "Google Maps",
       "lat": 30.297469,
       "lng": -92.891417,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(337) 442-9039",
+      "hours": [
+        "Monday: 7:00 AM – 9:30 PM",
+        "Tuesday: 7:00 AM – 9:30 PM",
+        "Wednesday: 7:00 AM – 9:30 PM",
+        "Thursday: 7:00 AM – 9:30 PM",
+        "Friday: 7:00 AM – 9:30 PM",
+        "Saturday: 7:00 AM – 9:30 PM",
+        "Sunday: 8:00 AM – 8:30 PM"
+      ],
+      "address": "18889 S Frontage Rd, Welsh, LA 70591, USA"
     },
     {
       "id": "d0025",
@@ -513,7 +768,18 @@
       "source": "Google Maps",
       "lat": 32.532093,
       "lng": -93.251328,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(559) 214-6891",
+      "hours": [
+        "Monday: 10:00 AM – 10:00 PM",
+        "Tuesday: 9:00 AM – 10:00 PM",
+        "Wednesday: 9:00 AM – 10:00 PM",
+        "Thursday: 9:00 AM – 10:00 PM",
+        "Friday: 9:00 AM – 10:00 PM",
+        "Saturday: 9:00 AM – 10:00 PM",
+        "Sunday: 9:00 AM – 10:00 PM"
+      ],
+      "address": "I-20 Exit- 52, 2193 LA-532, Minden, LA 71055, USA"
     },
     {
       "id": "d0026",
@@ -532,7 +798,18 @@
       "source": "Google Maps",
       "lat": 32.500341,
       "lng": -94.372027,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(903) 702-7918",
+      "hours": [
+        "Monday: 10:00 AM – 10:00 PM",
+        "Tuesday: 10:00 AM – 10:00 PM",
+        "Wednesday: 10:00 AM – 10:00 PM",
+        "Thursday: 10:00 AM – 10:00 PM",
+        "Friday: 10:00 AM – 10:00 PM",
+        "Saturday: 10:00 AM – 10:00 PM",
+        "Sunday: 10:00 AM – 10:00 PM"
+      ],
+      "address": "304 I-20, Marshall, TX 75670, USA"
     },
     {
       "id": "d0027",
@@ -551,7 +828,18 @@
       "source": "Google Maps",
       "lat": 34.921299,
       "lng": -91.132602,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(501) 697-9810",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "111 Lawson Rd, Wheatley, AR 72392, USA"
     },
     {
       "id": "d0028",
@@ -571,7 +859,18 @@
       "source": "Google Maps",
       "lat": 30.93728,
       "lng": -90.514849,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(318) 597-1213",
+      "hours": [
+        "Monday: 9:00 AM – 10:00 PM",
+        "Tuesday: 9:00 AM – 10:00 PM",
+        "Wednesday: 9:00 AM – 10:00 PM",
+        "Thursday: 9:00 AM – 10:00 PM",
+        "Friday: 9:00 AM – 10:00 PM",
+        "Saturday: 9:00 AM – 10:00 PM",
+        "Sunday: 9:00 AM – 10:00 PM"
+      ],
+      "address": "802 Ave G, Kentwood, LA 70444, USA"
     },
     {
       "id": "d0029",
@@ -591,7 +890,18 @@
       "source": "Google Maps",
       "lat": 30.427824,
       "lng": -89.738243,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(985) 444-1313",
+      "hours": [
+        "Monday: 10:00 AM – 10:00 PM",
+        "Tuesday: 7:00 AM – 10:00 PM",
+        "Wednesday: 7:00 AM – 10:00 PM",
+        "Thursday: 7:00 AM – 10:00 PM",
+        "Friday: 7:00 AM – 10:00 PM",
+        "Saturday: 7:00 AM – 10:00 PM",
+        "Sunday: 7:00 AM – 10:00 PM"
+      ],
+      "address": "65583 Pump Slough Rd, Pearl River, LA 70452, USA"
     },
     {
       "id": "d0030",
@@ -611,7 +921,18 @@
       "source": "Google Maps",
       "lat": 30.361749,
       "lng": -89.093839,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(228) 206-1205",
+      "hours": [
+        "Monday: 11:00 AM – 10:00 PM",
+        "Tuesday: 11:00 AM – 10:00 PM",
+        "Wednesday: 11:00 AM – 10:00 PM",
+        "Thursday: 11:00 AM – 10:00 PM",
+        "Friday: 11:00 AM – 10:00 PM",
+        "Saturday: 11:00 AM – 10:00 PM",
+        "Sunday: 11:00 AM – 10:00 PM"
+      ],
+      "address": "9455 US 49, Gulfport, MS 39503, USA"
     },
     {
       "id": "d0031",
@@ -631,7 +952,18 @@
       "source": "Google Maps",
       "lat": 25.841205,
       "lng": -80.183566,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(786) 716-3935",
+      "hours": [
+        "Monday: 9:00 AM – 2:00 AM",
+        "Tuesday: 9:00 AM – 2:00 AM",
+        "Wednesday: 9:00 AM – 2:00 AM",
+        "Thursday: 9:00 AM – 2:00 AM",
+        "Friday: 9:00 AM – 4:00 AM",
+        "Saturday: 5:00 PM – 4:00 AM",
+        "Sunday: 9:00 AM – 2:00 AM"
+      ],
+      "address": "6010 NE 2nd Ave, Miami, FL 33137, USA"
     },
     {
       "id": "d0032",
@@ -651,7 +983,18 @@
       "source": "Google Maps",
       "lat": 28.127455,
       "lng": -82.287776,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(656) 239-2813",
+      "hours": [
+        "Monday: Closed",
+        "Tuesday: 5:30 – 8:00 PM",
+        "Wednesday: 5:30 – 8:00 PM",
+        "Thursday: 5:30 – 8:00 PM",
+        "Friday: 5:00 – 9:00 PM",
+        "Saturday: 5:00 – 9:00 PM",
+        "Sunday: 5:00 – 9:00 PM"
+      ],
+      "address": "10865 Cross Creek Blvd, Tampa, FL 33647, USA"
     },
     {
       "id": "d0033",
@@ -670,7 +1013,18 @@
       "source": "Google Maps",
       "lat": 28.060051,
       "lng": -82.444351,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(813) 679-4358",
+      "hours": [
+        "Monday: 5:00 PM – 2:00 AM",
+        "Tuesday: 5:00 PM – 2:00 AM",
+        "Wednesday: 5:00 PM – 2:00 AM",
+        "Thursday: 5:00 PM – 2:00 AM",
+        "Friday: 5:00 PM – 2:00 AM",
+        "Saturday: 8:30 AM – 2:00 AM",
+        "Sunday: 8:30 AM – 2:00 AM"
+      ],
+      "address": "14546 Bruce B Downs Blvd, Tampa, FL 33613, USA"
     },
     {
       "id": "d0034",
@@ -689,7 +1043,18 @@
       "source": "Google Maps",
       "lat": 35.157244,
       "lng": -84.876135,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(423) 458-4016",
+      "hours": [
+        "Monday: 11:00 AM – 9:00 PM",
+        "Tuesday: 11:00 AM – 9:00 PM",
+        "Wednesday: 11:00 AM – 9:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 11:00 AM – 9:00 PM",
+        "Sunday: 12:00 – 9:00 PM"
+      ],
+      "address": "2151 Keith St NW, Cleveland, TN 37311, USA"
     },
     {
       "id": "d0035",
@@ -708,7 +1073,18 @@
       "source": "Google Maps",
       "lat": 35.254302,
       "lng": -80.764526,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(980) 497-7461",
+      "hours": [
+        "Monday: 5:00 – 9:30 PM",
+        "Tuesday: 5:00 – 9:30 PM",
+        "Wednesday: 5:00 – 9:30 PM",
+        "Thursday: 5:00 – 9:30 PM",
+        "Friday: 5:00 – 10:00 PM",
+        "Saturday: 12:00 – 10:00 PM",
+        "Sunday: 12:00 – 8:30 PM"
+      ],
+      "address": "20833 Catawba Ave, Cornelius, NC 28031, USA"
     },
     {
       "id": "d0036",
@@ -727,7 +1103,18 @@
       "source": "Google Maps",
       "lat": 39.711061,
       "lng": -86.062374,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(317) 292-9362",
+      "hours": [
+        "Monday: 9:00 AM – 12:00 AM",
+        "Tuesday: 9:00 AM – 12:00 AM",
+        "Wednesday: 9:00 AM – 12:00 AM",
+        "Thursday: 9:00 AM – 12:00 AM",
+        "Friday: 9:00 AM – 12:00 AM",
+        "Saturday: 9:00 AM – 12:00 AM",
+        "Sunday: 9:00 AM – 12:00 AM"
+      ],
+      "address": "6005 E Thompson Rd, Indianapolis, IN 46237, USA"
     },
     {
       "id": "d0037",
@@ -746,7 +1133,18 @@
       "source": "Google Maps",
       "lat": 30.853336,
       "lng": -94.852371,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(936) 622-1006",
+      "hours": [
+        "Monday: 10:00 AM – 8:00 PM",
+        "Tuesday: 10:00 AM – 8:00 PM",
+        "Wednesday: 10:00 AM – 8:00 PM",
+        "Thursday: 10:00 AM – 8:00 PM",
+        "Friday: 10:00 AM – 8:00 PM",
+        "Saturday: 10:00 AM – 8:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "11960 US-59, Livingston, TX 77351, USA"
     },
     {
       "id": "d0038",
@@ -765,7 +1163,18 @@
       "source": "Google Maps",
       "lat": 39.036902,
       "lng": -77.463782,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(571) 325-2523",
+      "hours": [
+        "Monday: 11:30 AM – 9:30 PM",
+        "Tuesday: 11:30 AM – 9:30 PM",
+        "Wednesday: 11:30 AM – 9:30 PM",
+        "Thursday: 11:30 AM – 9:30 PM",
+        "Friday: 11:30 AM – 9:30 PM",
+        "Saturday: 11:30 AM – 9:30 PM",
+        "Sunday: 11:30 AM – 9:30 PM"
+      ],
+      "address": "20800 Pidgeon Hill Dr suite 140, Sterling, VA 20165, USA"
     },
     {
       "id": "d0039",
@@ -784,7 +1193,18 @@
       "source": "Google Maps",
       "lat": 40.556846,
       "lng": -74.263507,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(732) 352-0628",
+      "hours": [
+        "Monday: 10:00 AM – 9:00 PM",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 9:00 PM"
+      ],
+      "address": "1293 Roosevelt Ave, Carteret, NJ 07008, USA"
     },
     {
       "id": "d0040",
@@ -803,7 +1223,18 @@
       "source": "Google Maps",
       "lat": 40.801249,
       "lng": -73.533083,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(516) 433-7495",
+      "hours": [
+        "Monday: 9:00 AM – 9:45 PM",
+        "Tuesday: 9:00 AM – 9:45 PM",
+        "Wednesday: 9:00 AM – 9:45 PM",
+        "Thursday: 9:00 AM – 9:45 PM",
+        "Friday: 9:00 AM – 9:45 PM",
+        "Saturday: 9:00 AM – 9:45 PM",
+        "Sunday: 9:00 AM – 9:45 PM"
+      ],
+      "address": "257 S Broadway, Hicksville, NY 11801, USA"
     },
     {
       "id": "d0041",
@@ -822,7 +1253,18 @@
       "source": "Google Maps",
       "lat": 41.859391,
       "lng": -87.682413,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(331) 316-2484",
+      "hours": [
+        "Monday: 11:30 AM – 9:30 PM",
+        "Tuesday: 11:30 AM – 9:30 PM",
+        "Wednesday: 11:30 AM – 9:30 PM",
+        "Thursday: 11:30 AM – 9:30 PM",
+        "Friday: 11:30 AM – 9:30 PM",
+        "Saturday: 11:30 AM – 10:00 PM",
+        "Sunday: 11:30 AM – 10:00 PM"
+      ],
+      "address": "2325 W Taylor St, Chicago, IL 60612, USA"
     },
     {
       "id": "d0042",
@@ -841,7 +1283,18 @@
       "source": "Google Maps",
       "lat": 39.93005,
       "lng": -83.395923,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(614) 787-8620",
+      "hours": [
+        "Monday: 9:00 AM – 9:30 PM",
+        "Tuesday: 9:00 AM – 9:30 PM",
+        "Wednesday: 9:00 AM – 9:30 PM",
+        "Thursday: 9:00 AM – 9:30 PM",
+        "Friday: 9:00 AM – 9:30 PM",
+        "Saturday: 9:00 AM – 9:30 PM",
+        "Sunday: 9:00 AM – 2:00 PM"
+      ],
+      "address": "Parking, Lot, 935 US-42, London, OH 43140, USA"
     },
     {
       "id": "d0043",
@@ -860,7 +1313,18 @@
       "source": "Google Maps",
       "lat": 40.523829,
       "lng": -82.691038,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(614) 616-3347",
+      "hours": [
+        "Monday: 10:00 AM – 8:00 PM",
+        "Tuesday: 10:00 AM – 8:00 PM",
+        "Wednesday: 10:00 AM – 8:00 PM",
+        "Thursday: 10:00 AM – 8:00 PM",
+        "Friday: 10:00 AM – 8:00 PM",
+        "Saturday: 10:00 AM – 8:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "6022a OH-95, Mt Gilead, OH 43338, USA"
     },
     {
       "id": "d0044",
@@ -879,7 +1343,18 @@
       "source": "Google Maps",
       "lat": 41.040701,
       "lng": -77.123599,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(929) 239-9200",
+      "hours": [
+        "Monday: 10:00 AM – 11:00 PM",
+        "Tuesday: 10:00 AM – 11:00 PM",
+        "Wednesday: 10:00 AM – 11:00 PM",
+        "Thursday: 10:00 AM – 11:00 PM",
+        "Friday: 10:00 AM – 11:00 PM",
+        "Saturday: 12:00 – 9:00 PM",
+        "Sunday: 10:00 AM – 10:00 PM"
+      ],
+      "address": "Indian restaurants, 1460 N Ridge Rd, Milton, PA 17847, USA"
     },
     {
       "id": "d0045",
@@ -898,7 +1373,18 @@
       "source": "Google Maps",
       "lat": 42.306471,
       "lng": -82.989997,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(226) 674-1399",
+      "hours": [
+        "Monday: 2:00 – 10:30 PM",
+        "Tuesday: 2:00 – 10:30 PM",
+        "Wednesday: 2:00 – 10:30 PM",
+        "Thursday: 2:00 – 10:30 PM",
+        "Friday: 2:00 – 11:00 PM",
+        "Saturday: 1:00 – 11:00 PM",
+        "Sunday: 1:00 – 10:30 PM"
+      ],
+      "address": "5150 Tecumseh Rd E, Windsor, ON N8T 1C4, Canada"
     },
     {
       "id": "d0046",
@@ -917,7 +1403,18 @@
       "source": "Google Maps",
       "lat": 34.969751,
       "lng": -90.942467,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(870) 662-1668",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 9:00 PM"
+      ],
+      "address": "1019 N Main St, Palestine, AR 72372, USA"
     },
     {
       "id": "d0047",
@@ -936,7 +1433,18 @@
       "source": "Google Maps",
       "lat": 35.199933,
       "lng": -90.484212,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(870) 636-7727",
+      "hours": [
+        "Monday: 8:00 AM – 12:00 AM",
+        "Tuesday: 8:00 AM – 12:00 AM",
+        "Wednesday: 8:00 AM – 12:00 AM",
+        "Thursday: 8:00 AM – 12:00 AM",
+        "Friday: 8:00 AM – 12:00 AM",
+        "Saturday: 8:00 AM – 12:00 AM",
+        "Sunday: 8:00 AM – 12:00 AM"
+      ],
+      "address": "485 AR-149, Heth, AR 72346, USA"
     },
     {
       "id": "d0048",
@@ -955,7 +1463,18 @@
       "source": "Google Maps",
       "lat": 37.053111,
       "lng": -94.280614,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(417) 514-0466",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "2170 Co Rd 100, Carthage, MO 64836, USA"
     },
     {
       "id": "d0049",
@@ -975,7 +1494,18 @@
       "source": "Google Maps",
       "lat": 36.559302,
       "lng": -95.16815,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(646) 844-4114",
+      "hours": [
+        "Monday: 8:00 AM – 10:00 PM",
+        "Tuesday: 8:00 AM – 10:00 PM",
+        "Wednesday: 8:00 AM – 10:00 PM",
+        "Thursday: 8:00 AM – 10:00 PM",
+        "Friday: 8:00 AM – 10:00 PM",
+        "Saturday: 8:00 AM – 10:00 PM",
+        "Sunday: 8:00 AM – 10:00 PM"
+      ],
+      "address": "31303 S Hwy 69, Big Cabin, OK 74332, USA"
     },
     {
       "id": "d0050",
@@ -994,7 +1524,18 @@
       "source": "Google Maps",
       "lat": 39.042021,
       "lng": -94.587034,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(816) 216-1510",
+      "hours": [
+        "Monday: 9:30 AM – 9:30 PM",
+        "Tuesday: 9:30 AM – 9:30 PM",
+        "Wednesday: 9:30 AM – 9:30 PM",
+        "Thursday: 9:30 AM – 9:30 PM",
+        "Friday: 9:30 AM – 10:00 PM",
+        "Saturday: 9:30 AM – 10:00 PM",
+        "Sunday: 9:30 AM – 10:00 PM"
+      ],
+      "address": "3967 Main St Unit B, Kansas City, MO 64111, USA"
     },
     {
       "id": "d0051",
@@ -1013,7 +1554,18 @@
       "source": "Google Maps",
       "lat": 41.667533,
       "lng": -93.489766,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(515) 214-1460",
+      "hours": [
+        "Monday: 9:00 AM – 11:00 PM",
+        "Tuesday: 9:00 AM – 11:00 PM",
+        "Wednesday: 9:00 AM – 11:00 PM",
+        "Thursday: 9:00 AM – 11:00 PM",
+        "Friday: 9:00 AM – 11:00 PM",
+        "Saturday: 9:00 AM – 11:00 PM",
+        "Sunday: 9:00 AM – 11:00 PM"
+      ],
+      "address": "3209 Henry St SW, Bondurant, IA 50035, USA"
     },
     {
       "id": "d0052",
@@ -1033,7 +1585,18 @@
       "source": "Google Maps",
       "lat": 41.701787,
       "lng": -92.747264,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(641) 659-9029",
+      "hours": [
+        "Monday: Closed",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 9:00 PM",
+        "Sunday: 10:00 AM – 9:00 PM"
+      ],
+      "address": "2110 W St S, Grinnell, IA 50112, USA"
     },
     {
       "id": "d0053",
@@ -1052,7 +1615,18 @@
       "source": "Google Maps",
       "lat": 45.487136,
       "lng": -94.110324,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(320) 217-2773",
+      "hours": [
+        "Monday: 10:30 AM – 8:00 PM",
+        "Tuesday: 10:30 AM – 8:00 PM",
+        "Wednesday: 10:30 AM – 8:00 PM",
+        "Thursday: 10:30 AM – 8:00 PM",
+        "Friday: 10:30 AM – 8:00 PM",
+        "Saturday: 10:30 AM – 8:00 PM",
+        "Sunday: 10:30 AM – 8:00 PM"
+      ],
+      "address": "4325 Clearwater Rd, St Cloud, MN 56301, USA"
     },
     {
       "id": "d0054",
@@ -1071,7 +1645,18 @@
       "source": "Google Maps",
       "lat": 41.703547,
       "lng": -107.997947,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(307) 888-2022",
+      "hours": [
+        "Monday: 7:00 AM – 10:00 PM",
+        "Tuesday: 7:00 AM – 10:00 PM",
+        "Wednesday: 7:00 AM – 10:00 PM",
+        "Thursday: 7:00 AM – 10:00 PM",
+        "Friday: 7:00 AM – 10:00 PM",
+        "Saturday: 7:00 AM – 10:00 PM",
+        "Sunday: 7:00 AM – 10:00 PM"
+      ],
+      "address": "Indian spice Bite, 309 Carlton Rd, Wamsutter, WY 82336, USA"
     },
     {
       "id": "d0055",
@@ -1091,7 +1676,18 @@
       "source": "Google Maps",
       "lat": 45.783238,
       "lng": -108.507222,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(406) 652-9700",
+      "hours": [
+        "Monday: Closed",
+        "Tuesday: 11:00 AM – 2:00 PM, 4:00 – 8:30 PM",
+        "Wednesday: 11:00 AM – 2:00 PM, 4:00 – 8:00 PM",
+        "Thursday: 11:00 AM – 2:00 PM, 4:00 – 8:30 PM",
+        "Friday: 11:00 AM – 2:00 PM, 4:00 – 8:30 PM",
+        "Saturday: 11:00 AM – 2:00 PM, 4:00 – 8:30 PM",
+        "Sunday: 11:00 AM – 2:00 PM, 4:00 – 8:30 PM"
+      ],
+      "address": "503 24th St W, Billings, MT 59102, USA"
     },
     {
       "id": "d0056",
@@ -1110,7 +1706,18 @@
       "source": "Google Maps",
       "lat": 45.777041,
       "lng": -111.179366,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(406) 924-2414",
+      "hours": [
+        "Monday: 11:00 AM – 2:30 PM, 5:00 – 9:00 PM",
+        "Tuesday: 11:00 AM – 2:30 PM, 5:00 – 9:00 PM",
+        "Wednesday: 11:00 AM – 2:30 PM, 5:00 – 9:00 PM",
+        "Thursday: 11:00 AM – 2:30 PM, 5:00 – 9:00 PM",
+        "Friday: 11:00 AM – 2:30 PM, 5:00 – 9:00 PM",
+        "Saturday: 11:00 AM – 2:30 PM, 5:00 – 9:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "90 W Madison Ave STE C, Belgrade, MT 59714, USA"
     },
     {
       "id": "d0057",
@@ -1130,7 +1737,18 @@
       "source": "Google Maps",
       "lat": 47.109792,
       "lng": -122.309179,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(253) 338-3200",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 9:00 PM"
+      ],
+      "address": "Located in Lincoln Creek Behind Mexican food truck Across the street Pilot exit 99 at I-5, 2421 93rd Ave SW B, Tumwater, WA 98512, USA"
     },
     {
       "id": "d0058",
@@ -1150,7 +1768,9 @@
       "source": "Google Maps",
       "lat": 47.372343,
       "lng": -122.204147,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(206) 697-3120",
+      "address": "16751 SE 272nd St, Covington, WA 98042, USA"
     },
     {
       "id": "d0059",
@@ -1170,7 +1790,18 @@
       "source": "Google Maps",
       "lat": 47.096329,
       "lng": -118.349135,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(509) 347-7177",
+      "hours": [
+        "Monday: 11:00 AM – 9:00 PM",
+        "Tuesday: 11:00 AM – 9:00 PM",
+        "Wednesday: 11:00 AM – 9:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 11:00 AM – 9:00 PM",
+        "Sunday: 11:00 AM – 9:00 PM"
+      ],
+      "address": "1611 Smittys Blvd, Ritzville, WA 99169, USA"
     },
     {
       "id": "d0060",
@@ -1189,7 +1820,18 @@
       "source": "Google Maps",
       "lat": 45.51558,
       "lng": -122.94999,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(503) 267-0393",
+      "hours": [
+        "Monday: 11:00 AM – 9:00 PM",
+        "Tuesday: 11:00 AM – 9:00 PM",
+        "Wednesday: 11:00 AM – 9:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 11:00 AM – 9:30 AM",
+        "Sunday: 11:00 AM – 9:00 PM"
+      ],
+      "address": "16365 NW Twin Oaks Dr, Beaverton, OR 97006, USA"
     },
     {
       "id": "d0061",
@@ -1208,7 +1850,18 @@
       "source": "Google Maps",
       "lat": 45.496466,
       "lng": -122.767981,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(971) 416-9625",
+      "hours": [
+        "Monday: 11:00 AM – 9:00 PM",
+        "Tuesday: 11:00 AM – 9:00 PM",
+        "Wednesday: 11:00 AM – 9:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 11:00 AM – 9:00 PM",
+        "Sunday: 11:00 AM – 9:00 PM"
+      ],
+      "address": "4534 SE McLoughlin Blvd, Portland, OR 97202, USA"
     },
     {
       "id": "d0062",
@@ -1227,7 +1880,18 @@
       "source": "Google Maps",
       "lat": 45.510144,
       "lng": -122.867464,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(503) 884-1135",
+      "hours": [
+        "Monday: 11:00 AM – 8:30 PM",
+        "Tuesday: 11:00 AM – 8:30 PM",
+        "Wednesday: 11:00 AM – 8:30 PM",
+        "Thursday: 11:00 AM – 8:30 PM",
+        "Friday: 11:00 AM – 8:30 PM",
+        "Saturday: 11:00 AM – 8:30 PM",
+        "Sunday: 11:00 AM – 8:30 PM"
+      ],
+      "address": "2635 SE Century Blvd, Hillsboro, OR 97123, USA"
     },
     {
       "id": "d0063",
@@ -1246,7 +1910,18 @@
       "source": "Google Maps",
       "lat": 45.281626,
       "lng": -122.825737,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(503) 776-9177",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: 8:00 AM – 8:00 PM"
+      ],
+      "address": "12271 Melinda Ln NE, Aurora, OR 97002, USA"
     },
     {
       "id": "d0064",
@@ -1265,7 +1940,18 @@
       "source": "Google Maps",
       "lat": 45.50588,
       "lng": -122.573719,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(971) 500-6767",
+      "hours": [
+        "Monday: 10:00 AM – 9:00 PM",
+        "Tuesday: Closed",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 9:00 PM",
+        "Sunday: 10:00 AM – 9:00 PM"
+      ],
+      "address": "6035 NE Halsey St, Portland, OR 97213, USA"
     },
     {
       "id": "d0065",
@@ -1284,7 +1970,18 @@
       "source": "Google Maps",
       "lat": 45.66035,
       "lng": -120.765225,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(541) 370-2126",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "Wasco, OR 97065, USA"
     },
     {
       "id": "d0066",
@@ -1303,7 +2000,18 @@
       "source": "Google Maps",
       "lat": 44.96182,
       "lng": -123.037551,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(971) 388-3977",
+      "hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 8:00 AM – 9:00 PM",
+        "Wednesday: 4:00 – 8:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 11:00 AM – 9:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ],
+      "address": "1233 Riverbend Rd NW, Salem, OR 97304, USA"
     },
     {
       "id": "d0067",
@@ -1322,7 +2030,18 @@
       "source": "Google Maps",
       "lat": 45.062355,
       "lng": -123.01009,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(971) 432-9024",
+      "hours": [
+        "Monday: 8:00 AM – 12:00 AM",
+        "Tuesday: 8:00 AM – 12:00 AM",
+        "Wednesday: 8:00 AM – 12:00 AM",
+        "Thursday: 8:00 AM – 12:00 AM",
+        "Friday: 8:00 AM – 12:00 AM",
+        "Saturday: 10:00 AM – 8:00 PM",
+        "Sunday: 10:00 AM – 7:00 PM"
+      ],
+      "address": "8983 Truckman Way NE, Salem, OR 97303, USA"
     },
     {
       "id": "d0068",
@@ -1342,7 +2061,18 @@
       "source": "Google Maps",
       "lat": 44.666941,
       "lng": -123.123537,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(541) 619-3699",
+      "hours": [
+        "Monday: 9:00 AM – 8:30 PM",
+        "Tuesday: 9:00 AM – 8:30 PM",
+        "Wednesday: 9:00 AM – 8:30 PM",
+        "Thursday: 9:00 AM – 8:30 PM",
+        "Friday: 9:00 AM – 8:30 PM",
+        "Saturday: 9:00 AM – 8:30 PM",
+        "Sunday: 9:00 AM – 8:30 PM"
+      ],
+      "address": "6435 Old Salem Rd NE, Albany, OR 97321, USA"
     },
     {
       "id": "d0069",
@@ -1361,7 +2091,18 @@
       "source": "Google Maps",
       "lat": 44.899632,
       "lng": -123.034041,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(503) 510-5573",
+      "hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 5:00 – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 11:00 AM – 9:00 PM",
+        "Sunday: 11:00 AM – 8:30 PM"
+      ],
+      "address": "1510 Fabry Rd SE, Salem, OR 97306, USA"
     },
     {
       "id": "d0070",
@@ -1381,7 +2122,18 @@
       "source": "Google Maps",
       "lat": 44.355865,
       "lng": -123.004837,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(503) 917-0417",
+      "hours": [
+        "Monday: 10:00 AM – 8:00 PM",
+        "Tuesday: 10:00 AM – 8:00 PM",
+        "Wednesday: 10:00 AM – 8:00 PM",
+        "Thursday: 10:00 AM – 8:00 PM",
+        "Friday: 10:00 AM – 8:00 PM",
+        "Saturday: Closed",
+        "Sunday: 10:00 AM – 8:00 PM"
+      ],
+      "address": "33180 OR-228, Halsey, OR 97348, USA"
     },
     {
       "id": "d0071",
@@ -1400,7 +2152,18 @@
       "source": "Google Maps",
       "lat": 40.54471,
       "lng": -122.340774,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(530) 440-0510",
+      "hours": [
+        "Monday: 11:30 AM – 8:00 PM",
+        "Tuesday: 9:30 AM – 8:00 PM",
+        "Wednesday: 9:30 AM – 8:00 PM",
+        "Thursday: 9:30 AM – 8:00 PM",
+        "Friday: 9:30 AM – 8:00 PM",
+        "Saturday: 11:30 AM – 8:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "2600 Bechelli Ln, Redding, CA 96002, USA"
     },
     {
       "id": "d0072",
@@ -1420,7 +2183,18 @@
       "source": "Google Maps",
       "lat": 39.907768,
       "lng": -122.197865,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(530) 824-0100",
+      "hours": [
+        "Monday: 7:00 AM – 10:00 PM",
+        "Tuesday: 7:00 AM – 10:00 PM",
+        "Wednesday: 7:00 AM – 10:00 PM",
+        "Thursday: 7:00 AM – 10:00 PM",
+        "Friday: 7:00 AM – 10:00 PM",
+        "Saturday: 7:00 AM – 10:00 PM",
+        "Sunday: 7:00 AM – 10:00 PM"
+      ],
+      "address": "3070 Hwy 99 W, Corning, CA 96021, USA"
     },
     {
       "id": "d0073",
@@ -1440,7 +2214,18 @@
       "source": "Google Maps",
       "lat": 38.946593,
       "lng": -122.060068,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(530) 702-9588",
+      "hours": [
+        "Monday: 10:00 AM – 8:00 PM",
+        "Tuesday: 10:00 AM – 8:00 PM",
+        "Wednesday: 10:00 AM – 8:00 PM",
+        "Thursday: 10:00 AM – 8:00 PM",
+        "Friday: 10:00 AM – 8:00 PM",
+        "Saturday: 10:00 AM – 8:00 PM",
+        "Sunday: 10:00 AM – 8:00 PM"
+      ],
+      "address": "690 Hillgate Rd, Arbuckle, CA 95912, USA"
     },
     {
       "id": "d0074",
@@ -1459,7 +2244,18 @@
       "source": "Google Maps",
       "lat": 37.691463,
       "lng": -121.517367,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(209) 835-9090",
+      "hours": [
+        "Monday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM",
+        "Tuesday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM",
+        "Wednesday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM",
+        "Thursday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM",
+        "Friday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM",
+        "Saturday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM",
+        "Sunday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM"
+      ],
+      "address": "2242 W Grant Line Rd #101, Tracy, CA 95377, USA"
     },
     {
       "id": "d0075",
@@ -1478,7 +2274,18 @@
       "source": "Google Maps",
       "lat": 37.837973,
       "lng": -121.306784,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(209) 929-9320",
+      "hours": [
+        "Monday: 8:00 AM – 10:00 PM",
+        "Tuesday: 8:00 AM – 10:00 PM",
+        "Wednesday: 8:00 AM – 10:00 PM",
+        "Thursday: 8:00 AM – 10:00 PM",
+        "Friday: 8:00 AM – 10:00 PM",
+        "Saturday: 8:00 AM – 10:00 PM",
+        "Sunday: 11:00 AM – 10:00 PM"
+      ],
+      "address": "7400 S El Dorado St, French Camp, CA 95231, USA"
     },
     {
       "id": "d0076",
@@ -1497,7 +2304,18 @@
       "source": "Google Maps",
       "lat": 37.706121,
       "lng": -121.154284,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(209) 397-3694",
+      "hours": [
+        "Monday: 8:30 AM – 9:00 PM",
+        "Tuesday: 8:30 AM – 9:00 PM",
+        "Wednesday: 8:30 AM – 9:00 PM",
+        "Thursday: 8:30 AM – 9:00 PM",
+        "Friday: 8:30 AM – 9:00 PM",
+        "Saturday: 8:30 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 9:00 PM"
+      ],
+      "address": "1022 Frontage Rd suite a, Ripon, CA 95366, USA"
     },
     {
       "id": "d0077",
@@ -1516,7 +2334,18 @@
       "source": "Google Maps",
       "lat": 37.942243,
       "lng": -121.219373,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(209) 302-6413",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "4124 E Mariposa Rd, Stockton, CA 95215, USA"
     },
     {
       "id": "d0078",
@@ -1535,7 +2364,18 @@
       "source": "Google Maps",
       "lat": 35.330452,
       "lng": -118.992233,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 493-1915",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "998 S Dr. Martin Luther King Jr. Blvd, Bakersfield, CA 93307, USA"
     },
     {
       "id": "d0079",
@@ -1554,7 +2394,18 @@
       "source": "Google Maps",
       "lat": 35.300975,
       "lng": -118.99398,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 749-0009",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "1601 S Union Ave, Bakersfield, CA 93307, USA"
     },
     {
       "id": "d0080",
@@ -1574,7 +2425,18 @@
       "source": "Google Maps",
       "lat": 35.387051,
       "lng": -118.956552,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 699-6506",
+      "hours": [
+        "Monday: 9:30 AM – 9:30 PM",
+        "Tuesday: 9:30 AM – 9:30 PM",
+        "Wednesday: 9:30 AM – 9:30 PM",
+        "Thursday: 9:30 AM – 9:30 PM",
+        "Friday: 9:30 AM – 9:30 PM",
+        "Saturday: 9:30 AM – 9:30 PM",
+        "Sunday: 9:30 AM – 1:00 PM"
+      ],
+      "address": "3150 Panama Ln Suit B, Bakersfield, CA 93313, USA"
     },
     {
       "id": "d0081",
@@ -1593,7 +2455,18 @@
       "source": "Google Maps",
       "lat": 35.508615,
       "lng": -119.159979,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 549-0094",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "17070 Riviera St, Bakersfield, CA 93308, USA"
     },
     {
       "id": "d0082",
@@ -1613,7 +2486,18 @@
       "source": "Google Maps",
       "lat": 35.286033,
       "lng": -119.183922,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 820-4842",
+      "hours": [
+        "Monday: 5:00 AM – 1:00 AM",
+        "Tuesday: 5:00 AM – 1:00 AM",
+        "Wednesday: 5:00 AM – 1:00 AM",
+        "Thursday: 5:00 AM – 1:00 AM",
+        "Friday: 5:00 AM – 1:00 AM",
+        "Saturday: 5:00 AM – 1:00 AM",
+        "Sunday: 5:00 AM – 1:00 AM"
+      ],
+      "address": "20404 Taft Hwy, Bakersfield, CA 93311, USA"
     },
     {
       "id": "d0083",
@@ -1632,7 +2516,18 @@
       "source": "Google Maps",
       "lat": 35.277391,
       "lng": -119.01173,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 493-1916",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: 10:00 AM – 10:00 PM",
+        "Wednesday: 9:30 AM – 12:00 AM",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "10402 Compagnoni St, Bakersfield, CA 93313, USA"
     },
     {
       "id": "d0084",
@@ -1651,7 +2546,18 @@
       "source": "Google Maps",
       "lat": 35.361924,
       "lng": -118.962558,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 493-1596",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 11:00 AM – 9:00 PM"
+      ],
+      "address": "2546 S Union Ave, Bakersfield, CA 93307, USA"
     },
     {
       "id": "d0085",
@@ -1671,7 +2577,18 @@
       "source": "Google Maps",
       "lat": 35.348765,
       "lng": -118.905374,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 444-7646",
+      "hours": [
+        "Monday: 7:00 AM – 9:30 PM",
+        "Tuesday: 7:00 AM – 9:30 PM",
+        "Wednesday: 7:00 AM – 9:30 PM",
+        "Thursday: 7:00 AM – 9:30 PM",
+        "Friday: 7:00 AM – 9:30 PM",
+        "Saturday: 7:00 AM – 9:30 PM",
+        "Sunday: 7:00 AM – 9:30 PM"
+      ],
+      "address": "8247 Kimber Ave, Bakersfield, CA 93307, USA"
     },
     {
       "id": "d0086",
@@ -1690,7 +2607,18 @@
       "source": "Google Maps",
       "lat": 35.666032,
       "lng": -119.69073,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 496-5240",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "14831 Warren St, Lost Hills, CA 93249, USA"
     },
     {
       "id": "d0087",
@@ -1711,7 +2639,18 @@
       "source": "Google Maps",
       "lat": 32.271697,
       "lng": -109.24328,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(520) 845-2500",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "2500 I-10BL, San Simon, AZ 85632, USA"
     },
     {
       "id": "d0088",
@@ -1731,7 +2670,18 @@
       "source": "Google Maps",
       "lat": 32.774817,
       "lng": -111.620435,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(520) 466-3000",
+      "hours": [
+        "Monday: 7:00 AM – 10:00 PM",
+        "Tuesday: 7:00 AM – 10:00 PM",
+        "Wednesday: 7:00 AM – 10:00 PM",
+        "Thursday: 7:00 AM – 10:00 PM",
+        "Friday: 7:00 AM – 10:00 PM",
+        "Saturday: 7:00 AM – 10:00 PM",
+        "Sunday: 7:00 AM – 10:00 PM"
+      ],
+      "address": "3300 N Chesley Rd, Eloy, AZ 85131, USA"
     },
     {
       "id": "d0089",
@@ -1751,7 +2701,18 @@
       "source": "Google Maps",
       "lat": 35.081319,
       "lng": -114.058524,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(928) 385-8999",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "Located inside Crazy Fred’s Truck stop, 2770 Historic Rte 66, Kingman, AZ 86401, USA"
     },
     {
       "id": "d0090",
@@ -1770,7 +2731,18 @@
       "source": "Google Maps",
       "lat": 34.789783,
       "lng": -114.211165,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(928) 458-6336",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "12470 Frontage Rd, Yucca, AZ 86438, USA"
     },
     {
       "id": "d0091",
@@ -1789,7 +2761,18 @@
       "source": "Google Maps",
       "lat": 33.510982,
       "lng": -112.531998,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(480) 431-6479",
+      "hours": [
+        "Monday: 10:00 AM – 9:00 PM",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 9:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "25240 W Pima St, Buckeye, AZ 85326, USA"
     },
     {
       "id": "d0092",
@@ -1808,7 +2791,18 @@
       "source": "Google Maps",
       "lat": 32.500594,
       "lng": -94.358706,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(903) 702-7918",
+      "hours": [
+        "Monday: 10:00 AM – 10:00 PM",
+        "Tuesday: 10:00 AM – 10:00 PM",
+        "Wednesday: 10:00 AM – 10:00 PM",
+        "Thursday: 10:00 AM – 10:00 PM",
+        "Friday: 10:00 AM – 10:00 PM",
+        "Saturday: 10:00 AM – 10:00 PM",
+        "Sunday: 10:00 AM – 10:00 PM"
+      ],
+      "address": "304 I-20, Marshall, TX 75670, USA"
     },
     {
       "id": "d0093",
@@ -1829,7 +2823,18 @@
       "source": "Google Maps",
       "lat": 35.356365,
       "lng": -118.913051,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 364-0630",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "209 Weedpatch Hwy, Bakersfield, CA 93307, USA"
     },
     {
       "id": "d0094",
@@ -1848,7 +2853,18 @@
       "source": "Google Maps",
       "lat": 38.459481,
       "lng": -121.838561,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(707) 693-6682",
+      "hours": [
+        "Monday: Closed",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 9:00 PM",
+        "Sunday: 10:00 AM – 9:00 PM"
+      ],
+      "address": "7800 Batavia Rd, Dixon, CA 95620, USA"
     },
     {
       "id": "d0095",
@@ -1870,7 +2886,18 @@
       "source": "Google Maps",
       "lat": 33.260131,
       "lng": -94.153743,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(903) 796-9131",
+      "hours": [
+        "Monday: 6:00 AM – 12:00 AM",
+        "Tuesday: 6:00 AM – 12:00 AM",
+        "Wednesday: 6:00 AM – 12:00 AM",
+        "Thursday: 6:00 AM – 12:00 AM",
+        "Friday: 6:00 AM – 12:00 AM",
+        "Saturday: 6:00 AM – 12:00 AM",
+        "Sunday: 6:00 AM – 12:00 AM"
+      ],
+      "address": "22263 US-59, Queen City, TX 75572, USA"
     },
     {
       "id": "d0096",
@@ -1889,7 +2916,18 @@
       "source": "Google Maps",
       "lat": 39.31191,
       "lng": -78.057641,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(304) 620-4483",
+      "hours": [
+        "Monday: 10:00 AM – 10:00 PM",
+        "Tuesday: 10:00 AM – 10:00 PM",
+        "Wednesday: 10:00 AM – 10:00 PM",
+        "Thursday: 10:00 AM – 10:00 PM",
+        "Friday: 10:00 AM – 10:00 PM",
+        "Saturday: 10:00 AM – 10:00 PM",
+        "Sunday: 10:00 AM – 10:00 PM"
+      ],
+      "address": "12828 Winchester Ave, Bunker Hill, WV 25413, USA"
     },
     {
       "id": "d0097",
@@ -1909,7 +2947,18 @@
       "source": "Google Maps",
       "lat": 30.47691,
       "lng": -90.456576,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(985) 320-0806",
+      "hours": [
+        "Monday: Closed",
+        "Tuesday: 11:00 AM – 9:45 PM",
+        "Wednesday: 11:00 AM – 9:45 PM",
+        "Thursday: 11:00 AM – 9:45 PM",
+        "Friday: 11:00 AM – 9:45 PM",
+        "Saturday: 11:00 AM – 9:45 PM",
+        "Sunday: 11:00 AM – 9:00 PM"
+      ],
+      "address": "2201 SW Railroad Ave, Hammond, LA 70403, USA"
     },
     {
       "id": "d0098",
@@ -1928,7 +2977,18 @@
       "source": "Google Maps",
       "lat": 35.075898,
       "lng": -106.152251,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(505) 312-7957",
+      "hours": [
+        "Monday: 6:00 AM – 7:00 PM",
+        "Tuesday: 6:00 AM – 12:00 AM",
+        "Wednesday: 6:00 AM – 12:00 AM",
+        "Thursday: 6:00 AM – 12:00 AM",
+        "Friday: 6:00 AM – 12:00 AM",
+        "Saturday: 6:00 AM – 12:00 AM",
+        "Sunday: 6:00 AM – 12:00 AM"
+      ],
+      "address": "1703 U.S. Rte 66, Moriarty, NM 87035, USA"
     },
     {
       "id": "d0099",
@@ -1948,7 +3008,18 @@
       "source": "Google Maps",
       "lat": 41.294904,
       "lng": -105.642158,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(307) 460-2788",
+      "hours": [
+        "Monday: 11:00 AM – 9:00 PM",
+        "Tuesday: 11:00 AM – 9:00 PM",
+        "Wednesday: 11:00 AM – 9:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 11:00 AM – 9:00 PM",
+        "Sunday: 11:00 AM – 9:00 PM"
+      ],
+      "address": "1502 S 3rd St, Laramie, WY 82070, USA"
     },
     {
       "id": "d0100",
@@ -1968,7 +3039,18 @@
       "source": "Google Maps",
       "lat": 41.158562,
       "lng": -104.358085,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(307) 547-3355",
+      "hours": [
+        "Monday: 6:00 AM – 8:00 PM",
+        "Tuesday: 6:00 AM – 8:00 PM",
+        "Wednesday: 6:00 AM – 8:00 PM",
+        "Thursday: 6:00 AM – 8:00 PM",
+        "Friday: 6:00 AM – 8:00 PM",
+        "Saturday: 6:00 AM – 8:00 PM",
+        "Sunday: 6:00 AM – 8:00 PM"
+      ],
+      "address": "4850 Interstate 80 Service Rd #1, Burns, WY 82053, USA"
     },
     {
       "id": "d0101",
@@ -1987,7 +3069,18 @@
       "source": "Google Maps",
       "lat": 34.411244,
       "lng": -117.394538,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(760) 947-5002",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: 12:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 12:00 AM"
+      ],
+      "address": "8853 Three Flags Road #501, Hesperia, CA 92344, USA"
     },
     {
       "id": "d0102",
@@ -2006,7 +3099,18 @@
       "source": "Google Maps",
       "lat": 41.735667,
       "lng": -122.650991,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(530) 730-0037",
+      "hours": [
+        "Monday: 8:00 AM – 10:00 PM",
+        "Tuesday: 8:00 AM – 10:00 PM",
+        "Wednesday: 8:00 AM – 10:00 PM",
+        "Thursday: 8:00 AM – 10:00 PM",
+        "Friday: 8:00 AM – 10:00 PM",
+        "Saturday: 8:00 AM – 10:00 PM",
+        "Sunday: 8:00 AM – 10:00 PM"
+      ],
+      "address": "787 Montague Rd, Yreka, CA 96097, USA"
     },
     {
       "id": "d0103",
@@ -2025,7 +3129,18 @@
       "source": "Google Maps",
       "lat": 37.092884,
       "lng": -94.009985,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(417) 444-3284",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "1391 Lawrence 2140, Sarcoxie, MO 64862, USA"
     },
     {
       "id": "d0104",
@@ -2045,7 +3160,18 @@
       "source": "Google Maps",
       "lat": 35.512829,
       "lng": -94.114421,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(479) 997-1917",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 9:00 PM"
+      ],
+      "address": "1107 Georgia Ridge Dr, Mulberry, AR 72947, USA"
     },
     {
       "id": "d0105",
@@ -2064,7 +3190,18 @@
       "source": "Google Maps",
       "lat": 35.471311,
       "lng": -99.145774,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(805) 468-5339",
+      "hours": [
+        "Monday: 8:00 AM – 9:00 PM",
+        "Tuesday: 8:00 AM – 9:00 PM",
+        "Wednesday: 8:00 AM – 9:00 PM",
+        "Thursday: 8:00 AM – 9:00 PM",
+        "Friday: 8:00 AM – 9:00 PM",
+        "Saturday: 8:00 AM – 9:00 PM",
+        "Sunday: 8:00 AM – 9:00 PM"
+      ],
+      "address": "10874 OK-44, Foss, OK 73647, USA"
     },
     {
       "id": "d0106",
@@ -2083,7 +3220,9 @@
       "source": "Google Maps",
       "lat": 39.91145,
       "lng": -83.41263,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(740) 604-2578",
+      "address": "870 US-42, London, OH 43140, USA"
     },
     {
       "id": "d0107",
@@ -2102,7 +3241,18 @@
       "source": "Google Maps",
       "lat": 33.615707,
       "lng": -97.012915,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(940) 291-4750",
+      "hours": [
+        "Monday: 10:00 AM – 9:00 PM",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 9:00 PM",
+        "Sunday: 10:00 AM – 9:00 PM"
+      ],
+      "address": "5101 US-82, Gainesville, TX 76240, USA"
     },
     {
       "id": "d0108",
@@ -2121,7 +3271,18 @@
       "source": "Google Maps",
       "lat": 36.108853,
       "lng": -87.063475,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(731) 927-1062",
+      "hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 8:00 AM – 9:00 PM",
+        "Wednesday: 8:00 AM – 9:00 PM",
+        "Thursday: 8:00 AM – 9:00 PM",
+        "Friday: 8:00 AM – 9:00 PM",
+        "Saturday: 8:00 AM – 9:00 PM",
+        "Sunday: 8:00 AM – 9:00 PM"
+      ],
+      "address": "132 Petro Rd, Kingston Springs, TN 37082, USA"
     },
     {
       "id": "d0109",
@@ -2141,7 +3302,18 @@
       "source": "Google Maps",
       "lat": 36.680283,
       "lng": -119.738252,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(559) 761-1600",
+      "hours": [
+        "Monday: 9:00 AM – 7:00 PM",
+        "Tuesday: 9:00 AM – 7:00 PM",
+        "Wednesday: 9:00 AM – 7:00 PM",
+        "Thursday: 9:00 AM – 7:00 PM",
+        "Friday: 9:00 AM – 7:00 PM",
+        "Saturday: 9:00 AM – 7:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "3767 S Golden State Blvd, Fresno, CA 93725, USA"
     },
     {
       "id": "d0110",
@@ -2160,7 +3332,18 @@
       "source": "Google Maps",
       "lat": 36.502241,
       "lng": -119.423787,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(510) 631-6421",
+      "hours": [
+        "Monday: 7:30 AM – 11:00 PM",
+        "Tuesday: 7:30 AM – 11:00 PM",
+        "Wednesday: 7:30 AM – 11:00 PM",
+        "Thursday: 7:30 AM – 11:00 PM",
+        "Friday: 7:30 AM – 11:00 PM",
+        "Saturday: 7:30 AM – 11:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "36220 Golden State Hwy, Traver, CA 93673, USA"
     },
     {
       "id": "d0111",
@@ -2180,7 +3363,18 @@
       "source": "Google Maps",
       "lat": 35.622167,
       "lng": -119.673846,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 817-9737",
+      "hours": [
+        "Monday: 7:30 AM – 10:00 PM",
+        "Tuesday: 7:30 AM – 10:00 PM",
+        "Wednesday: 7:30 AM – 10:00 PM",
+        "Thursday: 7:30 AM – 10:00 PM",
+        "Friday: 7:30 AM – 10:00 PM",
+        "Saturday: 8:00 AM – 9:00 PM",
+        "Sunday: 8:00 AM – 9:00 PM"
+      ],
+      "address": "14814 Aloma St, Lost Hills, CA 93249, USA"
     },
     {
       "id": "d0112",
@@ -2200,7 +3394,18 @@
       "source": "Google Maps",
       "lat": 32.266158,
       "lng": -107.774245,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(720) 620-3333",
+      "hours": [
+        "Monday: 7:00 AM – 9:00 PM",
+        "Tuesday: 7:00 AM – 9:00 PM",
+        "Wednesday: 7:00 AM – 9:00 PM",
+        "Thursday: 7:00 AM – 9:00 PM",
+        "Friday: 7:00 AM – 9:00 PM",
+        "Saturday: 7:00 AM – 9:00 PM",
+        "Sunday: 7:00 AM – 9:00 PM"
+      ],
+      "address": "1310 W Spruce St, Deming, NM 88030, USA"
     },
     {
       "id": "d0113",
@@ -2219,7 +3424,18 @@
       "source": "Google Maps",
       "lat": 33.34705,
       "lng": -97.636156,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(817) 506-5100",
+      "hours": [
+        "Monday: 7:00 AM – 10:00 PM",
+        "Tuesday: 7:00 AM – 10:00 PM",
+        "Wednesday: 7:00 AM – 10:00 PM",
+        "Thursday: 7:00 AM – 10:00 PM",
+        "Friday: 7:00 AM – 10:00 PM",
+        "Saturday: 7:00 AM – 10:00 PM",
+        "Sunday: 7:00 AM – 10:00 PM"
+      ],
+      "address": "4566 US-287, Alvord, TX 76225, USA"
     },
     {
       "id": "d0114",
@@ -2238,7 +3454,18 @@
       "source": "Google Maps",
       "lat": 34.906776,
       "lng": -110.133578,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(928) 294-5796",
+      "hours": [
+        "Monday: Closed",
+        "Tuesday: 8:00 AM – 8:00 PM",
+        "Wednesday: 8:00 AM – 8:00 PM",
+        "Thursday: 8:00 AM – 8:00 PM",
+        "Friday: 8:00 AM – 8:00 PM",
+        "Saturday: 8:00 AM – 8:00 PM",
+        "Sunday: 8:00 AM – 8:00 PM"
+      ],
+      "address": "1851 State Hwy 77, Holbrook, AZ 86025, USA"
     },
     {
       "id": "d0115",
@@ -2258,7 +3485,18 @@
       "source": "Google Maps",
       "lat": 32.624419,
       "lng": -88.207159,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(205) 652-2666",
+      "hours": [
+        "Monday: 6:00 AM – 10:00 PM",
+        "Tuesday: 6:00 AM – 10:00 PM",
+        "Wednesday: 6:00 AM – 10:00 PM",
+        "Thursday: 6:00 AM – 10:00 PM",
+        "Friday: 6:00 AM – 10:00 PM",
+        "Saturday: 6:00 AM – 10:00 PM",
+        "Sunday: 6:00 AM – 10:00 PM"
+      ],
+      "address": "651 AL-28, Livingston, AL 35470, USA"
     },
     {
       "id": "d0116",
@@ -2277,7 +3515,18 @@
       "source": "Google Maps",
       "lat": 40.696974,
       "lng": -99.544802,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(308) 987-2111",
+      "hours": [
+        "Monday: 6:30 AM – 10:00 PM",
+        "Tuesday: 6:30 AM – 10:00 PM",
+        "Wednesday: 6:30 AM – 10:00 PM",
+        "Thursday: 6:30 AM – 10:00 PM",
+        "Friday: 6:30 AM – 10:00 PM",
+        "Saturday: 6:30 AM – 10:00 PM",
+        "Sunday: 6:30 AM – 10:00 PM"
+      ],
+      "address": "74975 444th Rd, Overton, NE 68863, USA"
     },
     {
       "id": "d0117",
@@ -2296,7 +3545,18 @@
       "source": "Google Maps",
       "lat": 40.745559,
       "lng": -113.969476,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(435) 665-2929",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "I-80 exit 4, Wendover, UT 84083, USA"
     },
     {
       "id": "d0118",
@@ -2315,7 +3575,18 @@
       "source": "Google Maps",
       "lat": 34.818752,
       "lng": -116.609423,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(760) 257-3098",
+      "hours": [
+        "Monday: 6:00 AM – 12:00 AM",
+        "Tuesday: 6:00 AM – 12:00 AM",
+        "Wednesday: 6:00 AM – 12:00 AM",
+        "Thursday: 6:00 AM – 12:00 AM",
+        "Friday: 6:00 AM – 12:00 AM",
+        "Saturday: 6:00 AM – 12:00 AM",
+        "Sunday: 6:00 AM – 12:00 AM"
+      ],
+      "address": "48243 Memorial Dr, Newberry Springs, CA 92365, USA"
     },
     {
       "id": "d0119",
@@ -2334,7 +3605,18 @@
       "source": "Google Maps",
       "lat": 35.235502,
       "lng": -113.907637,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(928) 380-3620",
+      "hours": [
+        "Monday: 7:00 AM – 10:00 PM",
+        "Tuesday: 7:00 AM – 10:00 PM",
+        "Wednesday: 7:00 AM – 10:00 PM",
+        "Thursday: 7:00 AM – 10:00 PM",
+        "Friday: 7:00 AM – 10:00 PM",
+        "Saturday: 7:00 AM – 10:00 PM",
+        "Sunday: 7:00 AM – 10:00 PM"
+      ],
+      "address": "2650 N Roundup Ave, Kingman, AZ 86401, USA"
     },
     {
       "id": "d0120",
@@ -2357,7 +3639,18 @@
       "source": "Google Maps",
       "lat": 35.340451,
       "lng": -99.594793,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(580) 928-2500",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "11561 N 1900 Rd, Sayre, OK 73662, USA"
     },
     {
       "id": "d0121",
@@ -2376,7 +3669,18 @@
       "source": "Google Maps",
       "lat": 35.227947,
       "lng": -100.140078,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 256-5209",
+      "hours": [
+        "Monday: 7:00 AM – 11:00 PM",
+        "Tuesday: 7:00 AM – 11:00 PM",
+        "Wednesday: 7:00 AM – 11:00 PM",
+        "Thursday: 7:00 AM – 11:00 PM",
+        "Friday: 7:00 AM – 11:00 PM",
+        "Saturday: 7:00 AM – 11:00 PM",
+        "Sunday: 7:00 AM – 11:00 PM"
+      ],
+      "address": "16421 I-40, Shamrock, TX 79079, USA"
     },
     {
       "id": "d0122",
@@ -2395,7 +3699,18 @@
       "source": "Google Maps",
       "lat": 35.114765,
       "lng": -103.331433,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(575) 576-0006",
+      "hours": [
+        "Monday: 7:00 AM – 9:30 PM",
+        "Tuesday: 7:00 AM – 9:30 PM",
+        "Wednesday: 7:00 AM – 9:30 PM",
+        "Thursday: 7:00 AM – 9:30 PM",
+        "Friday: 7:00 AM – 9:30 PM",
+        "Saturday: 7:00 AM – 9:30 PM",
+        "Sunday: 7:00 AM – 9:30 PM"
+      ],
+      "address": "2405 NM-469, San Jon, NM 88434, USA"
     },
     {
       "id": "d0123",
@@ -2414,7 +3729,9 @@
       "source": "Google Maps",
       "lat": 35.281858,
       "lng": -101.402236,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 780-0000",
+      "address": "9696 I-40 Frontage Rd, Panhandle, TX 79068, USA"
     },
     {
       "id": "d0124",
@@ -2433,7 +3750,18 @@
       "source": "Google Maps",
       "lat": 39.71349,
       "lng": -86.199714,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(414) 712-3244",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 6:00 PM"
+      ],
+      "address": "4585 S Harding St, Indianapolis, IN 46217, USA"
     },
     {
       "id": "d0125",
@@ -2453,7 +3781,18 @@
       "source": "Google Maps",
       "lat": 39.552634,
       "lng": -86.611956,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(463) 999-1029",
+      "hours": [
+        "Monday: 7:00 AM – 12:00 AM",
+        "Tuesday: 7:00 AM – 12:00 AM",
+        "Wednesday: 7:00 AM – 12:00 AM",
+        "Thursday: 7:00 AM – 12:00 AM",
+        "Friday: 7:00 AM – 12:00 AM",
+        "Saturday: 7:00 AM – 12:00 AM",
+        "Sunday: 7:00 AM – 12:00 AM"
+      ],
+      "address": "9620 N Little Point Rd, Stilesville, IN 46180, USA"
     },
     {
       "id": "d0126",
@@ -2473,7 +3812,18 @@
       "source": "Google Maps",
       "lat": 35.180705,
       "lng": -107.905386,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(505) 356-0044",
+      "hours": [
+        "Monday: 7:00 AM – 11:00 PM",
+        "Tuesday: 7:00 AM – 11:00 PM",
+        "Wednesday: 7:00 AM – 11:00 PM",
+        "Thursday: 7:00 AM – 11:00 PM",
+        "Friday: 7:00 AM – 11:00 PM",
+        "Saturday: 7:00 AM – 11:00 PM",
+        "Sunday: 7:00 AM – 11:00 PM"
+      ],
+      "address": "1203-1299 Motel Dr, Milan, NM 87021, USA"
     },
     {
       "id": "d0127",
@@ -2492,7 +3842,18 @@
       "source": "Google Maps",
       "lat": 40.765201,
       "lng": -85.478843,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(260) 375-2888",
+      "hours": [
+        "Monday: 6:00 AM – 11:30 PM",
+        "Tuesday: 6:00 AM – 11:30 PM",
+        "Wednesday: 6:00 AM – 11:30 PM",
+        "Thursday: 6:00 AM – 11:30 PM",
+        "Friday: 6:00 AM – 11:30 PM",
+        "Saturday: 6:00 AM – 11:30 PM",
+        "Sunday: 6:00 AM – 11:30 PM"
+      ],
+      "address": "7270 S Warren Rd, Warren, IN 46792, USA"
     },
     {
       "id": "d0128",
@@ -2511,7 +3872,18 @@
       "source": "Google Maps",
       "lat": 39.837526,
       "lng": -85.432139,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(765) 987-6140",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "5809 S State Rd, Spiceland, IN 47385, USA"
     },
     {
       "id": "d0129",
@@ -2531,7 +3903,18 @@
       "source": "Google Maps",
       "lat": 37.124307,
       "lng": -94.432468,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(417) 768-3033",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "2100 S Prigmore Ave, Joplin, MO 64804, USA"
     },
     {
       "id": "d0130",
@@ -2550,7 +3933,18 @@
       "source": "Google Maps",
       "lat": 37.331333,
       "lng": -93.103208,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(417) 736-0017",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "325 E Evergreen Rd, Strafford, MO 65757, USA"
     },
     {
       "id": "d0131",
@@ -2569,7 +3963,18 @@
       "source": "Google Maps",
       "lat": 35.311639,
       "lng": -119.002172,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 578-9303",
+      "hours": [
+        "Monday: 10:00 AM – 8:30 PM",
+        "Tuesday: 10:00 AM – 8:30 PM",
+        "Wednesday: Closed",
+        "Thursday: 10:00 AM – 8:30 PM",
+        "Friday: 10:00 AM – 8:30 PM",
+        "Saturday: 10:00 AM – 8:30 PM",
+        "Sunday: 11:00 AM – 8:30 PM"
+      ],
+      "address": "9450 Stockdale Hwy, Medical Plaza, 109 River Walk, Bakersfield, CA 93311, USA"
     },
     {
       "id": "d0132",
@@ -2588,7 +3993,18 @@
       "source": "Google Maps",
       "lat": 36.827535,
       "lng": -119.902277,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(559) 214-2777",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 9:00 PM"
+      ],
+      "address": "32603 Ave 7, Madera, CA 93637, USA"
     },
     {
       "id": "d0133",
@@ -2607,7 +4023,18 @@
       "source": "Google Maps",
       "lat": 35.272932,
       "lng": -119.162142,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 573-4815",
+      "hours": [
+        "Monday: 8:30 AM – 9:00 PM",
+        "Tuesday: 8:30 AM – 9:00 PM",
+        "Wednesday: 8:30 AM – 9:00 PM",
+        "Thursday: 8:30 AM – 9:00 PM",
+        "Friday: 8:30 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 10:00 AM – 6:00 PM"
+      ],
+      "address": "20238 Taft Hwy, Bakersfield, CA 93311, USA"
     },
     {
       "id": "d0134",
@@ -2626,7 +4053,18 @@
       "source": "Google Maps",
       "lat": 40.355257,
       "lng": -76.727584,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(717) 545-6473",
+      "hours": [
+        "Monday: 8:00 AM – 10:00 PM",
+        "Tuesday: 8:00 AM – 10:00 PM",
+        "Wednesday: 8:00 AM – 10:00 PM",
+        "Thursday: 8:00 AM – 10:00 PM",
+        "Friday: 8:00 AM – 10:00 PM",
+        "Saturday: 8:00 AM – 10:00 PM",
+        "Sunday: 8:00 AM – 10:00 PM"
+      ],
+      "address": "7800 Linglestown Rd, West Hanover Township, PA 17112, USA"
     },
     {
       "id": "d0135",
@@ -2645,7 +4083,18 @@
       "source": "Google Maps",
       "lat": 39.604026,
       "lng": -119.174937,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(775) 835-6755",
+      "hours": [
+        "Monday: 7:00 AM – 9:00 PM",
+        "Tuesday: 7:00 AM – 9:00 PM",
+        "Wednesday: 7:00 AM – 9:00 PM",
+        "Thursday: 7:00 AM – 9:00 PM",
+        "Friday: 7:00 AM – 9:00 PM",
+        "Saturday: 7:00 AM – 9:00 PM",
+        "Sunday: 7:00 AM – 9:00 PM"
+      ],
+      "address": "500 A Truck Inn Way, Fernley, NV 89408, USA"
     },
     {
       "id": "d0136",
@@ -2665,7 +4114,18 @@
       "source": "Google Maps",
       "lat": 35.504149,
       "lng": -108.839486,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(505) 488-2920",
+      "hours": [
+        "Monday: 9:00 AM – 10:00 PM",
+        "Tuesday: 7:30 AM – 10:00 PM",
+        "Wednesday: 7:30 AM – 10:00 PM",
+        "Thursday: 7:30 AM – 10:00 PM",
+        "Friday: 7:30 AM – 10:00 PM",
+        "Saturday: 7:30 AM – 10:00 PM",
+        "Sunday: 7:30 AM – 10:00 PM"
+      ],
+      "address": "3405 W Historic Hwy 66, Gallup, NM 87301, USA"
     },
     {
       "id": "d0137",
@@ -2685,7 +4145,18 @@
       "source": "Google Maps",
       "lat": 31.068915,
       "lng": -104.557467,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(432) 207-0726",
+      "hours": [
+        "Monday: 2:00 – 10:00 PM",
+        "Tuesday: 7:30 AM – 10:00 PM",
+        "Wednesday: 7:30 AM – 10:00 PM",
+        "Thursday: 7:30 AM – 10:00 PM",
+        "Friday: 7:30 AM – 10:00 PM",
+        "Saturday: 7:30 AM – 10:00 PM",
+        "Sunday: 7:30 AM – 10:00 PM"
+      ],
+      "address": "158821a I-10, Van Horn, TX 79855, USA"
     },
     {
       "id": "d0138",
@@ -2705,7 +4176,18 @@
       "source": "Google Maps",
       "lat": 39.848768,
       "lng": -85.145723,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(765) 478-6300",
+      "hours": [
+        "Monday: 8:00 AM – 12:00 AM",
+        "Tuesday: 8:00 AM – 12:00 AM",
+        "Wednesday: 8:00 AM – 12:00 AM",
+        "Thursday: 8:00 AM – 12:00 AM",
+        "Friday: 8:00 AM – 12:00 AM",
+        "Saturday: 8:00 AM – 12:00 AM",
+        "Sunday: 8:00 AM – 12:00 AM"
+      ],
+      "address": "1480 IN-1, Cambridge City, IN 47327, USA"
     },
     {
       "id": "d0139",
@@ -2724,7 +4206,18 @@
       "source": "Google Maps",
       "lat": 32.134677,
       "lng": -110.944537,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(520) 820-2121",
+      "hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 12:00 – 8:00 PM",
+        "Sunday: 12:00 – 8:00 PM"
+      ],
+      "address": "1999 E Ajo Way, Tucson, AZ 85713, USA"
     },
     {
       "id": "d0140",
@@ -2743,7 +4236,18 @@
       "source": "Google Maps",
       "lat": 40.583745,
       "lng": -75.612547,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(610) 395-6000",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "5829 Tilghman St, Allentown, PA 18104, USA"
     },
     {
       "id": "d0141",
@@ -2762,7 +4266,18 @@
       "source": "Google Maps",
       "lat": 36.672596,
       "lng": -82.112306,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(423) 816-2009",
+      "hours": [
+        "Monday: 8:00 AM – 8:00 PM",
+        "Tuesday: 8:00 AM – 9:00 PM",
+        "Wednesday: 8:00 AM – 9:00 PM",
+        "Thursday: 8:00 AM – 9:00 PM",
+        "Friday: 8:00 AM – 9:00 PM",
+        "Saturday: 8:00 AM – 9:00 PM",
+        "Sunday: 9:00 AM – 8:00 PM"
+      ],
+      "address": "2220 Bonham Rd, Bristol, VA 24201, USA"
     },
     {
       "id": "d0142",
@@ -2781,7 +4296,18 @@
       "source": "Google Maps",
       "lat": 45.28032,
       "lng": -122.813942,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(503) 776-9177",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Closed"
+      ],
+      "address": "12271 Melinda Ln NE TRLR A, Aurora, OR 97002, USA"
     },
     {
       "id": "d0143",
@@ -2801,7 +4327,18 @@
       "source": "Google Maps",
       "lat": 41.124,
       "lng": -114.924883,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(775) 752-1350",
+      "hours": [
+        "Monday: 11:00 AM – 3:00 PM, 4:00 – 9:00 PM",
+        "Tuesday: 9:00 AM – 3:00 PM, 4:00 – 9:00 PM",
+        "Wednesday: 9:00 AM – 3:00 PM, 4:00 – 9:00 PM",
+        "Thursday: 9:00 AM – 3:00 PM, 4:00 – 9:00 PM",
+        "Friday: 9:00 AM – 3:00 PM, 4:00 – 9:00 PM",
+        "Saturday: 9:00 AM – 3:00 PM, 4:00 – 10:00 PM",
+        "Sunday: 9:00 AM – 3:00 PM, 4:00 – 9:00 PM"
+      ],
+      "address": "143 US-93, Wells, NV 89835, USA"
     },
     {
       "id": "d0144",
@@ -2820,7 +4357,18 @@
       "source": "Google Maps",
       "lat": 33.213123,
       "lng": -95.095586,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(903) 524-2138",
+      "hours": [
+        "Monday: 7:00 AM – 11:00 PM",
+        "Tuesday: 7:00 AM – 11:00 PM",
+        "Wednesday: 7:00 AM – 11:00 PM",
+        "Thursday: 7:00 AM – 11:00 PM",
+        "Friday: 7:00 AM – 11:00 PM",
+        "Saturday: 7:00 AM – 11:00 PM",
+        "Sunday: 7:00 AM – 11:00 PM"
+      ],
+      "address": "105 E 7th St, Winfield, TX 75493, USA"
     },
     {
       "id": "d0145",
@@ -2839,7 +4387,18 @@
       "source": "Google Maps",
       "lat": 33.062138,
       "lng": -96.196885,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(945) 324-4889",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: 12:00 – 7:00 PM"
+      ],
+      "address": "Inside Texaco, 2819 I-30, Caddo Mills, TX 75135, USA"
     },
     {
       "id": "d0146",
@@ -2858,7 +4417,18 @@
       "source": "Google Maps",
       "lat": 32.575874,
       "lng": -98.354929,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(254) 693-0062",
+      "hours": [
+        "Monday: 8:00 AM – 10:00 PM",
+        "Tuesday: 8:00 AM – 10:00 PM",
+        "Wednesday: 8:00 AM – 10:00 PM",
+        "Thursday: 8:00 AM – 10:00 PM",
+        "Friday: 8:00 AM – 10:00 PM",
+        "Saturday: 8:00 AM – 10:00 PM",
+        "Sunday: 9:00 AM – 10:00 PM"
+      ],
+      "address": "73485 I-20, Gordon, TX 76453, USA"
     },
     {
       "id": "d0147",
@@ -2877,7 +4447,18 @@
       "source": "Google Maps",
       "lat": 38.686926,
       "lng": -85.822862,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(812) 413-3151",
+      "hours": [
+        "Monday: 10:30 AM – 10:00 PM",
+        "Tuesday: 10:30 AM – 10:00 PM",
+        "Wednesday: 10:30 AM – 10:00 PM",
+        "Thursday: 10:30 AM – 10:00 PM",
+        "Friday: 10:30 AM – 8:00 PM",
+        "Saturday: 10:30 AM – 9:00 PM",
+        "Sunday: 10:30 AM – 9:00 PM"
+      ],
+      "address": "118 S Dowling St, Austin, IN 47102, USA"
     },
     {
       "id": "d0148",
@@ -2896,7 +4477,18 @@
       "source": "Google Maps",
       "lat": 45.671029,
       "lng": -120.725328,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(541) 370-2126",
+      "hours": [
+        "Monday: 9:00 AM – 9:00 PM",
+        "Tuesday: 9:00 AM – 9:00 PM",
+        "Wednesday: 9:00 AM – 9:00 PM",
+        "Thursday: 9:00 AM – 9:00 PM",
+        "Friday: 9:00 AM – 9:00 PM",
+        "Saturday: 9:00 AM – 9:00 PM",
+        "Sunday: Closed"
+      ],
+      "address": "91689 Biggs Rufus Hwy, Wasco, OR 97065, USA"
     },
     {
       "id": "d0149",
@@ -2915,7 +4507,18 @@
       "source": "Google Maps",
       "lat": 41.583936,
       "lng": -87.400345,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(219) 699-8747",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: 12:00 – 2:00 AM, 11:00 AM – 10:00 PM"
+      ],
+      "address": "5480 W 25th Ave, Gary, IN 46406, USA"
     },
     {
       "id": "d0150",
@@ -2934,7 +4537,18 @@
       "source": "Google Maps",
       "lat": 33.344241,
       "lng": -97.655001,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(940) 427-2247",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: 1:00 AM – 11:00 PM",
+        "Sunday: 6:00 AM – 12:00 AM"
+      ],
+      "address": "5985 US-287, Alvord, TX 76225, USA"
     },
     {
       "id": "d0151",
@@ -2953,7 +4567,18 @@
       "source": "Google Maps",
       "lat": 40.986824,
       "lng": -78.005678,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(814) 387-4300",
+      "hours": [
+        "Monday: 7:30 AM – 12:00 AM",
+        "Tuesday: 7:30 AM – 12:00 AM",
+        "Wednesday: 7:30 AM – 12:00 AM",
+        "Thursday: 7:30 AM – 12:00 AM",
+        "Friday: 7:30 AM – 12:00 AM",
+        "Saturday: Closed",
+        "Sunday: 7:30 AM – 12:00 AM"
+      ],
+      "address": "529 E Sycamore Rd, Snow Shoe, PA 16874, USA"
     },
     {
       "id": "d0152",
@@ -2972,7 +4597,18 @@
       "source": "Google Maps",
       "lat": 29.823365,
       "lng": -94.345483,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(713) 340-9040",
+      "hours": [
+        "Monday: Closed",
+        "Tuesday: 11:00 AM – 9:00 PM",
+        "Wednesday: 11:00 AM – 9:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 11:00 PM",
+        "Saturday: 11:00 AM – 11:00 PM",
+        "Sunday: 11:00 AM – 10:00 PM"
+      ],
+      "address": "45785 I-10, Winnie, TX 77665, USA"
     },
     {
       "id": "d0153",
@@ -2992,7 +4628,18 @@
       "source": "Google Maps",
       "lat": 35.233995,
       "lng": -102.394008,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(806) 267-2325",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "3650 I-40 Service Rd, Vega, TX 79092, USA"
     },
     {
       "id": "d0154",
@@ -3011,7 +4658,18 @@
       "source": "Google Maps",
       "lat": 35.399237,
       "lng": -119.395998,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(559) 860-9243",
+      "hours": [
+        "Monday: 10:00 AM – 11:00 PM",
+        "Tuesday: 10:00 AM – 11:00 PM",
+        "Wednesday: 10:00 AM – 11:00 PM",
+        "Thursday: 10:00 AM – 11:00 PM",
+        "Friday: 10:00 AM – 11:00 PM",
+        "Saturday: 10:00 AM – 11:00 PM",
+        "Sunday: 10:00 AM – 11:00 PM"
+      ],
+      "address": "20687 Tracy Ave, Buttonwillow, CA 93206, USA"
     },
     {
       "id": "d0155",
@@ -3030,7 +4688,9 @@
       "source": "Google Maps",
       "lat": 35.356257,
       "lng": -118.913961,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(661) 363-0704",
+      "address": "203 Weedpatch Hwy, Bakersfield, CA 93307, USA"
     },
     {
       "id": "d0156",
@@ -3049,7 +4709,18 @@
       "source": "Google Maps",
       "lat": 37.054307,
       "lng": -121.043273,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(209) 895-0213",
+      "hours": [
+        "Monday: 8:00 AM – 9:00 PM",
+        "Tuesday: 8:00 AM – 9:00 PM",
+        "Wednesday: 8:00 AM – 9:00 PM",
+        "Thursday: 8:00 AM – 9:00 PM",
+        "Friday: 8:00 AM – 9:00 PM",
+        "Saturday: 8:00 AM – 8:00 PM",
+        "Sunday: 8:00 AM – 8:00 PM"
+      ],
+      "address": "13289 CA-33, Santa Nella, CA 95322, USA"
     },
     {
       "id": "d0157",
@@ -3070,7 +4741,18 @@
       "source": "Google Maps",
       "lat": 36.310904,
       "lng": -119.491914,
-      "coordAccuracy": "csv"
+      "coordAccuracy": "csv",
+      "phone": "(559) 651-0009",
+      "hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ],
+      "address": "6603 Betty Dr, Visalia, CA 93291, USA"
     }
   ]
 }
