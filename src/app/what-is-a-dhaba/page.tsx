@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 // "What is a Dhaba" — a warm editorial explainer.
@@ -48,11 +49,14 @@ export default function WhatIsADhabaPage() {
       {/* ───────────────────────────────────────────────────────────── */}
       <section className="relative w-full overflow-hidden bg-ink">
         <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full">
-          <img
+          <Image
             src={IMG.hero}
             alt="A cook silhouetted in the open doorway of a dhaba in Palampur — Hindi signage overhead, mountains visible beyond."
             style={PHOTO_FILTER}
             className="absolute inset-0 h-full w-full object-cover"
+            fill
+            sizes="100vw"
+            priority
           />
           <div
             aria-hidden
@@ -102,11 +106,14 @@ export default function WhatIsADhabaPage() {
       {/* Photo — cook on the tawa */}
       <section className="container-page mt-14 sm:mt-20">
         <figure className="relative overflow-hidden rounded-2xl">
-          <img
+          <Image
             src={IMG.tawa}
             alt="Bharawan Da Dhaba in Amritsar — established 1912, bold red and white signage on the building facade, auto-rickshaws parked outside."
             style={PHOTO_FILTER}
             className="block w-full h-auto aspect-[16/9] object-cover"
+            width={1600}
+            height={900}
+            sizes="(max-width: 1280px) 100vw, 1280px"
           />
         </figure>
       </section>
@@ -136,11 +143,14 @@ export default function WhatIsADhabaPage() {
       {/* Photo — painted truck */}
       <section className="container-page mt-12 sm:mt-16">
         <figure className="relative overflow-hidden rounded-2xl">
-          <img
+          <Image
             src={IMG.truck}
             alt="Haveli Dhaba in Maujgarh, Punjab — red banner reading 'The Traditional Punjabi Veg. Restaurant', canopy seating in the foreground."
             style={PHOTO_FILTER}
             className="block w-full h-auto aspect-[16/9] object-cover"
+            width={1600}
+            height={900}
+            sizes="(max-width: 1280px) 100vw, 1280px"
           />
         </figure>
       </section>
