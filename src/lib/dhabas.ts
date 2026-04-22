@@ -50,30 +50,32 @@ function loadPayload(): DhabaPayload {
   return payload;
 }
 
-export const ALL_FILTER_TAGS: Tag[] = [
+// Curated amenity tags that make sense as filter chips.
+// State names, highway numbers, and place names are intentionally excluded —
+// those work better as search-bar terms. Only tags that describe what a
+// dhaba *has* (not where it *is*) belong here.
+// Order determines chip order in the UI; more common amenities go first.
+const AMENITY_FILTER_TAGS: Tag[] = [
   "Truck Parking",
-  "Vegetarian",
-  "Late Night",
-  "Fuel Stop",
-  "Restrooms",
-  "Quick Stop",
-  "Buffet",
+  "Seating",
+  "Gas",
+  "Bathrooms",
+  "Showers",
+  "Takeout",
+  "Liquor Store",
+  "Hotel",
+  "Food Truck",
 ];
 
-// Every unique tag actually present in the dataset, sorted by frequency
-// (most common first) so the filter bar leads with the tags drivers hit
-// most often. Falls back to alphabetical when counts tie so order is stable.
-// Data-driven — new tags in the CSV show up automatically without code changes.
+// Returns only the amenity filter chips that actually have matching dhabas
+// in the current dataset, preserving the order from AMENITY_FILTER_TAGS.
+// This guarantees no dead filters — every chip will always return results.
 export function getAllUsedTags(): Tag[] {
-  const counts = new Map<string, number>();
+  const inData = new Set<string>();
   for (const d of loadPayload().dhabas) {
-    for (const t of d.tags) {
-      counts.set(t, (counts.get(t) ?? 0) + 1);
-    }
+    for (const t of d.tags) inData.add(t);
   }
-  return Array.from(counts.entries())
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .map(([t]) => t as Tag);
+  return AMENITY_FILTER_TAGS.filter((t) => inData.has(t));
 }
 
 // Re-exported for server-side callers; client components should import
