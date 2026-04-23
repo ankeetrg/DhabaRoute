@@ -18,7 +18,7 @@
 //   Lng            : lng, longitude, long
 //   Combined       : "lat, lng" — one column with values like "34.05, -118.24"
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -26,6 +26,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT      = join(__dirname, "..");
 const CSV_PATH  = join(ROOT, "data", "dhabas.csv");
 const OUT_PATH  = join(ROOT, "data", "dhabas.json");
+
+// Fields populated by out-of-band scripts (not in the CSV) that we want to
+// preserve across rebuilds. fetch-photos.ts writes imageUrl + placeId to
+// dhabas.json directly; without this preservation pass a plain
+// `npm run build:data` would wipe those fields back to undefined.
+const PRESERVED_FIELDS = ["imageUrl", "placeId"];
 
 // ── Minimal RFC-4180 CSV parser ──────────────────────────────────────────────
 // Handles quoted fields, embedded commas, escaped double-quotes, \r\n endings.
@@ -261,6 +267,29 @@ function main() {
       hours,
       address,
     });
+  }
+
+  // ── Preserve out-of-band fields (photos etc.) ─────────────────────────────
+  // fetch-photos.ts writes imageUrl/placeId to the JSON directly — not to
+  // the CSV — so we need to carry those over from the prior build or they'd
+  // disappear every time this script runs.
+  if (existsSync(OUT_PATH)) {
+    try {
+      const prior = JSON.parse(readFileSync(OUT_PATH, "utf8"));
+      const bySlug = new Map();
+      for (const d of prior.dhabas ?? []) {
+        if (d.slug) bySlug.set(d.slug, d);
+      }
+      for (const row of out) {
+        const prev = bySlug.get(row.slug);
+        if (!prev) continue;
+        for (const field of PRESERVED_FIELDS) {
+          if (prev[field] && !row[field]) row[field] = prev[field];
+        }
+      }
+    } catch (err) {
+      console.warn(`[build-data] could not read prior JSON for preservation: ${err.message}`);
+    }
   }
 
   // ── Write output ─────────────────────────────────────────────────────────

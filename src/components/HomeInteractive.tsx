@@ -722,9 +722,24 @@ function MapPinPreview({
         className={[
           "pointer-events-auto mx-auto max-w-xl min-w-[240px]",
           "rounded-2xl bg-white border border-paper-warm shadow-cardHover",
-          "p-3.5 animate-slide-up",
+          "overflow-hidden animate-slide-up",
         ].join(" ")}
       >
+        {/* Photo (if present). A plain <img> because the preview floats
+            over the Leaflet map — Leaflet layers render outside Next's
+            tree, so next/image optimisation isn't applicable here. The
+            image eats the top radius; the content block below keeps its
+            own padding. */}
+        {dhaba.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={dhaba.imageUrl}
+            alt=""
+            className="block w-full h-28 object-cover"
+          />
+        ) : null}
+
+        <div className="p-3.5">
         {/* Header: route hint micro-label + dismiss */}
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
@@ -839,6 +854,7 @@ function MapPinPreview({
               </svg>
             </a>
           ) : null}
+        </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
@@ -88,7 +89,33 @@ export default async function DhabaDetailPage({
         <span className="text-ink-soft truncate">{dhaba.title}</span>
       </nav>
 
-      <header className="mt-5 max-w-3xl">
+      {/* ── Hero photo (magazine-style) ──
+          Only rendered when we actually have a photo. Without one the page
+          is already grounded by the breadcrumb → title → map flow, so we
+          don't insert a placeholder here (a large placeholder on a detail
+          page reads as "this page has no content", which is worse than
+          just starting with the title). On mobile we go full-bleed and
+          slightly shorter (h-44) so the first fold reaches the title. */}
+      {dhaba.imageUrl ? (
+        <figure className="mt-5">
+          <div className="relative w-full h-44 sm:h-64 md:h-80 overflow-hidden rounded-2xl bg-paper-soft">
+            <Image
+              src={dhaba.imageUrl}
+              alt={dhaba.title}
+              fill
+              priority
+              unoptimized
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1024px"
+              className="object-cover"
+            />
+          </div>
+          <figcaption className="mt-1 text-right text-[11px] text-ink-muted">
+            Photo via Google
+          </figcaption>
+        </figure>
+      ) : null}
+
+      <header className={dhaba.imageUrl ? "mt-6 max-w-3xl" : "mt-5 max-w-3xl"}>
         {dhaba.routeHint ? (
           <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-clay-600">
             <span aria-hidden className="w-1 h-1 rounded-full bg-clay-500" />

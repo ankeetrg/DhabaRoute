@@ -36,6 +36,12 @@ export interface Dhaba {
   // hours: array of 7 strings, one per weekday e.g. "Monday: 6:00 AM – 10:00 PM"
   hours?: string[];
   address?: string;
+  // Populated by scripts/fetch-photos.ts — the first photo returned by
+  // Places Details (New) for the resolved placeId, resolved to a direct
+  // lh3.googleusercontent.com URL via the media endpoint with
+  // skipHttpRedirect=true. Optional; layouts fall back to a gradient
+  // placeholder when absent so the grid never looks misaligned.
+  imageUrl?: string;
 }
 
 // Dhaba augmented with user-relative data (distance from current location).

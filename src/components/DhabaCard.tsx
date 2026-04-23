@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Dhaba } from "@/lib/types";
 import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
@@ -38,13 +39,22 @@ export function DhabaCard({
   const openStatus = getOpenStatus(dhaba.hours);
   const city = dhaba.address ? cityFromAddress(dhaba.address) : "";
 
+  // First character of the title, stripped of common prefixes/punctuation
+  // so "| Punjabi Dhaba" doesn't show a pipe in the placeholder. Uppercase.
+  const firstChar =
+    (dhaba.title.trim().replace(/^[^\p{L}\p{N}]+/u, "")[0] ?? "D").toUpperCase();
+
   return (
     <article
       onMouseEnter={onActivate}
       onFocus={onActivate}
       data-selected={isSelected || undefined}
       className={[
-        "group relative flex flex-col rounded-2xl bg-white p-4 sm:p-5 h-full min-h-[160px]",
+        // Card is now image-led. The photo/placeholder sits at the top
+        // with rounded-t-2xl; padding moves to an inner content block so
+        // the image goes edge-to-edge. min-h stays so photo + no-photo
+        // cards match heights exactly.
+        "group relative flex flex-col rounded-2xl bg-white h-full overflow-hidden",
         "border transition-[border-color,box-shadow,transform] duration-150",
         "shadow-card hover:shadow-cardHover",
         isSelected
@@ -54,6 +64,36 @@ export function DhabaCard({
           : "border-paper-warm hover:border-clay-200",
       ].join(" ")}
     >
+      {/* ── MEDIA — photo OR warm gradient placeholder ──
+          Heights and radii are identical across both branches so a grid
+          mixing photo + no-photo cards never looks misaligned. Using
+          <Image unoptimized> for photos since they're served from
+          lh3.googleusercontent.com with Google's own sizing in the URL —
+          Next's optimiser would only add latency. */}
+      {dhaba.imageUrl ? (
+        <div className="relative w-full h-40 sm:h-44 bg-paper-soft flex-none">
+          <Image
+            src={dhaba.imageUrl}
+            alt=""
+            fill
+            unoptimized
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <div
+          aria-hidden
+          className="relative w-full h-40 sm:h-44 flex-none bg-gradient-to-br from-paper-warm to-clay-100 flex items-center justify-center"
+        >
+          <span className="text-4xl font-semibold text-clay-200 select-none">
+            {firstChar}
+          </span>
+        </div>
+      )}
+
+      {/* ── CONTENT ── */}
+      <div className="flex flex-col p-4 sm:p-5 pt-3.5 sm:pt-4 min-h-[160px]">
       {/* 1. META — route + distance, quiet uppercase micro-label */}
       {dhaba.routeHint || distanceLabel ? (
         <div className="flex items-center gap-1.5 text-[10.5px] font-medium uppercase tracking-[0.04em] text-ink-muted">
@@ -159,6 +199,7 @@ export function DhabaCard({
         {city ? (
           <span className="text-[11px] text-ink-muted truncate">{city}</span>
         ) : null}
+      </div>
       </div>
     </article>
   );
