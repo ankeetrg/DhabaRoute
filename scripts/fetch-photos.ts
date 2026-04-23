@@ -1,28 +1,28 @@
 #!/usr/bin/env tsx
-// DhabaRoute — Places API photo enrichment.
+// DhabaRoute — Places API photo enrichment (legacy endpoints).
 //
 // Run: npx tsx scripts/fetch-photos.ts
 //
-// Reads data/dhabas.json, and for every dhaba that doesn't yet have an
-// imageUrl:
-//   1. Resolve a placeId (via Text Search, same shape used by
-//      scripts/enrich-places.mjs) — our dataset doesn't persist placeIds so
-//      we re-resolve on demand.
-//   2. Call Place Details (New) with fields=photos to get the first photo
-//      reference (photos[0].name = "places/XXX/photos/YYY").
-//   3. Call the media endpoint with skipHttpRedirect=true so we get back a
-//      JSON payload containing `photoUri` (a direct googleusercontent URL)
-//      instead of following the redirect to the actual image bytes.
-//   4. Save the googleusercontent URL as imageUrl on the record.
+// Reads data/dhabas.json and, for every dhaba without an imageUrl:
+//   1. Find Place from Text (legacy) with `{title}, {city}` to resolve a
+//      place_id + photo refs in one call.
+//   2. Take candidates[0].photos[0].photo_reference.
+//   3. Fetch place/photo?maxwidth=800&photoreference=... with
+//      `redirect: "manual"` so we capture the 302 Location header instead
+//      of following it. The Location points at a clean
+//      lh3.googleusercontent.com URL with no API key, which is what we
+//      persist as imageUrl.
+//   4. Store `imageUrl` on the record. When no photo is available we
+//      write `imageUrl: null` so downstream code can distinguish "not yet
+//      enriched" from "confirmed no photo".
 //
-// Writes the updated records back to data/dhabas.json. A companion change
-// in scripts/build-data.mjs preserves imageUrl across CSV rebuilds so
-// photos aren't wiped next time someone runs `npm run build:data`.
+// Why legacy endpoints: today's API key is scoped for the legacy Places
+// surface. The media URL from the new v1 endpoint embeds the API key in
+// the HTML, which we'd rather not ship. Following the 302 manually gives
+// us a key-free googleusercontent URL.
 //
-// ts-node note: this project's tsconfig is module:esnext + bundler
-// resolution, which ts-node can't run without extra ESM adapter config.
-// We use `tsx` (installed as a devDependency) which is a drop-in ESM
-// TypeScript runner — invoke via `npx tsx scripts/fetch-photos.ts`.
+// Writes updated records back to data/dhabas.json. scripts/build-data.mjs
+// already preserves imageUrl + placeId across CSV rebuilds.
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -50,7 +50,7 @@ function loadEnv(path: string): string | null {
 
 const API_KEY = loadEnv(ENV_PATH) ?? process.env.GOOGLE_PLACES_API_KEY;
 if (!API_KEY) {
-  console.error("❌  GOOGLE_PLACES_API_KEY not found in .env.local");
+  console.error("GOOGLE_PLACES_API_KEY not found in .env.local");
   process.exit(1);
 }
 
@@ -60,11 +60,11 @@ interface DhabaRecord {
   slug: string;
   title: string;
   mapsUrl?: string;
+  address?: string;
   lat?: number;
   lng?: number;
   placeId?: string;
-  imageUrl?: string;
-  // other fields are preserved verbatim on the record
+  imageUrl?: string | null;
   [key: string]: unknown;
 }
 
@@ -74,83 +74,73 @@ interface DhabaPayloadShape {
   dhabas: DhabaRecord[];
 }
 
-// ── Places API helpers ────────────────────────────────────────────────────
-const BASE = "https://places.googleapis.com/v1";
+// ── Helpers ───────────────────────────────────────────────────────────────
+const BASE = "https://maps.googleapis.com/maps/api/place";
 
-// "https://www.google.com/maps/place/Fort+Amargosa+%7C+Punjabi+Dhaba/…"
-// → "Fort Amargosa | Punjabi Dhaba"
-function placeNameFromUrl(url: string | undefined): string | null {
-  if (!url) return null;
-  const m = url.match(/\/maps\/place\/([^/?#]+)/);
-  if (m) {
-    try {
-      return decodeURIComponent(m[1].replace(/\+/g, " "));
-    } catch {
-      return null;
+// Pull the city out of an address like
+// "5317 US-95 E Highway 95, Amargosa Valley, NV 89020, USA"
+// We take the comma-separated block before the "ST ZIP" one.
+function cityFromAddress(address?: string): string | null {
+  if (!address) return null;
+  const parts = address.split(",").map((s) => s.trim()).filter(Boolean);
+  // Look backwards for the "State ZIP" slot and take the one before it.
+  for (let i = parts.length - 1; i >= 0; i--) {
+    if (/^[A-Z]{2}\s+\d{5}/.test(parts[i])) {
+      return parts[i - 1] ?? null;
     }
   }
-  return null;
+  return parts.length >= 3 ? parts[parts.length - 3] : null;
 }
 
-// Text Search → first matching placeId. Adds a location bias when we know
-// the dhaba's coords so generic names ("Indian Kitchen") still return the
-// right place.
-async function searchPlace(
-  query: string,
-  lat?: number,
-  lng?: number,
-): Promise<string | null> {
-  const body: Record<string, unknown> = { textQuery: query, maxResultCount: 1 };
-  if (lat != null && lng != null) {
-    body.locationBias = {
-      circle: {
-        center: { latitude: lat, longitude: lng },
-        radius: 50000,
-      },
-    };
+interface FindPlaceResult {
+  placeId: string | null;
+  photoReference: string | null;
+}
+
+// Legacy Find Place from Text returns place_id + photos in one shot when
+// we ask for the right fields, which saves us a Details round-trip.
+async function findPlace(query: string): Promise<FindPlaceResult> {
+  const url =
+    `${BASE}/findplacefromtext/json` +
+    `?input=${encodeURIComponent(query)}` +
+    `&inputtype=textquery` +
+    `&fields=place_id,photos` +
+    `&key=${API_KEY}`;
+  const res = await fetch(url);
+  const data = (await res.json()) as {
+    status?: string;
+    error_message?: string;
+    candidates?: {
+      place_id?: string;
+      photos?: { photo_reference?: string }[];
+    }[];
+  };
+  if (data.status && data.status !== "OK" && data.status !== "ZERO_RESULTS") {
+    throw new Error(`${data.status}: ${data.error_message ?? "findplacefromtext error"}`);
   }
-  const res = await fetch(`${BASE}/places:searchText`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Goog-Api-Key": API_KEY as string,
-      "X-Goog-FieldMask": "places.id",
-    },
-    body: JSON.stringify(body),
-  });
-  const data = (await res.json()) as {
-    places?: { id?: string }[];
-    error?: { message?: string };
+  const top = data.candidates?.[0];
+  return {
+    placeId: top?.place_id ?? null,
+    photoReference: top?.photos?.[0]?.photo_reference ?? null,
   };
-  if (data.error) throw new Error(data.error.message ?? "Places searchText error");
-  return data.places?.[0]?.id ?? null;
 }
 
-// Place Details with fields=photos → returns the first photo's `name`
-// (shape: "places/XXX/photos/YYY") or null.
-async function firstPhotoReference(placeId: string): Promise<string | null> {
-  const url = `${BASE}/places/${placeId}?fields=photos&key=${API_KEY}`;
-  const res = await fetch(url);
-  const data = (await res.json()) as {
-    photos?: { name?: string }[];
-    error?: { message?: string };
-  };
-  if (data.error) throw new Error(data.error.message ?? "Places details error");
-  return data.photos?.[0]?.name ?? null;
-}
-
-// Media endpoint with skipHttpRedirect=true → returns a JSON payload with
-// a `photoUri` pointing at lh3.googleusercontent.com. We store that URL as
-// imageUrl so the client can load the image directly (no runtime API call).
-async function resolvePhotoUri(photoReference: string): Promise<string | null> {
-  const url = `${BASE}/${photoReference}/media?maxWidthPx=800&key=${API_KEY}&skipHttpRedirect=true`;
-  const res = await fetch(url);
-  const data = (await res.json()) as {
-    photoUri?: string;
-    error?: { message?: string };
-  };
-  if (data.error) throw new Error(data.error.message ?? "Photo media error");
-  return data.photoUri ?? null;
+// Follow the 302 manually so we get the key-free googleusercontent URL
+// and never embed the API key in HTML we serve to users.
+async function resolvePhotoUrl(photoReference: string): Promise<string | null> {
+  const url =
+    `${BASE}/photo` +
+    `?maxwidth=800` +
+    `&photoreference=${encodeURIComponent(photoReference)}` +
+    `&key=${API_KEY}`;
+  const res = await fetch(url, { redirect: "manual" });
+  // Expected: 302 with a Location header pointing at lh3.googleusercontent.com
+  const location = res.headers.get("location");
+  if (location) return location;
+  // Some runtimes transparently follow; fall back to res.url if it ended
+  // up on googleusercontent anyway.
+  if (res.url && res.url.includes("googleusercontent.com")) return res.url;
+  return null;
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────
@@ -166,46 +156,44 @@ async function main() {
   let already = 0;
 
   for (const d of payload.dhabas) {
-    // Skip dhabas already enriched — script is safe to re-run.
-    if (d.imageUrl) {
+    // Skip dhabas already enriched with a real URL. We still want to retry
+    // records explicitly marked `imageUrl: null` in case Google now has a
+    // photo — but for safety in this first run, treat null as "confirmed
+    // missing" and skip. Delete the field by hand to force re-fetch.
+    if (typeof d.imageUrl === "string" && d.imageUrl.length > 0) {
       already++;
       continue;
     }
+    if (d.imageUrl === null) {
+      // Previously confirmed missing — skip.
+      continue;
+    }
+
+    const city = cityFromAddress(d.address);
+    const query = city ? `${d.title}, ${city}` : d.title;
 
     try {
-      // Resolve placeId. Dataset doesn't persist it; mirror the approach
-      // in enrich-places.mjs and do a Text Search bounded by coords.
-      let placeId = d.placeId;
-      if (!placeId) {
-        const query = placeNameFromUrl(d.mapsUrl) ?? d.title;
-        placeId = (await searchPlace(query, d.lat, d.lng)) ?? undefined;
-      }
-      if (!placeId) {
-        console.log(`${d.title} — no photo found`);
-        missing++;
-        await sleep(SLEEP_MS);
-        continue;
-      }
-      // Cache the resolved placeId for future runs so we don't re-search.
-      d.placeId = placeId;
+      const { placeId, photoReference } = await findPlace(query);
+      if (placeId) d.placeId = placeId;
 
-      const photoRef = await firstPhotoReference(placeId);
-      if (!photoRef) {
+      if (!photoReference) {
+        d.imageUrl = null;
         console.log(`${d.title} — no photo found`);
         missing++;
         await sleep(SLEEP_MS);
         continue;
       }
 
-      const photoUri = await resolvePhotoUri(photoRef);
-      if (!photoUri) {
+      const photoUrl = await resolvePhotoUrl(photoReference);
+      if (!photoUrl) {
+        d.imageUrl = null;
         console.log(`${d.title} — no photo found`);
         missing++;
         await sleep(SLEEP_MS);
         continue;
       }
 
-      d.imageUrl = photoUri;
+      d.imageUrl = photoUrl;
       saved++;
       console.log(`${d.title} — photo saved`);
     } catch (err) {
@@ -214,17 +202,18 @@ async function main() {
       missing++;
     }
 
-    // Stay well under the per-second quota. One dhaba = up to 3 calls,
-    // so 200 ms between dhabas keeps us at ~15 calls/s worst-case.
+    // Stay comfortably under the legacy per-second quota. One dhaba is up
+    // to 2 calls, so 200 ms between dhabas puts us at ~10 calls/s.
     await sleep(SLEEP_MS);
   }
 
-  // Refresh top-level metadata and persist.
   payload.generatedAt = new Date().toISOString();
   payload.count = payload.dhabas.length;
   writeFileSync(JSON_PATH, JSON.stringify(payload, null, 2) + "\n", "utf8");
 
-  const withPhotos = payload.dhabas.filter((d) => d.imageUrl).length;
+  const withPhotos = payload.dhabas.filter(
+    (d) => typeof d.imageUrl === "string" && d.imageUrl.length > 0,
+  ).length;
   console.log(
     `\n${withPhotos} of ${payload.dhabas.length} dhabas now have photos ` +
       `(saved this run: ${saved}, already had: ${already}, missing: ${missing})`,

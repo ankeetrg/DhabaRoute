@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
@@ -8,6 +7,7 @@ import { distanceKm } from "@/lib/geo";
 import { Tag } from "@/components/Tag";
 import { DhabaCard } from "@/components/DhabaCard";
 import { DhabaDetailMap } from "@/components/DhabaDetailMap";
+import { DhabaPhoto } from "@/components/DhabaPhoto";
 import { ContributeForm } from "@/components/ContributeForm";
 
 type RouteParams = Promise<{ slug: string }>;
@@ -90,25 +90,23 @@ export default async function DhabaDetailPage({
       </nav>
 
       {/* ── Hero photo (magazine-style) ──
-          Only rendered when we actually have a photo. Without one the page
-          is already grounded by the breadcrumb → title → map flow, so we
-          don't insert a placeholder here (a large placeholder on a detail
-          page reads as "this page has no content", which is worse than
-          just starting with the title). On mobile we go full-bleed and
-          slightly shorter (h-44) so the first fold reaches the title. */}
+          Only rendered when we have a photo URL. DhabaPhoto owns the
+          skeleton + onError gradient fallback, so even an image that fails
+          to load still resolves to a warm placeholder rather than empty
+          space. We keep the conditional for records explicitly marked
+          `imageUrl: null` (Google confirmed no photo) — on those the page
+          starts straight at the title rather than surfacing a big
+          "this page has no photo" block. No hover zoom here; this is a
+          hero, not a tappable card. */}
       {dhaba.imageUrl ? (
         <figure className="mt-5">
-          <div className="relative w-full h-44 sm:h-64 md:h-80 overflow-hidden rounded-2xl bg-paper-soft">
-            <Image
-              src={dhaba.imageUrl}
-              alt={dhaba.title}
-              fill
-              priority
-              unoptimized
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1024px"
-              className="object-cover"
-            />
-          </div>
+          <DhabaPhoto
+            src={dhaba.imageUrl}
+            alt={dhaba.title}
+            className="w-full h-44 sm:h-64 md:h-80 rounded-2xl"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1024px"
+            priority
+          />
           <figcaption className="mt-1 text-right text-[11px] text-ink-muted">
             Photo via Google
           </figcaption>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-23T00:34:23.180Z",
+  "generatedAt": "2026-04-23T02:32:51.925Z",
   "count": 157,
   "dhabas": [
     {
@@ -31,7 +31,9 @@
         "Saturday: 9:00 AM – 8:30 PM",
         "Sunday: 9:00 AM – 8:30 PM"
       ],
-      "address": "5317 US-95 E Highway 95, Amargosa Valley, NV 89020, USA"
+      "address": "5317 US-95 E Highway 95, Amargosa Valley, NV 89020, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHiyk3v4gDDUQQ3vNhYnonoGpQDfsHcsjDKZAnwbrSmzwK2H6UIftN3Y6PdjB2DdLgHuG4UKM1DIlwy02K9ayVT-VpeGkta7WvJllrK-0TAE7TzuKiO7ZrmCreYX1fEdV1jG0w2=s1600-w800",
+      "placeId": "ChIJXz-eWACfx4ARtB3e2MNizj8"
     },
     {
       "id": "d0002",
@@ -62,7 +64,9 @@
         "Saturday: 8:30 AM – 7:30 PM",
         "Sunday: 8:30 AM – 7:30 PM"
       ],
-      "address": "168 Hunt Rd, Laramie, WY 82070, USA"
+      "address": "168 Hunt Rd, Laramie, WY 82070, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHQqvnjBsloOxe1pjDRANm0L6HNiTU-CzTpUE22b2OH4m20G7QrUfeDPqMaA3qnXSzhJAXiIxPjNF92TLJE3njv4bmAGN63teDTYZBWU-0J15UtYmIvOu1nvAIu6SUoXDOrsM47=s1600-w800",
+      "placeId": "ChIJV3kfzarXZ4cRXu-JOJweTA8"
     },
     {
       "id": "d0003",
@@ -92,7 +96,9 @@
         "Saturday: 12:00 PM – 2:00 AM",
         "Sunday: 12:00 PM – 12:00 AM"
       ],
-      "address": "5039 Centre St, Niagara Falls, ON L2G 3N6, Canada"
+      "address": "5039 Centre St, Niagara Falls, ON L2G 3N6, Canada",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFyFFWBFrCj2AgCQUJ_CvGvTsCf3mGx1_AeDbW3qYMSNx5xEyJHk1DW4xub3mhwrJ9EgYEaGzxJLIMe7xnAr_FiC0h1XtXs2uJXHofQwjw0HE2UVo6h6PN53E6GdTRDxH3TjxmJ=s1600-w800",
+      "placeId": "ChIJV2Iu9ipD04kRdjm060iDCDM"
     },
     {
       "id": "d0004",
@@ -122,7 +128,9 @@
         "Saturday: 9:00 AM – 12:00 AM",
         "Sunday: 9:00 AM – 12:00 AM"
       ],
-      "address": "2855 Derry Rd E, Mississauga, ON L4T 1A6, Canada"
+      "address": "2855 Derry Rd E, Mississauga, ON L4T 1A6, Canada",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEsWur3Iwe6RzNZYCd4cDllqwCs9pS2mVTgvjPLvVjb1P0Rlak1Kcz6PKXkduCRhUnyalzNeNRv2G-ypGlwPh053_FQZD_cnhCHBTtdkbZgoAWUVkc1VMJWu886kzWJrmvC-cSx0FXOHu4F=s1600-w382",
+      "placeId": "ChIJW0pUAf47K4gRWywV2iu9SD0"
     },
     {
       "id": "d0005",
@@ -152,7 +160,9 @@
         "Saturday: 8:00 AM – 1:00 AM",
         "Sunday: 8:00 AM – 1:00 AM"
       ],
-      "address": "16610 Red Desert Rd EXIT 165, Wamsutter, WY 82336, USA"
+      "address": "16610 Red Desert Rd EXIT 165, Wamsutter, WY 82336, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG3T-pWxedJhR4i96Vr8QKiJsG-tk6B48bikYFBL9jIGdldkPii-dbi1CpOHlzKCFWtMB_YHUKFQPx2nh-PtqiXHmMsSPauDYSgNrkB8EVKI4NwDymxPe4yf_mlpxRTHwaDB0dYFZi9k4qS=s1600-w800",
+      "placeId": "ChIJYzGQbX5_W4cRHDlgZx477To"
     },
     {
       "id": "d0006",
@@ -183,7 +193,9 @@
         "Saturday: 7:00 AM – 1:00 AM",
         "Sunday: 7:00 AM – 1:00 AM"
       ],
-      "address": "301 I-40 Suite 1, Shamrock, TX 79079, USA"
+      "address": "301 I-40 Suite 1, Shamrock, TX 79079, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGfpy2KVCFOU0be_lt5R3Jto6MPfmpqAfnr0f1FHLXN57tLSeaoJYeIvRcqJAoYJzy5F6veaDrhzC-WEApq4fYO8NlDqxM83Px-RRPYZ3KyeC0B2D9oVy9jtsQYz3HDN9lAYB8u9mCNR1U=s1600-w800",
+      "placeId": "ChIJTUvUjq49qocR1oR5SKbzReM"
     },
     {
       "id": "d0007",
@@ -214,7 +226,9 @@
         "Saturday: 7:00 AM – 11:00 PM",
         "Sunday: 7:00 AM – 11:00 PM"
       ],
-      "address": "16421 I-40, Shamrock, TX 79079, USA"
+      "address": "16421 I-40, Shamrock, TX 79079, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGC_06Gxm-bqEdJ9-xB51iLAqPrIWvGFXuOPZMxJMqpxtsOPXgTq1idgWhSDWtyPizrV-xsn71PJEKdFoB6N8P0Rbx777AwXX6RsR8D7xsTafxgxg2PmXB1TEdqM2NCLHxRcmK5XU41C-g=s1600-w800",
+      "placeId": "ChIJH26jj9g7qocRZSJWxIawBs8"
     },
     {
       "id": "d0008",
@@ -244,7 +258,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 9:00 PM"
       ],
-      "address": "22693 US-83, Paint Rock, TX 76866, USA"
+      "address": "22693 US-83, Paint Rock, TX 76866, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHRplYoqs4piR8LbM0qQbhLL9w2qw-RaRgHfCc1zPSi1-8_nKeR6ThFaX6QUvxYVAmH6QYjBtCNBLh91DOlbCaH4PRhnyDX3OKMCtpsIdS8NjOhaRZzpP_AXg_TqZ6ynUEVk94pESYOMmLu=s1600-w800",
+      "placeId": "ChIJ84FGjASfV4YRKHiUoIxK594"
     },
     {
       "id": "d0009",
@@ -276,7 +292,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "12825 S Interstate Hwy 20, Roscoe, TX 79545, USA"
+      "address": "12825 S Interstate Hwy 20, Roscoe, TX 79545, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFCik-Y1CoS0KGe7-SzvVD3-8EJQmdTfWl6cIlr9k3ump6M59mAUVH4Vvne3ZVOBhhP-3VTPTUUF14Vu8H-vtdDr2qKWLsSwdym4YcZOCrn9dhd--cZJjUAFhdi97lP6RDUn7DR0foIMcI=s1600-w800",
+      "placeId": "ChIJi3dLfqu33IARa8DZtT3F7GI"
     },
     {
       "id": "d0010",
@@ -312,7 +330,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "U.S. Rte 66, Sanders, AZ 86512, USA"
+      "address": "U.S. Rte 66, Sanders, AZ 86512, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFckkoLb_mb0cx2U1HJGUw-xW_Q-TFktlzntDejXxko-UNgakqUK29d0sp9uPntNI-SSbuavJMqY4UmJk11WoxDtpenLKYZwWLAAEo0TBB-pHzpjCdQJvMEzmxCgzQk0PvrxXaU6E5n9NM=s1600-w800",
+      "placeId": "ChIJcyyMZaZlJYcReS8NUdWO3NM"
     },
     {
       "id": "d0011",
@@ -338,7 +358,9 @@
       "lng": -109.395291,
       "coordAccuracy": "csv",
       "phone": "(520) 847-2511",
-      "address": "1275 E Business Loop, San Simon, AZ 85632, USA"
+      "address": "1275 E Business Loop, San Simon, AZ 85632, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHcwAuV_33qkxetfsvEGggonTCIt36lowtyxK-kzajcdxTICp1xAWs7HfoKExc--NTQbuVk_dzoNmuBDAMNm0hK5si-6uSz8O4DXWKHot8rFzBYJWmwrEjOJSGEcTyX9EeVsmfT-w=s1600-w800",
+      "placeId": "ChIJHT7zqEvL2YYR2eJU428kx3g"
     },
     {
       "id": "d0012",
@@ -367,7 +389,9 @@
         "Saturday: Closed",
         "Sunday: Closed"
       ],
-      "address": "11705 Montwood Dr, El Paso, TX 79936, USA"
+      "address": "11705 Montwood Dr, El Paso, TX 79936, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGQw-rZh8L-PqLbIX_5p7ymHsn4jmtrlNoixGrS_8H31OLuQaximKn5XdLcKW6R5jrPpE0ncJz8bR0IT0AuLi_txVO4TxhhJpJyctfuG7LSn7B49vU2lRHE_FoWTP0TfLSOwKbF=s1600-w800",
+      "placeId": "ChIJWwiuotFF54YRgvrsvHzAMsk"
     },
     {
       "id": "d0013",
@@ -400,7 +424,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "3650 I-40 Service Rd, Vega, TX 79092, USA"
+      "address": "3650 I-40 Service Rd, Vega, TX 79092, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG0hs6eHyk_VRcddJ-RK9Lf3S4ITzohgE_4BvKvGFGXAfAEwpZcsVSWyb1UWrCFWe2em4ZFjgRkvsT5sMYlpOeIpsnByjtJdHoPeZ5yiLEGBSZ9Lv6EPFmj-HJbFg-oVu7_sDmP=s1600-w800",
+      "placeId": "ChIJ91zhaC_1A4cRQCpddB4I5UQ"
     },
     {
       "id": "d0014",
@@ -432,7 +458,9 @@
         "Saturday: 8:00 AM – 8:00 PM",
         "Sunday: 8:00 AM – 8:00 PM"
       ],
-      "address": "2080 S Mountain Rd, Tucumcari, NM 88401, USA"
+      "address": "2080 S Mountain Rd, Tucumcari, NM 88401, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFx54dkUZ9Wot8H-76pcKFd6bCOeIpLC2vlJT36iysBgk0uXnhuCfSgHDo-VdQANF8UrhvErVhOXQBRY8NhwOTvsRwwvkTjyPVOHH9rtk_OFG9nNS-oGt5c0Kpz0q16vTZW3vTYZATHOwBn=s1600-w800",
+      "placeId": "ChIJXdUuKgBXG4cR5eJwBJ55w88"
     },
     {
       "id": "d0015",
@@ -464,7 +492,9 @@
         "Saturday: 8:00 AM – 8:00 PM",
         "Sunday: 8:00 AM – 8:00 PM"
       ],
-      "address": "300 U.S. Rte 66 lot 2, Adrian, TX 79001, USA"
+      "address": "300 U.S. Rte 66 lot 2, Adrian, TX 79001, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHdN_5hqkt48hTmXeGVfW7784oOJtod3uHzBHw2SkSEGslLZ_Cv_aLskqjhCJDGK1dBBZKoeNurG4-AcomvuID_cJUZ1mAVIhy_DX5Nr67FlESrc3a5H-QtFby0QbWzozO6HIs9cZ_64UE=s1600-w800",
+      "placeId": "ChIJgb64aTh5BIcRFQlIM7zKmDI"
     },
     {
       "id": "d0016",
@@ -495,7 +525,9 @@
         "Saturday: 11:00 AM – 8:00 PM",
         "Sunday: Closed"
       ],
-      "address": "5640 Hidcote Dr, Lincoln, NE 68516, USA"
+      "address": "5640 Hidcote Dr, Lincoln, NE 68516, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHxZNS5kAo0FJMIPQJW-T8xrYF_FATLGNoW0gGQDNQDlXsKpgZe48J5DPRr6hTeTMSAhxoloDUP73wOcEpp-x3Vg5TS2DONTEA4wYpESZOOOxElPS8hYep7TgU8FUukvI-HcfZLelF7Yi4=s1600-w800",
+      "placeId": "ChIJf_J16w2XlocRe_VT6LarinY"
     },
     {
       "id": "d0017",
@@ -525,7 +557,9 @@
         "Saturday: 11:00 AM – 2:00 PM, 4:00 – 9:00 PM",
         "Sunday: Closed"
       ],
-      "address": "2300 Lincoln Hwy, Clinton, IA 52732, USA"
+      "address": "2300 Lincoln Hwy, Clinton, IA 52732, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEfsXwL3hO5yrRVMnRUJnUZu5FX-mb8luqnRg2ajGmyeSH1gfWiMNtEChdOw98SUcD-WPB_A4i5ZgrOvFOhth7bM9ymduJcjEbGvVFWQGB8JBfb2mHGly4mFic1GmsrKW-Cg2icQ0xV5CVx=s1600-w800",
+      "placeId": "ChIJdS0aqPJn4ocRppYbnxFik1E"
     },
     {
       "id": "d0018",
@@ -554,7 +588,9 @@
         "Saturday: 10:00 AM – 9:30 PM",
         "Sunday: 10:00 AM – 8:30 PM"
       ],
-      "address": "Parking Lot, 3391 County Rd 211, Kingdom City, MO 65262, USA"
+      "address": "Parking Lot, 3391 County Rd 211, Kingdom City, MO 65262, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGPhUFKWi--RKrE2UTsEeryI0QRiuys3KUUJs8mqeH7WY-O3pEzajbkYXcC21iq8IUxu-wOdPtr7edZRjidtHg_OP66-9yL0tPbReyAN3KSYPom5cycJg-6mT1nCeJkba8O1xcDSVYGU1w=s1600-w800",
+      "placeId": "ChIJA-HRzx6N3IcRv9VQOy_t9Zc"
     },
     {
       "id": "d0019",
@@ -584,7 +620,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "722 Oakland Cir, Raphine, VA 24472, USA"
+      "address": "722 Oakland Cir, Raphine, VA 24472, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAESUBEoz-PgGLlhsAeB-0AudYV7eEhazom1DAUCLw4fL2m1-Ntfg22cLZe6DdsRXh7vJs77n3AJTXG0HCCxgfbbDUpVT4HGVxb3m7ls_YZSyVyCLt4U-cALg-xwgcRf4BtQcC-Lo9YC-EoM=s1600-w800",
+      "placeId": "ChIJaZ0vfGVPs4kRjc-wFxeEhNI"
     },
     {
       "id": "d0020",
@@ -617,7 +655,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 9:00 PM"
       ],
-      "address": "11546 Allen Rd, Jeffersonville, OH 43128, USA"
+      "address": "11546 Allen Rd, Jeffersonville, OH 43128, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAETwfhQ226IDxqu48UqqOhbomK0iz520ZUqYnGtV10zX4YtVwtgGZThNIvc2eeJxd04AjfEkOWRHUF93i7VL8xUJV98v0UgFfwmC5AJ6n4nLcPeBLIk7LIgkqP0DkE0vqU2DGMEnvoA9oA8=s1600-w800",
+      "placeId": "ChIJRx4xoZizQIgReiob2SVXI2M"
     },
     {
       "id": "d0021",
@@ -647,7 +687,9 @@
         "Saturday: 10:00 AM – 9:00 PM",
         "Sunday: Closed"
       ],
-      "address": "1111 William C Good Blvd, Franklin, OH 45005, USA"
+      "address": "1111 William C Good Blvd, Franklin, OH 45005, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFdB7spvZ5ueSW7K5_7QGHnBD0PB7Mjisi0gIu095oDUAz3Mn-JwQxzEt7ZIZYGhXLF5BWGTnMJXU-sPrmZWbms4PsmWLpKOphthQfDlpfzCia5VqGWZ5UKCQk4l3JnYORCFKOKurxiuGAN=s1600-w800",
+      "placeId": "ChIJ166cTABhQIgRv0e5aR1C4QE"
     },
     {
       "id": "d0022",
@@ -678,7 +720,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "574 Chase Blvd, Sidney, NE 69162, USA"
+      "address": "574 Chase Blvd, Sidney, NE 69162, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFrt7iUaWUms6NEGi5gAX38ix4Yf1u-KbPczpspnR6FNl-q2dWwVCmH-nxXfaLb21U6hcwMZ_W8Ml28OraQxFjqkmSiFky5VttXQENKphJmyYxbRJwTXq3hAuwiepz2ZZERzLCa3VGNkJpx=s1600-w800",
+      "placeId": "ChIJqRMmSQutcYcRzibpMdze5tc"
     },
     {
       "id": "d0023",
@@ -711,7 +755,9 @@
         "Saturday: 7:00 AM – 11:00 PM",
         "Sunday: 7:00 AM – 11:00 PM"
       ],
-      "address": "16421 I-40, Shamrock, TX 79079, USA"
+      "address": "16421 I-40, Shamrock, TX 79079, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHsNnHO7OU9PXIim5grhSaExNUza6WXQ82JP87Tmi5IzEDacobEb7gE3noWpP_C3x_G2KsJ2q6eDeHOXjUpFGevARfpvQVmPTuq7nwRRtaqquU3Pc5xfsuRohjvcNpil6vbV4pPxg=s1600-w800",
+      "placeId": "ChIJH26jj9g7qocRZSJWxIawBs8"
     },
     {
       "id": "d0024",
@@ -745,7 +791,9 @@
         "Saturday: 7:00 AM – 9:30 PM",
         "Sunday: 8:00 AM – 8:30 PM"
       ],
-      "address": "18889 S Frontage Rd, Welsh, LA 70591, USA"
+      "address": "18889 S Frontage Rd, Welsh, LA 70591, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEju9x8mk1JmXYwrCZg6VcL4jzryd_aqXN8TgFMJJv2nJ44tzL_KA70ARxZEMriFdZJ-yC7eIuh-Eox0x8F4I1P_vNIGtB-JFxk70O2V2Gbu3smgf1ki76f2jsf4yxAD179UHEy8ZoTSIVE=s1600-w800",
+      "placeId": "ChIJPdYvdZtlO4YReQguWyR_OQI"
     },
     {
       "id": "d0025",
@@ -779,7 +827,9 @@
         "Saturday: 9:00 AM – 10:00 PM",
         "Sunday: 9:00 AM – 10:00 PM"
       ],
-      "address": "I-20 Exit- 52, 2193 LA-532, Minden, LA 71055, USA"
+      "address": "I-20 Exit- 52, 2193 LA-532, Minden, LA 71055, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAESJa9gYIVrfmNZs4wPO0ihlEz9xC3JuI6xNJcX77iVnmKcW1GaCYxLFKCfcM7FyYO6hEDDJNWqtWdgqDOnKwLGrdayWFKVRZaCwEmkILkBEqhJz0xzzDTOt4dai_rYeLo4lOYyIxkK6lPs=s1600-w800",
+      "placeId": "ChIJHZhy_dAPMYYRYHCOf1ffTho"
     },
     {
       "id": "d0026",
@@ -809,7 +859,9 @@
         "Saturday: 10:00 AM – 10:00 PM",
         "Sunday: 10:00 AM – 10:00 PM"
       ],
-      "address": "304 I-20, Marshall, TX 75670, USA"
+      "address": "304 I-20, Marshall, TX 75670, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH7avFHK_GnAt-nOR6aK5oNkO4pdqhHOGH2mneh5gcB_5yN5tkGbh3qbno-fbnH9tZOzvlRVXHI2f-wqhOvGoAPPn8JZkcPI0srG7nIp29uSD-_6GM0mCrQzB0wnVmVjtDlEaR_RSwYl6RV=s1600-w800",
+      "placeId": "ChIJb-_rsrb3NoYRyQlptXNYuoU"
     },
     {
       "id": "d0027",
@@ -839,7 +891,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "111 Lawson Rd, Wheatley, AR 72392, USA"
+      "address": "111 Lawson Rd, Wheatley, AR 72392, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFStG5GeMdhAr1b44bD5fXB-IvskOIHSAegt-nZyELZac0VKWDqNG3Jtodv4x3xXNLtGZFliInNVEAqiEo8kibZ5MShqzEYNc4JzGf22ZvtvWMjXza6788HvWYSJVwuTuNJAQwV=s1600-w800",
+      "placeId": "ChIJOSz-pTWZ1IcRk6EAXQq8tec"
     },
     {
       "id": "d0028",
@@ -870,7 +924,9 @@
         "Saturday: 9:00 AM – 10:00 PM",
         "Sunday: 9:00 AM – 10:00 PM"
       ],
-      "address": "802 Ave G, Kentwood, LA 70444, USA"
+      "address": "802 Ave G, Kentwood, LA 70444, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEt69ydJzpNdTv6_t43NmcFvR3nwe1D4-ZKqZgbuub6pkAEH1Jf-1MthLBdWjxHibB2XGfeYVM1adoKTwmF-Bsn3V7FVf0fOu06-Z-aoW0qFfXOyWSBIopSej_tq5J89UOHlOWN=s1600-w800",
+      "placeId": "ChIJB0TW5ZypJ4YRRykK_W610f0"
     },
     {
       "id": "d0029",
@@ -901,7 +957,9 @@
         "Saturday: 7:00 AM – 10:00 PM",
         "Sunday: 7:00 AM – 10:00 PM"
       ],
-      "address": "65583 Pump Slough Rd, Pearl River, LA 70452, USA"
+      "address": "65583 Pump Slough Rd, Pearl River, LA 70452, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE1Ki-qBhsEF4El6cLVfXzhpfm-kg6rsdGd2WY-6HUjijW1vis-xiF5OMCKY-FYZihGOtknqwACnZ5phuwWFUubJNfP-Fbk2Fl0N-gbrwPWbZK-VWVfEyv1SRNwNXZx3a7Q27DC=s1600-w800",
+      "placeId": "ChIJ3YlunHjpnYgR93U_O40zx7U"
     },
     {
       "id": "d0030",
@@ -932,7 +990,9 @@
         "Saturday: 11:00 AM – 10:00 PM",
         "Sunday: 11:00 AM – 10:00 PM"
       ],
-      "address": "9455 US 49, Gulfport, MS 39503, USA"
+      "address": "9455 US 49, Gulfport, MS 39503, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFs-vsewKJcVgtv-sgbh3NJZFAqJM9U2OqzHFTMy4dRCas8eWDBF1cTRjGRl0CAuSRSggGJx1apL0iLcQ-7Mbk8LK2S9Xb0n8xRPVWnWAjknZJPQvjAZRYasLSDkRsIsfejruZ6fFcfUQ0=s1600-w800",
+      "placeId": "ChIJVZ9uI-AXnIgRCYBfrGM9yVY"
     },
     {
       "id": "d0031",
@@ -963,7 +1023,9 @@
         "Saturday: 5:00 PM – 4:00 AM",
         "Sunday: 9:00 AM – 2:00 AM"
       ],
-      "address": "6010 NE 2nd Ave, Miami, FL 33137, USA"
+      "address": "6010 NE 2nd Ave, Miami, FL 33137, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAETgnWSTiIgLEYw8skAgH2RANhQokCbpHo1scxojjzvWs5Bn4jePPnnnjT-gaXtTx272JPoKHbQcs5AgDNn1cbJHUHT0ZeBZ3Ir1Lr0YPGdtxHj9Uc6MKRaaW1bbOm-tedrD7Dr=s1600-w800",
+      "placeId": "ChIJt11BHtez2YgR4zn0XVD_mOs"
     },
     {
       "id": "d0032",
@@ -994,7 +1056,9 @@
         "Saturday: 5:00 – 9:00 PM",
         "Sunday: 5:00 – 9:00 PM"
       ],
-      "address": "10865 Cross Creek Blvd, Tampa, FL 33647, USA"
+      "address": "10865 Cross Creek Blvd, Tampa, FL 33647, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHW9I9mwux_YcCP139gjJqS_SrbUrZ3Rox13eFBNA_FaUSdZA_G--2Y04C_QbNLbFf581pCrZMQ3N1qmpXXBAyPj_MobO17kvfdbmya5p32akBJkaZxUj-Pycp3IAooeQ8dj-PC=s1600-w800",
+      "placeId": "ChIJS9-_5sy1wogRd8-X6WxY6zU"
     },
     {
       "id": "d0033",
@@ -1024,7 +1088,9 @@
         "Saturday: 8:30 AM – 2:00 AM",
         "Sunday: 8:30 AM – 2:00 AM"
       ],
-      "address": "14546 Bruce B Downs Blvd, Tampa, FL 33613, USA"
+      "address": "14546 Bruce B Downs Blvd, Tampa, FL 33613, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFpqGz3pk1my5mh_A-lPMzbLa_MswW6v1IRVxpU8dVSSOCtfWV3h_RHRKr1YG6KyzRuOAK3EB0QK8Ere3QuVHvyedWCaMSAouWlfxUxN6_hoUahkN3p2RcJA5-QNRduAdLQg7lR=s1600-w800",
+      "placeId": "ChIJk61vtxHHwogRXY2LxSVvPJY"
     },
     {
       "id": "d0034",
@@ -1054,7 +1120,9 @@
         "Saturday: 11:00 AM – 9:00 PM",
         "Sunday: 12:00 – 9:00 PM"
       ],
-      "address": "2151 Keith St NW, Cleveland, TN 37311, USA"
+      "address": "2151 Keith St NW, Cleveland, TN 37311, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGe-zaaBtkaB2fSSvj0NxJJRIEzlmfBdMIqyXTauOjd9OIFExXmpPW_BjWvrSIn_ITR8fug530sXMoeVYlqbmA_MyxRt6kFWflKhui1fOm0oK0cH8UcmZK2_ebftmThkeqVqtj1vQ=s1600-w800",
+      "placeId": "ChIJaVAtwZgrXogRSlZJfFD1Vxo"
     },
     {
       "id": "d0035",
@@ -1084,7 +1152,9 @@
         "Saturday: 12:00 – 10:00 PM",
         "Sunday: 12:00 – 8:30 PM"
       ],
-      "address": "20833 Catawba Ave, Cornelius, NC 28031, USA"
+      "address": "20833 Catawba Ave, Cornelius, NC 28031, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGipvvA1dqQtWQUbSsBDiRtgqXu8wxTVRmM8rVFrQgn_2UDpBe-TpTuim9gT2SC2YGjuojbyGZ0w6SHA7uoVDayWuTcnfc4GJgbzLknlfg_V43ChRFeMFk3pgK01dxGI3-25jlgp2JR-oBm=s1600-w800",
+      "placeId": "ChIJGaHIZwAfVIgR1ep6oRq8hOk"
     },
     {
       "id": "d0036",
@@ -1114,7 +1184,9 @@
         "Saturday: 9:00 AM – 12:00 AM",
         "Sunday: 9:00 AM – 12:00 AM"
       ],
-      "address": "6005 E Thompson Rd, Indianapolis, IN 46237, USA"
+      "address": "6005 E Thompson Rd, Indianapolis, IN 46237, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEdFS2jLibodVNpZ79vt5RM-Oe2rJ5LhmPRDCP1MJLmRgsxCCWp7X8ptlbSu5vn8NBUPd0He264w6kaNL8QDjkY_4rE9V0_-HzQT_L5oBxfGR93XpfRRbOtIPayY_cLAZknRhJULQ=s1600-w800",
+      "placeId": "ChIJj5j-2gJFa4gRwKYA5zaekFs"
     },
     {
       "id": "d0037",
@@ -1144,7 +1216,9 @@
         "Saturday: 10:00 AM – 8:00 PM",
         "Sunday: Closed"
       ],
-      "address": "11960 US-59, Livingston, TX 77351, USA"
+      "address": "11960 US-59, Livingston, TX 77351, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtsgXJk5ESI9LY8HtkDGMj3f5ZOt0oEpzAy98G4ewEiA3c-R2Tjr9e2A75LW8snzmyHOuKsV-lyH6WHDwcrLeKCDRc5laJZGzslgu5tbhAyZ2k6IJI5XXnQ5rcip0QBrQubi2bTrcvpLme=s1600-w800",
+      "placeId": "ChIJ02uLeQBjOIYRK3qTWbjJIVI"
     },
     {
       "id": "d0038",
@@ -1174,7 +1248,9 @@
         "Saturday: 11:30 AM – 9:30 PM",
         "Sunday: 11:30 AM – 9:30 PM"
       ],
-      "address": "20800 Pidgeon Hill Dr suite 140, Sterling, VA 20165, USA"
+      "address": "20800 Pidgeon Hill Dr suite 140, Sterling, VA 20165, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGo1aecQtE3Q4ysgQvF1zDZtoeSZocTBO-cjy1Rz9Id-fpGxJvrOhDyhWjWNWfuUq7OetuAHqXsac72rVgOxOWa-lWrFMutr0HaoX1SUSixFYN6tkIx6bYrnOqVRIkHbvdGzFB08vkUmPh8=s1600-w800",
+      "placeId": "ChIJHaOF8kk5tokRFvhzta22AY4"
     },
     {
       "id": "d0039",
@@ -1204,7 +1280,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 9:00 PM"
       ],
-      "address": "1293 Roosevelt Ave, Carteret, NJ 07008, USA"
+      "address": "1293 Roosevelt Ave, Carteret, NJ 07008, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUeBJFZa57QMdciP9PJsuavPvpbLk67q-TOhShtWqPnk-ufq6OcY5TbbrbSE0KUJ4RdmQB59uol9Yjtto7cD77rjrMm079W9dTaEY4R8ysUPPrnt-ELhievDNLRoynnl87RateP1pYltfx=s1600-w800",
+      "placeId": "ChIJnf_pHwC1w4kRPG7U1l2UaeY"
     },
     {
       "id": "d0040",
@@ -1234,7 +1312,9 @@
         "Saturday: 9:00 AM – 9:45 PM",
         "Sunday: 9:00 AM – 9:45 PM"
       ],
-      "address": "257 S Broadway, Hicksville, NY 11801, USA"
+      "address": "257 S Broadway, Hicksville, NY 11801, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGnJU1pN5y8y1d1Xd95TYR-v_RYT3wg68bKJUrqKCy2OCo0x917JODwON9JfNFOQlo3Ff3VGqgKdTekq5-SNiSvYjY97PLMKFbFoICufXUghjw7ToZ0bBBATnQGZ0gTAi7spoM3=s1600-w800",
+      "placeId": "ChIJA1SIqmeBwokRQqpUktJWM9w"
     },
     {
       "id": "d0041",
@@ -1264,7 +1344,9 @@
         "Saturday: 11:30 AM – 10:00 PM",
         "Sunday: 11:30 AM – 10:00 PM"
       ],
-      "address": "2325 W Taylor St, Chicago, IL 60612, USA"
+      "address": "2325 W Taylor St, Chicago, IL 60612, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFbZxnZvW4hbnEt6KNUst3ItpTNubt7jc4BFwmxOOZRWhiSKg_5wjhhnrFVSj-fCTv0gVMurJ7RqgjnW7KrvjtQUPaK-y_YGlX2yxhN94jZf8k7c4-RgZDAtyTYLbIqWLbBwKMvx7kC-idc=s1600-w800",
+      "placeId": "ChIJR3gQLHQtDogRTz5bsboEbCw"
     },
     {
       "id": "d0042",
@@ -1294,7 +1376,9 @@
         "Saturday: 9:00 AM – 9:30 PM",
         "Sunday: 9:00 AM – 2:00 PM"
       ],
-      "address": "Parking, Lot, 935 US-42, London, OH 43140, USA"
+      "address": "Parking, Lot, 935 US-42, London, OH 43140, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHte09yebjQJfDPf24yasBZpO9X_FGtAa-KpHCWhFLPc6KLkQN_N5Sq9Bn6_sBALTHiCMDaMu74KT8W4Whrgj2LFRpsCf-7rWLBzdTksAVsEpHjurIaQSRGJ6Os66-LNgb5d6UpPg=s1600-w800",
+      "placeId": "ChIJW53SxROlOIgRSJtVxQTYEzU"
     },
     {
       "id": "d0043",
@@ -1324,7 +1408,9 @@
         "Saturday: 10:00 AM – 8:00 PM",
         "Sunday: Closed"
       ],
-      "address": "6022a OH-95, Mt Gilead, OH 43338, USA"
+      "address": "6022a OH-95, Mt Gilead, OH 43338, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG8gsBDyy5F5zpX8srRoq_2I13mxE148frxjprFckENhXzoq7ydqq-srTMAxff2aPHYwxIQnso2H4LjUz0vGWCUNwzbVhePKFfcZQKMvKrrq72s0NsfMjvE1cGCm_UIkIb76Eyn=s1600-w800",
+      "placeId": "ChIJm7HScwCxOYgR04BgDRd-JGI"
     },
     {
       "id": "d0044",
@@ -1354,7 +1440,9 @@
         "Saturday: 12:00 – 9:00 PM",
         "Sunday: 10:00 AM – 10:00 PM"
       ],
-      "address": "Indian restaurants, 1460 N Ridge Rd, Milton, PA 17847, USA"
+      "address": "Indian restaurants, 1460 N Ridge Rd, Milton, PA 17847, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGfbjMePfrDrC5X0XJ3xylviTQ2fz0C6SRYokbGXJH8QkAyEjenDBbCNLFIzg1qvFzLdEiYYGRcv1FWNpLJqx2pquvGC0keasLCSfP8bv8Wo72hXnpsmUboRVujTER0av0abaw8fw=s1600-w800",
+      "placeId": "ChIJpU8ZOUoDz4kR7qQKyYx7I6o"
     },
     {
       "id": "d0045",
@@ -1384,7 +1472,9 @@
         "Saturday: 1:00 – 11:00 PM",
         "Sunday: 1:00 – 10:30 PM"
       ],
-      "address": "5150 Tecumseh Rd E, Windsor, ON N8T 1C4, Canada"
+      "address": "5150 Tecumseh Rd E, Windsor, ON N8T 1C4, Canada",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE2Sx_IaHevJYgXv0cMHIsl5UsUBc1CNpEgt2i1BRfWoy_19lGOwMRzDFxKDKMTKx3AFkOQiwc3P6LybfwBgbTqEoFajFKFlVF_jVscgVmmoIgoIvN5IZLgNrTnC8hbP-2_rvrq3jLLQsFk=s1600-w800",
+      "placeId": "ChIJVxdn3HwrO4gR8CCfxGYtYgE"
     },
     {
       "id": "d0046",
@@ -1414,7 +1504,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 9:00 PM"
       ],
-      "address": "1019 N Main St, Palestine, AR 72372, USA"
+      "address": "1019 N Main St, Palestine, AR 72372, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGSs4Cp2ZeaJ-5l9hSANozJ-zpBRfGQmxz-v2hEOTNSPBl0ciXTkQRh2WvUhFsSRJ2FPf4b6pWwoJRy6aurXg6yD0I4FhIOraUIDSPH_dGVVaRTI9lc94mo4xeWcnD9GF4seFwT=s1600-w800",
+      "placeId": "ChIJjcyCyAqT1IcRD7WbuBmVkn0"
     },
     {
       "id": "d0047",
@@ -1444,7 +1536,9 @@
         "Saturday: 8:00 AM – 12:00 AM",
         "Sunday: 8:00 AM – 12:00 AM"
       ],
-      "address": "485 AR-149, Heth, AR 72346, USA"
+      "address": "485 AR-149, Heth, AR 72346, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEPykkn5USRVSW8n3Gw8-RVBVA8JcXWRGOHt7cWUVsiIlnFuh12ZoGoeEcZegV4oOaUBIWl-BA15H6hhYfTxcWza_PLs8EUkf4BgWcMzMnmCUnMAESuMzmt08J5Gptaf6Vf2Ry3=s1600-w800",
+      "placeId": "ChIJORxyYZwH1YcR0mJDRtLszvM"
     },
     {
       "id": "d0048",
@@ -1474,7 +1568,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "2170 Co Rd 100, Carthage, MO 64836, USA"
+      "address": "2170 Co Rd 100, Carthage, MO 64836, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEU0Gzyr6NRGnhnmjP7ubn6Au9VcVSIhZ13mVYTyhG62iGMBfq8O9JuW9QjU_bHdQOc11QL1lRYArvOho8PNwIn8g2bDW2O5gBZfoa4IIcgQMIbsbqTasHNW2nG79id4HeEEJdtC2MaeC50=s1600-w800",
+      "placeId": "ChIJaRv2voaFyIcRcGX6EdBX204"
     },
     {
       "id": "d0049",
@@ -1505,7 +1601,9 @@
         "Saturday: 8:00 AM – 10:00 PM",
         "Sunday: 8:00 AM – 10:00 PM"
       ],
-      "address": "31303 S Hwy 69, Big Cabin, OK 74332, USA"
+      "address": "31303 S Hwy 69, Big Cabin, OK 74332, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHx4WT8iBbtcLDnnqXCrrCGIB4xWaQnnVsesDnBYor5n-HdEyliDY_lmGStPrvKls1aNucKG9PyEGig1Q7X94hydgW1-lpMhmyGh4HtGk5Focc3zIhdUqdWz0ptBdSmUC6KjEy-Ir5PFr7B=s1600-w800",
+      "placeId": "ChIJpco13L7Tt4cRmClhFtHrCNc"
     },
     {
       "id": "d0050",
@@ -1535,7 +1633,9 @@
         "Saturday: 9:30 AM – 10:00 PM",
         "Sunday: 9:30 AM – 10:00 PM"
       ],
-      "address": "3967 Main St Unit B, Kansas City, MO 64111, USA"
+      "address": "3967 Main St Unit B, Kansas City, MO 64111, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGINgkpBWW0FivFxexzV5P2e97Q5I4RfT-Pg1ohigbjhudViAM-ymGqEbEVe3uyYhdiCqNv7tYQb9alWizU150rs9dzGmahr7y9F-z4r58Pxkk4DnirrWyydDqathsp3sWskX4A=s1600-w800",
+      "placeId": "ChIJHz1tPr_vwIcRdMJyRaSSexw"
     },
     {
       "id": "d0051",
@@ -1565,7 +1665,9 @@
         "Saturday: 9:00 AM – 11:00 PM",
         "Sunday: 9:00 AM – 11:00 PM"
       ],
-      "address": "3209 Henry St SW, Bondurant, IA 50035, USA"
+      "address": "3209 Henry St SW, Bondurant, IA 50035, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEvdxKqKxw3oFXe7IQzYEzuWNL3990kSwgFI4EcaLt0ErIYfcMuAItT5sZ8bnXeufl0AZpsk_8uAgjp2r62ddmDicIPMEdtz4gdnstriMsXr4GFw21U-GL6D9sudBkXQryRk6V6_XTpFWDd=s1600-w800",
+      "placeId": "ChIJfYj_UM2T7ocR3kmQc6pj2A4"
     },
     {
       "id": "d0052",
@@ -1596,7 +1698,9 @@
         "Saturday: 10:00 AM – 9:00 PM",
         "Sunday: 10:00 AM – 9:00 PM"
       ],
-      "address": "2110 W St S, Grinnell, IA 50112, USA"
+      "address": "2110 W St S, Grinnell, IA 50112, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH0NY8vznLWDDYTyqoFegAjAr7tA4PVVitw4kcuBtgCoLrAzqOLidKkUST3GL6ovlkxenYGHO0nx50J1E1RTTDUFJfX0lm3AEckimSSKjtU0gapsJl9EDyL-SzFwKmXMi8VMUkjBA=s1600-w800",
+      "placeId": "ChIJVamKPQ5t74cR2AtsGPZPy18"
     },
     {
       "id": "d0053",
@@ -1626,7 +1730,9 @@
         "Saturday: 10:30 AM – 8:00 PM",
         "Sunday: 10:30 AM – 8:00 PM"
       ],
-      "address": "4325 Clearwater Rd, St Cloud, MN 56301, USA"
+      "address": "4325 Clearwater Rd, St Cloud, MN 56301, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG4u3wUn8c-56BfaZ9K7A6koJQXvwcQLWibNHiqQyW9Mgfi4fl86OXWyDa1CQlI2Mf2qqhXFI0apporJIkypcTrwMJPMDWfPSGr-MsmPbA03UzuCc_YpcupozVCZ8sV09k0egQcb56jbHR0=s1600-w800",
+      "placeId": "ChIJH9FQUQCLtFIR_2XPlWPQbpg"
     },
     {
       "id": "d0054",
@@ -1656,7 +1762,9 @@
         "Saturday: 7:00 AM – 10:00 PM",
         "Sunday: 7:00 AM – 10:00 PM"
       ],
-      "address": "Indian spice Bite, 309 Carlton Rd, Wamsutter, WY 82336, USA"
+      "address": "Indian spice Bite, 309 Carlton Rd, Wamsutter, WY 82336, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHdpiJeJSBxvw7OffKM-tijNaI9vvDjrDIX61bJpMbIGw4DkjNSwQuws6FrqxKIxRr7EUce-GUi-NvzQRLYWKEaolVw5G1bgqL68UgRvmh4bmFngB9M5AMpA8ebYebKGe_RjESgVBycJxjd=s1600-w800",
+      "placeId": "ChIJwWPDNQCBXIcRNHeOyMizfs0"
     },
     {
       "id": "d0055",
@@ -1687,7 +1795,9 @@
         "Saturday: 11:00 AM – 2:00 PM, 4:00 – 8:30 PM",
         "Sunday: 11:00 AM – 2:00 PM, 4:00 – 8:30 PM"
       ],
-      "address": "503 24th St W, Billings, MT 59102, USA"
+      "address": "503 24th St W, Billings, MT 59102, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGpJoWO8QcBYHze8YVXn9FgDH1EPwwyjHAdVg7BNcHzm6rrFTS3_hvkLXQ8PWL8Ia1jtRGQjWNOyn1rQlJOYHftJISAElYGve-s29YFuMBY_Dw5Gzdvm0iUtUNs2ZkRQxIcHI73=s1600-w800",
+      "placeId": "ChIJ_0O0gjB7SFMRlVqpfPhkm1A"
     },
     {
       "id": "d0056",
@@ -1717,7 +1827,9 @@
         "Saturday: 11:00 AM – 2:30 PM, 5:00 – 9:00 PM",
         "Sunday: Closed"
       ],
-      "address": "90 W Madison Ave STE C, Belgrade, MT 59714, USA"
+      "address": "90 W Madison Ave STE C, Belgrade, MT 59714, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJQD4NC3mEDOOH3axVxJy7PzSrAPZtrIgwmgtZlJio1Nfhbugthl2gtMQS-xMvEeAI2lhMkAyxnpZESP3JzOZXr2BIFXmdadPhp3PLp4YtLTATEMSs-oOrYN6-Y_An-ul7LB487w=s1600-w800",
+      "placeId": "ChIJJ8aRfhw4RVMRVdQQ2lPhyXs"
     },
     {
       "id": "d0057",
@@ -1748,7 +1860,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 9:00 PM"
       ],
-      "address": "Located in Lincoln Creek Behind Mexican food truck Across the street Pilot exit 99 at I-5, 2421 93rd Ave SW B, Tumwater, WA 98512, USA"
+      "address": "Located in Lincoln Creek Behind Mexican food truck Across the street Pilot exit 99 at I-5, 2421 93rd Ave SW B, Tumwater, WA 98512, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHRzkTnI-Ht-l1ZtR4cFGvR3sos7sPbkuHeomK-XbilMJoQcSCCm1hJZsKmLgeme6TcuZAw1pLyjkVs-k3ww7AsN-zqaly_5fCmuv-f_Yawkz0zSF4L3_c5ydCx9MQQhkySu4Xr5UJ0dX4L=s1600-w800",
+      "placeId": "ChIJC2aRdUX9kFQR7edO5AJDqrM"
     },
     {
       "id": "d0058",
@@ -1770,7 +1884,9 @@
       "lng": -122.204147,
       "coordAccuracy": "csv",
       "phone": "(206) 697-3120",
-      "address": "16751 SE 272nd St, Covington, WA 98042, USA"
+      "address": "16751 SE 272nd St, Covington, WA 98042, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH77vxnjs6zrtYx7jSx2CFVq8esLulpZiMvPAaBjeTXrcmeVDDeipFcgm_ozHbkvCeRMx4Pxo2l_uODa24_zAwDiKQDIDwAGUvmPBjSRO-lDcB5lIdpz7PgZTEWf0o3ak3MeqPeK2NwU88C=s1600-w800",
+      "placeId": "ChIJn0nde7ZekFQRPWswmXc9-tc"
     },
     {
       "id": "d0059",
@@ -1801,7 +1917,9 @@
         "Saturday: 11:00 AM – 9:00 PM",
         "Sunday: 11:00 AM – 9:00 PM"
       ],
-      "address": "1611 Smittys Blvd, Ritzville, WA 99169, USA"
+      "address": "1611 Smittys Blvd, Ritzville, WA 99169, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHxGbz2wwG76ljWPwgetl3U5lxpJ08TC3gSWh72Cl2UaX0RRet_PJQrcq3OQ_iLFGDMPVe2ee3mTzbTzpQh89J6-DrBXjZTs4ohzyMEdyrmzw1f1yv4es2ElQywAvI2vWmg-6sCbpFpRc7W=s1600-w800",
+      "placeId": "ChIJYSA-FQDfnlQRaGXnvnfa5J0"
     },
     {
       "id": "d0060",
@@ -1831,7 +1949,9 @@
         "Saturday: 11:00 AM – 9:30 AM",
         "Sunday: 11:00 AM – 9:00 PM"
       ],
-      "address": "16365 NW Twin Oaks Dr, Beaverton, OR 97006, USA"
+      "address": "16365 NW Twin Oaks Dr, Beaverton, OR 97006, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGuUYDZEsY4MJoP2RQRKi_-ansUexBNlOYKr61Z-YsRVT1EXvmXgHWxSgYz44R8ka5iIrmnv-d9E9YajcH-PEqmLjGKDcf6Au8J7atTzy-4CtvntB97nnF0FS00wLGEbtw4cJ62bCa1KrQ=s1600-w800",
+      "placeId": "ChIJE8rYcP0PlVQRaO1pN8uQecI"
     },
     {
       "id": "d0061",
@@ -1861,7 +1981,9 @@
         "Saturday: 11:00 AM – 9:00 PM",
         "Sunday: 11:00 AM – 9:00 PM"
       ],
-      "address": "4534 SE McLoughlin Blvd, Portland, OR 97202, USA"
+      "address": "4534 SE McLoughlin Blvd, Portland, OR 97202, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGle9CYGKU2XZy0VNRpHExD84Iym0DGyTg18rPF_aVvEGp6DUKtrUHcRDccAXd0aM9jTTMH3SYrCWPJXLI9VhZANsNt9rp02urkrtwAQJJibauoDPs_kq3QfwIwahOc3PZ6HenxHA3LmJN3=s1600-w768",
+      "placeId": "ChIJxYXupf0LlVQRPIkZIF_DRZ0"
     },
     {
       "id": "d0062",
@@ -1891,7 +2013,9 @@
         "Saturday: 11:00 AM – 8:30 PM",
         "Sunday: 11:00 AM – 8:30 PM"
       ],
-      "address": "2635 SE Century Blvd, Hillsboro, OR 97123, USA"
+      "address": "2635 SE Century Blvd, Hillsboro, OR 97123, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGlHbpouQSYrkkTXlUYHjJZVxDJw8XZnNUDyrwGkh_EOzFisA3diScVQjS3eAXdyO4XacXR3eHwbnRJ-X8wmj3IJcHwvUoGTQls131Jr1OOgao79_1Xpvy2ZEBVn1Z_Yk06yypzfA=s1600-w800",
+      "placeId": "ChIJrSmiTgAPlVQR0GxwCRJkFpw"
     },
     {
       "id": "d0063",
@@ -1921,7 +2045,9 @@
         "Saturday: Open 24 hours",
         "Sunday: 8:00 AM – 8:00 PM"
       ],
-      "address": "12271 Melinda Ln NE, Aurora, OR 97002, USA"
+      "address": "12271 Melinda Ln NE, Aurora, OR 97002, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgaTfvFHD1evcERL_9m9EUGxNpHN3TAuXNkXxP4_EvcX_1MRX-HCxWQ4VLxbW3c-_7hmNclUmZnabwkKv1Iwc9PLM4UKrmq1eM-UOZxsB6QeRltfLSjRKS3zzgX79iHGMfhi2G=s1600-w800",
+      "placeId": "ChIJ-5SF4DxplVQRKc8C1jvAJDo"
     },
     {
       "id": "d0064",
@@ -1951,7 +2077,9 @@
         "Saturday: 10:00 AM – 9:00 PM",
         "Sunday: 10:00 AM – 9:00 PM"
       ],
-      "address": "6035 NE Halsey St, Portland, OR 97213, USA"
+      "address": "6035 NE Halsey St, Portland, OR 97213, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG-u-llleKyeyOj3OH1p0FwEXnsae-Xgn22JC5LEiKON1x0VaBIchj2nyS7y-I4rxW60K_Pz2C1kmtCrari_jV9W8LSGDmVsgyKBm2F2nijHiam8SbPngHrHZuj9Vron-XkmOXJFg=s1600-w800",
+      "placeId": "ChIJmZC527KhlVQRKgiEPQZdMSY"
     },
     {
       "id": "d0065",
@@ -1981,7 +2109,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: Closed"
       ],
-      "address": "Wasco, OR 97065, USA"
+      "address": "Wasco, OR 97065, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH2s2ZPgfSVyKvgPjviPriFqSWlgIu4zDRtwIrXGHeVuO1YycM4wpS3_8HKvD_59LUeLH2vhJvIHevr4hx2MPQ5JAar4KKnIXYNjZ58qU2yTJRc4IdnXSzsLdkG9ahalmn5sAs89SDYruQn=s1600-w800",
+      "placeId": "ChIJtSQWWACHvVQRl72wMZnop3Y"
     },
     {
       "id": "d0066",
@@ -2011,7 +2141,9 @@
         "Saturday: 11:00 AM – 9:00 PM",
         "Sunday: 11:00 AM – 8:00 PM"
       ],
-      "address": "1233 Riverbend Rd NW, Salem, OR 97304, USA"
+      "address": "1233 Riverbend Rd NW, Salem, OR 97304, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGTemn9zsdctwhgK-kANOeHcTszGF1r2zqVeDpCKKKaXUPgYVCaPSY2RplWRanoSGRrhDftwkSJIi8LeTwv477i_nyP5ITh5i4H8T0dBriGYlgeyScwW3zjhjZCz5cq3ubMm4r1JH6qJo0=s1600-w800",
+      "placeId": "ChIJU1jIbLL_v1QRVcJtJAIzCIM"
     },
     {
       "id": "d0067",
@@ -2041,7 +2173,9 @@
         "Saturday: 10:00 AM – 8:00 PM",
         "Sunday: 10:00 AM – 7:00 PM"
       ],
-      "address": "8983 Truckman Way NE, Salem, OR 97303, USA"
+      "address": "8983 Truckman Way NE, Salem, OR 97303, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEF477-JH7e7_qsTnfXzgakpQjQf7YXYDTsgM0BEQPNUXSy14TIJPM4Vk3JbBcNYNd1gFQEbbFqkPbTTGxnHHfKZGktmYyek7xLrwzzpiz5GRuw1Naubeh1Noh5ZQcQVhjXyHDpABYgEVn0=s1600-w800",
+      "placeId": "ChIJ2-CWPx9XlVQRiVEfuN4GGAs"
     },
     {
       "id": "d0068",
@@ -2072,7 +2206,9 @@
         "Saturday: 9:00 AM – 8:30 PM",
         "Sunday: 9:00 AM – 8:30 PM"
       ],
-      "address": "6435 Old Salem Rd NE, Albany, OR 97321, USA"
+      "address": "6435 Old Salem Rd NE, Albany, OR 97321, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFp1URGtoXVKfS24prdiIBLseu_snNJkYwoIv4TWv-dLWmH5Gle6ODEOkThIY0xSEJ1gy3oKaTbZ4lDZe_VY8mQoTGV8VjYCXbe5v5QCQUDkC9H2eO1Q1OO5ZK3hLqw3ZEtPD3C=s1600-w800",
+      "placeId": "ChIJS7J9X3ETwFQRMJQie66zhqc"
     },
     {
       "id": "d0069",
@@ -2102,7 +2238,9 @@
         "Saturday: 11:00 AM – 9:00 PM",
         "Sunday: 11:00 AM – 8:30 PM"
       ],
-      "address": "1510 Fabry Rd SE, Salem, OR 97306, USA"
+      "address": "1510 Fabry Rd SE, Salem, OR 97306, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGTemn9zsdctwhgK-kANOeHcTszGF1r2zqVeDpCKKKaXUPgYVCaPSY2RplWRanoSGRrhDftwkSJIi8LeTwv477i_nyP5ITh5i4H8T0dBriGYlgeyScwW3zjhjZCz5cq3ubMm4r1JH6qJo0=s1600-w800",
+      "placeId": "ChIJU1jIbLL_v1QRVcJtJAIzCIM"
     },
     {
       "id": "d0070",
@@ -2133,7 +2271,9 @@
         "Saturday: Closed",
         "Sunday: 10:00 AM – 8:00 PM"
       ],
-      "address": "33180 OR-228, Halsey, OR 97348, USA"
+      "address": "33180 OR-228, Halsey, OR 97348, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEocrxQqFf49EdnEgXzyuaTHMQfy6QUCeBJjSsOgvsUEu06qu9uZXOoCx8UQ_MnwxfWnabzEOye5Tuax01zoy8AOPWeOsHkNg-iR_WxBlUrmCpnh-kmJQmVsW1C7ZbNjsyUW4-EkI2im7k=s1600-w800",
+      "placeId": "ChIJyT05AkRfwFQRLErDsxRz1RA"
     },
     {
       "id": "d0071",
@@ -2163,7 +2303,9 @@
         "Saturday: 11:30 AM – 8:00 PM",
         "Sunday: Closed"
       ],
-      "address": "2600 Bechelli Ln, Redding, CA 96002, USA"
+      "address": "2600 Bechelli Ln, Redding, CA 96002, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH1N-UrE5DFmurpF_JQQ6Tud1Hf_LDOB0ZMgUl3M-7M5m-lzHYqPbBDexzqVNzb4M7K3Pz6R1RO4g5E4SmawKZT-mZmgr2UENMKyxhl3OzCppJRMNdz-idaY3PLVrS8wGi3JR9W=s1600-w800",
+      "placeId": "ChIJ8YzDsxTr0lQRntRjeRjN35g"
     },
     {
       "id": "d0072",
@@ -2194,7 +2336,9 @@
         "Saturday: 7:00 AM – 10:00 PM",
         "Sunday: 7:00 AM – 10:00 PM"
       ],
-      "address": "3070 Hwy 99 W, Corning, CA 96021, USA"
+      "address": "3070 Hwy 99 W, Corning, CA 96021, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAF7DFqVI5uYSYkNy_hqx-Tl6t9Vvu3PuhOg6wu1fXjKZuDNJY8h6jRKMs4NOifu760MpN3L6P8mq3AN7nzJpHiV6euwc6U2u6Aj9Q-gvO3AMrF3FHP2Uw8m5DE3CNkFk7CHXjz_=s1600-w800",
+      "placeId": "ChIJ90cvN_XygoARxOmjDqI51aY"
     },
     {
       "id": "d0073",
@@ -2225,7 +2369,9 @@
         "Saturday: 10:00 AM – 8:00 PM",
         "Sunday: 10:00 AM – 8:00 PM"
       ],
-      "address": "690 Hillgate Rd, Arbuckle, CA 95912, USA"
+      "address": "690 Hillgate Rd, Arbuckle, CA 95912, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-2dj3ebj8j60lZOYTkmDz7pQurTLdxNViErR2GuR5nsBdBisfoRgOnFDVc_TZVvXxDe5oVeJYHb1cjmIYmF2yzN-CBKOF2-4eWgVXO2zJuwRpL-HdTpbbvg4aLWNq5WVWeQVhLNjUwqJv=s1600-w800",
+      "placeId": "ChIJkYrMDt6ZhIARYByZr-Zdf-k"
     },
     {
       "id": "d0074",
@@ -2255,7 +2401,9 @@
         "Saturday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM",
         "Sunday: 11:00 AM – 3:00 PM, 4:30 – 9:30 PM"
       ],
-      "address": "2242 W Grant Line Rd #101, Tracy, CA 95377, USA"
+      "address": "2242 W Grant Line Rd #101, Tracy, CA 95377, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAF0ECSJwysKQmUmy55zp-xaJMbjGcW6nemt3NswE38xqHJr_8W43_aKWCvxmTUU0zz_U_Pgd1qPkAj4vUYskGtLxcKIBTqL7AKQ97RqRLULmOO4s7lUsldLa6HB3HBGd1XOToiQ=s1600-w800",
+      "placeId": "ChIJm7IcNKYikIAR3sn5DVlUfh4"
     },
     {
       "id": "d0075",
@@ -2285,7 +2433,9 @@
         "Saturday: 8:00 AM – 10:00 PM",
         "Sunday: 11:00 AM – 10:00 PM"
       ],
-      "address": "7400 S El Dorado St, French Camp, CA 95231, USA"
+      "address": "7400 S El Dorado St, French Camp, CA 95231, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGzcTTsZWUT9waFMXVHypmUK-FMmy1oZDpfyOQVDKCVQeOzfhs33AhWCg18w__2a1bmcs7gQfwnl-dOBqRlp0ClqtDnuj-IPcXzPtNmQk3IvUlWnj0xy0AWmAWGJv0_Ljsp07jj=s1600-w800",
+      "placeId": "ChIJrT_-QAAVkIAR4hc0G8wlYlw"
     },
     {
       "id": "d0076",
@@ -2315,7 +2465,9 @@
         "Saturday: 8:30 AM – 9:00 PM",
         "Sunday: 9:00 AM – 9:00 PM"
       ],
-      "address": "1022 Frontage Rd suite a, Ripon, CA 95366, USA"
+      "address": "1022 Frontage Rd suite a, Ripon, CA 95366, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGjiHhLcalu4WwJeAkFXGGj3rB6R-74YakJOsNYeFkcfTodLoea82xtzoTsenlfCiVZfcOVK4eAeEiQ09S3q1FktnuB_Nzu3CJy6DnS7qoxnlxZXH79vAA5o-vhgb84IYrsaBZXKccYsHgI=s1600-w800",
+      "placeId": "ChIJzVNrrO5FkIARoUY_tu7S3Ok"
     },
     {
       "id": "d0077",
@@ -2345,7 +2497,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "4124 E Mariposa Rd, Stockton, CA 95215, USA"
+      "address": "4124 E Mariposa Rd, Stockton, CA 95215, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEk3TGM1Luzlv-ubO8CSi8oTSviJmAamCj4YsRDIHlNyaHg2QRMyEHL8UCb1kHCVyHHbTxe5yPR118UTpWRDe0uoFSBb0uIA4XDNIltzyZLP4NdiYWuBThAmgY-3-zkHptwN43a=s1600-w800",
+      "placeId": "ChIJFUvXLQBtkIARK4u8MF2EbhA"
     },
     {
       "id": "d0078",
@@ -2375,7 +2529,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "998 S Dr. Martin Luther King Jr. Blvd, Bakersfield, CA 93307, USA"
+      "address": "998 S Dr. Martin Luther King Jr. Blvd, Bakersfield, CA 93307, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE28jckGf-wGAPWQfzq_qW047IIGS3l7ViaigdIrhGogGJb_LIu99EihQIXqpgqkFEmi2gQaTemwPhVxbHZuNR78SsaHsd_tABl1wzItO7zP_zXLRGjrgzePAg5oH0yh8eYHf8p=s1600-w800",
+      "placeId": "ChIJPaI-jQRr6oARkeEofhlkhXE"
     },
     {
       "id": "d0079",
@@ -2405,7 +2561,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "1601 S Union Ave, Bakersfield, CA 93307, USA"
+      "address": "1601 S Union Ave, Bakersfield, CA 93307, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFTtq_RPXV2iozk1RqlGSHn_0RJVREQF7J3qFAQTsdqBhwoGHoV9T9PD0NQLoKqI-eLrLr2pEmvyPdSesTtIj7JY9DTQ03TuHxWXvhXYWFAPH44Us-yBePREXyMeBDIdCf-SZ4sgzIN7yo=s1600-w660",
+      "placeId": "ChIJ9dn_hStr6oARdVFNXI0PyFE"
     },
     {
       "id": "d0080",
@@ -2436,7 +2594,9 @@
         "Saturday: 9:30 AM – 9:30 PM",
         "Sunday: 9:30 AM – 1:00 PM"
       ],
-      "address": "3150 Panama Ln Suit B, Bakersfield, CA 93313, USA"
+      "address": "3150 Panama Ln Suit B, Bakersfield, CA 93313, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG_DR1v1WZWUxrk4gVza7B_jtsTzONr7Tl2BhuFtGxdCg6RNufLFQCOiLmBkX4VRJRQYEbD9WcsfyzbrDFpZ07NO8fJUs-C-M5RfRDohbTFEJcN4qBPsMDxU-rIeYim8HG37_KB=s1600-w800",
+      "placeId": "ChIJD3LoOf5r6oAR15l-LIJ58Iw"
     },
     {
       "id": "d0081",
@@ -2466,7 +2626,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "17070 Riviera St, Bakersfield, CA 93308, USA"
+      "address": "17070 Riviera St, Bakersfield, CA 93308, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHvNW9J5tDgg0fFBT7-yaTgz1_zJ4VkK8T8FRGxq1w4u4QQ8ZNBGxhB4Qi3TZgusW9EmnhuynpE0svx0MbBbhnuUfiensX5Zh9tmERnw_OXGKM3SdVFofRSIgdc1hyd7Loqkp7MAw=s1600-w800",
+      "placeId": "ChIJccEAT0JZ6oARBkKa2_kBzHs"
     },
     {
       "id": "d0082",
@@ -2497,7 +2659,9 @@
         "Saturday: 5:00 AM – 1:00 AM",
         "Sunday: 5:00 AM – 1:00 AM"
       ],
-      "address": "20404 Taft Hwy, Bakersfield, CA 93311, USA"
+      "address": "20404 Taft Hwy, Bakersfield, CA 93311, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEuLn6UnS3pjGnqcE4eBZzyIKbPd1l_fZZcNZzbXjmduhFVcExk9tth_X6ZwXrMmcQDna9-Wnc2pv_xrght2-NJUf5C6BnmuA7i2OULkzQjjO6fhs8h3O46JuXViIJAN4fSjdcz=s1600-w800",
+      "placeId": "ChIJyyYqXABH6oARHKfntDZTjw4"
     },
     {
       "id": "d0083",
@@ -2527,7 +2691,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "10402 Compagnoni St, Bakersfield, CA 93313, USA"
+      "address": "10402 Compagnoni St, Bakersfield, CA 93313, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFZ8Jeemu2FBRhtVj7oxQXRRAOh-e8NBa3M7ZTfOGXsjrD1vyI6QLEgj2RHXTMai54bA3cvj_6KvgkKGpX8B1fUIwAz5OlfAehWZkf4Du_TLCKOZYO5CEX6CP-GYUTJV46ys44tvZEU97Aq=s1600-w800",
+      "placeId": "ChIJmXRrsDwV6oARQ8jr8c72g0s"
     },
     {
       "id": "d0084",
@@ -2557,7 +2723,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 11:00 AM – 9:00 PM"
       ],
-      "address": "2546 S Union Ave, Bakersfield, CA 93307, USA"
+      "address": "2546 S Union Ave, Bakersfield, CA 93307, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFV-j6Zat2P7nvNuJyDkSFhhoqs9m4u77YhBpSZQQuX8U3ykoadkhZiqw0tXOGEMlxviEClEQYlXazNYXFtICQlVowGOQQMsYvbZeMZq6_l8YtS_87GzuYOliCbxnjSPxGI6xLEsTD2Mprx=s1600-w800",
+      "placeId": "ChIJEd88241r6oARvt_36SxlEzY"
     },
     {
       "id": "d0085",
@@ -2588,7 +2756,9 @@
         "Saturday: 7:00 AM – 9:30 PM",
         "Sunday: 7:00 AM – 9:30 PM"
       ],
-      "address": "8247 Kimber Ave, Bakersfield, CA 93307, USA"
+      "address": "8247 Kimber Ave, Bakersfield, CA 93307, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFVg6u3FCkvmcy1s360gofR9byz0DG9gQPczhnfaZqyWckPBTpgOGKvOTxi4VFJSwT-cQIgNGRMqXEP_vEnIk_qsNJeLDxayBbCiHOjDWGlLosSD5DcWuR5z1nfmifmED4cHy0a=s1600-w800",
+      "placeId": "ChIJg0Srdx1t6oARsxwdzMuNqQM"
     },
     {
       "id": "d0086",
@@ -2618,7 +2788,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "14831 Warren St, Lost Hills, CA 93249, USA"
+      "address": "14831 Warren St, Lost Hills, CA 93249, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG1zAHJuKU0iFrFxrRiFItjJSvqwtDIvycVSgTnH0lJfJTrkPvGxKzh5IUQ1FJWoNKQQj6DtJLQwwQIeHeWC-3cH_PCeM4Iz8n6HRjHYBTIjM4TSyDAyq3ficLvCORfBGdSY2sY=s1600-w800",
+      "placeId": "ChIJjd9BKlcR64ARRs56BHSRiJM"
     },
     {
       "id": "d0087",
@@ -2650,7 +2822,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "2500 I-10BL, San Simon, AZ 85632, USA"
+      "address": "2500 I-10BL, San Simon, AZ 85632, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfswZRSWJPgIh0slGR80rsYyZtFNOjONFLB9uSk6XA5rkPGSbhObN5J2XlXFoS4GlbfIigTEk2BCD_UFZZWUMS-Mg-CcRd72lI3wDUWJHY32YYWTnfl5AjhLzizwldoKCzF-5HXt-BunSz=s1600-w800",
+      "placeId": "ChIJj-WiSyLL2YYR3rrXq9uq5-Y"
     },
     {
       "id": "d0088",
@@ -2681,7 +2855,9 @@
         "Saturday: 7:00 AM – 10:00 PM",
         "Sunday: 7:00 AM – 10:00 PM"
       ],
-      "address": "3300 N Chesley Rd, Eloy, AZ 85131, USA"
+      "address": "3300 N Chesley Rd, Eloy, AZ 85131, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGp8x_E5Aj_5BpCEs51RiYmiJSzNxET0mog6g5pVTnyWyiSuJGmhQiSm_sElaAQHNsnjuWIb0ZYqUIB8TvyQGxf2NgYQ0WRWY_fmb1TSCJODcZrVC77BybcgqHBBB6iZpyFS1kJrf1Fdoiz=s1600-w800",
+      "placeId": "ChIJKaQJHctvKocRoodLwd90K7o"
     },
     {
       "id": "d0089",
@@ -2712,7 +2888,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "Located inside Crazy Fred’s Truck stop, 2770 Historic Rte 66, Kingman, AZ 86401, USA"
+      "address": "Located inside Crazy Fred’s Truck stop, 2770 Historic Rte 66, Kingman, AZ 86401, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEdXJd_ndlpRs7hbpoeEH5c5Ta3vaAwC_2lCqXwWTKcKMxC1DF_UMhLwLuh3-IfSVjaXmb-e2i7Y1R6KX1Chm1L3ScXAuU6zXeGos8iqitYudG8k8lfc0ddE7JL0nAgk8p64zGU=s1600-w800",
+      "placeId": "ChIJw4bDx0_hzYARAfUZhvV5v3M"
     },
     {
       "id": "d0090",
@@ -2742,7 +2920,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "12470 Frontage Rd, Yucca, AZ 86438, USA"
+      "address": "12470 Frontage Rd, Yucca, AZ 86438, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEG9SORDZT7b9VPocJNc72imVi_-OPS9ahvK5xVjQpti9L4sa-k8pd3XUS_U3uvoPVuPytY3BDduwhdKw--jepE7W-jQCiVHE2Og-RQbJbHXfGuv7bV33dVHqEfVehQyVMeT5Sk=s1600-w800",
+      "placeId": "ChIJ94WhFN8BzoARZ2aoFfyKu90"
     },
     {
       "id": "d0091",
@@ -2772,7 +2952,9 @@
         "Saturday: 10:00 AM – 9:00 PM",
         "Sunday: Closed"
       ],
-      "address": "25240 W Pima St, Buckeye, AZ 85326, USA"
+      "address": "25240 W Pima St, Buckeye, AZ 85326, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAENcYHPhtCPenWdsBQwoJiYU_LdMMR-h2COpxeLZRcld9oG19cPt4HGwTlqGln-H122VrPrvhANS10DDsqXH10xM53Js9NV-P6FyAbDErM-xFDTn5pmfU9cRyFod60_Cwn_XANK=s1600-w800",
+      "placeId": "ChIJKXfml-ZLK4cRXfIAbFlKdok"
     },
     {
       "id": "d0092",
@@ -2802,7 +2984,9 @@
         "Saturday: 10:00 AM – 10:00 PM",
         "Sunday: 10:00 AM – 10:00 PM"
       ],
-      "address": "304 I-20, Marshall, TX 75670, USA"
+      "address": "304 I-20, Marshall, TX 75670, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHUJgy8kiZ22dw4dKpAIsDryUqSHESsKcq9RaIkYGJFM5Vu2nRrpM1w3zWgAW2sYwhpZ5P3sKpCUlYMOrOQB4EYzE-sDX2WgkcOEjKL7Xi6D9mA5CyGdW_oKNtEuTlUIVClvsi1=s1600-w800",
+      "placeId": "ChIJVb_lm6n3NoYRjR4USgOUChM"
     },
     {
       "id": "d0093",
@@ -2834,7 +3018,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "209 Weedpatch Hwy, Bakersfield, CA 93307, USA"
+      "address": "209 Weedpatch Hwy, Bakersfield, CA 93307, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEm_1y_HlmR5ZkBSsgZzSxDieI8mMmkSH7Jbqjc0Fs5wSVEo7hR9oR2AXDzaqFUjAJx-MsWPM-uxnJkMz0GoHtbURStg5d2XYhZeLK6qblYvtlJIvldS40LllY0r2kUQ9p2ORE_uA=s1600-w800",
+      "placeId": "ChIJdzkoJPls6oAREmHrHtCo7i8"
     },
     {
       "id": "d0094",
@@ -2864,7 +3050,9 @@
         "Saturday: 10:00 AM – 9:00 PM",
         "Sunday: 10:00 AM – 9:00 PM"
       ],
-      "address": "7800 Batavia Rd, Dixon, CA 95620, USA"
+      "address": "7800 Batavia Rd, Dixon, CA 95620, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGdqvEkT-fXfMk5bF5-aKGpwo0Ms3ft9rWR2BlO4EoX3D8aqJVms82pvivlwb-zrHHGGMA-4t2B2xTmH0hWNktFvNze1s6qkkpoK4zg52K1yV-AHPAMu_7MIFzt-a9i76Bp2R0=s1600-w800",
+      "placeId": "ChIJJ0M90L4lhYARs5N0ECY5D5c"
     },
     {
       "id": "d0095",
@@ -2897,7 +3085,9 @@
         "Saturday: 6:00 AM – 12:00 AM",
         "Sunday: 6:00 AM – 12:00 AM"
       ],
-      "address": "22263 US-59, Queen City, TX 75572, USA"
+      "address": "22263 US-59, Queen City, TX 75572, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFIN9ZMDucwxSve1CcMraO0rVB4ihP4fTonFSS9e0dbu7cdXYYPcXM-A6DLHZHifU0HbAbcwGC32_5d1dEVIUx7F09-MCgQ_gl0GsafsD0V2OIxjDfu-RAy7UNOPd_RPAfWI2Lu=s1600-w800",
+      "placeId": "ChIJp9qaq_U7NIYRXwr2eSFZFU8"
     },
     {
       "id": "d0096",
@@ -2927,7 +3117,9 @@
         "Saturday: 10:00 AM – 10:00 PM",
         "Sunday: 10:00 AM – 10:00 PM"
       ],
-      "address": "12828 Winchester Ave, Bunker Hill, WV 25413, USA"
+      "address": "12828 Winchester Ave, Bunker Hill, WV 25413, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFAooMYtrlvUv-yWIfWriv-uSJQR0C4HardgUb50_BFU7ia0YZU8quVyuiTBzLtTb09lB3m3OpHgUGQYoQSJU0WfQaEbuB1cLUJ4iiP5iEbEIsjun_IGotS4XUthkdEfigkeEJzTCkWz0v9=s1600-w800",
+      "placeId": "ChIJK_DDGw_5tYkRIKVBpaDqfcs"
     },
     {
       "id": "d0097",
@@ -2958,7 +3150,9 @@
         "Saturday: 11:00 AM – 9:45 PM",
         "Sunday: 11:00 AM – 9:00 PM"
       ],
-      "address": "2201 SW Railroad Ave, Hammond, LA 70403, USA"
+      "address": "2201 SW Railroad Ave, Hammond, LA 70403, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFg1SxRVwRcyLL6MfJKuY5F88hkesRhgVd0n44OXzHOvuOUDgUApLvtYSGEhBJ-wdEzzwSZw42hYvh8DO9ocGjxTIVK2XNRUTfe1xlJh8tQ5dwexsavcrZvc7TRKnwDBql_Otw_=s1600-w800",
+      "placeId": "ChIJVVVVFikjJ4YRN7Brrofq6VU"
     },
     {
       "id": "d0098",
@@ -2988,7 +3182,9 @@
         "Saturday: 6:00 AM – 12:00 AM",
         "Sunday: 6:00 AM – 12:00 AM"
       ],
-      "address": "1703 U.S. Rte 66, Moriarty, NM 87035, USA"
+      "address": "1703 U.S. Rte 66, Moriarty, NM 87035, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEmNQA8NxizSoUQhtJ2Q2PZXAyOnSG3BAb-1aspdhynT5h5YAv0FdZxm1OY0iOBzVEsfA7BknnUiKwIPSA-jhfeqa4N8-F7_YtWy01K0OiBoF9uF-JRBfNmbYT-bcFUTm1xpPTHOUNObHZv=s1600-w800",
+      "placeId": "ChIJtT7Q1FbHGIcR61bxq8R4NIA"
     },
     {
       "id": "d0099",
@@ -3019,7 +3215,9 @@
         "Saturday: 11:00 AM – 9:00 PM",
         "Sunday: 11:00 AM – 9:00 PM"
       ],
-      "address": "1502 S 3rd St, Laramie, WY 82070, USA"
+      "address": "1502 S 3rd St, Laramie, WY 82070, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGNU13oOFfkMDCSH9gGMmnh6tUfX0liNlHIO0gI1ZGrIusxMFD8Gx8-an__ysXaYiJLDvuICxVnEk0_iLy02eXIk0V1mczj1x0zKRUZSYppY40wI3w1LJLBaKVP6FXxwod2evPC=s1600-w800",
+      "placeId": "ChIJix4HHQqPaIcRv171GrxDtP0"
     },
     {
       "id": "d0100",
@@ -3050,7 +3248,9 @@
         "Saturday: 6:00 AM – 8:00 PM",
         "Sunday: 6:00 AM – 8:00 PM"
       ],
-      "address": "4850 Interstate 80 Service Rd #1, Burns, WY 82053, USA"
+      "address": "4850 Interstate 80 Service Rd #1, Burns, WY 82053, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAF8f2HIXGaI_w4W5SoNlvk0OIKS2BW5JVXF_KA89We9n1coPAWXgdJBn7wsx0B5AEtvMwgVsO1yFNTHm0oh2abA3oiUy-SwxwWmzWLiEUZDTWmumZ9pYvmr-PorqktDO1ZZZ_8o7w=s1600-w800",
+      "placeId": "ChIJW6yLpRUGb4cRZfSal2kY14U"
     },
     {
       "id": "d0101",
@@ -3080,7 +3280,9 @@
         "Saturday: 12:00 AM – 8:00 PM",
         "Sunday: 11:00 AM – 12:00 AM"
       ],
-      "address": "8853 Three Flags Road #501, Hesperia, CA 92344, USA"
+      "address": "8853 Three Flags Road #501, Hesperia, CA 92344, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFiw_JOweG14wWn17hOOSwOO-dkRDwNTOLg0CqiLEWStCvxx0TmZ8D1BwQK4tWuYdHkqRUyNhutK2GzO9vEsJtZgrf86zEioNUjIzMj2C9GF3UoEeUcE-_Wh5kAMk2pDndM8aew=s1600-w800",
+      "placeId": "ChIJ-8545jpow4AR85FBASsElh4"
     },
     {
       "id": "d0102",
@@ -3110,7 +3312,9 @@
         "Saturday: 8:00 AM – 10:00 PM",
         "Sunday: 8:00 AM – 10:00 PM"
       ],
-      "address": "787 Montague Rd, Yreka, CA 96097, USA"
+      "address": "787 Montague Rd, Yreka, CA 96097, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHEAAks_N1C7NZbivvP5ZRzRciKhzPsQJfnikHA5NAX6_DDnKm5bbprvuIfpiNsHEq_5aVKWuvwhUQLPVfkuI2JtmE4HEOhwm-ICy5ZxEP6EzfqlINHfcQaniR_71xfSC-VhPJYKuxeDKWK=s1600-w800",
+      "placeId": "ChIJmespsuZFzlQR6x5KLvCDrIg"
     },
     {
       "id": "d0103",
@@ -3140,7 +3344,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "1391 Lawrence 2140, Sarcoxie, MO 64862, USA"
+      "address": "1391 Lawrence 2140, Sarcoxie, MO 64862, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUZLlhe8cDBy8Eo1x75Xcj7kU-74INMhxsR9G5hlaloLyTXDGCXBFkbSCYmZc8Zyy9q275WUeAoGqOCyREw8bcGolIeP8LnCucrojr66eP2JehGSJymN0znLYWCQhpVTClf7fY=s1600-w800",
+      "placeId": "ChIJg45bHA2jyIcRu9Mqnhwwgt0"
     },
     {
       "id": "d0104",
@@ -3171,7 +3377,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 9:00 PM"
       ],
-      "address": "1107 Georgia Ridge Dr, Mulberry, AR 72947, USA"
+      "address": "1107 Georgia Ridge Dr, Mulberry, AR 72947, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHjges3pLwRlll3E3i83z3KAICKDSX7gS8gyx94vKGJpL5H0k6Dz4gTRbaml1s0H11YBZ_JzEm0YQy5PyWKnhd3mfCAGLuuWKSwX0s2ocJfLOPqvK_zziK_HfqtlVdYXb8SKtSw5A=s1600-w800",
+      "placeId": "ChIJP0-bKYmr3oARQbUw72rLDI0"
     },
     {
       "id": "d0105",
@@ -3201,7 +3409,9 @@
         "Saturday: 8:00 AM – 9:00 PM",
         "Sunday: 8:00 AM – 9:00 PM"
       ],
-      "address": "10874 OK-44, Foss, OK 73647, USA"
+      "address": "10874 OK-44, Foss, OK 73647, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFOgHqedjYY4D8RXaemi25DNL_AsAOiv8_8rL-rFgD7vv1EjHERoBvC0GmLf1A2NTeSKdjZ6KsVtXxDDO3t0FWx210sWj992O5RJhMLQJpxnqXicsJ6oqlDbPWX0kl_r7pUrDIxfJ-a6Ko3=s1600-w800",
+      "placeId": "ChIJF5ArICgHrIcRkjI4116OT0c"
     },
     {
       "id": "d0106",
@@ -3222,7 +3432,9 @@
       "lng": -83.41263,
       "coordAccuracy": "csv",
       "phone": "(740) 604-2578",
-      "address": "870 US-42, London, OH 43140, USA"
+      "address": "870 US-42, London, OH 43140, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH03fSFxuHmwL4YStS5hNHNUY_TRINgLA_F31FUuuddOLX4DcfiQNHdNdRYu8kaXL0EOBfG1Gz7fLXy0AtEFoJ54-BqzW_5pRMYRF-Sf0JNzbhLF7sJ596HcLvo1DgqFCmrZmVw=s1600-w800",
+      "placeId": "ChIJFYTOloSlOIgRgVnX2WYD3ZM"
     },
     {
       "id": "d0107",
@@ -3252,7 +3464,9 @@
         "Saturday: 10:00 AM – 9:00 PM",
         "Sunday: 10:00 AM – 9:00 PM"
       ],
-      "address": "5101 US-82, Gainesville, TX 76240, USA"
+      "address": "5101 US-82, Gainesville, TX 76240, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHLTVkyRF6jC-AqPssbWjjqU5x2aDrglDLxFI_Iwq5o9qy5vaBCD-yT9xw-paDcpj-a3fyo8PYh7ueSqnfAx5H6BsRHAYebhAhYuXN66P2swuk4aQ_ms3x7KezZeTgiZy7SO286=s1600-w800",
+      "placeId": "ChIJtfs2Q0n_TIYR5whXLc4mMb4"
     },
     {
       "id": "d0108",
@@ -3282,7 +3496,9 @@
         "Saturday: 8:00 AM – 9:00 PM",
         "Sunday: 8:00 AM – 9:00 PM"
       ],
-      "address": "132 Petro Rd, Kingston Springs, TN 37082, USA"
+      "address": "132 Petro Rd, Kingston Springs, TN 37082, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEoUiUnOAOMKPq7loc9uRG_mZhN1gesBNjh9gV04a-UHFeWtpsex0u1qt4NtF-K68pKoLKcvuW9Ky778hS8nag4kPZIZu7FP1nITQbeBnu8hMVXdpljkoA-UyCIPt-NmbMRxxfjHPZehfs=s1600-w800",
+      "placeId": "ChIJb7gnFNiRZIgRhlUb_1IkfpU"
     },
     {
       "id": "d0109",
@@ -3313,7 +3529,9 @@
         "Saturday: 9:00 AM – 7:00 PM",
         "Sunday: Closed"
       ],
-      "address": "3767 S Golden State Blvd, Fresno, CA 93725, USA"
+      "address": "3767 S Golden State Blvd, Fresno, CA 93725, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHU627L6IN6yJLw_Q-XdII8XW69z2LBiSG7C35xFrQPLSF46ofDftU798_6z9LVTGOA5NFXyMcPU6_5t_3Fe0gVeWSS8qmZmUAqluLPriDwz8NWVSW8AuESqj2VlT2dUzpcu6AIjdv16M4P=s1600-w800",
+      "placeId": "ChIJ8w9fv5z1lIARlm4hgNfNNOM"
     },
     {
       "id": "d0110",
@@ -3343,7 +3561,9 @@
         "Saturday: 7:30 AM – 11:00 PM",
         "Sunday: Closed"
       ],
-      "address": "36220 Golden State Hwy, Traver, CA 93673, USA"
+      "address": "36220 Golden State Hwy, Traver, CA 93673, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHJiSDf18-EvHCDqcErTNH9PCekmcdhYmCl4pQoEv8amJnrSZkcewFF9KPFvty5va26ui0h8-7hUf9HUgCii34IojpcBpTNcrFtmQEAMNrHD2kmkGdnuhTLAsf28Xft3MsRcY2S3A=s1600-w800",
+      "placeId": "ChIJqyNDfdPhlIARHzEnGq55IfM"
     },
     {
       "id": "d0111",
@@ -3374,7 +3594,9 @@
         "Saturday: 8:00 AM – 9:00 PM",
         "Sunday: 8:00 AM – 9:00 PM"
       ],
-      "address": "14814 Aloma St, Lost Hills, CA 93249, USA"
+      "address": "14814 Aloma St, Lost Hills, CA 93249, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHrw4btQPXh16q4wmX4AVTzkmrVmqqH4cyIxdy1fbieNQ5t9zpR_w9x06Jotq7_CDf3ldhQkKHDs6tsvYCEdPcNVfnupdrRbiVIIp_g7v1yg8v6S97w7HTllXOIVHIzLftjhv2XBQ=s1600-w800",
+      "placeId": "ChIJn-p77ZUR64ARQrik4-tLlVI"
     },
     {
       "id": "d0112",
@@ -3405,7 +3627,9 @@
         "Saturday: 7:00 AM – 9:00 PM",
         "Sunday: 7:00 AM – 9:00 PM"
       ],
-      "address": "1310 W Spruce St, Deming, NM 88030, USA"
+      "address": "1310 W Spruce St, Deming, NM 88030, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH6Mh_2Kumi3FsccFd9nuv5o9XN1q1cAcPuXQWnnwMlCErXr-JH0INhzfj-8J5jiqw-Ma3OEQ79B4NIJBaeIG5I-m_oejql7IuMMzPXgyCjdJiZS5fVnNQoHe1lX8lrLuIAuBDE=s1600-w800",
+      "placeId": "ChIJI42NDQ7E3oYRwJ0Zr9VTmS8"
     },
     {
       "id": "d0113",
@@ -3435,7 +3659,9 @@
         "Saturday: 7:00 AM – 10:00 PM",
         "Sunday: 7:00 AM – 10:00 PM"
       ],
-      "address": "4566 US-287, Alvord, TX 76225, USA"
+      "address": "4566 US-287, Alvord, TX 76225, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGAFXhBufcI4Ryqdq33iLKyz9-1jy2wbiZsdU1aW1vi5rb3L_KvjbuoEZLu5O_Uy3THNquQFavcCUMjANYjeIzZiMOEj6zrSHctXjxQU4bVAfcjnBPZYJkj2X6qreP7vwZMfEJm470hKD0A=s1600-w800",
+      "placeId": "ChIJp1oKBrePTYYRzK7lUYIdBsI"
     },
     {
       "id": "d0114",
@@ -3465,7 +3691,9 @@
         "Saturday: 8:00 AM – 8:00 PM",
         "Sunday: 8:00 AM – 8:00 PM"
       ],
-      "address": "1851 State Hwy 77, Holbrook, AZ 86025, USA"
+      "address": "1851 State Hwy 77, Holbrook, AZ 86025, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEx-KfoM5xWFAxaxaal3ybTtLwfIrlZ0VMZNHvD1R33-gk1Uw_FbJnvHxUKJ0V_SWbDdeUPmTOJvuNi-vSYFOorgPbEOQ05AA2yiHWeK0fu84L3U2vkezu7fHs28dpvvCYvNAenYg=s1600-w800",
+      "placeId": "ChIJY7reUfunL4cR8wIaaYjghUU"
     },
     {
       "id": "d0115",
@@ -3496,7 +3724,9 @@
         "Saturday: 6:00 AM – 10:00 PM",
         "Sunday: 6:00 AM – 10:00 PM"
       ],
-      "address": "651 AL-28, Livingston, AL 35470, USA"
+      "address": "651 AL-28, Livingston, AL 35470, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAF0jjNjHwOPFYsGKEiiC-RHYHRMhQ_nSBIuaA6IU_E-OIYKqI-pS_2ZHL9JqgKPNykY8IxxWIYgr5kbA1hgcGQmQvcr5sruap-1HaJz4nDpVPdrRVVcjTJxloznbsyqjCgHjl8vxojmxO4T=s1600-w800",
+      "placeId": "ChIJP4YndnhLhIgRrivf5E1fkm8"
     },
     {
       "id": "d0116",
@@ -3526,7 +3756,9 @@
         "Saturday: 6:30 AM – 10:00 PM",
         "Sunday: 6:30 AM – 10:00 PM"
       ],
-      "address": "74975 444th Rd, Overton, NE 68863, USA"
+      "address": "74975 444th Rd, Overton, NE 68863, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHd7kNPzL0vD9C3KI4NlhbedzWnvxZsqiD_aqigeWO4BpMb-tEFyuMT3pr_MvlVLEdbS2tUNVs42cVR4TuPL0mdKuW7Y8f0Kz2H-ZvqrkYCa2pi0E9nxVRT0EDuk698rIUWs76-=s1600-w800",
+      "placeId": "ChIJ5625gGK9nocROI_4_v4TaKM"
     },
     {
       "id": "d0117",
@@ -3556,7 +3788,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "I-80 exit 4, Wendover, UT 84083, USA"
+      "address": "I-80 exit 4, Wendover, UT 84083, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGhIEq2AP2CZVC2QA6xQdW6DUhHvCSuD28tB_3QEXTs6Dze17QEFAW6rI9zs6NPUngejIuwZJb7GZC7ducCZNAI1eiChU5UIXYUnpPuPVa6MWHWRSAiFF4bGeJBM3HycOEAzeQn=s1600-w800",
+      "placeId": "ChIJuxuPMOkvrIARguSHJDw0l-8"
     },
     {
       "id": "d0118",
@@ -3586,7 +3820,9 @@
         "Saturday: 6:00 AM – 12:00 AM",
         "Sunday: 6:00 AM – 12:00 AM"
       ],
-      "address": "48243 Memorial Dr, Newberry Springs, CA 92365, USA"
+      "address": "48243 Memorial Dr, Newberry Springs, CA 92365, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFSqkAxWi7C86hxtRhQUApBhYAWwMnzsgEN_LNz0d-qY3PxSbn0aCayhZcO7bLM78q-s_6BewgopCtXzberWksQVYMCyqG1wKnAKopx3i2No7WsptNwVBcm2YRqgROf4U8B2NY=s1600-w800",
+      "placeId": "ChIJXwKva6fwxIAReFYGGqCOWcQ"
     },
     {
       "id": "d0119",
@@ -3616,7 +3852,9 @@
         "Saturday: 7:00 AM – 10:00 PM",
         "Sunday: 7:00 AM – 10:00 PM"
       ],
-      "address": "2650 N Roundup Ave, Kingman, AZ 86401, USA"
+      "address": "2650 N Roundup Ave, Kingman, AZ 86401, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFdpcb6bgky5s95k4TapsklVyEBjD-Yk5LW8Q4oWlDcpTaaReofltRZgaKiY348ouGYzLDycAxz-dVpRNgs6dn6xlqHUqshXrK0Y-DyBhECQUGA1LLzz03dDUeUFFE5glfWvRkQ=s1600-w800",
+      "placeId": "ChIJOw1I3QfDzYAR57o-92QdMeM"
     },
     {
       "id": "d0120",
@@ -3650,7 +3888,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "11561 N 1900 Rd, Sayre, OK 73662, USA"
+      "address": "11561 N 1900 Rd, Sayre, OK 73662, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGImE8NHkEr7luJgXmr9X89M66vQcjCPsJD8ax7IIizOnbw66enw1Ot9j3jGs_en03GVKZJd9WDIlXUuDplEESpZvHtl2FigL-M84qVEiWEsNaanwGOkVH7bqOK02q2lx4Kr1GN=s1600-w800",
+      "placeId": "ChIJP7ddeyHDq4cRSSmKOfpdCgA"
     },
     {
       "id": "d0121",
@@ -3680,7 +3920,9 @@
         "Saturday: 7:00 AM – 11:00 PM",
         "Sunday: 7:00 AM – 11:00 PM"
       ],
-      "address": "16421 I-40, Shamrock, TX 79079, USA"
+      "address": "16421 I-40, Shamrock, TX 79079, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHsNnHO7OU9PXIim5grhSaExNUza6WXQ82JP87Tmi5IzEDacobEb7gE3noWpP_C3x_G2KsJ2q6eDeHOXjUpFGevARfpvQVmPTuq7nwRRtaqquU3Pc5xfsuRohjvcNpil6vbV4pPxg=s1600-w800",
+      "placeId": "ChIJH26jj9g7qocRZSJWxIawBs8"
     },
     {
       "id": "d0122",
@@ -3710,7 +3952,9 @@
         "Saturday: 7:00 AM – 9:30 PM",
         "Sunday: 7:00 AM – 9:30 PM"
       ],
-      "address": "2405 NM-469, San Jon, NM 88434, USA"
+      "address": "2405 NM-469, San Jon, NM 88434, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGKYyPd5ugmkLbtf4XNeobXXPBf8M6FlRasOVUP6nsWhAcOlaKVc8hjXnUDQkoJlk6vRO5aRXBnBc1ImGDNxS8je7lgZr3hHSuAt0LfadNMEtjZYAs1UWxRPU3qiwY3lGeqZzM=s1600-w800",
+      "placeId": "ChIJFYHQx75ZA4cR1514TzDIrV4"
     },
     {
       "id": "d0123",
@@ -3731,7 +3975,9 @@
       "lng": -101.402236,
       "coordAccuracy": "csv",
       "phone": "(806) 780-0000",
-      "address": "9696 I-40 Frontage Rd, Panhandle, TX 79068, USA"
+      "address": "9696 I-40 Frontage Rd, Panhandle, TX 79068, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHaVDxmzY22zOo8FjSDkW19fmm3TKKQM0Me-iQc1UWQhsFM0sWX26sMnZAMeTqphmX37FDrlE1r4kubqe-zFkg4R5OlOK9iOYpisAlc_8npLp8jq1eRtRAKmJC_GRT-rjgY_MEk=s1600-w800",
+      "placeId": "ChIJOX5rhGQpAYcR7ElM0IJrPlo"
     },
     {
       "id": "d0124",
@@ -3761,7 +4007,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 6:00 PM"
       ],
-      "address": "4585 S Harding St, Indianapolis, IN 46217, USA"
+      "address": "4585 S Harding St, Indianapolis, IN 46217, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG-AIZ1XTGkbxu0BY-xB2qsV4O_BLyv0uBbh1LQlNxBuZUxrrfkjq0oCxw5z5h8Pp-fZpr6DfqZol4eU6v9sc8BwP32eGXtR3ieCSFUjeso-4L9rtFm66nd5wuFfYVHeCdqtkqV=s1600-w800",
+      "placeId": "ChIJBcXrCQpZa4gR1u268hLBEoc"
     },
     {
       "id": "d0125",
@@ -3792,7 +4040,9 @@
         "Saturday: 7:00 AM – 12:00 AM",
         "Sunday: 7:00 AM – 12:00 AM"
       ],
-      "address": "9620 N Little Point Rd, Stilesville, IN 46180, USA"
+      "address": "9620 N Little Point Rd, Stilesville, IN 46180, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFLjlWr5MaV4Ejtooj6aDpTnhRs4TpPswbnXlgfP5A0prD0ljAB9nI_mb-Wq2M9RLeziroZtvoy-5dELnsFQqCcx3qZ5c1uGhuYQfPqDwB0ewUYCpagUqO3UOxylmODHMDCMra1wgwTzlg=s1600-w800",
+      "placeId": "ChIJab_2PQXrbIgRxcTC5Sj-w9o"
     },
     {
       "id": "d0126",
@@ -3823,7 +4073,9 @@
         "Saturday: 7:00 AM – 11:00 PM",
         "Sunday: 7:00 AM – 11:00 PM"
       ],
-      "address": "1203-1299 Motel Dr, Milan, NM 87021, USA"
+      "address": "1203-1299 Motel Dr, Milan, NM 87021, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFujzxr3ILOIMixnm57tPkvKGIDwiBLcdxdi1Psn0yoNaSWwsNfdnsoI9P4UdWAc8bvffiHSiOTHle0z91sCEJSJA31-ORc7oEzOqWd-w0FEZqe08ZTXPcUbPYo4evW7yUTxWAR=s1600-w800",
+      "placeId": "ChIJY_xJh3iDI4cRh4n9SMc9qmY"
     },
     {
       "id": "d0127",
@@ -3853,7 +4105,9 @@
         "Saturday: 6:00 AM – 11:30 PM",
         "Sunday: 6:00 AM – 11:30 PM"
       ],
-      "address": "7270 S Warren Rd, Warren, IN 46792, USA"
+      "address": "7270 S Warren Rd, Warren, IN 46792, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAErgAmmIJXfzh0XmaJXIWZilRgKIJYKMRTJpDqxUJ39vBVOvR4j3pekWTaBdw3d_Z_PL77mrYPZQ_97tymQc7O6ie0klCCwx85a2dy1ktCoOpX3XU4XpnHFjYd-pmOa0mB1L-SfGA=s1600-w800",
+      "placeId": "ChIJB8QHHh6xFYgRUUc7bLeUYZU"
     },
     {
       "id": "d0128",
@@ -3883,7 +4137,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "5809 S State Rd, Spiceland, IN 47385, USA"
+      "address": "5809 S State Rd, Spiceland, IN 47385, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFSy2aJ1ETFDRXUZyI8DaEExbvckqOhV_3FL0gO0OwocTC9CjCVkSCRa_yZgsjqSkIZpr7yzhl811xBqrOgd23bdl51CGPxeJEJHKDzeNuJt9zeJbd4_VNBbS6dE7c7lZ1ZfcOm=s1600-w800",
+      "placeId": "ChIJ9VrB1Y7NaogRw4kONdkCOLE"
     },
     {
       "id": "d0129",
@@ -3914,7 +4170,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "2100 S Prigmore Ave, Joplin, MO 64804, USA"
+      "address": "2100 S Prigmore Ave, Joplin, MO 64804, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFpRTh1jIqUT1vYDnVZcLHARGvMNEwE7Sj6snXkQONES6nOHrW0YwZv_KiXe-_ZTQB8Mf2LbPjactDMfsW94ZywP0AiYQ7gnu58iaq4ZS2w-0_Su9RlceL_gWTlASInNVNE-EivNw=s1600-w800",
+      "placeId": "ChIJt_8kuNZ9yIcRw1fnqosiF7g"
     },
     {
       "id": "d0130",
@@ -3944,7 +4202,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "325 E Evergreen Rd, Strafford, MO 65757, USA"
+      "address": "325 E Evergreen Rd, Strafford, MO 65757, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHHSCs05ZdTOKb632QXYDpjxVZ6ygpbSY37dMgWmk9FnfJ8KsQsVd4EqdvE0uQwNTZuSrAFZQXm_8kLR2uIboEvOYwN7bq2DPDNSv5OX56HqdtKtnOAQdZpy-YboTxsQPIsjnPx=s1600-w800",
+      "placeId": "ChIJy9gGreSBxYcRJH7_gtL_YOo"
     },
     {
       "id": "d0131",
@@ -3974,7 +4234,9 @@
         "Saturday: 10:00 AM – 8:30 PM",
         "Sunday: 11:00 AM – 8:30 PM"
       ],
-      "address": "9450 Stockdale Hwy, Medical Plaza, 109 River Walk, Bakersfield, CA 93311, USA"
+      "address": "9450 Stockdale Hwy, Medical Plaza, 109 River Walk, Bakersfield, CA 93311, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEqOIPyNNWKY-hclcjL1OV1AEeXRe9NyhDC2HKJFa2sMM2f0Ky87lVy_TnEeRL0Itm24SP8ARH7az9QofT9nwW7AJjtualxtnq_eNBxVf8FX0rvvsXj6GnUMR4Qba5mLeKzkyf0g4VldeE=s1600-w800",
+      "placeId": "ChIJh00eJ99q6oARUJ8ObU0fDic"
     },
     {
       "id": "d0132",
@@ -4004,7 +4266,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 9:00 PM"
       ],
-      "address": "32603 Ave 7, Madera, CA 93637, USA"
+      "address": "32603 Ave 7, Madera, CA 93637, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHW_NKnsLT6Py6rU9omHx2VPu2RACSgfkX_-TRaTetvZFDpRlcvFZTewntUErjuiBfh8vat3fFj_gkmhzsxoNW7vip3bB7VDPNpfYJ_5q2_wviyhImz2nFslBuaVoG2-VtTo5Ff=s1600-w800",
+      "placeId": "ChIJj1XOez5vlIARyyVbDqu2_D0"
     },
     {
       "id": "d0133",
@@ -4034,7 +4298,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 10:00 AM – 6:00 PM"
       ],
-      "address": "20238 Taft Hwy, Bakersfield, CA 93311, USA"
+      "address": "20238 Taft Hwy, Bakersfield, CA 93311, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGkwRzhhnktHYUyuQqXXrdlPuk8ZJEK0pmAJn7HUZXjQc12Mxb4FoSLCaevWQFuOlIczxaehb6EJ7iqknnF2Oih5PdHvg8AYUge7dNaJEmCibvY9GOP-QORVPVzAAXZ_SCVwigg=s1600-w800",
+      "placeId": "ChIJkavUHUBH6oARlOaLvRJjnSI"
     },
     {
       "id": "d0134",
@@ -4064,7 +4330,9 @@
         "Saturday: 8:00 AM – 10:00 PM",
         "Sunday: 8:00 AM – 10:00 PM"
       ],
-      "address": "7800 Linglestown Rd, West Hanover Township, PA 17112, USA"
+      "address": "7800 Linglestown Rd, West Hanover Township, PA 17112, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFy4rgjMzLLbpYegqheyRYa90zEKrWNQK6gtcl-AP4O-RwCaW6OGEkOZJLfiLoJAYbF4pf_5UuGmadqUUxJ085xM2rojL947blmmmJMfovK5gaVTker0tCTJj1haw7mJe02clpI=s1600-w800",
+      "placeId": "ChIJxc1DgamwyIkRj5qZvD3CfsE"
     },
     {
       "id": "d0135",
@@ -4094,7 +4362,9 @@
         "Saturday: 7:00 AM – 9:00 PM",
         "Sunday: 7:00 AM – 9:00 PM"
       ],
-      "address": "500 A Truck Inn Way, Fernley, NV 89408, USA"
+      "address": "500 A Truck Inn Way, Fernley, NV 89408, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHNEGslQ--aGzAyuAWk65Ad66p1H-b9q1xLDneciR7dHqIgZadLlfryfZUwZ6KYIpvSCOkVIvQDqxrKKgxYY01u81AiQdwOrghn4YdsYb5bEmnxWzB0MFrPWaHvL10Q8ayP6Bw=s1600-w800",
+      "placeId": "ChIJZS-ZsLDpmIARHsEELF6o0Q4"
     },
     {
       "id": "d0136",
@@ -4125,7 +4395,9 @@
         "Saturday: 7:30 AM – 10:00 PM",
         "Sunday: 7:30 AM – 10:00 PM"
       ],
-      "address": "3405 W Historic Hwy 66, Gallup, NM 87301, USA"
+      "address": "3405 W Historic Hwy 66, Gallup, NM 87301, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGxBKkQT3zsneo8b-wwkPlPVbc0bn_NDuFIieeQPUeu_Y3D8-X7hpx0rvMXC4G7gAFb9AIxQzUng6rNEp5b2rq_FnLJwd3fvjPoxRyyIRcG0BLLCrfQQrEQnhniDk4r04o7w34hPQ=s1600-w800",
+      "placeId": "ChIJZxBEJe4gJYcRK9pgvx0A3f4"
     },
     {
       "id": "d0137",
@@ -4156,7 +4428,9 @@
         "Saturday: 7:30 AM – 10:00 PM",
         "Sunday: 7:30 AM – 10:00 PM"
       ],
-      "address": "158821a I-10, Van Horn, TX 79855, USA"
+      "address": "158821a I-10, Van Horn, TX 79855, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE_IZGo6cT4HMrh--c7R-dnKdKgJWGRnpIj9Xh-FWy5M0oDgdyoFSG7CRS9dD2nGUKUD-99XBVnEtugxmaVdyzLfyt0Vc7bn9c2J_p8HRCT4tjoG1d-K4wt--tRBJwXyphVCsc-K3xScYQ=s1600-w800",
+      "placeId": "ChIJETOQLVOR5YYRVMuTFzYDhyI"
     },
     {
       "id": "d0138",
@@ -4187,7 +4461,9 @@
         "Saturday: 8:00 AM – 12:00 AM",
         "Sunday: 8:00 AM – 12:00 AM"
       ],
-      "address": "1480 IN-1, Cambridge City, IN 47327, USA"
+      "address": "1480 IN-1, Cambridge City, IN 47327, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFQJjvV9APg65df9xSprVXdlE0Q04xpJPnzPm3UgFaFiTRUVHkQpg2uOa8LN5QqusjzTsaJvdjSXCJjIJSHVa6ee1KY8-CbRtUPIgRiMRPpcAT3x1YqfMidbUxPOFmXauHZStQ6TXwJTJY=s1600-w800",
+      "placeId": "ChIJb0CkLv2yaogRV2BNvk2evnw"
     },
     {
       "id": "d0139",
@@ -4217,7 +4493,9 @@
         "Saturday: 12:00 – 8:00 PM",
         "Sunday: 12:00 – 8:00 PM"
       ],
-      "address": "1999 E Ajo Way, Tucson, AZ 85713, USA"
+      "address": "1999 E Ajo Way, Tucson, AZ 85713, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGwA-iwHbxgNRUrVtV1zQ4DmjOFb21syjJ_6I6w6J9_k_fA4Posb2OQqiQnkpjThQ2fMVlm2hN_pUNC-aotC31mEguBTLrIIvKpH7l6zTo7fmuqtQFW8-qZ_XoeXNKjXZhlVTt5VQ=s1600-w800",
+      "placeId": "ChIJM2MmHQR71oYRXaMfy35mkkc"
     },
     {
       "id": "d0140",
@@ -4247,7 +4525,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "5829 Tilghman St, Allentown, PA 18104, USA"
+      "address": "5829 Tilghman St, Allentown, PA 18104, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHpPKVcZXIoYcBhLY9pkBubIu2G3sCiaVCmxHNqaccHRQat6QSv5TZNKuCZmaicyc_Re4_HWKZ9idHEoFkYkb5QuCEJZWZKMaNFCk4LfX19w4n1gua_mdFnjaTSi8p-A8Psv8vc=s1600-w800",
+      "placeId": "ChIJESTLtnsxxIkRkvPBqbmLhQw"
     },
     {
       "id": "d0141",
@@ -4277,7 +4557,9 @@
         "Saturday: 8:00 AM – 9:00 PM",
         "Sunday: 9:00 AM – 8:00 PM"
       ],
-      "address": "2220 Bonham Rd, Bristol, VA 24201, USA"
+      "address": "2220 Bonham Rd, Bristol, VA 24201, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgep9zUKaIp6nLJCnhiNnMNzy21PeIhDs5XIIChmbhDfP2GerB5ON6xilPjgJUhXo9qzKY6ivDDGhgYrreizdGjVYp4FIy8xosrd7m899CGIeC8dMRfICwa8kBaLfTTPaRc9zE=s1600-w800",
+      "placeId": "ChIJR2y5F0JzUIgRC1NK0lqd7jM"
     },
     {
       "id": "d0142",
@@ -4307,7 +4589,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Closed"
       ],
-      "address": "12271 Melinda Ln NE TRLR A, Aurora, OR 97002, USA"
+      "address": "12271 Melinda Ln NE TRLR A, Aurora, OR 97002, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEJ_hnNhI-uCHplbHcgkK4hSLCBPPSFe9nRYEoIkMia76fdfhWnH13B3A2l1_FJDvTkcBYttb4UdMABvbsgJGNW0B9fU-jOajd08_0XLKv_Cwg1HAt6ty5EZTf2Rsizke-hEr1QJA=s1600-w800",
+      "placeId": "ChIJbUmruSVplVQR8LccFSOfU0U"
     },
     {
       "id": "d0143",
@@ -4338,7 +4622,9 @@
         "Saturday: 9:00 AM – 3:00 PM, 4:00 – 10:00 PM",
         "Sunday: 9:00 AM – 3:00 PM, 4:00 – 9:00 PM"
       ],
-      "address": "143 US-93, Wells, NV 89835, USA"
+      "address": "143 US-93, Wells, NV 89835, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHx8zxlMjGabuzX-QsCsuYiFtQv5Bvn_ipPdQ-4g7QpnJ8sS6p92ZEv3j1SydZYN_9_hOv4pQ_5tGc018LknyDr5I5XXlyHU62Tvsuf85WpSnHTGz4B1bHcoV_M-No3nFj2_tnU=s1600-w800",
+      "placeId": "ChIJW7RD-MjXqIARd-LMMoYh6Y0"
     },
     {
       "id": "d0144",
@@ -4368,7 +4654,9 @@
         "Saturday: 7:00 AM – 11:00 PM",
         "Sunday: 7:00 AM – 11:00 PM"
       ],
-      "address": "105 E 7th St, Winfield, TX 75493, USA"
+      "address": "105 E 7th St, Winfield, TX 75493, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFqK2aQTaS-y8MTqMQBcjwRwQbJTwF4nghiBLcPDYbFyFz6-DcV7dX2Ysa9DWZoaKaFL4GVsB5QyVj0DBtvNX16A-48QCtQrWX_7YPY9OrIZM31vfExmnpt8d0XgBmY-N-dkFo=s1600-w800",
+      "placeId": "ChIJjxLIz6UJSoYR9wY-VCznGP8"
     },
     {
       "id": "d0145",
@@ -4398,7 +4686,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: 12:00 – 7:00 PM"
       ],
-      "address": "Inside Texaco, 2819 I-30, Caddo Mills, TX 75135, USA"
+      "address": "Inside Texaco, 2819 I-30, Caddo Mills, TX 75135, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHywAVHw3WdTQvsxrbCrJGKC5cJSnS7ZFOEQZ8CwCmicBC_rBxZozHQO0Mnb2-4GJ3IvoC8qU4-zX3B1OTLIynKwx8YwfiRvU_w9burbMJAduqI1Ub9qz0GDqW6p46ZorOg-Vd_xA=s1600-w800",
+      "placeId": "ChIJP1PsRADlS4YR1pVVaMFwMtI"
     },
     {
       "id": "d0146",
@@ -4428,7 +4718,9 @@
         "Saturday: 8:00 AM – 10:00 PM",
         "Sunday: 9:00 AM – 10:00 PM"
       ],
-      "address": "73485 I-20, Gordon, TX 76453, USA"
+      "address": "73485 I-20, Gordon, TX 76453, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG69FgKvIzE0B795k0dYPYCabX5mSV-UlErxNYH4-O0I6elMwrEwRQrTQgw2gm6B-Sodpi_E5pgxwLCgRwz83nPNQnvQodmKvua6Wtj4pp0JbMyy-wI9Mahm-MUebmWoiF7m5kD=s1600-w800",
+      "placeId": "ChIJEQpueQCbUYYRq4qrB6DB0Wc"
     },
     {
       "id": "d0147",
@@ -4458,7 +4750,9 @@
         "Saturday: 10:30 AM – 9:00 PM",
         "Sunday: 10:30 AM – 9:00 PM"
       ],
-      "address": "118 S Dowling St, Austin, IN 47102, USA"
+      "address": "118 S Dowling St, Austin, IN 47102, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGalOEjQZmuo88ErBME4N0E_tZw5-9AvrGNWK2M056goVOZfZBfDssbEGaOZ5GxLZLecKfoDyDDXP1oyCkUacu_s1xF6YvizoRXANgzegO93L2fTJX15MunWG_clbW-fBYuixV9=s1600-w800",
+      "placeId": "ChIJD5qdM7nba4gRKAbPdPvphzY"
     },
     {
       "id": "d0148",
@@ -4488,7 +4782,9 @@
         "Saturday: 9:00 AM – 9:00 PM",
         "Sunday: Closed"
       ],
-      "address": "91689 Biggs Rufus Hwy, Wasco, OR 97065, USA"
+      "address": "91689 Biggs Rufus Hwy, Wasco, OR 97065, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE_ZJoSa_htH5zOvg-ZHg09h_cfePJLadjjc4rsHaauvJRwX9gOJ8Z0NGXWguBt1ci5iHWXH8bbF5KO7_Z9HREZ1dnlJ91oiRP1xi3mKQHFoilzzsiAPdkUQZwslbG5dl3C5PRc5A=s1600-w800",
+      "placeId": "ChIJPXuNRyiHvVQR6-7fQkr0hSo"
     },
     {
       "id": "d0149",
@@ -4518,7 +4814,9 @@
         "Saturday: Open 24 hours",
         "Sunday: 12:00 – 2:00 AM, 11:00 AM – 10:00 PM"
       ],
-      "address": "5480 W 25th Ave, Gary, IN 46406, USA"
+      "address": "5480 W 25th Ave, Gary, IN 46406, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE2-B6xmFGh4NvK5-UaNZAqap2xGuXZB9dupRGqTuFjQE8-qeNURhmZgkG8EEREmyCj5OQtVI6LivEiKkyXpc2F5AMTWe68LvFaCDBwjHauSbb_w0UxX7i6IsTa8peH1Jsbhw3_=s1600-w800",
+      "placeId": "ChIJdX6ahULdEYgRv6kAWQ1ryHI"
     },
     {
       "id": "d0150",
@@ -4548,7 +4846,9 @@
         "Saturday: 1:00 AM – 11:00 PM",
         "Sunday: 6:00 AM – 12:00 AM"
       ],
-      "address": "5985 US-287, Alvord, TX 76225, USA"
+      "address": "5985 US-287, Alvord, TX 76225, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE1VtPOdADcqZO5wdueZXmGbJh3FdB8ovkl7lK29-6q1t8kbB3m8sMU7g4i_ci2nNYPVaQNvdUudvaOkCwTYAWTmdHcnfer-IjC7rs9g3flRwKZR7OIe2-ZckubWTwvuieTyzu09w=s1600-w800",
+      "placeId": "ChIJG__TYwePTYYRY3dWscqm1nM"
     },
     {
       "id": "d0151",
@@ -4578,7 +4878,9 @@
         "Saturday: Closed",
         "Sunday: 7:30 AM – 12:00 AM"
       ],
-      "address": "529 E Sycamore Rd, Snow Shoe, PA 16874, USA"
+      "address": "529 E Sycamore Rd, Snow Shoe, PA 16874, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgrCdc7foI-j11T-LQCBSj-LjL_Brsqx9MXzysPqHwPILkpA2rEcEbQJwbGPug1ugJSCviXP0LIhHkGWKZdNHQx-VosvFjOX1Kg-ftZUUON1VRXZ7pWHzUp_WQcpDfd-vfDqI=s1600-w800",
+      "placeId": "ChIJN9ftU-4hzIkRfIjqaQYzNQI"
     },
     {
       "id": "d0152",
@@ -4608,7 +4910,9 @@
         "Saturday: 11:00 AM – 11:00 PM",
         "Sunday: 11:00 AM – 10:00 PM"
       ],
-      "address": "45785 I-10, Winnie, TX 77665, USA"
+      "address": "45785 I-10, Winnie, TX 77665, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGHludN1Vuo2v-UV03lWIZAnmSmGxAergfdGk4xD60XOaLSn0f5Hoqa7l-VrW206R9Hu0AMrrdUkLgtjL7EhQfquTaTyyGTuk_r54x52CnEf9lJm2uBcrMvWXJ34lhPYDJRmuln=s1600-w800",
+      "placeId": "ChIJyS-QxzrZPoYRLGuMALjg7L0"
     },
     {
       "id": "d0153",
@@ -4639,7 +4943,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "3650 I-40 Service Rd, Vega, TX 79092, USA"
+      "address": "3650 I-40 Service Rd, Vega, TX 79092, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHEwO3VhyDzKh6IuNdc_sAQ5C3czwkFNAcP4u8nph0yYsKHTdNG9I1L6K7XqvmJ9qhy8xyzJh2l6Zps881Eoi_Rvy4AN68L0wTJYBW51MtPw7n1Za-zHMClXSo2FEuGhvnV-AUEhXC2hO8c=s1600-w800",
+      "placeId": "ChIJW1COwtH424ARcxLJvFjlEXM"
     },
     {
       "id": "d0154",
@@ -4669,7 +4975,9 @@
         "Saturday: 10:00 AM – 11:00 PM",
         "Sunday: 10:00 AM – 11:00 PM"
       ],
-      "address": "20687 Tracy Ave, Buttonwillow, CA 93206, USA"
+      "address": "20687 Tracy Ave, Buttonwillow, CA 93206, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtzQySNm3Gib94fuvH0nnNw1LAnsSv0R7N93bSHc0bbqhLjn_3J2SYTMqCRfMR_kylz7_ZgjTDwYGTabTXtuOcMpEyqb75xqHWcUZ9IqCuRWPlFR5479igATuL2xSn4Wy7Hqct=s1600-w800",
+      "placeId": "ChIJ1ZEraiJT6oAR_KKdPj4N2LI"
     },
     {
       "id": "d0155",
@@ -4690,7 +4998,9 @@
       "lng": -118.913961,
       "coordAccuracy": "csv",
       "phone": "(661) 363-0704",
-      "address": "203 Weedpatch Hwy, Bakersfield, CA 93307, USA"
+      "address": "203 Weedpatch Hwy, Bakersfield, CA 93307, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFTN4REP8H-u_Ho_CGMSTiom9QBATU8QRDZs2d4VMdxwAAiOdBLGNUd3giJrwYRZE6QZJZ4agX2IfWqI1yDPC20XyS491yKKPqfhhAzzYNCmJyabikfiUoHr1gxfBQ0ESAXRo4v=s1600-w800",
+      "placeId": "ChIJo7AvHPls6oARutszJEFDP84"
     },
     {
       "id": "d0156",
@@ -4720,7 +5030,9 @@
         "Saturday: 8:00 AM – 8:00 PM",
         "Sunday: 8:00 AM – 8:00 PM"
       ],
-      "address": "13289 CA-33, Santa Nella, CA 95322, USA"
+      "address": "13289 CA-33, Santa Nella, CA 95322, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGhejXTwyNpGlSQ63qeNIj9lO3vsq9jCdtn4yn5gVjtTb1rdyAs6ha8_6iMrG5FZG73oDM2WVeK8i9dFMykga-CYPg5_ocJBB-u6IwfkSJG93gXFgMvb-pwtDEZK0nH4d2C7RQbrDQtSlQ=s1600-w800",
+      "placeId": "ChIJga7y87CFkYARH9ygU-xPefU"
     },
     {
       "id": "d0157",
@@ -4752,7 +5064,9 @@
         "Saturday: Open 24 hours",
         "Sunday: Open 24 hours"
       ],
-      "address": "6603 Betty Dr, Visalia, CA 93291, USA"
+      "address": "6603 Betty Dr, Visalia, CA 93291, USA",
+      "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH2omepON5QmohDr-S70W_4UYGsPEjp303P5sxa8uUqpQdePqfZeaR0MusziauowhNCUiURUXm5NnSQPM8f-D7I86LvVGuWdEgoFE8t1MsHBbDKDcecKeblsaq0GMcnbYrGH5WBxA=s1600-w800",
+      "placeId": "ChIJfURV55bZlIAReeO368fYF7Q"
     }
   ]
 }

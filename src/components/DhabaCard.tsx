@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Dhaba } from "@/lib/types";
 import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
 import { getOpenStatus } from "@/lib/isOpenNow";
+import { DhabaPhoto } from "./DhabaPhoto";
 
 // Card information architecture — based on how Yelp, Google Maps, and
 // camping directories (Campendium, The Dyrt) present road-traveler listings.
@@ -39,11 +39,6 @@ export function DhabaCard({
   const openStatus = getOpenStatus(dhaba.hours);
   const city = dhaba.address ? cityFromAddress(dhaba.address) : "";
 
-  // First character of the title, stripped of common prefixes/punctuation
-  // so "| Punjabi Dhaba" doesn't show a pipe in the placeholder. Uppercase.
-  const firstChar =
-    (dhaba.title.trim().replace(/^[^\p{L}\p{N}]+/u, "")[0] ?? "D").toUpperCase();
-
   return (
     <article
       onMouseEnter={onActivate}
@@ -64,33 +59,16 @@ export function DhabaCard({
           : "border-paper-warm hover:border-clay-200",
       ].join(" ")}
     >
-      {/* ── MEDIA — photo OR warm gradient placeholder ──
-          Heights and radii are identical across both branches so a grid
-          mixing photo + no-photo cards never looks misaligned. Using
-          <Image unoptimized> for photos since they're served from
-          lh3.googleusercontent.com with Google's own sizing in the URL —
-          Next's optimiser would only add latency. */}
-      {dhaba.imageUrl ? (
-        <div className="relative w-full h-40 sm:h-44 bg-paper-soft flex-none">
-          <Image
-            src={dhaba.imageUrl}
-            alt=""
-            fill
-            unoptimized
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover"
-          />
-        </div>
-      ) : (
-        <div
-          aria-hidden
-          className="relative w-full h-40 sm:h-44 flex-none bg-gradient-to-br from-paper-warm to-clay-100 flex items-center justify-center"
-        >
-          <span className="text-4xl font-semibold text-clay-200 select-none">
-            {firstChar}
-          </span>
-        </div>
-      )}
+      {/* ── MEDIA — DhabaPhoto owns skeleton, fade-in, and the
+          gradient+utensil fallback when the image is missing or errors.
+          Hover zoom is opt-in here; the outer article carries `group`. */}
+      <DhabaPhoto
+        src={dhaba.imageUrl}
+        alt=""
+        className="w-full h-40 sm:h-44 flex-none"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        hoverZoom
+      />
 
       {/* ── CONTENT ── */}
       <div className="flex flex-col p-4 sm:p-5 pt-3.5 sm:pt-4 min-h-[160px]">

@@ -8,6 +8,7 @@ import { rankByDistance, formatDistance } from "@/lib/geo";
 import { useGeolocation } from "@/lib/useGeolocation";
 import { getOpenStatus } from "@/lib/isOpenNow";
 import { DhabaCard } from "./DhabaCard";
+import { DhabaPhoto } from "./DhabaPhoto";
 import { Tag } from "./Tag";
 
 // MapView touches `window` on import — client-only via dynamic.
@@ -725,19 +726,18 @@ function MapPinPreview({
           "overflow-hidden animate-slide-up",
         ].join(" ")}
       >
-        {/* Photo (if present). A plain <img> because the preview floats
-            over the Leaflet map — Leaflet layers render outside Next's
-            tree, so next/image optimisation isn't applicable here. The
-            image eats the top radius; the content block below keeps its
-            own padding. */}
-        {dhaba.imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={dhaba.imageUrl}
-            alt=""
-            className="block w-full h-28 object-cover"
-          />
-        ) : null}
+        {/* Photo — always rendered so the preview silhouette matches
+            whether or not Google had a photo (DhabaPhoto's gradient
+            fallback covers the empty case). `raw` uses a plain <img>,
+            which keeps the preview compatible with Leaflet popup/layer
+            rendering if we ever move this inside the map tree. No hover
+            zoom here — the preview isn't a card-shaped target. */}
+        <DhabaPhoto
+          src={dhaba.imageUrl}
+          alt=""
+          className="block w-full h-28"
+          raw
+        />
 
         <div className="p-3.5">
         {/* Header: route hint micro-label + dismiss */}

@@ -37,11 +37,12 @@ export interface Dhaba {
   hours?: string[];
   address?: string;
   // Populated by scripts/fetch-photos.ts — the first photo returned by
-  // Places Details (New) for the resolved placeId, resolved to a direct
-  // lh3.googleusercontent.com URL via the media endpoint with
-  // skipHttpRedirect=true. Optional; layouts fall back to a gradient
-  // placeholder when absent so the grid never looks misaligned.
-  imageUrl?: string;
+  // Places (legacy) Find Place from Text, resolved to a key-free
+  // lh3.googleusercontent.com URL by following the 302 from place/photo
+  // manually. `null` means we checked and Google had no photo (distinct
+  // from undefined = not yet enriched). DhabaPhoto falls back to a warm
+  // gradient + utensil glyph when null or missing.
+  imageUrl?: string | null;
 }
 
 // Dhaba augmented with user-relative data (distance from current location).
