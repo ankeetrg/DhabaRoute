@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FeedbackButton } from "@/components/FeedbackButton";
 import { Analytics } from "@vercel/analytics/react";
+import { getTelegramUrl } from "@/lib/telegram";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dhabaroute.com"),
@@ -28,13 +29,26 @@ export const viewport: Viewport = {
   themeColor: "#FAF7F2",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Fetched server-side so the client Header component can receive it
+  // as a prop without needing its own async fetch.
+  const telegramUrl = await getTelegramUrl();
+
   return (
     <html lang="en">
+      <head>
+        {/* Bricolage Grotesque (display/headings) + DM Sans (UI/body) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-dvh flex flex-col">
         <a
           href="#main"
@@ -42,7 +56,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Header />
+        <Header telegramUrl={telegramUrl} />
         <main id="main" className="flex-1">
           {children}
         </main>

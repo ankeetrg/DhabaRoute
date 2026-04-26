@@ -13,10 +13,33 @@
   color-scheme: light;
   /* Consistent map height: at least 280px, up to 44vw, max 520px. */
   --map-h: clamp(280px, 44vw, 520px);
+
+  /* ── Design-spec tokens ────────────────────────────────────────
+     These CSS custom properties are the canonical values for the
+     redesign. Tailwind tokens (clay-*, leaf, ocean, etc.) are aliases
+     into the same palette — both resolve to the same colour. The
+     spec uses --accent, --sage, --paper, etc. for inline styles and
+     non-Tailwind surfaces; Tailwind utilities handle the majority
+     of JSX styling so raw hex never appears in component files.     */
+  --paper:      #faf8f3;
+  --paper-soft: #f3ede2;
+  --paper-warm: #e4d8c6;
+  --ink:        #1c1814;
+  --ink-soft:   #3c3128;
+  --ink-muted:  #8a7a6a;
+  --accent:     #df6028;   /* saffron/clay — CTAs, active states, pins */
+  --ocean:      #2a5f8c;   /* focus rings */
+  --leaf:       #3a7c52;   /* "Open now" */
+  --sage:        #6b8e5f;   /* section accents, vegetarian tag */
+  --sage-soft:   rgba(107, 142, 95, 0.08);
+  --border-card: #e8dfd4;  /* card border at rest */
 }
 
 html,
 body {
+  /* DM Sans as the UI/body font. Falls back to system-ui until the
+     webfont arrives — no invisible text, no layout shift. */
+  font-family: var(--font-ui, "DM Sans"), system-ui, sans-serif;
   background: theme("colors.paper.DEFAULT");
   color: theme("colors.ink.DEFAULT");
   -webkit-font-smoothing: antialiased;
@@ -43,6 +66,24 @@ input[type="search"]::-webkit-search-cancel-button {
 /* ── Utilities ────────────────────────────────────────────────── */
 
 @layer utilities {
+  /* Header nav link — ink-muted at rest, ink on hover. */
+  .dr-nav-link {
+    color: var(--ink-muted);
+    transition: color 150ms;
+  }
+  .dr-nav-link:hover {
+    color: var(--ink);
+  }
+
+  /* Footer nav link — ink-soft at rest, accent on hover. */
+  .dr-footer-link {
+    color: var(--ink-soft);
+    transition: color 150ms;
+  }
+  .dr-footer-link:hover {
+    color: var(--accent);
+  }
+
   .container-page {
     @apply mx-auto w-full max-w-content px-5 sm:px-8;
   }

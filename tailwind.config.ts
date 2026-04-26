@@ -50,6 +50,14 @@ const config: Config = {
           DEFAULT: "#D99A2B",
           soft:    "#F3C760",
         },
+        // Design-spec aliases — wired to CSS custom properties so changing
+        // a token in globals.css automatically propagates everywhere.
+        // These sit alongside the clay-* scale; use whichever the spec calls.
+        accent:    "var(--accent)",   // #df6028 — same family as clay-500/600
+        sage: {
+          DEFAULT: "var(--sage)",     // #6b8e5f
+          soft:    "var(--sage-soft)",// rgba(107,142,95,0.08)
+        },
       },
       fontFamily: {
         sans: [
@@ -62,13 +70,13 @@ const config: Config = {
           "Arial",
           "sans-serif",
         ],
-        display: [
-          "ui-serif",
-          "Georgia",
-          "Cambria",
-          "Times New Roman",
-          "serif",
-        ],
+        // Design-spec type scale.
+        // font-display → Bricolage Grotesque for H1/H2 editorial headings.
+        // font-ui      → DM Sans for nav, labels, body, button text.
+        // Both loaded via Google Fonts in layout.tsx; system fallbacks fire
+        // until the webfonts arrive so there's no invisible text.
+        display: ["Bricolage Grotesque", "system-ui", "sans-serif"],
+        ui:      ["DM Sans", "system-ui", "sans-serif"],
       },
       borderRadius: {
         xl: "14px",
@@ -76,9 +84,11 @@ const config: Config = {
       },
       boxShadow: {
         // Soft elevations against warm paper — cool shadow reads premium.
-        card:      "0 1px 2px rgba(17, 17, 17, 0.04), 0 4px 16px -10px rgba(17, 17, 17, 0.10)",
-        cardHover: "0 2px 4px rgba(17, 17, 17, 0.06), 0 10px 26px -12px rgba(17, 17, 17, 0.16)",
-        cta:       "0 1px 2px rgba(228, 106, 46, 0.20), 0 6px 18px -8px rgba(228, 106, 46, 0.35)",
+        card:           "0 1px 2px rgba(17, 17, 17, 0.04), 0 4px 16px -10px rgba(17, 17, 17, 0.10)",
+        cardHover:      "0 2px 4px rgba(17, 17, 17, 0.06), 0 10px 26px -12px rgba(17, 17, 17, 0.16)",
+        cta:            "0 1px 2px rgba(228, 106, 46, 0.20), 0 6px 18px -8px rgba(228, 106, 46, 0.35)",
+        // Spec card hover — slightly deeper for the new card lift animation.
+        cardHoverSpec:  "0 8px 32px rgba(28,24,20,0.11), 0 2px 6px rgba(28,24,20,0.06)",
       },
       maxWidth: {
         content: "1200px",
