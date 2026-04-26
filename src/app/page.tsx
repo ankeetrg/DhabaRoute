@@ -9,6 +9,7 @@ import { DhabaRow } from "@/components/DhabaRow";
 import { HomeInteractive } from "@/components/HomeInteractive";
 import { HowItWorks } from "@/components/HowItWorks";
 import { MenuShowcase } from "@/components/MenuShowcase";
+import { PhotoGallery } from "@/components/PhotoGallery";
 import type { Dhaba } from "@/lib/types";
 
 export default function HomePage() {
@@ -27,6 +28,7 @@ export default function HomePage() {
       <HomeInteractive dhabas={all} filterTags={getAllUsedTags()} />
       <HowItWorks />
       <MenuShowcase />
+      <PhotoGallery />
 
       <DhabaRow
         title="Featured dhabas"
