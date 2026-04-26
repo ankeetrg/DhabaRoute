@@ -4,11 +4,21 @@ import { notFound } from "next/navigation";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
 import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
 import { distanceKm } from "@/lib/geo";
-import { Tag } from "@/components/Tag";
 import { DhabaCard } from "@/components/DhabaCard";
 import { DhabaDetailMap } from "@/components/DhabaDetailMap";
 import { DhabaPhoto } from "@/components/DhabaPhoto";
 import { ContributeForm } from "@/components/ContributeForm";
+
+// ── Detail page — design spec (Step 11) ───────────────────────────────────
+//   Max-width 1056px, padding 24px top / 72px bottom
+//   Breadcrumb: 13px, #8a7a6a → #1c1814 on hover, separator #e4d8c6
+//   Hero: 280px, rounded-2xl
+//   Route eyebrow: 11px, 700, uppercase, 0.08em, var(--accent), dot prefix
+//   H1: clamp(28px,4vw,44px), Bricolage Grotesque 800, -0.01em
+//   Tags: 999px radius, 11.5px; Vegetarian → sage tint
+//   Info grid: 1.6fr/1fr, gap 16px; 1.5px #e8dfd4 border
+//   Community card: max-width 580px, ghost button
+//   Similar stops: auto-fill minmax(272px,1fr), gap 16px
 
 type RouteParams = Promise<{ slug: string }>;
 
@@ -44,10 +54,8 @@ export default async function DhabaDetailPage({
   const dhaba = getDhabaBySlug(slug);
   if (!dhaba) notFound();
 
-  // Similar stops: first try tag-based matches. If the current dhaba has no
-  // tags — or no other dhaba shares any tag — we'd otherwise hide the
-  // section entirely. Fall back to proximity (if coords are known) or just
-  // array order so the section always gives the driver somewhere else to go.
+  // Similar stops: first try tag-based matches. Fall back to proximity
+  // or array order so the section always gives the driver somewhere else to go.
   const others = getAllDhabas().filter((d) => d.slug !== dhaba.slug);
   const tagRelated = others.filter((d) =>
     d.tags.some((t) => dhaba.tags.includes(t)),
@@ -72,143 +80,277 @@ export default async function DhabaDetailPage({
     }
   }
 
-  // Only render the "Get there" section if we have at least one signal —
-  // otherwise we were showing an empty header with no content underneath.
   const hasGetThere = Boolean(dhaba.address || dhaba.routeHint);
 
   return (
-    <article className="container-page pt-5 sm:pt-8 pb-14">
-      <nav aria-label="Breadcrumb" className="text-[13px] text-ink-muted">
+    <article
+      className="mx-auto w-full px-5 sm:px-8 pt-6 pb-[72px]"
+      style={{ maxWidth: 1056 }}
+    >
+      {/* ── Breadcrumb ─────────────────────────────────────────────── */}
+      <nav
+        aria-label="Breadcrumb"
+        className="font-ui"
+        style={{ fontSize: 13, color: "#8a7a6a" }}
+      >
         <Link
           href="/"
-          className="hover:text-ink underline-offset-4 hover:underline"
+          className="transition-colors duration-150 hover:text-ink"
         >
           All dhabas
         </Link>
-        <span aria-hidden className="mx-2 text-paper-warm">·</span>
-        <span className="text-ink-soft truncate">{dhaba.title}</span>
+        <span
+          aria-hidden
+          className="mx-2"
+          style={{ color: "#e4d8c6" }}
+        >
+          ·
+        </span>
+        <span style={{ color: "#1c1814" }} className="truncate">
+          {dhaba.title}
+        </span>
       </nav>
 
-      {/* ── Hero photo (magazine-style) ──
-          Only rendered when we have a photo URL. DhabaPhoto owns the
-          skeleton + onError gradient fallback, so even an image that fails
-          to load still resolves to a warm placeholder rather than empty
-          space. We keep the conditional for records explicitly marked
-          `imageUrl: null` (Google confirmed no photo) — on those the page
-          starts straight at the title rather than surfacing a big
-          "this page has no photo" block. No hover zoom here; this is a
-          hero, not a tappable card. */}
+      {/* ── Hero photo ─────────────────────────────────────────────── */}
       {dhaba.imageUrl ? (
         <figure className="mt-5">
           <DhabaPhoto
             src={dhaba.imageUrl}
             alt={dhaba.title}
-            className="w-full h-44 sm:h-64 md:h-80 rounded-2xl"
+            className="w-full h-[280px] rounded-2xl"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1024px"
             priority
           />
-          <figcaption className="mt-1 text-right text-[11px] text-ink-muted">
+          <figcaption
+            className="mt-1 font-ui text-right"
+            style={{ fontSize: 11, color: "#c4b4a4" }}
+          >
             Photo via Google
           </figcaption>
         </figure>
       ) : null}
 
-      <header className={dhaba.imageUrl ? "mt-6 max-w-3xl" : "mt-5 max-w-3xl"}>
+      {/* ── Header block ───────────────────────────────────────────── */}
+      <header
+        className={dhaba.imageUrl ? "mt-6" : "mt-5"}
+        style={{ maxWidth: 680 }}
+      >
+        {/* Route eyebrow */}
         {dhaba.routeHint ? (
-          <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-clay-600">
-            <span aria-hidden className="w-1 h-1 rounded-full bg-clay-500" />
-            On route · {dhaba.routeHint}
+          <p
+            className="inline-flex items-center gap-1.5 font-ui font-bold uppercase"
+            style={{
+              fontSize: 11,
+              letterSpacing: "0.08em",
+              color: "var(--accent)",
+            }}
+          >
+            <span
+              aria-hidden
+              style={{
+                display: "inline-block",
+                width: 5,
+                height: 5,
+                borderRadius: "50%",
+                background: "var(--accent)",
+                flexShrink: 0,
+              }}
+            />
+            On Route · {dhaba.routeHint}
           </p>
         ) : null}
-        <h1 className="mt-2 text-[28px] sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight font-semibold text-ink">
+
+        {/* H1 */}
+        <h1
+          className="font-display font-extrabold leading-[1.08]"
+          style={{
+            fontSize: "clamp(28px, 4vw, 44px)",
+            color: "#1c1814",
+            letterSpacing: "-0.01em",
+            marginTop: dhaba.routeHint ? 8 : 0,
+          }}
+        >
           {dhaba.title}
         </h1>
 
+        {/* Tag pills */}
         {dhaba.tags.length > 0 ? (
           <ul className="mt-4 flex flex-wrap gap-1.5" role="list">
-            {dhaba.tags.map((t) => (
-              <li key={t}>
-                <Link
-                  href={`/?tag=${encodeURIComponent(t)}`}
-                  className="hover:opacity-80 transition"
-                >
-                  <Tag label={t} />
-                </Link>
-              </li>
-            ))}
+            {dhaba.tags.map((t) => {
+              const isVeg = t === "Vegetarian";
+              return (
+                <li key={t}>
+                  <Link
+                    href={`/?tag=${encodeURIComponent(t)}`}
+                    className="hover:opacity-80 transition inline-flex items-center gap-1 font-ui font-medium"
+                    style={{
+                      fontSize: "11.5px",
+                      borderRadius: 999,
+                      padding: "3px 10px",
+                      background: isVeg
+                        ? "rgba(107,142,95,0.10)"
+                        : "#f3ede2",
+                      border: isVeg
+                        ? "1px solid rgba(107,142,95,0.30)"
+                        : "1px solid #e4d8c6",
+                      color: isVeg ? "#3a7c52" : "#6a5a4a",
+                    }}
+                  >
+                    {isVeg ? (
+                      <span
+                        aria-hidden
+                        style={{
+                          display: "inline-block",
+                          width: 5,
+                          height: 5,
+                          borderRadius: "50%",
+                          background: "#3a7c52",
+                          flexShrink: 0,
+                        }}
+                      />
+                    ) : null}
+                    {t}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         ) : null}
       </header>
 
-      {/* Full map with a single pre-selected pin — anchors the page with a
-          concrete location before the reader drops into the About block. */}
+      {/* ── Map ────────────────────────────────────────────────────── */}
       {dhaba.lat != null && dhaba.lng != null ? (
-        <section className="mt-7">
+        <section className="mt-7 rounded-2xl overflow-hidden">
           <DhabaDetailMap dhaba={dhaba} />
         </section>
       ) : null}
 
-      <section className="mt-8 grid gap-5 lg:grid-cols-[1.6fr_1fr]">
-        <div className="rounded-2xl bg-white border border-paper-warm p-6 sm:p-7 shadow-card">
-          <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+      {/* ── Info grid ─────────────────────────────────────────────── */}
+      <section
+        className="mt-6 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr]"
+        style={{ gap: 16 }}
+      >
+        {/* Left panel — About */}
+        <div
+          className="rounded-2xl"
+          style={{
+            background: "#fff",
+            border: "1.5px solid #e8dfd4",
+            padding: "24px 26px",
+            boxShadow: "0 1px 4px rgba(28,24,20,0.05)",
+          }}
+        >
+          <p
+            className="font-ui font-semibold uppercase"
+            style={{
+              fontSize: "10.5px",
+              color: "#c4b4a4",
+              letterSpacing: "0.08em",
+            }}
+          >
             About
-          </h2>
-          <p className="mt-3 text-[17px] sm:text-[18px] text-ink-soft leading-[1.75]">
+          </p>
+          <p
+            className="mt-3 font-ui leading-[1.78]"
+            style={{ fontSize: "16.5px", color: "#3c3128" }}
+          >
             {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
           </p>
 
-          <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-5 text-[14px]">
-            {dhaba.routeHint ? (
-              <div>
-                <dt className="text-ink-muted text-[11px] uppercase tracking-[0.06em]">
-                  Route
-                </dt>
-                <dd className="mt-1 font-medium text-ink">
-                  {dhaba.routeHint}
-                </dd>
-              </div>
-            ) : null}
-            {dhaba.source ? (
-              <div>
-                <dt className="text-ink-muted text-[11px] uppercase tracking-[0.06em]">
-                  Source
-                </dt>
-                <dd className="mt-1 font-medium text-ink">{dhaba.source}</dd>
-              </div>
-            ) : null}
-          </dl>
+          {/* Route sub-section */}
+          {dhaba.routeHint ? (
+            <>
+              <div
+                aria-hidden
+                style={{
+                  height: 1,
+                  background: "#f3ede2",
+                  margin: "16px 0",
+                }}
+              />
+              <p
+                className="font-ui font-semibold uppercase"
+                style={{
+                  fontSize: 11,
+                  color: "#c4b4a4",
+                  letterSpacing: "0.06em",
+                }}
+              >
+                Route
+              </p>
+              <p
+                className="mt-1 font-ui font-medium"
+                style={{ fontSize: 14, color: "#1c1814" }}
+              >
+                {dhaba.routeHint}
+              </p>
+            </>
+          ) : null}
 
           {dhaba.needsReview && !dhaba.featured ? (
-            <p className="mt-6 inline-flex items-center gap-1.5 text-[11px] text-ink-muted">
+            <p className="mt-6 inline-flex items-center gap-1.5 font-ui text-[11px] text-ink-muted">
               <span aria-hidden className="w-1 h-1 rounded-full bg-haldi" />
               Community-submitted · pending review
             </p>
           ) : null}
         </div>
 
-        <aside className="rounded-2xl bg-white border border-paper-warm p-6 sm:p-7 flex flex-col gap-5 shadow-card">
-
-          {/* ── Get there ── (hidden entirely when we have no address and
-              no route hint — an empty header is worse than nothing) */}
+        {/* Right panel — Sidebar */}
+        <aside
+          className="rounded-2xl flex flex-col"
+          style={{
+            background: "#fff",
+            border: "1.5px solid #e8dfd4",
+            padding: "24px 26px",
+            boxShadow: "0 1px 4px rgba(28,24,20,0.05)",
+            gap: 20,
+          }}
+        >
+          {/* Get there */}
           {hasGetThere ? (
             <div>
-              <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+              <p
+                className="font-ui font-semibold uppercase"
+                style={{
+                  fontSize: "10.5px",
+                  color: "#c4b4a4",
+                  letterSpacing: "0.08em",
+                }}
+              >
                 Get there
-              </h2>
+              </p>
               {dhaba.address ? (
-                <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.address.replace(/,\s*USA$/, "")}</p>
+                <p
+                  className="mt-2 font-ui leading-snug"
+                  style={{ fontSize: "13.5px", color: "#3c3128" }}
+                >
+                  {dhaba.address.replace(/,\s*USA$/, "")}
+                </p>
               ) : dhaba.routeHint ? (
-                <p className="mt-2 text-[14px] text-ink leading-snug">{dhaba.routeHint}</p>
+                <p
+                  className="mt-2 font-ui"
+                  style={{ fontSize: "13.5px", color: "#3c3128" }}
+                >
+                  {dhaba.routeHint}
+                </p>
               ) : null}
               {dhaba.mapsUrl ? (
                 <a
                   href={dhaba.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center gap-1.5 text-[13px] text-ink-muted hover:text-clay-600 transition underline-offset-4 hover:underline"
+                  className="mt-2 inline-flex items-center gap-1.5 font-ui transition-colors duration-150 hover:text-accent"
+                  style={{ fontSize: "12.5px", color: "#9a8a7a" }}
                 >
-                  <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3 h-3 flex-none">
-                    <path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z" />
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 14 14"
+                    width="12"
+                    height="12"
+                    fill="currentColor"
+                    className="flex-none"
+                  >
+                    <path d="M7 1a4.5 4.5 0 00-4.5 4.5c0 3.15 3.96 7.02 4.14 7.2a.54.54 0 00.72 0C7.54 12.52 11.5 8.65 11.5 5.5A4.5 4.5 0 007 1zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" />
                   </svg>
                   Open in Google Maps ↗
                 </a>
@@ -216,41 +358,52 @@ export default async function DhabaDetailPage({
             </div>
           ) : null}
 
-          {/* ── Phone ── */}
+          {/* Phone */}
           {dhaba.phone ? (
             <div>
-              <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+              <p
+                className="font-ui font-semibold uppercase"
+                style={{
+                  fontSize: "10.5px",
+                  color: "#c4b4a4",
+                  letterSpacing: "0.08em",
+                }}
+              >
                 Phone
-              </h2>
+              </p>
               <a
                 href={`tel:${dhaba.phone.replace(/\D/g, "")}`}
-                className="mt-2 inline-flex items-center gap-1.5 text-[16px] font-medium text-ink hover:text-clay-600 transition"
+                className="mt-2 font-ui font-semibold block transition-colors duration-150 hover:text-accent"
+                style={{ fontSize: 16, color: "#1c1814" }}
               >
-                <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5 flex-none text-clay-500">
-                  <path d="M3.6 1C2.7 1 2 1.7 2 2.6v.9c0 5.8 4.7 10.5 10.5 10.5h.9c.9 0 1.6-.7 1.6-1.6v-1.9a.5.5 0 00-.3-.5l-2.5-1a.5.5 0 00-.6.2l-.8 1.2a8.5 8.5 0 01-4.2-4.2l1.2-.8a.5.5 0 00.2-.6l-1-2.5A.5.5 0 005.5 1H3.6z"/>
-                </svg>
                 {dhaba.phone}
               </a>
             </div>
           ) : null}
 
-          {/* ── Hours ── */}
+          {/* Hours */}
           {dhaba.hours && dhaba.hours.length > 0 ? (
             <div>
-              <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+              <p
+                className="font-ui font-semibold uppercase"
+                style={{
+                  fontSize: "10.5px",
+                  color: "#c4b4a4",
+                  letterSpacing: "0.08em",
+                }}
+              >
                 Hours
-              </h2>
-              <ul className="mt-2 space-y-1">
+              </p>
+              <ul className="mt-2 space-y-1.5">
                 {dhaba.hours.map((line, idx) => {
-                  // Split on the FIRST colon only — the time half often
-                  // contains a colon too ("Monday: 8:00 AM – 5:00 PM").
-                  // If the raw string has no colon at all (unexpected
-                  // format like "Monday 8am–5pm"), render it verbatim
-                  // so the user sees real data instead of a broken split.
                   const colonAt = line.indexOf(":");
                   if (colonAt === -1) {
                     return (
-                      <li key={`${line}-${idx}`} className="text-[13px] text-ink">
+                      <li
+                        key={`${line}-${idx}`}
+                        className="font-ui"
+                        style={{ fontSize: "12.5px", color: "#1c1814" }}
+                      >
                         {line}
                       </li>
                     );
@@ -258,9 +411,22 @@ export default async function DhabaDetailPage({
                   const day = line.slice(0, colonAt);
                   const time = line.slice(colonAt + 1).trim();
                   return (
-                    <li key={`${day}-${idx}`} className="flex justify-between gap-3 text-[13px]">
-                      <span className="text-ink-muted w-28 flex-none">{day}</span>
-                      <span className="text-ink text-right">{time || "Closed"}</span>
+                    <li
+                      key={`${day}-${idx}`}
+                      className="flex justify-between gap-3"
+                    >
+                      <span
+                        className="font-ui flex-none"
+                        style={{ fontSize: 10, color: "#9a8a7a" }}
+                      >
+                        {day}
+                      </span>
+                      <span
+                        className="font-ui text-right"
+                        style={{ fontSize: "12.5px", color: "#1c1814" }}
+                      >
+                        {time || "Closed"}
+                      </span>
                     </li>
                   );
                 })}
@@ -268,36 +434,86 @@ export default async function DhabaDetailPage({
             </div>
           ) : null}
 
+          {/* Primary CTA — View on Google Maps */}
+          {dhaba.mapsUrl ? (
+            <a
+              href={dhaba.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto flex items-center justify-center font-ui font-semibold text-white transition-opacity duration-150 hover:opacity-[0.82]"
+              style={{
+                height: 44,
+                borderRadius: 12,
+                background: "var(--accent)",
+                fontSize: 14,
+              }}
+            >
+              View on Google Maps →
+            </a>
+          ) : null}
         </aside>
       </section>
 
-      {/* ── Community contributions ─────────────────────────────────── */}
+      {/* ── Community card ─────────────────────────────────────────── */}
       <section className="mt-10">
-        <div className="max-w-2xl rounded-2xl bg-white border border-paper-warm p-6 sm:p-7 shadow-card">
-          <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+        <div
+          className="rounded-2xl"
+          style={{
+            maxWidth: 580,
+            background: "#fff",
+            border: "1.5px solid #e8dfd4",
+            padding: "24px 28px",
+            boxShadow: "0 1px 4px rgba(28,24,20,0.05)",
+          }}
+        >
+          <p
+            className="font-ui font-semibold uppercase"
+            style={{
+              fontSize: "10.5px",
+              color: "#c4b4a4",
+              letterSpacing: "0.08em",
+            }}
+          >
             Been here?
-          </h2>
+          </p>
           {contributed === "true" ? (
-            <p className="mt-4 rounded-xl bg-leaf-soft border border-leaf-line text-leaf px-4 py-3 text-[14px]">
+            <p className="mt-4 rounded-xl bg-leaf-soft border border-leaf-line text-leaf px-4 py-3 text-[14px] font-ui">
               Thanks for contributing — we&rsquo;ll add it to the listing soon.
             </p>
           ) : (
             <>
-              <p className="mt-2 text-[15px] text-ink-soft leading-relaxed">
+              <p
+                className="mt-2 font-ui leading-[1.65]"
+                style={{ fontSize: 15, color: "#3c3128" }}
+              >
                 Share a photo or menu — help other drivers know what to expect.
               </p>
-              <ContributeForm dhabaTitle={dhaba.title} dhabaSlug={dhaba.slug} />
+              <ContributeForm
+                dhabaTitle={dhaba.title}
+                dhabaSlug={dhaba.slug}
+              />
             </>
           )}
         </div>
       </section>
 
+      {/* ── Similar stops ──────────────────────────────────────────── */}
       {related.length > 0 ? (
         <section className="mt-12">
-          <h2 className="text-[17px] sm:text-lg font-semibold tracking-tight text-ink">Similar stops</h2>
+          <h2
+            className="font-ui font-bold"
+            style={{ fontSize: 19, color: "#1c1814" }}
+          >
+            Similar stops
+          </h2>
           <ul
             role="list"
-            className="mt-4 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            className="mt-5"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(272px, 1fr))",
+              gap: 16,
+            }}
           >
             {related.map((d) => (
               <li key={d.id}>
