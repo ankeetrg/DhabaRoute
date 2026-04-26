@@ -44,19 +44,18 @@ export function DhabaCard({
       onMouseEnter={onActivate}
       onFocus={onActivate}
       data-selected={isSelected || undefined}
+      style={{
+        border: `1.5px solid ${isSelected ? "var(--accent)" : "var(--border-card)"}`,
+      }}
       className={[
         // Card is now image-led. The photo/placeholder sits at the top
         // with rounded-t-2xl; padding moves to an inner content block so
         // the image goes edge-to-edge. min-h stays so photo + no-photo
         // cards match heights exactly.
         "group relative flex flex-col rounded-2xl bg-white h-full overflow-hidden",
-        "border transition-[border-color,box-shadow,transform] duration-150",
-        "shadow-card hover:shadow-cardHover",
-        isSelected
-          ? "border-clay-500 ring-1 ring-clay-500/30"
-          : emphasis
-          ? "border-clay-200"
-          : "border-paper-warm hover:border-clay-200",
+        "shadow-card hover:shadow-cardHoverSpec",
+        "motion-safe:transition-[box-shadow,transform] motion-safe:duration-[180ms]",
+        "motion-safe:hover:-translate-y-0.5",
       ].join(" ")}
     >
       {/* ── MEDIA — DhabaPhoto owns skeleton, fade-in, and the
@@ -72,17 +71,42 @@ export function DhabaCard({
 
       {/* ── CONTENT ── */}
       <div className="flex flex-col p-4 sm:p-5 pt-3.5 sm:pt-4 min-h-[160px]">
-      {/* 1. META — route + distance, quiet uppercase micro-label */}
+      {/* 1. ROUTE PILL — saffron dot + route label above name; distance beside */}
       {dhaba.routeHint || distanceLabel ? (
-        <div className="flex items-center gap-1.5 text-[10.5px] font-medium uppercase tracking-[0.04em] text-ink-muted">
+        <div className="flex items-center gap-2 mb-1.5 flex-wrap">
           {dhaba.routeHint ? (
-            <span className="truncate">{dhaba.routeHint}</span>
-          ) : null}
-          {dhaba.routeHint && distanceLabel ? (
-            <span aria-hidden className="text-paper-warm">·</span>
+            <span
+              className="inline-flex items-center gap-1.5 leading-none font-semibold"
+              style={{
+                background: "#f8f3ec",
+                border: "1px solid #e4d8c6",
+                borderRadius: "999px",
+                padding: "2px 9px",
+                fontSize: "10.5px",
+                color: "#8a7a6a",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+              }}
+            >
+              <span
+                aria-hidden
+                style={{
+                  display: "inline-block",
+                  width: 5,
+                  height: 5,
+                  borderRadius: "50%",
+                  background: "var(--accent)",
+                  flexShrink: 0,
+                }}
+              />
+              {dhaba.routeHint}
+            </span>
           ) : null}
           {distanceLabel ? (
-            <span className="tabular-nums whitespace-nowrap normal-case tracking-normal">
+            <span
+              className="text-[11px] tabular-nums whitespace-nowrap"
+              style={{ color: "#9a8a7a" }}
+            >
               {distanceLabel}
             </span>
           ) : null}
@@ -90,12 +114,7 @@ export function DhabaCard({
       ) : null}
 
       {/* 2. NAME — dominant, overlay link spans the card surface */}
-      <h3
-        className={[
-          "min-w-0 text-[16px] sm:text-[17px] font-semibold leading-[1.3] text-ink",
-          dhaba.routeHint || distanceLabel ? "mt-1" : "",
-        ].join(" ")}
-      >
+      <h3 className="min-w-0 text-[16px] sm:text-[17px] font-semibold leading-[1.3] text-ink">
         <Link
           href={`/dhabas/${dhaba.slug}`}
           className="after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none"
@@ -151,15 +170,18 @@ export function DhabaCard({
       ) : null}
 
       {/* 5. DESCRIPTION — supportive, muted, 2-line clamp */}
-      <p className="mt-2.5 text-[13px] leading-snug text-ink-muted line-clamp-2">
+      <p className="mt-2.5 text-[12.5px] leading-snug line-clamp-2" style={{ color: "#9a8a7a" }}>
         {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
       </p>
 
       {/* 6. FOOTER — "View details →" on left, city/state on right */}
-      <div className="mt-auto pt-3 flex items-center justify-between gap-3">
+      <div
+        className="mt-auto flex items-center justify-between gap-3"
+        style={{ borderTop: "1px solid #f3ede2", paddingTop: "10px", marginTop: "12px" }}
+      >
         <span
           aria-hidden
-          className="text-[11.5px] text-ink-muted group-hover:text-clay-600 transition inline-flex items-center gap-1"
+          className="text-[11.5px] text-ink-muted group-hover:text-accent transition inline-flex items-center gap-1"
         >
           View details
           <svg
