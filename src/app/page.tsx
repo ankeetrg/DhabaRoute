@@ -7,6 +7,7 @@ import {
 import { Hero } from "@/components/Hero";
 import { DhabaRow } from "@/components/DhabaRow";
 import { HomeInteractive } from "@/components/HomeInteractive";
+import { HowItWorks } from "@/components/HowItWorks";
 import type { Dhaba } from "@/lib/types";
 
 export default function HomePage() {
@@ -23,6 +24,7 @@ export default function HomePage() {
     <>
       <Hero count={all.length} />
       <HomeInteractive dhabas={all} filterTags={getAllUsedTags()} />
+      <HowItWorks />
 
       <DhabaRow
         title="Featured dhabas"
