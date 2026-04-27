@@ -29,10 +29,18 @@
   --ink-muted:  #8a7a6a;
   --accent:     #df6028;   /* saffron/clay — CTAs, active states, pins */
   --ocean:      #2a5f8c;   /* focus rings */
-  --leaf:       #3a7c52;   /* "Open now" */
+  --leaf:       #138808;   /* "Open now" — Tricolor green (v2) */
   --sage:        #6b8e5f;   /* section accents, vegetarian tag */
   --sage-soft:   rgba(107, 142, 95, 0.08);
   --border-card: #e8dfd4;  /* card border at rest */
+
+  /* Structural green (v2) — present throughout regardless of accent
+     scheme. Used for section eyebrows, HowItWorks/Gallery backgrounds,
+     "Open Now" chip styling, curated row accent lines, and "+ Submit"
+     nav link. Distinct from --leaf (the Open-now status indicator). */
+  --green:      #1a6b47;
+  --green-soft: rgba(26, 107, 71, 0.13);
+  --green-line: rgba(26, 107, 71, 0.35);
 }
 
 html,

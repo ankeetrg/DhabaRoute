@@ -29,15 +29,15 @@ const config: Config = {
           200: "#EFC09C",
           300: "#E69E6F",
           400: "#E88247",
-          500: "#E46A2E", // primary CTA & highlights
+          500: "#df6028", // primary CTA & highlights — v2 saffron (matches --accent)
           600: "#C2622A", // hover/active — spec anchor (#c2622a)
           700: "#A84619",
           800: "#833717",
           900: "#5C2712",
         },
-        // Vegetarian / success — muted green
+        // Vegetarian / success — Tricolor green (v2)
         leaf: {
-          DEFAULT: "#2F7D4C",
+          DEFAULT: "#138808", // Open now indicator — Tricolor green
           soft:    "#E6F0EB",
           line:    "#C9DDD1",
         },
@@ -73,10 +73,12 @@ const config: Config = {
         // Design-spec type scale.
         // font-display → Bricolage Grotesque for H1/H2 editorial headings.
         // font-ui      → DM Sans for nav, labels, body, button text.
-        // Both loaded via Google Fonts in layout.tsx; system fallbacks fire
-        // until the webfonts arrive so there's no invisible text.
+        // font-logo    → Space Grotesk for the header + footer wordmark only (v2).
+        // All three loaded via Google Fonts in layout.tsx; system fallbacks
+        // fire until the webfonts arrive so there's no invisible text.
         display: ["Bricolage Grotesque", "system-ui", "sans-serif"],
         ui:      ["DM Sans", "system-ui", "sans-serif"],
+        logo:    ["Space Grotesk", "system-ui", "sans-serif"],
       },
       borderRadius: {
         xl: "14px",
