@@ -4,12 +4,14 @@
 // opacity transition. The async Telegram URL fetch moved up to layout.tsx
 // (server component) and is passed in as a prop.
 //
-// Design spec:
+// Design spec (v2):
 //   Height: 60px
 //   Background: rgba(250,248,243,0.97) rest → rgba(250,248,243,0.90) on scroll
 //   Backdrop: blur(14px)
-//   Wordmark: "Dhaba" — Bricolage Grotesque 800 / "Route" — DM Sans 700 accent
+//   On scroll: adds box-shadow: 0 1px 0 0 var(--green-line)
+//   Wordmark: "Dhaba" + "Route" — Space Grotesk (font-logo) only
 //   Nav links: DM Sans 13.5px weight 500, var(--ink-muted) → var(--ink) on hover
+//   "+ Submit": DM Sans 13.5px weight 600, color var(--green) (Tricolor green)
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -37,7 +39,9 @@ export function Header({ telegramUrl }: HeaderProps) {
           : "rgba(250,248,243,0.97)",
         backdropFilter: "blur(14px)",
         WebkitBackdropFilter: "blur(14px)",
-        transition: "background 200ms",
+        // v2: green-line shadow on scroll, no shadow at rest
+        boxShadow: scrolled ? "0 1px 0 0 var(--green-line)" : "none",
+        transition: "background 200ms, box-shadow 200ms",
       }}
     >
       <div className="container-page flex items-center justify-between h-[60px]">
@@ -49,11 +53,12 @@ export function Header({ telegramUrl }: HeaderProps) {
         >
           <LogoMark />
           <span className="flex items-baseline gap-px">
-            <span className="font-display font-extrabold text-[19px] leading-none text-ink tracking-tight">
+            {/* v2: wordmark in Space Grotesk only (font-logo), not the display font */}
+            <span className="font-logo font-extrabold text-[19px] leading-none text-ink tracking-tight">
               Dhaba
             </span>
             <span
-              className="font-ui font-bold text-[17px] leading-none"
+              className="font-logo font-bold text-[17px] leading-none"
               style={{ color: "var(--accent)" }}
             >
               Route
@@ -85,7 +90,7 @@ export function Header({ telegramUrl }: HeaderProps) {
           <Link
             href="/submit"
             className="text-[13.5px] font-semibold whitespace-nowrap transition-opacity duration-150 hover:opacity-75"
-            style={{ color: "var(--accent)" }}
+            style={{ color: "var(--green)" }}
           >
             + Submit
           </Link>
