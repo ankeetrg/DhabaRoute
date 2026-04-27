@@ -4,18 +4,18 @@ import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
 import { getOpenStatus } from "@/lib/isOpenNow";
 import { DhabaPhoto } from "./DhabaPhoto";
 
-// Card information architecture — based on how Yelp, Google Maps, and
-// camping directories (Campendium, The Dyrt) present road-traveler listings.
-// The single most valuable signal on a phone is "is it open right now" —
-// that's promoted to the second line, just under the name.
+// Card v2 — "Airy Light" (Card A from the design exploration).
+// Planning-optimized: bigger photo, larger name, today's hours visible,
+// 3-line description so route planners can scan quickly.
 //
 // Scanning order, top to bottom:
-// 1. META ROW       — route hint · distance          (quiet uppercase)
-// 2. NAME           — largest type, visual anchor
-// 3. STATUS + PHONE — "Open now" / "Closed" + tel
-// 4. AMENITY ICONS  — icon+label pairs (truck, gas, etc.) for top 3 tags
-// 5. DESCRIPTION    — 2-line clamp
-// 6. FOOTER         — "View details →"    city, state
+// 1. PHOTO          — 190px, full-bleed, no inner radius (card clips it)
+// 2. ROUTE          — saffron uppercase + dot prefix    (no pill chrome)
+// 3. NAME           — 20px Bricolage 700, visual anchor
+// 4. STATUS + HOURS — "Open now · 6:00 AM – 11:00 PM"   (today's hours)
+// 5. AMENITY ICONS  — icon+label pairs, top 3 tags
+// 6. DESCRIPTION    — 3-line clamp (planning context)
+// 7. FOOTER         — "View details →"    city, state   (subtle divider)
 //
 // The whole card is one click target via an invisible overlay link on the
 // title (after:absolute after:inset-0). No nested interactive buttons —
@@ -37,7 +37,16 @@ export function DhabaCard({
   onActivate,
 }: DhabaCardProps) {
   const openStatus = getOpenStatus(dhaba.hours);
+  const todayHours = getTodayHoursString(dhaba.hours);
   const city = dhaba.address ? cityFromAddress(dhaba.address) : "";
+
+  // v2 border states: rest 1px subtle ink; emphasis 1px translucent saffron;
+  // selected 1px solid saffron. Width is fixed at 1px so layout never reflows.
+  const borderColor = isSelected
+    ? "var(--accent)"
+    : emphasis
+    ? "rgba(223,96,40,0.25)"
+    : "rgba(28,24,20,0.08)";
 
   return (
     <article
@@ -45,45 +54,42 @@ export function DhabaCard({
       onFocus={onActivate}
       data-selected={isSelected || undefined}
       style={{
-        border: `1.5px solid ${isSelected ? "var(--accent)" : "var(--border-card)"}`,
+        border: `1px solid ${borderColor}`,
+        // v2 hover physics: -4px lift, deep two-layer shadow, 220ms with
+        // a soft overshoot ease. Set rest shadow inline so :hover can override.
+        boxShadow: "0 2px 12px rgba(28,24,20,0.06)",
+        transition:
+          "transform 220ms cubic-bezier(0.34,1.4,0.64,1), box-shadow 220ms cubic-bezier(0.34,1.4,0.64,1)",
       }}
       className={[
-        // Card is now image-led. The photo/placeholder sits at the top
-        // with rounded-t-2xl; padding moves to an inner content block so
-        // the image goes edge-to-edge. min-h stays so photo + no-photo
-        // cards match heights exactly.
-        "group relative flex flex-col rounded-2xl bg-white h-full overflow-hidden",
-        "shadow-card hover:shadow-cardHoverSpec",
-        "motion-safe:transition-[box-shadow,transform] motion-safe:duration-[180ms]",
-        "motion-safe:hover:-translate-y-0.5",
+        "group relative flex flex-col rounded-[20px] bg-white h-full overflow-hidden",
+        // Hover lift + deep shadow — matched 1:1 to v2 spec.
+        "motion-safe:hover:-translate-y-1",
+        "motion-safe:hover:shadow-[0_20px_60px_rgba(28,24,20,0.13),0_4px_16px_rgba(28,24,20,0.06)]",
       ].join(" ")}
     >
-      {/* ── MEDIA — DhabaPhoto owns skeleton, fade-in, and the
-          gradient+utensil fallback when the image is missing or errors.
-          Hover zoom is opt-in here; the outer article carries `group`. */}
+      {/* ── MEDIA — 190px full-bleed photo. DhabaPhoto handles skeleton,
+          fade-in, and the gradient+utensil fallback. Card overflow-hidden
+          + 20px radius gives the photo rounded top corners visually. */}
       <DhabaPhoto
         src={dhaba.imageUrl}
         alt=""
-        className="w-full h-40 sm:h-44 flex-none"
+        className="w-full h-[190px] flex-none"
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         hoverZoom
       />
 
       {/* ── CONTENT ── */}
-      <div className="flex flex-col p-4 sm:p-5 pt-3.5 sm:pt-4 min-h-[160px]">
-      {/* 1. ROUTE PILL — saffron dot + route label above name; distance beside */}
+      <div className="flex flex-col p-5 pt-4 min-h-[180px]">
+      {/* 1. ROUTE — inline label, no pill chrome (v2). Distance pairs alongside. */}
       {dhaba.routeHint || distanceLabel ? (
         <div className="flex items-center gap-2 mb-1.5 flex-wrap">
           {dhaba.routeHint ? (
             <span
               className="inline-flex items-center gap-1.5 leading-none font-semibold"
               style={{
-                background: "#f8f3ec",
-                border: "1px solid #e4d8c6",
-                borderRadius: "999px",
-                padding: "2px 9px",
                 fontSize: "10.5px",
-                color: "#8a7a6a",
+                color: "var(--accent)",
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
               }}
@@ -92,8 +98,8 @@ export function DhabaCard({
                 aria-hidden
                 style={{
                   display: "inline-block",
-                  width: 5,
-                  height: 5,
+                  width: 4,
+                  height: 4,
                   borderRadius: "50%",
                   background: "var(--accent)",
                   flexShrink: 0,
@@ -113,55 +119,73 @@ export function DhabaCard({
         </div>
       ) : null}
 
-      {/* 2. NAME — dominant, overlay link spans the card surface */}
-      <h3 className="min-w-0 text-[16px] sm:text-[17px] font-semibold leading-[1.3] text-ink">
+      {/* 2. NAME — 20px Bricolage 700, overlay link spans the card surface. */}
+      <h3
+        className="min-w-0 font-display font-bold text-[20px] leading-[1.15] text-ink"
+        style={{ letterSpacing: "-0.02em" }}
+      >
         <Link
           href={`/dhabas/${dhaba.slug}`}
-          className="after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none"
+          className="after:absolute after:inset-0 after:rounded-[20px] after:content-[''] focus-visible:outline-none"
         >
           {dhaba.title}
         </Link>
       </h3>
 
-      {/* 3. STATUS + PHONE — promoted from the detail page. Users on the
-          road need to know if they'll reach a locked door before driving. */}
-      {openStatus !== "unknown" || dhaba.phone ? (
-        <div className="mt-2 flex items-center gap-2 text-[11.5px] leading-none flex-wrap">
+      {/* 3. STATUS + TODAY'S HOURS — "Open now · 6:00 AM – 11:00 PM".
+          Drivers want to know "is it open AND for how long" at a glance. */}
+      {openStatus !== "unknown" ? (
+        <div className="mt-2 flex items-center gap-1.5 leading-none flex-wrap">
           {openStatus === "open" ? (
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-leaf">
-              <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-leaf" />
+            <span
+              className="inline-flex items-center gap-1.5 font-bold"
+              style={{ fontSize: "11.5px", color: "var(--leaf)" }}
+            >
+              <span
+                aria-hidden
+                className="rounded-full"
+                style={{ width: 6, height: 6, background: "var(--leaf)" }}
+              />
               Open now
             </span>
-          ) : openStatus === "closed" ? (
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-clay-700">
-              <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-clay-500" />
+          ) : (
+            <span
+              className="inline-flex items-center gap-1.5 font-bold"
+              style={{ fontSize: "11.5px", color: "#b04020" }}
+            >
+              <span
+                aria-hidden
+                className="rounded-full"
+                style={{ width: 6, height: 6, background: "var(--accent)" }}
+              />
               Closed
             </span>
-          ) : null}
+          )}
 
-          {openStatus !== "unknown" && dhaba.phone ? (
-            <span aria-hidden className="text-paper-warm">·</span>
-          ) : null}
-
-          {dhaba.phone ? (
-            // relative z-10 lifts the tel link above the title's pseudo-element
-            // overlay — a phone tap dials, a card-body tap opens the detail page.
-            <a
-              href={`tel:${dhaba.phone.replace(/\D/g, "")}`}
-              className="relative z-10 text-[11.5px] text-ink-muted hover:text-clay-600 transition tabular-nums"
+          {todayHours ? (
+            <span
+              className="font-medium"
+              style={{ fontSize: "11.5px", color: "#9a8a7a" }}
             >
-              {dhaba.phone}
-            </a>
+              · {todayHours}
+            </span>
           ) : null}
         </div>
       ) : null}
 
-      {/* 4. AMENITIES — icon+label pairs. Icons communicate faster than
-          text chips for repeat attributes (truck parking, gas, etc.). */}
+      {/* 4. AMENITIES — icon+label pairs, top 3 tags, gap 4px / 12px. */}
       {dhaba.tags.length > 0 ? (
-        <ul className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1.5" role="list">
+        <ul
+          className="mt-2.5 flex flex-wrap"
+          style={{ rowGap: "4px", columnGap: "12px" }}
+          role="list"
+        >
           {dhaba.tags.slice(0, 3).map((t) => (
-            <li key={t} className="inline-flex items-center gap-1 text-[11px] text-ink-muted">
+            <li
+              key={t}
+              className="inline-flex items-center gap-1 text-[11px]"
+              style={{ color: "#9a8a7a" }}
+            >
               <AmenityIcon tag={t} />
               <span className="truncate">{t}</span>
             </li>
@@ -169,19 +193,27 @@ export function DhabaCard({
         </ul>
       ) : null}
 
-      {/* 5. DESCRIPTION — supportive, muted, 2-line clamp */}
-      <p className="mt-2.5 text-[12.5px] leading-snug line-clamp-2" style={{ color: "#9a8a7a" }}>
+      {/* 5. DESCRIPTION — 13px / 1.65 / 3-line clamp (planning context). */}
+      <p
+        className="mt-2.5 line-clamp-3"
+        style={{ fontSize: "13px", lineHeight: 1.65, color: "#8a7a6a" }}
+      >
         {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
       </p>
 
-      {/* 6. FOOTER — "View details →" on left, city/state on right */}
+      {/* 6. FOOTER — subtle hairline divider, "View details →" left, city right. */}
       <div
         className="mt-auto flex items-center justify-between gap-3"
-        style={{ borderTop: "1px solid #f3ede2", paddingTop: "10px", marginTop: "12px" }}
+        style={{
+          borderTop: "1px solid rgba(28,24,20,0.07)",
+          marginTop: "14px",
+          paddingTop: "12px",
+        }}
       >
         <span
           aria-hidden
-          className="text-[11.5px] text-ink-muted group-hover:text-accent transition inline-flex items-center gap-1"
+          className="font-medium group-hover:text-accent transition inline-flex items-center gap-1"
+          style={{ fontSize: "12px", color: "#9a8a7a" }}
         >
           View details
           <svg
@@ -197,7 +229,12 @@ export function DhabaCard({
           </svg>
         </span>
         {city ? (
-          <span className="text-[11px] text-ink-muted truncate">{city}</span>
+          <span
+            className="truncate"
+            style={{ fontSize: "11px", color: "rgba(28,24,20,0.32)" }}
+          >
+            {city}
+          </span>
         ) : null}
       </div>
       </div>
@@ -206,6 +243,30 @@ export function DhabaCard({
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────
+
+// Today's hours, just the time portion (e.g. "6:00 AM – 11:00 PM" or
+// "Open 24 hours"). Returns null if today's line is missing or marked Closed
+// — the status indicator above already conveys "Closed" so we suppress the
+// trailing time string in that case to keep the line uncluttered.
+const HOURS_DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+function getTodayHoursString(hours: string[] | undefined): string | null {
+  if (!hours || hours.length === 0) return null;
+  const day = HOURS_DAYS[new Date().getDay()];
+  const line = hours.find((h) => h.startsWith(day));
+  if (!line) return null;
+  const time = line.split(":").slice(1).join(":").trim();
+  if (!time) return null;
+  if (/closed/i.test(time)) return null;
+  return time;
+}
 
 // "5317 US-95, Amargosa Valley, NV 89020, USA" → "Amargosa Valley, NV"
 // "5039 Centre St, Niagara Falls, ON L2G 3N6, Canada" → "Niagara Falls, ON"
