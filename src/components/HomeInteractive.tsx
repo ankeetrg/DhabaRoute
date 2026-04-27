@@ -258,6 +258,19 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
         } as React.CSSProperties
       }
     >
+      {/* ── Page intro: headline + subline ───────────────────────
+          Sits above the sticky toolbar so it scrolls away naturally.
+          Replaces the former hero block — keeps the framing without
+          the dead-space gradient. */}
+      <div className="container-page pt-[20px]">
+        <h1 className="font-display font-extrabold text-[clamp(22px,2.8vw,32px)] tracking-[-0.02em] text-ink leading-[1.15]">
+          Find real dhabas on your route.
+        </h1>
+        <p className="hidden sm:block mt-1.5 text-[13.5px] text-ink-muted leading-[1.5]">
+          Built for drivers who are hungry and on the move.
+        </p>
+      </div>
+
       {/* ── Sticky toolbar: search + filter chips + view toggle ── */}
       {/* Positioned under the site header (top-14 = 56px). Stays visible
           while the user scrolls through the card list. */}

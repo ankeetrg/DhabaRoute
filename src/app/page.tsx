@@ -2,7 +2,6 @@ import {
   getAllDhabas,
   getAllUsedTags,
 } from "@/lib/dhabas";
-import { Hero } from "@/components/Hero";
 import { DhabaRow } from "@/components/DhabaRow";
 import { HomeInteractive } from "@/components/HomeInteractive";
 import { MenuShowcase } from "@/components/MenuShowcase";
@@ -17,7 +16,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero count={all.length} />
       <HomeInteractive dhabas={all} filterTags={getAllUsedTags()} />
       <MenuShowcase />
 
