@@ -33,9 +33,16 @@ interface Props {
 
 type ViewMode = "split" | "list" | "map";
 
+// v2 chip list — intentional narrow set chosen for highway driver scanning
+// (planning > exhaustive). The hybrid display mode below filters to ones
+// with ≥1 match in the data so empty/dead chips never render. As tags get
+// backfilled into the dataset, missing chips light up automatically.
+const V2_TAGS = ["Vegetarian", "Truck Parking", "Late Night", "Dine-In"] as const;
+
 export function HomeInteractive({ dhabas, filterTags }: Props) {
   const [query, setQuery] = useState("");
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
+  const [openNowActive, setOpenNowActive] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   // Explicit view toggle — default "split" matches the prior auto-behavior.
   // Mobile users often prefer "list", desktop power-users "map". Giving
@@ -47,6 +54,10 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return dhabas.filter((d) => {
+      // Open Now is a live filter — recomputes every render against the
+      // viewer's clock. Combined with tag/query filters via AND semantics
+      // (must be open AND match the other criteria).
+      if (openNowActive && getOpenStatus(d.hours) !== "open") return false;
       if (activeTags.size > 0) {
         // OR / union semantics — a dhaba matches if it has ANY of the
         // selected tags. Multi-select is additive (broader results), not
@@ -63,7 +74,7 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
         .toLowerCase();
       return hay.includes(q);
     });
-  }, [dhabas, query, activeTags]);
+  }, [dhabas, query, activeTags, openNowActive]);
 
   const rankedMatches: RankedDhaba[] = useMemo(
     () => rankByDistance(filtered, geo.coords),
@@ -80,7 +91,7 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
   // Active query/filters produced zero matches → show nearest dhabas instead
   // with a banner so the user knows why the list isn't exactly what they
   // typed. Keeps the page useful for a 2-second glance.
-  const hasFilters = activeTags.size > 0 || query.length > 0;
+  const hasFilters = activeTags.size > 0 || query.length > 0 || openNowActive;
   const isFallback = hasFilters && rankedMatches.length === 0;
   const ranked: RankedDhaba[] = isFallback ? rankedAll : rankedMatches;
 
@@ -127,9 +138,14 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
     });
   }, []);
 
-  // filterTags now comes from the dataset directly (see dhabas.getAllUsedTags),
-  // so every chip is guaranteed to match at least one row — no dead filters.
-  const presentTags = filterTags;
+  // v2 hybrid chip set: intersect the curated V2_TAGS list with the dataset's
+  // present tags so we render exactly the v2 visual narrow set, but suppress
+  // any chip that would currently match zero dhabas. As Vegetarian / Late
+  // Night / Dine-In tags get backfilled into data, those chips light up.
+  const presentTags = useMemo(
+    () => V2_TAGS.filter((t) => filterTags.includes(t as TagType)) as TagType[],
+    [filterTags],
+  );
 
   const mappableCount = mapDhabas.filter((d) => d.lat != null && d.lng != null).length;
 
@@ -258,37 +274,86 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
         } as React.CSSProperties
       }
     >
-      {/* ── Page intro: headline + subline ───────────────────────
-          Sits above the sticky toolbar so it scrolls away naturally.
-          Replaces the former hero block — keeps the framing without
-          the dead-space gradient. */}
-      <div className="container-page pt-[20px]">
-        <h1 className="font-display font-extrabold text-[clamp(22px,2.8vw,32px)] tracking-[-0.02em] text-ink leading-[1.15]">
-          Find real dhabas on your route.
-        </h1>
-        <p className="hidden sm:block mt-1.5 text-[13.5px] text-ink-muted leading-[1.5]">
-          Built for drivers who are hungry and on the move.
-        </p>
-      </div>
+      {/* ── v2 sticky heading + search zone ───────────────────────
+          Single sticky block at top: 60px (under the 60px-tall header).
+          Replaces the v1 hero + separate sticky toolbar combo. Heading
+          and subline scroll-stick along with search/chips so a driver
+          mid-scroll always sees the full filter context.
 
-      {/* ── Sticky toolbar: search + filter chips + view toggle ── */}
-      {/* Positioned under the site header (top-14 = 56px). Stays visible
-          while the user scrolls through the card list. */}
-      {/* top-[57px] = header h-14 (56px) + 1px border-b — prevents 1px overlap */}
-      <div className="sticky top-[57px] z-20 bg-paper/90 backdrop-blur-md border-b border-paper-warm">
-        <div className="container-page py-3 space-y-2.5">
-          <SearchBar query={query} setQuery={setQuery} />
-          <div className="flex items-center gap-3">
-            {presentTags.length > 0 ? (
-              <div className="flex-1 min-w-0">
-                <FilterChips
-                  tags={presentTags}
-                  active={activeTags}
-                  toggle={toggleTag}
-                  clearTags={() => setActiveTags(new Set())}
-                />
-              </div>
-            ) : <div className="flex-1" />}
+          Spec:
+            top: 60px, z-index: 30
+            bg rgba(250,248,243,0.96), blur(14px), border-b #e4d8c6
+            padding 20px 32px 12px (horizontal lives in container-page) */}
+      <div
+        className="sticky top-[60px] z-30"
+        style={{
+          background: "rgba(250,248,243,0.96)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          borderBottom: "1px solid #e4d8c6",
+        }}
+      >
+        <div
+          className="container-page"
+          style={{ paddingTop: 20, paddingBottom: 12 }}
+        >
+          {/* Heading row — H1 left, stats right */}
+          <div className="flex items-baseline justify-between gap-4">
+            <h1
+              className="font-display font-extrabold text-ink leading-[1.1]"
+              style={{
+                fontSize: "clamp(20px, 2.4vw, 30px)",
+                letterSpacing: "-0.025em",
+              }}
+            >
+              Find real dhabas on your route.
+            </h1>
+            <p
+              className="hidden sm:block whitespace-nowrap font-ui tabular-nums"
+              style={{ fontSize: "11px", color: "rgba(28,24,20,0.38)" }}
+            >
+              {dhabas.length} dhabas · 28 states
+            </p>
+          </div>
+
+          {/* Subline — hidden on mobile to keep the sticky zone compact */}
+          <p
+            className="hidden sm:block font-ui"
+            style={{
+              fontSize: "13.5px",
+              color: "var(--ink-muted)",
+              lineHeight: 1.5,
+              marginTop: 2,
+              marginBottom: 12,
+            }}
+          >
+            Built for drivers who are hungry and on the move.
+          </p>
+
+          {/* Search bar with embedded "Near me" pill (saffron, right side).
+              The pill slides left when a clear-× appears so both stay visible. */}
+          <SearchBar
+            query={query}
+            setQuery={setQuery}
+            onNearMe={() => geo.request()}
+            geoStatus={geo.status}
+          />
+
+          {/* Filter chips + view toggle */}
+          <div className="mt-2.5 flex items-center gap-3">
+            <div className="flex-1 min-w-0">
+              <FilterChips
+                tags={presentTags}
+                active={activeTags}
+                toggle={toggleTag}
+                clearTags={() => {
+                  setActiveTags(new Set());
+                  setOpenNowActive(false);
+                }}
+                openNowActive={openNowActive}
+                toggleOpenNow={() => setOpenNowActive((v) => !v)}
+              />
+            </div>
             {hasAnyPins ? (
               <ViewToggle mode={viewMode} setMode={setViewMode} />
             ) : null}
@@ -340,7 +405,25 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
 
 // ── Sub-components ─────────────────────────────────────────────
 
-function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) => void }) {
+function SearchBar({
+  query,
+  setQuery,
+  onNearMe,
+  geoStatus,
+}: {
+  query: string;
+  setQuery: (v: string) => void;
+  onNearMe: () => void;
+  geoStatus: ReturnType<typeof useGeolocation>["status"];
+}) {
+  // v2: input padding-right adapts so the "Near me" pill never collides with
+  // the text. When a query is present, the clear × inserts at right-3 and the
+  // pill slides left to right-12 to keep room.
+  const hasQuery = query.length > 0;
+  const isLocating = geoStatus === "locating";
+  // Reserve enough right padding for the pill (≈100px label) plus the × when shown.
+  const inputPaddingRight = hasQuery ? 152 : 116;
+
   return (
     <div className="relative">
       <label htmlFor="dhaba-search" className="sr-only">Search dhabas</label>
@@ -360,9 +443,8 @@ function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) =
         type="search"
         inputMode="search"
         autoComplete="off"
-        // Placeholder now hints at tag-style queries ("Vegetarian",
-        // "Truck Parking") via the word "cuisine" — tags are searchable
-        // via the hay string below, but users had no way to discover it.
+        // Placeholder hints at tag-style queries ("Vegetarian", "Truck Parking")
+        // via the word "cuisine" — tags are searchable via the hay string below.
         placeholder="Search by name, highway, city, or cuisine"
         value={query}
         // On mobile, tapping the virtual keyboard's Enter/Go key committed
@@ -372,15 +454,30 @@ function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) =
           if (e.key === "Enter") e.currentTarget.blur();
         }}
         onChange={(e) => setQuery(e.target.value)}
+        style={{
+          paddingRight: inputPaddingRight,
+          // v2 search bar chrome: 1.5px solid paper-warm at rest, ocean
+          // focus border + 3px soft halo. Inline so the focus transition
+          // doesn't fight Tailwind's ring utility.
+          border: "1.5px solid #e4d8c6",
+        }}
         className={[
-          "w-full h-12 pl-10 pr-10 rounded-full",
-          "bg-paper-soft border border-paper-warm",
+          "w-full h-12 pl-10 rounded-full bg-white",
           "text-[15px] text-ink placeholder:text-ink-muted/75",
-          "focus:bg-paper focus:border-ocean focus:ring-2 focus:ring-ocean/20",
-          "focus:outline-none transition",
+          "focus:outline-none transition-[border-color,box-shadow] duration-150",
         ].join(" ")}
+        onFocus={(e) => {
+          e.currentTarget.style.borderColor = "var(--ocean)";
+          e.currentTarget.style.boxShadow = "0 0 0 3px rgba(42,95,140,0.10)";
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.borderColor = "#e4d8c6";
+          e.currentTarget.style.boxShadow = "none";
+        }}
       />
-      {query ? (
+
+      {/* Clear × — appears only when query is non-empty, sits at the far right */}
+      {hasQuery ? (
         <button
           type="button"
           aria-label="Clear search"
@@ -392,23 +489,55 @@ function SearchBar({ query, setQuery }: { query: string; setQuery: (v: string) =
           </svg>
         </button>
       ) : null}
+
+      {/* "Near me" pill — saffron, inside the search bar on the right.
+          Slides left when a clear-× appears so both fit cleanly. */}
+      <button
+        type="button"
+        onClick={onNearMe}
+        disabled={isLocating}
+        aria-label={isLocating ? "Locating you" : "Find dhabas near me"}
+        className={[
+          "absolute top-1/2 -translate-y-1/2",
+          "inline-flex items-center gap-1.5 h-[34px] px-3 rounded-full",
+          "font-ui font-semibold text-white",
+          "transition-[right,opacity] duration-150",
+          "disabled:opacity-70 hover:opacity-[0.88]",
+        ].join(" ")}
+        style={{
+          right: hasQuery ? 44 : 6,
+          background: "var(--accent)",
+          fontSize: "11.5px",
+        }}
+      >
+        <svg
+          aria-hidden
+          viewBox="0 0 14 14"
+          className="w-3 h-3 flex-none"
+          fill="currentColor"
+        >
+          <path d="M7 1.5a3.5 3.5 0 00-3.5 3.5c0 2.6 3.1 5.7 3.3 5.85a.3.3 0 00.4 0c.2-.15 3.3-3.25 3.3-5.85A3.5 3.5 0 007 1.5zm0 4.9A1.4 1.4 0 118.4 5 1.4 1.4 0 017 6.4z" />
+        </svg>
+        {isLocating ? "Locating…" : "Near me"}
+      </button>
     </div>
   );
 }
 
 function FilterChips({
-  tags, active, toggle, clearTags,
+  tags, active, toggle, clearTags, openNowActive, toggleOpenNow,
 }: {
   tags: TagType[];
   active: Set<string>;
   toggle: (t: string) => void;
   clearTags: () => void;
+  openNowActive: boolean;
+  toggleOpenNow: () => void;
 }) {
   // "All" acts as the implicit empty-selection state — clicking it clears
-  // every tag filter. It's rendered active when no tag is selected so the
-  // chip row always has a visible anchor. min-w-max + no-wrap keeps the row
-  // on one line and horizontally scrollable on mobile.
-  const noneActive = active.size === 0;
+  // every tag filter (incl. Open Now). It's rendered active when no tag
+  // is selected so the chip row always has a visible anchor.
+  const noneActive = active.size === 0 && !openNowActive;
   const scrollRef = useRef<HTMLDivElement>(null);
   // atEnd includes the "no overflow" case so the fade disappears when the
   // row fits fully (e.g. desktop with few tags). Updated on scroll + resize +
@@ -433,6 +562,12 @@ function FilterChips({
     };
   }, [tags.length]);
 
+  // v2 chip base styling: h-9 (36px), 12.5px / weight 500, 1.5px paper-warm
+  // border at rest, saffron fill when active. Tailwind classes keep this
+  // unified across All / tags / Open Now (Open Now overrides colors only).
+  const chipBase =
+    "inline-flex items-center h-9 px-4 rounded-full whitespace-nowrap text-[12.5px] font-medium border-[1.5px] transition select-none";
+
   return (
     // Wrapper is relative so the absolute fade overlay sits on the right edge.
     // The fade signals "scroll for more" on mobile and at any width where the
@@ -447,12 +582,12 @@ function FilterChips({
               onClick={clearTags}
               aria-pressed={noneActive}
               className={[
-                "inline-flex items-center h-10 px-4 rounded-full whitespace-nowrap",
-                "text-[12.5px] font-medium border transition select-none",
+                chipBase,
                 noneActive
-                  ? "bg-clay-600 text-white border-clay-600 shadow-cta"
-                  : "bg-white text-ink-soft border-paper-warm hover:border-clay-300 hover:text-ink",
+                  ? "bg-clay-500 text-white border-clay-500 shadow-cta"
+                  : "bg-white border-paper-warm hover:border-clay-300 hover:text-ink",
               ].join(" ")}
+              style={noneActive ? undefined : { color: "#6a5a4a" }}
             >
               All
             </button>
@@ -466,19 +601,56 @@ function FilterChips({
                   onClick={() => toggle(tag)}
                   aria-pressed={on}
                   className={[
-                    "inline-flex items-center h-10 px-4 rounded-full whitespace-nowrap",
-                    "text-[12.5px] font-medium border transition select-none",
+                    chipBase,
                     on
-                      // Filled clay — premium saffron anchor per spec (#c2622a ≈ clay-600).
-                      ? "bg-clay-600 text-white border-clay-600 shadow-cta"
-                      : "bg-white text-ink-soft border-paper-warm hover:border-clay-300 hover:text-ink",
+                      // Filled saffron — clay-500 now resolves to var(--accent) #df6028.
+                      ? "bg-clay-500 text-white border-clay-500 shadow-cta"
+                      : "bg-white border-paper-warm hover:border-clay-300 hover:text-ink",
                   ].join(" ")}
+                  style={on ? undefined : { color: "#6a5a4a" }}
                 >
                   {tag}
                 </button>
               </li>
             );
           })}
+
+          {/* Open Now — v2 special chip. Green styling distinguishes it from
+              tag chips so users read it as a different filter dimension
+              (state, not category). Live filter — see HomeInteractive's
+              filtered useMemo for getOpenStatus() wiring. */}
+          <li>
+            <button
+              type="button"
+              onClick={toggleOpenNow}
+              aria-pressed={openNowActive}
+              className={[chipBase, "transition-colors"].join(" ")}
+              style={
+                openNowActive
+                  ? {
+                      background: "var(--green)",
+                      color: "#fff",
+                      borderColor: "var(--green)",
+                    }
+                  : {
+                      background: "#fff",
+                      color: "var(--green)",
+                      borderColor: "var(--green-line)",
+                    }
+              }
+            >
+              <span
+                aria-hidden
+                className="rounded-full mr-1.5 inline-block"
+                style={{
+                  width: 6,
+                  height: 6,
+                  background: openNowActive ? "#fff" : "var(--leaf)",
+                }}
+              />
+              Open Now
+            </button>
+          </li>
         </ul>
       </div>
       <div
