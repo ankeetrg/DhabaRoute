@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-26T08:47:08.242Z",
+  "generatedAt": "2026-04-29T10:46:13.198Z",
   "count": 157,
   "dhabas": [
     {
@@ -14,6 +14,7 @@
         "Death Valley"
       ],
       "priority": "Medium",
+      "routeHint": "US-95 · NV",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -47,6 +48,7 @@
         "Showers"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · WY",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -79,6 +81,7 @@
         "New York"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-90 · ON",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -143,6 +146,7 @@
         "I-80"
       ],
       "priority": "Medium",
+      "routeHint": "I-80 · WY",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -176,6 +180,7 @@
         "Bathrooms"
       ],
       "priority": "Medium",
+      "routeHint": "I-40 · TX",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -209,6 +214,7 @@
         "Bathrooms"
       ],
       "priority": "Medium",
+      "routeHint": "I-40 · TX",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -241,6 +247,7 @@
         "Bathrooms"
       ],
       "priority": "Medium",
+      "routeHint": "US-83 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -275,6 +282,7 @@
         "Bathrooms"
       ],
       "priority": "Medium",
+      "routeHint": "I-20 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -372,6 +380,7 @@
         "Gas"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-10 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -540,6 +549,7 @@
         "Iowa"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · IA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -571,6 +581,7 @@
         "Seating"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-70 · MO",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -670,6 +681,7 @@
         "Parking"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-75 · OH",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -842,6 +854,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "I-20 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -874,6 +887,7 @@
         "Arkansas"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · AR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -907,6 +921,7 @@
         "Louisiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-55 · LA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -940,6 +955,7 @@
         "Louisiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-10 · LA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -972,7 +988,7 @@
         "Seating"
       ],
       "priority": "Medium",
-      "routeHint": "I-10",
+      "routeHint": "US-49 · MS",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1006,6 +1022,7 @@
         "Florida"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-95 · FL",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1039,6 +1056,7 @@
         "Florida"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-75 · FL",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1071,6 +1089,7 @@
         "Florida"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-75 · FL",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1103,6 +1122,7 @@
         "Ohio"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-75 · TN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1135,6 +1155,7 @@
         "North Carolina"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-85 · NC",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1167,6 +1188,7 @@
         "Indiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-70 · IN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1199,6 +1221,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "US-59 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1231,6 +1254,7 @@
         "Virginia"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-95 · VA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1263,6 +1287,7 @@
         "New Jersey"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-95 · NJ",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1295,6 +1320,7 @@
         "New York"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-95 · NY",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1327,6 +1353,7 @@
         "Michigan"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-90 · IL",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1359,6 +1386,7 @@
         "Ohio"
       ],
       "priority": "Medium",
+      "routeHint": "US-42 · OH",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1391,6 +1419,7 @@
         "Ohio"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-71 · OH",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1423,6 +1452,7 @@
         "New York"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · PA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1455,6 +1485,7 @@
         "Ohio"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-75 · ON",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1487,6 +1518,7 @@
         "Arkansas"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · AR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1519,6 +1551,7 @@
         "Arkansas"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · AR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1551,6 +1584,7 @@
         "Missouri"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-44 · MO",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1584,6 +1618,7 @@
         "Oklahoma"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-44 · OK",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1616,6 +1651,7 @@
         "Missouri"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-49 · MO",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1648,6 +1684,7 @@
         "Iowa"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · IA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1680,7 +1717,7 @@
         "Iowa"
       ],
       "priority": "Medium",
-      "routeHint": "I-80",
+      "routeHint": "Near I-80 · IA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1713,6 +1750,7 @@
         "Minnesota"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-94 · MN",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -1745,6 +1783,7 @@
         "Wyoming"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · WY",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1778,6 +1817,7 @@
         "Montana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-90 · MT",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1810,6 +1850,7 @@
         "Montana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-90 · MT",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1843,6 +1884,7 @@
         "Washington"
       ],
       "priority": "Medium",
+      "routeHint": "I-5 · WA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1876,6 +1918,7 @@
         "Washington"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · WA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1900,6 +1943,7 @@
         "Washington"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-90 · WA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1932,6 +1976,7 @@
         "Washington"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -1964,6 +2009,7 @@
         "Washington"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -1996,6 +2042,7 @@
         "Washington"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2028,6 +2075,7 @@
         "Oregon"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2060,6 +2108,7 @@
         "Washington"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-84 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2092,6 +2141,7 @@
         "Oregon"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-84 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2124,6 +2174,7 @@
         "Washington"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2156,6 +2207,7 @@
         "Oregon"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2189,6 +2241,7 @@
         "Oregon"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2221,6 +2274,7 @@
         "Oregon"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2253,7 +2307,7 @@
         "Oregon"
       ],
       "priority": "Medium",
-      "routeHint": "Exit 216",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2286,6 +2340,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2319,6 +2374,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2351,7 +2407,7 @@
         "California"
       ],
       "priority": "Medium",
-      "routeHint": "I-5",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2384,6 +2440,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2416,6 +2473,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2448,6 +2506,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2480,6 +2539,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2512,6 +2572,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2544,6 +2605,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2577,6 +2639,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2609,6 +2672,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2642,6 +2706,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2674,6 +2739,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2706,6 +2772,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2739,6 +2806,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2771,6 +2839,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2805,6 +2874,7 @@
         "Arizona"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-10 · AZ",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -2838,6 +2908,7 @@
         "Arizona"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-10 · AZ",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2871,6 +2942,7 @@
         "Nevada"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · AZ",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -2903,6 +2975,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · AZ",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2935,6 +3008,7 @@
         "Arizona"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-10 · AZ",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -2967,6 +3041,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "I-20 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3001,6 +3076,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -3033,6 +3109,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3068,6 +3145,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "US-59 · TX",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -3100,6 +3178,7 @@
         "Virginia"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-81 · WV",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3133,6 +3212,7 @@
         "Louisiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-10 · LA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3165,6 +3245,7 @@
         "Colorado"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · NM",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3198,6 +3279,7 @@
         "New York"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · WY",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3231,6 +3313,7 @@
         "Wyoming"
       ],
       "priority": "Medium",
+      "routeHint": "I-80 · WY",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -3263,6 +3346,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-15 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3295,6 +3379,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3327,6 +3412,7 @@
         "Missouri"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-44 · MO",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3360,6 +3446,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · AR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3392,6 +3479,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · OK",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3424,6 +3512,7 @@
         "Ohio"
       ],
       "priority": "Medium",
+      "routeHint": "US-42 · OH",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3447,6 +3536,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "US-82 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3479,6 +3569,7 @@
         "Tennessee"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · TN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3577,6 +3668,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3610,6 +3702,7 @@
         "New Mexico"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-10 · NM",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3642,6 +3735,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "US-287 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3674,6 +3768,7 @@
         "Arizona"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · AZ",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3707,6 +3802,7 @@
         "Alabama"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-20 · AL",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3739,6 +3835,7 @@
         "Nebraska"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · NE",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3771,6 +3868,7 @@
         "Utah"
       ],
       "priority": "Medium",
+      "routeHint": "I-80 · UT",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3803,6 +3901,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3835,6 +3934,7 @@
         "Arizona"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · AZ",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3870,7 +3970,7 @@
         "Texas"
       ],
       "priority": "Medium",
-      "routeHint": "I-40",
+      "routeHint": "Near I-40 · OK",
       "featured": true,
       "needsReview": true,
       "published": true,
@@ -3903,6 +4003,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "I-40 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3935,6 +4036,7 @@
         "New Mexico"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · NM",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3967,6 +4069,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "I-40 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -3990,6 +4093,7 @@
         "Indiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-70 · IN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4023,6 +4127,7 @@
         "Indiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-70 · IN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4056,6 +4161,7 @@
         "New Mexico"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · NM",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4088,6 +4194,7 @@
         "Indiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-69 · IN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4120,6 +4227,7 @@
         "Indiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-70 · IN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4153,6 +4261,7 @@
         "Missouri"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-44 · MO",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4185,6 +4294,7 @@
         "Missouri"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-44 · MO",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4217,6 +4327,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4281,6 +4392,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4313,6 +4425,7 @@
         "Pennsylvania"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-81 · PA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4345,6 +4458,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · NV",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4378,6 +4492,7 @@
         "New Mexico"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-40 · NM",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4411,6 +4526,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "I-10 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4444,6 +4560,7 @@
         "Indiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-70 · IN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4476,6 +4593,7 @@
         "Arizona"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-10 · AZ",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4508,6 +4626,7 @@
         "Virginia"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-78 · PA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4540,6 +4659,7 @@
         "Kentucky"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-81 · VA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4572,6 +4692,7 @@
         "Oregon"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4605,6 +4726,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "US-93 · NV",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4637,6 +4759,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-30 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4669,6 +4792,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "I-30 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4700,7 +4824,7 @@
         "Truck Parking"
       ],
       "priority": "Medium",
-      "routeHint": "Exit 373",
+      "routeHint": "I-20 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4733,6 +4857,7 @@
         "Indiana"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-65 · IN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4765,6 +4890,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-84 · OR",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4797,6 +4923,7 @@
         "Illinois"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · IN",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4829,6 +4956,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "US-287 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4861,6 +4989,7 @@
         "New York"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-80 · PA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4893,6 +5022,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "I-10 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4926,6 +5056,7 @@
         "Texas"
       ],
       "priority": "Medium",
+      "routeHint": "I-40 · TX",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4958,6 +5089,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -4990,6 +5122,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
@@ -5013,6 +5146,7 @@
         "California"
       ],
       "priority": "Medium",
+      "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
       "published": true,
