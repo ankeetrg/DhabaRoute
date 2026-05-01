@@ -101,6 +101,10 @@ export default async function DhabaDetailPage({
 
   const hasGetThere = Boolean(dhaba.address || dhaba.routeHint);
 
+  // Owner update form — Airtable with Dhaba Name + Slug pre-filled.
+  // Submissions are reviewed and applied within 48h (per the helper text).
+  const formUrl = `https://airtable.com/appsoULcfjfSmuKqL/shrt7RJTHxvGwFU01?prefill_Dhaba+Name=${encodeURIComponent(dhaba.title)}&prefill_Dhaba+Slug=${encodeURIComponent(dhaba.slug)}`;
+
   // Schema.org FoodEstablishment payload — only fields already on the
   // Dhaba type (no schema additions). Undefined values are stripped by
   // JSON.stringify so we don't emit empty keys.
@@ -560,6 +564,24 @@ export default async function DhabaDetailPage({
           )}
         </div>
       </section>
+
+      {/* ── Owner: update your listing ─────────────────────────────── */}
+      <div className="max-w-[580px] mx-auto mt-6">
+        <p className="text-[11px] uppercase tracking-widest text-[var(--ink-muted)] mb-3">
+          Is this your dhaba?
+        </p>
+        <a
+          href={formUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full text-center py-3 rounded-xl border border-[var(--paper-warm)] text-[var(--ink-soft)] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-150"
+        >
+          Update your listing →
+        </a>
+        <p className="text-[12px] text-[var(--ink-muted)] text-center mt-2">
+          Hours, photos, specials — we review and apply updates within 48 hours.
+        </p>
+      </div>
 
       {/* ── Similar stops ──────────────────────────────────────────── */}
       {related.length > 0 ? (
