@@ -164,6 +164,10 @@ export async function Footer() {
         >
           <p className="text-[12px]" style={{ color: "var(--ink-muted)" }}>
             &copy; {new Date().getFullYear()} DhabaRoute. Built for the road.
+            {" · "}
+            <Link href="/privacy" className="dr-footer-link">
+              Privacy
+            </Link>
           </p>
           <p className="text-[12px]" style={{ color: "var(--ink-muted)" }}>
             No tracking.
