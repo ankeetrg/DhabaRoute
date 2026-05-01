@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Dhaba } from "@/lib/types";
 import { getOpenStatus } from "@/lib/isOpenNow";
+import { parseRoute, highwaySlug } from "@/lib/parseRoute";
 import { DhabaPhoto } from "./DhabaPhoto";
 
 // Card v2 — "Airy Light" (Card A from the design exploration).
@@ -38,6 +39,12 @@ export function DhabaCard({
   const openStatus = getOpenStatus(dhaba.hours);
   const todayHours = getTodayHoursString(dhaba.hours);
   const city = dhaba.address ? cityFromAddress(dhaba.address) : "";
+
+  // Highway link — only when parseRoute() can extract a highway. Lets users
+  // pivot from a single dhaba card to all dhabas on the same Interstate / US
+  // route. Falls back to a non-linked span when no highway is parseable.
+  const highway = parseRoute(dhaba.routeHint).highway;
+  const highwayHref = highway ? `/routes/${highwaySlug(highway)}` : null;
 
   // v2 border states: rest 1px subtle ink; emphasis 1px translucent saffron;
   // selected 1px solid saffron. Width is fixed at 1px so layout never reflows.
@@ -84,28 +91,65 @@ export function DhabaCard({
       {dhaba.routeHint || distanceLabel ? (
         <div className="flex items-center gap-2 mb-1.5 flex-wrap">
           {dhaba.routeHint ? (
-            <span
-              className="inline-flex items-center gap-1.5 leading-none font-semibold"
-              style={{
-                fontSize: "10.5px",
-                color: "var(--accent)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-              }}
-            >
-              <span
-                aria-hidden
+            highwayHref ? (
+              // Linked variant — same v2 inline saffron treatment, wrapped
+              // in next/link. `relative z-10` lifts it above the title's
+              // pseudo-element overlay (after:absolute after:inset-0) so the
+              // browser hit-tests this Link first and the click navigates
+              // to the highway page, not the detail page. We can't add an
+              // inline onClick handler here because DhabaCard is a Server
+              // Component used by /routes/[highway] and /states/[state] —
+              // function props would break RSC serialization.
+              <Link
+                href={highwayHref}
+                className="inline-flex items-center gap-1.5 leading-none font-semibold relative z-10 transition-opacity duration-150 hover:opacity-75"
                 style={{
-                  display: "inline-block",
-                  width: 4,
-                  height: 4,
-                  borderRadius: "50%",
-                  background: "var(--accent)",
-                  flexShrink: 0,
+                  fontSize: "10.5px",
+                  color: "var(--accent)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
                 }}
-              />
-              {dhaba.routeHint}
-            </span>
+              >
+                <span
+                  aria-hidden
+                  style={{
+                    display: "inline-block",
+                    width: 4,
+                    height: 4,
+                    borderRadius: "50%",
+                    background: "var(--accent)",
+                    flexShrink: 0,
+                  }}
+                />
+                {dhaba.routeHint}
+              </Link>
+            ) : (
+              // Non-linked fallback — when parseRoute can't extract a highway
+              // (e.g. routeHint is "Takeout" or a hand-written non-route
+              // string). Stays as inert text so the card always renders.
+              <span
+                className="inline-flex items-center gap-1.5 leading-none font-semibold"
+                style={{
+                  fontSize: "10.5px",
+                  color: "var(--accent)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                }}
+              >
+                <span
+                  aria-hidden
+                  style={{
+                    display: "inline-block",
+                    width: 4,
+                    height: 4,
+                    borderRadius: "50%",
+                    background: "var(--accent)",
+                    flexShrink: 0,
+                  }}
+                />
+                {dhaba.routeHint}
+              </span>
+            )
           ) : null}
           {distanceLabel ? (
             <span
