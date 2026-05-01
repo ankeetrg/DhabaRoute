@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Dhaba } from "@/lib/types";
-import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
 import { getOpenStatus } from "@/lib/isOpenNow";
 import { DhabaPhoto } from "./DhabaPhoto";
 
@@ -193,13 +192,18 @@ export function DhabaCard({
         </ul>
       ) : null}
 
-      {/* 5. DESCRIPTION — 13px / 1.65 / 3-line clamp (planning context). */}
-      <p
-        className="mt-2.5 line-clamp-3"
-        style={{ fontSize: "13px", lineHeight: 1.65, color: "#8a7a6a" }}
-      >
-        {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
-      </p>
+      {/* 5. DESCRIPTION — 13px / 1.65 / 3-line clamp. Only rendered when
+          a hand-written description exists. The previous fallback to
+          DEFAULT_DHABA_DESCRIPTION (and the templated descriptions baked
+          into data/dhabas.csv) read as AI-uniform across the home grid. */}
+      {dhaba.description ? (
+        <p
+          className="mt-2.5 line-clamp-3"
+          style={{ fontSize: "13px", lineHeight: 1.65, color: "#8a7a6a" }}
+        >
+          {dhaba.description}
+        </p>
+      ) : null}
 
       {/* 6. FOOTER — subtle hairline divider, "View details →" left, city right. */}
       <div

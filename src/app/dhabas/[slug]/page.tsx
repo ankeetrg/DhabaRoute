@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
-import { DEFAULT_DHABA_DESCRIPTION } from "@/lib/types";
 import { distanceKm } from "@/lib/geo";
 import { DhabaCard } from "@/components/DhabaCard";
 import { DhabaDetailMap } from "@/components/DhabaDetailMap";
@@ -250,12 +249,38 @@ export default async function DhabaDetailPage({
           >
             About
           </p>
-          <p
-            className="mt-3 font-ui leading-[1.78]"
-            style={{ fontSize: "16.5px", color: "#3c3128" }}
-          >
-            {dhaba.description ?? DEFAULT_DHABA_DESCRIPTION}
-          </p>
+          {dhaba.description ? (
+            <p
+              className="mt-3 font-ui leading-[1.78]"
+              style={{ fontSize: "16.5px", color: "#3c3128" }}
+            >
+              {dhaba.description}
+            </p>
+          ) : (
+            // No hand-written description — point users to the source of truth.
+            <p
+              className="mt-3 font-ui leading-[1.78]"
+              style={{ fontSize: "15.5px", color: "var(--ink-muted)" }}
+            >
+              {dhaba.mapsUrl ? (
+                <>
+                  More info on{" "}
+                  <a
+                    href={dhaba.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-paper-warm underline-offset-2 hover:decoration-accent"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    Google Maps
+                  </a>
+                  {" "}— hours, photos, and reviews.
+                </>
+              ) : (
+                "No description yet."
+              )}
+            </p>
+          )}
 
           {/* Route sub-section */}
           {dhaba.routeHint ? (
