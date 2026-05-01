@@ -566,7 +566,7 @@ export default async function DhabaDetailPage({
       </section>
 
       {/* ── Owner: update your listing ─────────────────────────────── */}
-      <div className="max-w-[580px] mx-auto mt-6">
+      <div className="max-w-[580px] mt-6">
         <p className="text-[11px] uppercase tracking-widest text-[var(--ink-muted)] mb-3">
           Is this your dhaba?
         </p>
