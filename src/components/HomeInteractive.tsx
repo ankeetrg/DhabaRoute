@@ -706,24 +706,11 @@ function LocationBanner({ geo }: { geo: ReturnType<typeof useGeolocation> }) {
     );
   }
 
-  // Idle — a quiet ghost button. Primary CTA is "Open in Maps" on each card;
-  // location is opt-in, so this stays secondary in weight.
-  return (
-    <button
-      type="button"
-      onClick={geo.request}
-      className={[
-        "inline-flex items-center gap-1.5 h-10 px-3.5 rounded-full",
-        "bg-white border border-paper-warm text-ink-soft text-[12.5px] font-medium",
-        "hover:border-clay-300 hover:text-ink active:scale-[0.98] transition",
-      ].join(" ")}
-    >
-      <svg aria-hidden viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5 flex-none text-clay-500">
-        <path d="M8 1a5 5 0 00-5 5c0 3.5 4.4 7.8 4.6 8a.6.6 0 00.8 0C8.6 13.8 13 9.5 13 6a5 5 0 00-5-5zm0 6.8A1.8 1.8 0 1110 6a1.8 1.8 0 01-2 1.8z" />
-      </svg>
-      Use my location
-    </button>
-  );
+  // Idle — render nothing. The sticky search bar's "Near me" pill is the
+  // single entry point for opt-in location; this banner only shows once
+  // location has been requested (granted / locating / denied / error states
+  // above).
+  return null;
 }
 
 // Shown while `geo.status === "locating"`. Starts as a quiet pulsing line,
