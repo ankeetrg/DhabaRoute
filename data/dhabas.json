@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-01T02:10:14.108Z",
+  "generatedAt": "2026-05-01T06:04:27.169Z",
   "count": 157,
   "dhabas": [
     {
@@ -306,7 +306,7 @@
     },
     {
       "id": "d0010",
-      "slug": "punjabi-dhaba-2",
+      "slug": "punjabi-dhaba-sanders",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x872565a6658c2c73:0xd3dc8ed5510d2f79",
       "description": "Truck Stop Dhaba with seating",
@@ -344,7 +344,7 @@
     },
     {
       "id": "d0011",
-      "slug": "punjabi-dhaba-3",
+      "slug": "punjabi-dhaba-san-simon",
       "title": "Punjabi dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+dhaba/data=!4m2!3m1!1s0x86d82d939d1c90d3:0x555b603734b2637f",
       "description": "Truck stop with seating",
@@ -738,7 +738,7 @@
     },
     {
       "id": "d0023",
-      "slug": "punjabi-dhaba-4",
+      "slug": "punjabi-dhaba-shamrock",
       "title": "Punjabi dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+dhaba/data=!4m2!3m1!1s0x870129001cb6a059:0x8f0fa2e3093348ae",
       "description": "Truck stop dhaba with limited seating",
@@ -773,7 +773,7 @@
     },
     {
       "id": "d0024",
-      "slug": "desi-dhaba-2",
+      "slug": "desi-dhaba-welsh",
       "title": "Desi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Desi+Dhaba/data=!4m2!3m1!1s0x863b659b752fd63d:0x2397f245b2e0879",
       "description": "Dhaba with Indian groceries",
@@ -845,7 +845,7 @@
     },
     {
       "id": "d0026",
-      "slug": "desi-dhaba-3",
+      "slug": "desi-dhaba-marshall-tx",
       "title": "Desi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Desi+Dhaba/data=!4m2!3m1!1s0x8636f7b6b2ebef6f:0x85ba5873b56909c9",
       "description": "“We got the lamb shank, butter chicken, garlic naan, samosa, and a mango lassi.”",
@@ -945,7 +945,7 @@
     },
     {
       "id": "d0029",
-      "slug": "chachas-dhaba-indian-cuisine-2",
+      "slug": "chachas-dhaba-indian-cuisine-pearl-river-la",
       "title": "Chacha's Dhaba Indian Cuisine",
       "mapsUrl": "https://www.google.com/maps/place/Chacha's+Dhaba+Indian+Cuisine/data=!4m2!3m1!1s0x889de9789c6e89dd:0xb5c7338d3b3f75f7",
       "tags": [
@@ -1175,7 +1175,7 @@
     },
     {
       "id": "d0036",
-      "slug": "punjabi-dhaba-5",
+      "slug": "punjabi-dhaba-indianapolis-in",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x886b4502dafe988f:0x5b909e36e700a6c0",
       "tags": [
@@ -1207,7 +1207,7 @@
     },
     {
       "id": "d0037",
-      "slug": "punjabi-dhaba-6",
+      "slug": "punjabi-dhaba-livingston-tx",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x86386300798b6bd3:0x5221c9b859937a2b",
       "description": "“I had the palak paneer and hubby had the butter chicken, we also ordered garlic and plain naan among with Limca (we ordered extra Limca to take home).”",
@@ -1273,7 +1273,7 @@
     },
     {
       "id": "d0039",
-      "slug": "punjabi-dhaba-7",
+      "slug": "punjabi-dhaba-carteret-nj",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x89c3b5001fe9ff9d:0xe669945dd6d46e3c",
       "description": "“We again went the next day for dinner and ordered saag with makki di roti and Amritsari kulcha.”",
@@ -1636,7 +1636,7 @@
     },
     {
       "id": "d0050",
-      "slug": "desi-dhaba-4",
+      "slug": "desi-dhaba-kansas-city-mo",
       "title": "Desi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Desi+Dhaba/data=!4m2!3m1!1s0x87c0efbf3e6d3d1f:0x1c7b92a44572c274",
       "description": "“The dosa was perfectly crisp with soft idli and the vada had just the right crunch.All the sides chutneys and sambar were fresh as well.”",
@@ -2055,7 +2055,7 @@
     },
     {
       "id": "d0063",
-      "slug": "punjabi-dhaba-8",
+      "slug": "punjabi-dhaba-aurora-or",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x5495693ce08594fb:0x3a24c03bd602cf29",
       "description": "“The food was authentic and flavorful — we tried the Mix Veg Paratha and Paneer Tikka, both cooked to perfection.”",
@@ -2254,7 +2254,7 @@
     },
     {
       "id": "d0069",
-      "slug": "little-india-punjabi-dhaba-2",
+      "slug": "little-india-punjabi-dhaba-salem-or",
       "title": "Little India (Punjabi Dhaba)",
       "mapsUrl": "https://www.google.com/maps/place/Little+India+(Punjabi+Dhaba)/data=!4m2!3m1!1s0x54c007509df36ded:0x6e5d05239761a168",
       "description": "“I've always gotten the Biryani and the samosas but since the menu options have changed, i thought I'd try out the curry and the garlic naan.”",
@@ -3500,7 +3500,7 @@
     },
     {
       "id": "d0107",
-      "slug": "indian-dhaba-2",
+      "slug": "indian-dhaba-gainesville-tx",
       "title": "Indian Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Indian+Dhaba/data=!4m2!3m1!1s0x864cff494336fbb5:0xbe3126ce2d5708e7",
       "description": "“I also order the rice and Garlic Naan to accompany my Butter Chicken.”",
@@ -3533,7 +3533,7 @@
     },
     {
       "id": "d0108",
-      "slug": "punjabi-dhaba-9",
+      "slug": "punjabi-dhaba-kingston-springs-tn",
       "title": "Punjabi dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+dhaba/data=!4m2!3m1!1s0x886491d81427b86f:0x957e2452ff1b5586",
       "tags": [
@@ -3663,7 +3663,7 @@
     },
     {
       "id": "d0112",
-      "slug": "punjabi-indian-restaurant-2",
+      "slug": "punjabi-indian-restaurant-deming-nm",
       "title": "Punjabi Indian Restaurant",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Indian+Restaurant/data=!4m2!3m1!1s0x86dec40e0d8d8d23:0x2f9953d5af199dc0",
       "description": "“We ordered the Tikka Masala, Butter Chicken, Chicken Biryani, and two Naan breads.”",
@@ -3697,7 +3697,7 @@
     },
     {
       "id": "d0113",
-      "slug": "punjabi-dhaba-10",
+      "slug": "punjabi-dhaba-alvord-tx",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x864d8fb7060a5aa7:0xc2061d8251e5aecc",
       "description": "“We ordered dal fry, chicken kebabs, nawabi mutton and chai Everything was super tasty.”",
@@ -3830,7 +3830,7 @@
     },
     {
       "id": "d0117",
-      "slug": "punjabi-dhaba-11",
+      "slug": "punjabi-dhaba-wendover-ut",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x80ac2fe9308f1bbb:0xef97343c2487e482",
       "description": "“Goat curry, butter chicken and Kadhai paneer were awesome.”",
@@ -3863,7 +3863,7 @@
     },
     {
       "id": "d0118",
-      "slug": "punjabi-dhaba-12",
+      "slug": "punjabi-dhaba-newberry-springs-ca",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x80c4f0a76baf025f:0xc4598ea01a065678",
       "description": "“Indian paratha and daal roti very nice food Thanks for good service.!”",
@@ -3896,7 +3896,7 @@
     },
     {
       "id": "d0119",
-      "slug": "punjabi-dhaba-13",
+      "slug": "punjabi-dhaba-kingman-az",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x80cdc307dd480d3b:0xe3311d64f73ebae7",
       "tags": [
@@ -3963,7 +3963,7 @@
     },
     {
       "id": "d0121",
-      "slug": "punjabi-dhaba-14",
+      "slug": "punjabi-dhaba-shamrock-tx",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x87aa3bd88fa36e1f:0xcf06b086c4562265",
       "description": "“The butter chicken was perfectly creamy, the tandoori naan came out hot and fluffy, and the dal makhani was slow-cooked to perfection with that signature smoky taste.”",
@@ -4150,7 +4150,7 @@
     },
     {
       "id": "d0127",
-      "slug": "panjabi-dhaba-2",
+      "slug": "panjabi-dhaba-warren-in",
       "title": "Panjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Panjabi+Dhaba/data=!4m2!3m1!1s0x8815b11e1e07c407:0x956194b76c3b4751",
       "tags": [
@@ -4281,7 +4281,7 @@
     },
     {
       "id": "d0131",
-      "slug": "punjabi-dhaba-15",
+      "slug": "punjabi-dhaba-bakersfield-ca",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x80ea6adf271e4d87:0x270e1f4d6d0e9f50",
       "tags": [
@@ -4411,7 +4411,7 @@
     },
     {
       "id": "d0135",
-      "slug": "punjabi-dhaba-16",
+      "slug": "punjabi-dhaba-fernley-nv",
       "title": "PUNJABI DHABA",
       "mapsUrl": "https://www.google.com/maps/place/PUNJABI+DHABA/data=!4m2!3m1!1s0x8098e9b0b0992f65:0xed1a85e2c04c11e",
       "description": "“We had vegetarian dishes—paneer tikka masala, mixed veggies, and the aloo paratha was a total win.”",
@@ -4740,7 +4740,7 @@
     },
     {
       "id": "d0145",
-      "slug": "punjabi-dhaba-17",
+      "slug": "punjabi-dhaba-caddo-mills-tx",
       "title": "Punjabi dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+dhaba/data=!4m2!3m1!1s0x864be50044ec533f:0xd23270c1685595d6",
       "description": "“Their Aloo Paratha, Honi Paratha, and Mixed Veg Paratha are incredibly tasty — soft, perfectly stuffed, and full of authentic Punjabi flavor.”",
@@ -4968,7 +4968,7 @@
     },
     {
       "id": "d0152",
-      "slug": "desi-dhaba-5",
+      "slug": "desi-dhaba-winnie-tx",
       "title": "Desi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Desi+Dhaba/data=!4m2!3m1!1s0x863ed93ac7902fc9:0xbdece0b8008c6b2c",
       "tags": [
@@ -5034,7 +5034,7 @@
     },
     {
       "id": "d0154",
-      "slug": "taste-of-india-2",
+      "slug": "taste-of-india-buttonwillow-ca",
       "title": "Taste of India",
       "mapsUrl": "https://www.google.com/maps/place/Taste+of+India/data=!4m2!3m1!1s0x80ea53226a2b91d5:0xb2d80d3e3e9da2fc",
       "description": "“I had the eggplant curry, vegetable samosas & garlic naan.”",
@@ -5091,7 +5091,7 @@
     },
     {
       "id": "d0156",
-      "slug": "taste-of-india-3",
+      "slug": "taste-of-india-santa-nella-ca",
       "title": "Taste of India",
       "mapsUrl": "https://www.google.com/maps/place/Taste+of+India/data=!4m2!3m1!1s0x809185b0f3f2ae81:0xf5794fec53a0dc1f",
       "tags": [

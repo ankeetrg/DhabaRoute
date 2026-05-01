@@ -126,6 +126,23 @@ function inferRouteHint(title) {
   return parts.join(" · ") || undefined;
 }
 
+// Builds a location-aware suffix for slug collisions using city from address
+// and state from routeHint. Falls back to null so the caller can use a number.
+function locationSuffix(address, routeHint) {
+  // "123 Main St, Fresno, CA 93710" → "fresno"
+  const cityMatch = address && address.match(/,\s*([^,]+),\s*[A-Z]{2}\s*\d{5}/);
+  const city = cityMatch ? slugify(cityMatch[1].trim()) : null;
+
+  // "Near I-80 · CA" or "I-10 · TX" → "ca" / "tx"
+  const stateMatch = routeHint && routeHint.match(/·\s*([A-Z]{2})\b/);
+  const state = stateMatch ? stateMatch[1].toLowerCase() : null;
+
+  if (city && state) return `${city}-${state}`;
+  if (city) return city;
+  if (state) return state;
+  return null;
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 function main() {
   const text = readFileSync(CSV_PATH, "utf8").replace(/^\uFEFF/, ""); // strip BOM
@@ -167,8 +184,9 @@ function main() {
     console.warn(`[build-data] Actual headers: ${rawHeader.map(h => JSON.stringify(h)).join(", ")}`);
   }
 
-  const used = new Map();
-  const out  = [];
+  const used     = new Map();    // base slug → count of times seen
+  const usedFull = new Set();    // all final slugs — catches location collisions
+  const out      = [];
 
   for (let r = 1; r < rows.length; r++) {
     const row = rows[r];
@@ -179,13 +197,6 @@ function main() {
 
     // Skip unpublished rows (only when Published column exists).
     if (COL.published !== -1 && !isYes(get(COL.published))) continue;
-
-    // ── Slug ────────────────────────────────────────────────────────────────
-    const rawSlug  = get(COL.slug).trim() || slugify(title);
-    const baseSlug = slugify(rawSlug);
-    const n        = (used.get(baseSlug) || 0) + 1;
-    used.set(baseSlug, n);
-    const slug = n === 1 ? baseSlug : `${baseSlug}-${n}`;
 
     // ── Coordinates ─────────────────────────────────────────────────────────
     // Priority: separate Lat + Lng columns.
@@ -247,6 +258,34 @@ function main() {
     // address: formatted address string from Places API
     const address = COL.address !== -1 ? get(COL.address).trim() || undefined : undefined;
 
+    // ── Slug ────────────────────────────────────────────────────────────────
+    // Computed AFTER address + routeHint so collision-busting suffixes can
+    // use city/state context. The first occurrence of a baseSlug keeps the
+    // bare slug; subsequent occurrences try `{baseSlug}-{city}-{state}`,
+    // falling back to `{baseSlug}-{n}` if location info is unavailable or
+    // the candidate is already taken.
+    const rawSlug  = get(COL.slug).trim() || slugify(title);
+    const baseSlug = slugify(rawSlug);
+    const n        = (used.get(baseSlug) || 0) + 1;
+    used.set(baseSlug, n);
+
+    let slug;
+    if (n === 1) {
+      slug = baseSlug;
+    } else {
+      const suffix    = locationSuffix(address, routeHint);
+      const candidate = suffix ? `${baseSlug}-${suffix}` : null;
+      if (candidate && !usedFull.has(candidate)) {
+        slug = candidate;
+      } else {
+        // Location suffix unavailable or already taken — fall back to number.
+        let num = n;
+        while (usedFull.has(`${baseSlug}-${num}`)) num++;
+        slug = `${baseSlug}-${num}`;
+      }
+    }
+    usedFull.add(slug);
+
     out.push({
       id           : `d${String(r).padStart(4, "0")}`,
       slug,
@@ -276,12 +315,17 @@ function main() {
   if (existsSync(OUT_PATH)) {
     try {
       const prior = JSON.parse(readFileSync(OUT_PATH, "utf8"));
-      const bySlug = new Map();
+      const bySlug    = new Map();
+      const byMapsUrl = new Map();
       for (const d of prior.dhabas ?? []) {
-        if (d.slug) bySlug.set(d.slug, d);
+        if (d.slug)    bySlug.set(d.slug, d);
+        if (d.mapsUrl) byMapsUrl.set(d.mapsUrl, d);
       }
       for (const row of out) {
-        const prev = bySlug.get(row.slug);
+        // mapsUrl is the stable identifier — use it first so imageUrl/placeId
+        // survive slug changes. Slug match is the fallback for any entry
+        // that somehow has no mapsUrl.
+        const prev = byMapsUrl.get(row.mapsUrl) ?? bySlug.get(row.slug);
         if (!prev) continue;
         for (const field of PRESERVED_FIELDS) {
           if (prev[field] && !row[field]) row[field] = prev[field];
