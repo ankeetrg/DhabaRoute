@@ -18,6 +18,20 @@ export const metadata: Metadata = {
     "vegetarian truck stop food",
     "indian restaurant highway",
   ],
+  openGraph: {
+    title: "DhabaRoute — Find Real Indian Dhabas on US Truck Routes",
+    description:
+      "Discover authentic Indian dhabas along I-80, I-40, I-10 and more. 157 verified stops across 28 states.",
+    url: "https://dhabaroute.com",
+    siteName: "DhabaRoute",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DhabaRoute — Find Real Indian Dhabas on US Truck Routes",
+    description:
+      "Discover authentic Indian dhabas along I-80, I-40, I-10 and more. 157 verified stops across 28 states.",
+  },
 };
 
 export default function HomePage() {

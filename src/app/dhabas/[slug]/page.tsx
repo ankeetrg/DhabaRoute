@@ -38,6 +38,26 @@ export async function generateMetadata({
     description:
       dhaba.description?.slice(0, 155) ??
       `Find ${dhaba.title} on DhabaRoute — verified dhaba with real food on your route.`,
+    openGraph: {
+      title: dhaba.title,
+      description:
+        dhaba.description?.slice(0, 155) ??
+        `Verified dhaba on your route.`,
+      url: `https://dhabaroute.com/dhabas/${dhaba.slug}`,
+      siteName: "DhabaRoute",
+      images: dhaba.imageUrl
+        ? [{ url: dhaba.imageUrl, width: 800, height: 600, alt: dhaba.title }]
+        : [],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dhaba.title,
+      description:
+        dhaba.description?.slice(0, 155) ??
+        `Verified dhaba on your route.`,
+      images: dhaba.imageUrl ? [dhaba.imageUrl] : [],
+    },
   };
 }
 
