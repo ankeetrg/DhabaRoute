@@ -10,13 +10,40 @@
 // not a form, so no client JS needed.
 
 import Link from "next/link";
-import { getDataMeta } from "@/lib/dhabas";
+import { getAllDhabas, getDataMeta } from "@/lib/dhabas";
+import { parseRoute, highwaySlug, stateSlug } from "@/lib/parseRoute";
 import { getTelegramUrl } from "@/lib/telegram";
 
 export async function Footer() {
   const { count, generatedAt } = getDataMeta();
   const updated = new Date(generatedAt).toISOString().slice(0, 10);
   const telegramUrl = await getTelegramUrl();
+
+  // Top 10 highways and states by dhaba count — drives the two browse
+  // columns below. Same parser used by /routes/[highway] and /states/[state]
+  // pages, so footer links + landing pages stay in sync automatically.
+  const dhabas = getAllDhabas();
+  const highwayCounts = new Map<string, number>();
+  const stateCounts = new Map<string, number>();
+  dhabas.forEach((d) => {
+    const { highway, state } = parseRoute(d.routeHint);
+    if (highway) {
+      const slug = highwaySlug(highway);
+      highwayCounts.set(slug, (highwayCounts.get(slug) ?? 0) + 1);
+    }
+    if (state) {
+      const slug = stateSlug(state);
+      stateCounts.set(slug, (stateCounts.get(slug) ?? 0) + 1);
+    }
+  });
+  const topHighways = [...highwayCounts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([slug]) => slug);
+  const topStates = [...stateCounts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([slug]) => slug);
 
   return (
     <footer>
@@ -92,6 +119,38 @@ export async function Footer() {
                   <li className="text-[12.5px]">{count} dhabas listed</li>
                   <li className="text-[12.5px]">28 states covered</li>
                   <li className="text-[12.5px]">Updated {updated}</li>
+                </ul>
+              </div>
+
+              {/* Highways */}
+              <div>
+                <p className="font-semibold text-[11px] uppercase tracking-widest mb-3" style={{ color: "var(--ink-muted)" }}>
+                  Highways
+                </p>
+                <ul className="flex flex-col gap-2.5">
+                  {topHighways.map((h) => (
+                    <li key={h}>
+                      <Link href={`/routes/${h}`} className="dr-footer-link">
+                        {h.toUpperCase()}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* States */}
+              <div>
+                <p className="font-semibold text-[11px] uppercase tracking-widest mb-3" style={{ color: "var(--ink-muted)" }}>
+                  States
+                </p>
+                <ul className="flex flex-col gap-2.5">
+                  {topStates.map((s) => (
+                    <li key={s}>
+                      <Link href={`/states/${s}`} className="dr-footer-link">
+                        {s.toUpperCase()}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
