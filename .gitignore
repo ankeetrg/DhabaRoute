@@ -7,3 +7,6 @@ out
 .vercel
 .turbo
 .numbers
+
+# Places API response cache (regeneratable, contains a copy of API responses)
+.cache/
