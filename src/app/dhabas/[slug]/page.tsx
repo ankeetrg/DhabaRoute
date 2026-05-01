@@ -31,13 +31,13 @@ export async function generateMetadata({
   params: RouteParams;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const d = getDhabaBySlug(slug);
-  if (!d) return { title: "Dhaba not found" };
+  const dhaba = getDhabaBySlug(slug);
+  if (!dhaba) return {};
   return {
-    title: d.title,
+    title: `${dhaba.title} · ${dhaba.routeHint ?? "US Truck Route"} | DhabaRoute`,
     description:
-      d.description ??
-      `${d.title} — authentic dhaba${d.routeHint ? ` on ${d.routeHint}` : ""}.`,
+      dhaba.description?.slice(0, 155) ??
+      `Find ${dhaba.title} on DhabaRoute — verified dhaba with real food on your route.`,
   };
 }
 
@@ -81,7 +81,26 @@ export default async function DhabaDetailPage({
 
   const hasGetThere = Boolean(dhaba.address || dhaba.routeHint);
 
+  // Schema.org FoodEstablishment payload — only fields already on the
+  // Dhaba type (no schema additions). Undefined values are stripped by
+  // JSON.stringify so we don't emit empty keys.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    name: dhaba.title,
+    description: dhaba.description ?? undefined,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: dhaba.address ?? undefined,
+      addressCountry: "US",
+    },
+    telephone: dhaba.phone ?? undefined,
+    openingHours: dhaba.hours ?? undefined,
+    servesCuisine: "Indian",
+  };
+
   return (
+    <>
     <article
       className="mx-auto w-full px-5 sm:px-8 pt-6 pb-[72px]"
       style={{ maxWidth: 1056 }}
@@ -549,5 +568,11 @@ export default async function DhabaDetailPage({
         </section>
       ) : null}
     </article>
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+    </>
   );
 }
