@@ -30,7 +30,7 @@
 //     here so the component keeps working if a caller forgets.
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface DhabaPhotoProps {
   src?: string | null;
@@ -49,6 +49,10 @@ interface DhabaPhotoProps {
   raw?: boolean;
   /** Opt-in to the card-hover zoom. Needs a `group` ancestor. */
   hoverZoom?: boolean;
+  /** Called only when the real image bytes load successfully. */
+  onLoadSuccess?: () => void;
+  /** Called when the browser cannot load the provided image URL. */
+  onLoadError?: () => void;
 }
 
 export function DhabaPhoto({
@@ -59,11 +63,41 @@ export function DhabaPhoto({
   priority = false,
   raw = false,
   hoverZoom = false,
+  onLoadSuccess,
+  onLoadError,
 }: DhabaPhotoProps) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const reportedLoadRef = useRef(false);
 
   const missing = !src || errored;
+
+  useEffect(() => {
+    setLoaded(false);
+    setErrored(false);
+    reportedLoadRef.current = false;
+  }, [src]);
+
+  const handleLoad = () => {
+    setLoaded(true);
+    if (!reportedLoadRef.current) {
+      reportedLoadRef.current = true;
+      onLoadSuccess?.();
+    }
+  };
+
+  const handleError = () => {
+    setErrored(true);
+    onLoadError?.();
+  };
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (!missing && image?.complete && image.naturalWidth > 0) {
+      handleLoad();
+    }
+  }, [missing, src]);
 
   // Wrapper holds the aspect/height + clips the zoom. Callers control
   // dimensions via className; we only add positioning + overflow.
@@ -108,16 +142,18 @@ export function DhabaPhoto({
         // absolutely-positioned to fill the wrapper.
         // eslint-disable-next-line @next/next/no-img-element
         <img
+          ref={imageRef}
           src={src as string}
           alt={alt}
           loading="lazy"
           decoding="async"
-          onLoad={() => setLoaded(true)}
-          onError={() => setErrored(true)}
+          onLoad={handleLoad}
+          onError={handleError}
           className={`absolute inset-0 w-full h-full ${imageClass}`}
         />
       ) : (
         <Image
+          ref={imageRef}
           src={src as string}
           alt={alt}
           fill
@@ -128,8 +164,8 @@ export function DhabaPhoto({
           sizes={sizes}
           priority={priority}
           loading={priority ? undefined : "lazy"}
-          onLoad={() => setLoaded(true)}
-          onError={() => setErrored(true)}
+          onLoad={handleLoad}
+          onError={handleError}
           className={imageClass}
         />
       )}

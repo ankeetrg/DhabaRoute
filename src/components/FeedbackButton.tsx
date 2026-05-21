@@ -17,6 +17,7 @@ export function FeedbackButton() {
   const [feedback, setFeedback] = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
 
   // Auto-close after success so the user doesn't have to dismiss manually.
   useEffect(() => {
@@ -33,8 +34,9 @@ export function FeedbackButton() {
     e.preventDefault();
     if (!feedback.trim() || sending) return;
     setSending(true);
+    setError("");
     try {
-      await fetch("https://formspree.io/f/mgornaje", {
+      const res = await fetch("https://formspree.io/f/mgornaje", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,10 +48,11 @@ export function FeedbackButton() {
           _replyto: "dhabaroute@gmail.com",
         }),
       });
+      if (!res.ok) throw new Error("Feedback submission failed");
       setSent(true);
     } catch {
-      // Swallow: the user can retry. Feedback isn't critical enough to
-      // surface a red error banner that ruins the quiet corner vibe.
+      setError("Couldn’t send feedback. Please try again.");
+    } finally {
       setSending(false);
     }
   }
@@ -88,6 +91,7 @@ export function FeedbackButton() {
             setOpen(false);
             setSent(false);
             setSending(false);
+            setError("");
           }}
           aria-label="Close feedback"
           className="text-ink-muted hover:text-ink transition text-[16px] leading-none"
@@ -107,9 +111,17 @@ export function FeedbackButton() {
             rows={3}
             placeholder="What would make DhabaRoute better?"
             value={feedback}
-            onChange={(e) => setFeedback(e.target.value)}
+            onChange={(e) => {
+              setFeedback(e.target.value);
+              if (error) setError("");
+            }}
             className="rounded-xl border border-paper-warm bg-paper px-3 py-2.5 text-[13px] w-full mt-3 focus:outline-none focus:ring-2 focus:ring-clay-400 resize-none"
           />
+          {error ? (
+            <p className="mt-2 text-[12.5px] text-clay-700" role="alert">
+              {error}
+            </p>
+          ) : null}
           <button
             type="submit"
             disabled={sending || !feedback.trim()}

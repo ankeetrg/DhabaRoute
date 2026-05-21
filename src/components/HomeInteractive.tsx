@@ -7,6 +7,7 @@ import type { Dhaba, RankedDhaba, Tag as TagType } from "@/lib/types";
 import { rankByDistance, formatDistance } from "@/lib/geo";
 import { useGeolocation } from "@/lib/useGeolocation";
 import { getOpenStatus } from "@/lib/isOpenNow";
+import { parseRoute } from "@/lib/parseRoute";
 import { DhabaCard } from "./DhabaCard";
 import { DhabaPhoto } from "./DhabaPhoto";
 import { Tag } from "./Tag";
@@ -39,6 +40,26 @@ type ViewMode = "split" | "list" | "map";
 // backfilled into the dataset, missing chips light up automatically.
 const V2_TAGS = ["Vegetarian", "Truck Parking", "Late Night", "Dine-In"] as const;
 
+function stateFromAddress(address: string | undefined): string | null {
+  if (!address) return null;
+  const parts = address
+    .replace(/,\s*(USA|Canada)$/i, "")
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  const statePart = parts.at(-1);
+  return statePart?.match(/\b[A-Z]{2}\b/)?.[0] ?? null;
+}
+
+function countUniqueStates(dhabas: Dhaba[]): number {
+  const states = new Set<string>();
+  for (const dhaba of dhabas) {
+    const state = parseRoute(dhaba.routeHint).state ?? stateFromAddress(dhaba.address);
+    if (state) states.add(state.toLowerCase());
+  }
+  return states.size;
+}
+
 export function HomeInteractive({ dhabas, filterTags }: Props) {
   const [query, setQuery] = useState("");
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
@@ -50,6 +71,7 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
   const [viewMode, setViewMode] = useState<ViewMode>("split");
 
   const geo = useGeolocation();
+  const stateCount = useMemo(() => countUniqueStates(dhabas), [dhabas]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -69,7 +91,19 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
         if (!ok) return false;
       }
       if (!q) return true;
-      const hay = [d.title, d.description ?? "", d.routeHint ?? "", d.tags.join(" ")]
+      const { highway, state } = parseRoute(d.routeHint);
+      const hay = [
+        d.title,
+        d.description,
+        d.routeHint,
+        highway,
+        highway?.replace("-", " "),
+        state,
+        d.address,
+        stateFromAddress(d.address),
+        d.tags.join(" "),
+      ]
+        .filter(Boolean)
         .join(" ")
         .toLowerCase();
       return hay.includes(q);
@@ -312,7 +346,7 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
               className="hidden sm:block whitespace-nowrap font-ui tabular-nums"
               style={{ fontSize: "11px", color: "rgba(28,24,20,0.38)" }}
             >
-              {dhabas.length} dhabas · 28 states
+              {dhabas.length} dhabas · {stateCount} states
             </p>
           </div>
 
@@ -340,8 +374,8 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
           />
 
           {/* Filter chips + view toggle */}
-          <div className="mt-2.5 flex items-center gap-3">
-            <div className="flex-1 min-w-0">
+          <div className="mt-2.5 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3">
+            <div className="w-full min-w-0 sm:flex-1">
               <FilterChips
                 tags={presentTags}
                 active={activeTags}
@@ -355,7 +389,9 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
               />
             </div>
             {hasAnyPins ? (
-              <ViewToggle mode={viewMode} setMode={setViewMode} />
+              <div className="self-end sm:self-auto">
+                <ViewToggle mode={viewMode} setMode={setViewMode} />
+              </div>
             ) : null}
           </div>
         </div>

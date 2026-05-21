@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getAllDhabas } from "@/lib/dhabas";
 import { parseRoute, stateSlug } from "@/lib/parseRoute";
 import { DhabaCard } from "@/components/DhabaCard";
@@ -53,7 +54,7 @@ export default async function StatePage({
 
   const label = STATE_LABELS[state] ?? state.toUpperCase();
 
-  if (!stops.length) return null;
+  if (!stops.length) notFound();
 
   return (
     <main className="max-w-[1280px] mx-auto px-6 md:px-8 py-12">

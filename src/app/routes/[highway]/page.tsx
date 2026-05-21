@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getAllDhabas } from "@/lib/dhabas";
 import { parseRoute, highwaySlug } from "@/lib/parseRoute";
 import { DhabaCard } from "@/components/DhabaCard";
@@ -45,7 +46,7 @@ export default async function HighwayPage({
     .toUpperCase()
     .replace(/^(I|US)-/, (m) => m.toUpperCase());
 
-  if (!stops.length) return null;
+  if (!stops.length) notFound();
 
   return (
     <main className="max-w-[1280px] mx-auto px-6 md:px-8 py-12">

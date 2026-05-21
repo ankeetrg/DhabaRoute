@@ -117,7 +117,7 @@ export async function Footer() {
                 </p>
                 <ul className="flex flex-col gap-2.5" style={{ color: "var(--ink-muted)" }}>
                   <li className="text-[12.5px]">{count} dhabas listed</li>
-                  <li className="text-[12.5px]">28 states covered</li>
+                  <li className="text-[12.5px]">{stateCounts.size} states covered</li>
                   <li className="text-[12.5px]">Updated {updated}</li>
                 </ul>
               </div>
