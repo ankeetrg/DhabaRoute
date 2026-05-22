@@ -31,7 +31,24 @@ const OUT_PATH  = join(ROOT, "data", "dhabas.json");
 // preserve across rebuilds. fetch-photos.ts writes imageUrl + placeId to
 // dhabas.json directly; without this preservation pass a plain
 // `npm run build:data` would wipe those fields back to undefined.
-const PRESERVED_FIELDS = ["imageUrl", "placeId"];
+const PRESERVED_FIELDS = [
+  "imageUrl",
+  "placeId",
+  "website",
+  "priceRange",
+  "parking",
+  "restroom",
+  "familyFriendly",
+  "vegetarianOptions",
+  "jainOptions",
+  "halalOptions",
+  "paymentMethods",
+  "bestFor",
+  "lastVerified",
+  "menu",
+  "reviews",
+  "photos",
+];
 
 // ── Minimal RFC-4180 CSV parser ──────────────────────────────────────────────
 // Handles quoted fields, embedded commas, escaped double-quotes, \r\n endings.

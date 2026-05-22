@@ -15,6 +15,46 @@ export type Tag =
 // 'state' is state centroid (low precision, use sparingly).
 export type CoordAccuracy = "csv" | "city" | "state";
 
+export interface DhabaMenuItem {
+  name: string;
+  description?: string;
+  price?: string;
+  tags?: string[];
+  popular?: boolean;
+}
+
+export interface DhabaMenuCategory {
+  name: string;
+  items: DhabaMenuItem[];
+}
+
+export interface DhabaMenu {
+  lastUpdated?: string;
+  categories?: DhabaMenuCategory[];
+}
+
+export interface DhabaReviewItem {
+  author?: string;
+  text: string;
+  rating?: number;
+  date?: string;
+}
+
+export interface DhabaReviews {
+  source?: string;
+  rating?: number;
+  count?: number;
+  highlights?: string[];
+  items?: DhabaReviewItem[];
+}
+
+export interface DhabaPhotoAsset {
+  url: string;
+  alt?: string;
+  kind?: "hero" | "food" | "exterior" | "menu" | "interior" | "other";
+  attribution?: string;
+}
+
 export interface Dhaba {
   id: string;
   slug: string;
@@ -43,6 +83,20 @@ export interface Dhaba {
   // from undefined = not yet enriched). DhabaPhoto falls back to a warm
   // gradient + utensil glyph when null or missing.
   imageUrl?: string | null;
+  website?: string;
+  priceRange?: string;
+  parking?: string;
+  restroom?: boolean | string;
+  familyFriendly?: boolean;
+  vegetarianOptions?: boolean | string;
+  jainOptions?: boolean | string;
+  halalOptions?: boolean | string;
+  paymentMethods?: string[];
+  bestFor?: string[];
+  lastVerified?: string;
+  menu?: DhabaMenu;
+  reviews?: DhabaReviews;
+  photos?: DhabaPhotoAsset[];
 }
 
 // Dhaba augmented with user-relative data (distance from current location).
@@ -60,4 +114,3 @@ export interface Coords {
   lat: number;
   lng: number;
 }
-
