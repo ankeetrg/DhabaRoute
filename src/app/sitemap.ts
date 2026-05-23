@@ -12,8 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${ORIGIN}/`, changeFrequency: "monthly", priority: 1 },
+    { url: `${ORIGIN}/about`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${ORIGIN}/contact`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${ORIGIN}/what-is-a-dhaba`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${ORIGIN}/submit`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${ORIGIN}/update-listing`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${ORIGIN}/privacy`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${ORIGIN}/disclaimer`, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const dhabaRoutes: MetadataRoute.Sitemap = dhabas.map((d) => ({

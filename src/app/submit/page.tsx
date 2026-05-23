@@ -5,16 +5,10 @@ import { SubmitForm } from "@/components/SubmitForm";
 export const metadata: Metadata = {
   title: "Submit a Dhaba",
   description:
-    "Know a dhaba we're missing? Share the spot — name, location, and anything a driver should know.",
+    "Submit a missing dhaba-style restaurant or roadside Indian food stop for review on DhabaRoute.",
 };
 
-export default async function SubmitPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ submitted?: string }>;
-}) {
-  const { submitted } = await searchParams;
-
+export default function SubmitPage() {
   return (
     <div className="container-page pt-8 pb-20 max-w-2xl">
       <nav aria-label="Breadcrumb" className="text-[13px] text-ink-muted">
@@ -34,28 +28,25 @@ export default async function SubmitPage({
           Know a dhaba we&apos;re missing?
         </h1>
         <p className="mt-3 text-[15px] text-ink-soft leading-relaxed">
-          Help fellow drivers find their next meal. Drop us the name, a Google Maps link,
-          and anything worth knowing — parking, specialties, truck access. We review every
-          submission before it goes live.
+          Help fellow travelers find useful Indian and Punjabi food stops. Share
+          what you know, including location, menu links, parking notes, and why
+          the place belongs on DhabaRoute.
+        </p>
+        <p className="mt-3 text-[13px] text-ink-muted leading-relaxed">
+          Submissions are reviewed before being added.
         </p>
       </header>
 
-      {submitted === "true" ? (
-        <div className="rounded-xl bg-leaf-soft border border-leaf-line text-leaf px-4 py-3 text-[14px] mt-6">
-          Thanks — we&rsquo;ll review your submission and it&rsquo;ll go live within a day or two.
-        </div>
-      ) : (
-        <SubmitForm />
-      )}
+      <SubmitForm />
 
       <p className="mt-8 text-[13px] text-ink-muted">
         Spot an error on an existing listing?{" "}
-        <a
-          href="mailto:dhabaroute@gmail.com?subject=DhabaRoute correction"
+        <Link
+          href="/update-listing"
           className="underline underline-offset-4 hover:text-ink"
         >
-          Email us directly.
-        </a>
+          Send a listing update.
+        </Link>
       </p>
     </div>
   );

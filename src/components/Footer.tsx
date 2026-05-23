@@ -2,7 +2,7 @@
 //
 // Structure (top → bottom):
 //   1. CTA band — accent background, "Know a spot we're missing?" + submit button
-//   2. Lower footer — paper-soft background, logo/tagline, two nav columns,
+//   2. Lower footer — paper-soft background, logo/tagline, nav columns,
 //      bottom bar with copyright and "Free forever" note.
 //
 // No "use client" — the Telegram URL resolved in layout.tsx flows in via
@@ -84,7 +84,7 @@ export async function Footer() {
                 <span className="font-ui font-bold text-[16px]" style={{ color: "var(--accent)" }}>Route</span>
               </div>
               <p className="text-[13px] leading-relaxed" style={{ color: "var(--ink-muted)" }}>
-                Authentic dhabas mapped across the US for drivers on the move.
+                Dhaba-style food stops mapped for travelers on the move.
               </p>
               {telegramUrl ? (
                 <a
@@ -100,15 +100,27 @@ export async function Footer() {
             </div>
 
             {/* Nav columns */}
-            <div className="flex gap-12 sm:gap-16 text-[13px]">
+            <div className="flex flex-wrap gap-x-10 gap-y-8 text-[13px] sm:gap-x-14">
               <div>
                 <p className="font-semibold text-[11px] uppercase tracking-widest mb-3" style={{ color: "var(--ink-muted)" }}>
                   Explore
                 </p>
                 <ul className="flex flex-col gap-2.5">
                   <li><Link href="/" className="dr-footer-link">All dhabas</Link></li>
+                  <li><Link href="/about" className="dr-footer-link">About</Link></li>
                   <li><Link href="/what-is-a-dhaba" className="dr-footer-link">What is a dhaba?</Link></li>
                   <li><Link href="/submit" className="dr-footer-link">Submit a dhaba</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-[11px] uppercase tracking-widest mb-3" style={{ color: "var(--ink-muted)" }}>
+                  Help
+                </p>
+                <ul className="flex flex-col gap-2.5">
+                  <li><Link href="/contact" className="dr-footer-link">Contact</Link></li>
+                  <li><Link href="/update-listing" className="dr-footer-link">Update listing</Link></li>
+                  <li><Link href="/privacy" className="dr-footer-link">Privacy</Link></li>
+                  <li><Link href="/disclaimer" className="dr-footer-link">Disclaimer</Link></li>
                 </ul>
               </div>
               <div>
@@ -170,7 +182,7 @@ export async function Footer() {
             </Link>
           </p>
           <p className="text-[12px]" style={{ color: "var(--ink-muted)" }}>
-            No tracking.
+            Independent directory.
           </p>
         </div>
       </div>
