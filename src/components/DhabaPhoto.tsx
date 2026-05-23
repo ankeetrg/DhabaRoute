@@ -70,6 +70,7 @@ export function DhabaPhoto({
   const [errored, setErrored] = useState(false);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const reportedLoadRef = useRef(false);
+  const reportedErrorRef = useRef(false);
 
   const missing = !src || errored;
 
@@ -77,9 +78,16 @@ export function DhabaPhoto({
     setLoaded(false);
     setErrored(false);
     reportedLoadRef.current = false;
+    reportedErrorRef.current = false;
   }, [src]);
 
   const handleLoad = () => {
+    const image = imageRef.current;
+    if (image && image.naturalWidth === 0) {
+      handleError();
+      return;
+    }
+
     setLoaded(true);
     if (!reportedLoadRef.current) {
       reportedLoadRef.current = true;
@@ -88,16 +96,29 @@ export function DhabaPhoto({
   };
 
   const handleError = () => {
+    setLoaded(false);
     setErrored(true);
-    onLoadError?.();
+    if (!reportedErrorRef.current) {
+      reportedErrorRef.current = true;
+      onLoadError?.();
+    }
   };
 
   useEffect(() => {
     const image = imageRef.current;
-    if (!missing && image?.complete && image.naturalWidth > 0) {
-      handleLoad();
+    if (!src || errored || !image?.complete) return;
+
+    if (image.naturalWidth > 0) {
+      setLoaded(true);
+      if (!reportedLoadRef.current) {
+        reportedLoadRef.current = true;
+        onLoadSuccess?.();
+      }
+      return;
     }
-  }, [missing, src]);
+
+    handleError();
+  }, [errored, onLoadSuccess, src]);
 
   // Wrapper holds the aspect/height + clips the zoom. Callers control
   // dimensions via className; we only add positioning + overflow.
