@@ -84,6 +84,11 @@ export interface Dhaba {
   // gradient + utensil glyph when null or missing.
   imageUrl?: string | null;
   placeId?: string;
+  // Permanent Vercel Blob URL for this dhaba's photo. Populated by running
+  // `node scripts/download-photos.mjs`. When present, this is always used
+  // in preference to imageUrl or the Google Places API proxy — it requires
+  // no API key at runtime and is CDN-cached globally.
+  storedImageUrl?: string | null;
   website?: string;
   priceRange?: string;
   parking?: string;

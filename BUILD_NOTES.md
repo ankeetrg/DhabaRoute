@@ -116,3 +116,55 @@ The rest need curator input.
 - `npm run typecheck`
 - `npm run build`
 - Deploy to Vercel (no env vars needed) or any Node host.
+
+## Photo storage — Vercel Blob (added 2026-06)
+
+### Why it exists
+
+The original photo pipeline fetched images live from Google Places API on every page request via `/api/place-photo/[placeId]`. This worked but had two fragile dependencies:
+
+1. `GOOGLE_PLACES_API_KEY` must be valid and in Vercel's environment
+2. Google Places API must be reachable and not rate-limited
+
+If either failed, every card showed a fallback utensil glyph. Vercel Blob solves this permanently.
+
+### How it works
+
+1. Run `node scripts/download-photos.mjs` locally (needs `.env.local` with both keys)
+2. The script fetches each dhaba's photo via the production API proxy and uploads to Vercel Blob
+3. Blob URLs are written back to `data/dhabas.json` as `storedImageUrl`
+4. `src/lib/photo-url.ts` uses `storedImageUrl` first — no API key needed at runtime
+
+### Priority order (in `src/lib/photo-url.ts`)
+
+```
+storedImageUrl  →  /api/place-photo/{placeId}  →  imageUrl (legacy lh3)
+```
+
+### Running the script
+
+```bash
+# First time — install the Blob SDK
+npm install @vercel/blob
+
+# Make sure .env.local has both:
+# BLOB_READ_WRITE_TOKEN=...   (from Vercel Dashboard → Storage → Blob → .env.local tab)
+# GOOGLE_PLACES_API_KEY=...   (already set up)
+
+# Download and store all photos
+node scripts/download-photos.mjs
+
+# Re-run after adding new dhabas (skips already-stored ones automatically)
+node scripts/download-photos.mjs
+
+# Force refresh all photos
+node scripts/download-photos.mjs --force
+```
+
+After running, commit `data/dhabas.json` and push — Vercel will redeploy with the new Blob URLs.
+
+### Storage
+
+Blob files are stored at `dhabas/{slug}.jpg` in your Vercel Blob store. View and manage them in Vercel Dashboard → Storage → your Blob store.
+
+The free Vercel Blob tier covers ~1 GB — more than enough for 157 photos (~500 KB each = ~80 MB total).
