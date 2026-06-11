@@ -34,6 +34,18 @@ npm run lint
 npm run typecheck
 ```
 
+## Environment variables
+
+```bash
+GOOGLE_PLACES_API_KEY=...
+```
+
+`GOOGLE_PLACES_API_KEY` is server-only. It powers the cached
+`/api/place-photo/[placeId]` route so listing photos can load without exposing
+the key in browser code. This temporary route uses CDN cache headers; a future
+image pipeline should persist approved photos to Vercel Blob, Cloudflare R2, or
+S3 so Google is only called during explicit refresh jobs.
+
 ## Updating the dhaba data
 
 The source of truth is `data/dhabas.csv`. Expected columns:
@@ -99,7 +111,7 @@ Zero-config on **Vercel**:
 
 1. Push the repo to GitHub/GitLab/Bitbucket.
 2. Import into Vercel. Framework preset: **Next.js**.
-3. No env vars needed. The build command runs `npm run build`, which regenerates data from the CSV.
+3. Add `GOOGLE_PLACES_API_KEY` so listing photos can load through the server-side photo route. The build command runs `npm run build`, which regenerates data from the CSV.
 
 Any other Node host (Netlify, Fly, Render, self-hosted) works the same way — `npm run build && npm run start`.
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Dhaba } from "@/lib/types";
 import { getOpenStatus } from "@/lib/isOpenNow";
 import { parseRoute, highwaySlug } from "@/lib/parseRoute";
+import { getDhabaPhotoSrc } from "@/lib/photo-url";
 import { DhabaPhoto } from "./DhabaPhoto";
 
 // Card v2 — "Airy Light" (Card A from the design exploration).
@@ -39,6 +40,7 @@ export function DhabaCard({
   const openStatus = getOpenStatus(dhaba.hours);
   const todayHours = getTodayHoursString(dhaba.hours);
   const city = dhaba.address ? cityFromAddress(dhaba.address) : "";
+  const photoSrc = getDhabaPhotoSrc(dhaba);
 
   // Highway link — only when parseRoute() can extract a highway. Lets users
   // pivot from a single dhaba card to all dhabas on the same Interstate / US
@@ -78,7 +80,7 @@ export function DhabaCard({
           fade-in, and the gradient+utensil fallback. Card overflow-hidden
           + 20px radius gives the photo rounded top corners visually. */}
       <DhabaPhoto
-        src={dhaba.imageUrl}
+        src={photoSrc}
         alt=""
         className="w-full h-[190px] flex-none"
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

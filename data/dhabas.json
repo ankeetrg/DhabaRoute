@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-01T06:04:27.169Z",
+  "generatedAt": "2026-06-10T22:27:03.332Z",
   "count": 157,
   "dhabas": [
     {
@@ -281,7 +281,7 @@
         "Gas",
         "Bathrooms"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "I-20 · TX",
       "featured": false,
       "needsReview": true,
@@ -319,7 +319,7 @@
         "Arizona",
         "Seating"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Right off I-40 Arizona",
       "featured": true,
       "needsReview": true,
@@ -414,7 +414,7 @@
         "Gas",
         "Bathrooms"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Right off I-40, Jalebis",
       "featured": true,
       "needsReview": true,
@@ -886,7 +886,7 @@
         "Truck Parking",
         "Arkansas"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-40 · AR",
       "featured": false,
       "needsReview": true,
@@ -948,6 +948,7 @@
       "slug": "chachas-dhaba-indian-cuisine-pearl-river-la",
       "title": "Chacha's Dhaba Indian Cuisine",
       "mapsUrl": "https://www.google.com/maps/place/Chacha's+Dhaba+Indian+Cuisine/data=!4m2!3m1!1s0x889de9789c6e89dd:0xb5c7338d3b3f75f7",
+      "description": "Dhaba with truck parking and seating off I-10 near Pearl River, Louisiana.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -1048,6 +1049,7 @@
       "slug": "ambarsari-zaika-indian-cuisine",
       "title": "Ambarsari Zaika Indian Cuisine",
       "mapsUrl": "https://www.google.com/maps/place/Ambarsari+Zaika+Indian+Cuisine/data=!4m2!3m1!1s0x88c2b5cce6bfdf4b:0x35eb586ce997cf77",
+      "description": "Evening-hours Indian restaurant with seating near I-75 in Tampa.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -1081,6 +1083,7 @@
       "slug": "dosthi-chowrasta",
       "title": "DOSTHI CHOWRASTA",
       "mapsUrl": "https://www.google.com/maps/place/DOSTHI+CHOWRASTA/data=!4m2!3m1!1s0x88c2c711b76fad93:0x963c6f25c58b8d5d",
+      "description": "Indian eatery with truck parking near I-75 in Tampa, open late into the night.",
       "tags": [
         "Truck Parking",
         "Florida"
@@ -1113,6 +1116,7 @@
       "slug": "naan-house-cleveland",
       "title": "Naan House-Cleveland",
       "mapsUrl": "https://www.google.com/maps/place/Naan+House-Cleveland/data=!4m2!3m1!1s0x885e2b98c12d5069:0x1a57f5507c49564a",
+      "description": "Indian restaurant with truck parking near I-75 in Cleveland, Tennessee.",
       "tags": [
         "Truck Parking",
         "Ohio"
@@ -1178,6 +1182,7 @@
       "slug": "punjabi-dhaba-indianapolis-in",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x886b4502dafe988f:0x5b909e36e700a6c0",
+      "description": "Dhaba with truck parking near I-70 in Indianapolis, open until midnight.",
       "tags": [
         "Truck Parking",
         "Indiana"
@@ -1573,11 +1578,12 @@
       "slug": "5911-dhaba",
       "title": "5911 Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/5911+Dhaba/data=!4m2!3m1!1s0x87c88586bef61b69:0x4edb57d011fa6570",
+      "description": "24-hour dhaba with truck parking near I-44 in Carthage, Missouri.",
       "tags": [
         "Truck Parking",
         "Missouri"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-44 · MO",
       "featured": false,
       "needsReview": true,
@@ -1738,6 +1744,7 @@
       "slug": "dhaba-94-american-diner",
       "title": "Dhaba 94, American Diner",
       "mapsUrl": "https://www.google.com/maps/place/Dhaba+94,+American+Diner/data=!4m2!3m1!1s0x52b48b005150d11f:0x986ed06395cf65ff",
+      "description": "Dhaba and American diner with truck parking near I-94 in St. Cloud, Minnesota.",
       "tags": [
         "Truck Parking",
         "Minnesota"
@@ -1770,6 +1777,7 @@
       "slug": "indian-spice",
       "title": "Indian spice",
       "mapsUrl": "https://www.google.com/maps/place/Indian+spice/data=!4m2!3m1!1s0x875c810035c363c1:0xcd7eb3c8c88e7734",
+      "description": "Dhaba with truck parking near I-80 in Wamsutter, Wyoming, open 7 AM to 10 PM daily.",
       "tags": [
         "Truck Parking",
         "Wyoming"
@@ -1802,6 +1810,7 @@
       "slug": "india-grill",
       "title": "India Grill",
       "mapsUrl": "https://www.google.com/maps/place/India+Grill/data=!4m2!3m1!1s0x53487b3082b443ff:0x509b64f87ca95a95",
+      "description": "Indian restaurant with seating and truck parking near I-90 in Billings, Montana.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -1835,6 +1844,7 @@
       "slug": "curry-express",
       "title": "Curry Express",
       "mapsUrl": "https://www.google.com/maps/place/Curry+Express/data=!4m2!3m1!1s0x5345381c7e91c627:0x7bc9e153da10d455",
+      "description": "Indian spot with truck parking near I-90 in Belgrade, Montana, serving lunch and dinner.",
       "tags": [
         "Truck Parking",
         "Montana"
@@ -1901,6 +1911,7 @@
       "slug": "kamal-da-dhaba-indian-restaurant",
       "title": "Kamal Da Dhaba Indian Restaurant",
       "mapsUrl": "https://www.google.com/maps/place/Kamal+Da+Dhaba+Indian+Restaurant/data=!4m2!3m1!1s0x54905eb67bdd499f:0xd7fa3d7799306b3d",
+      "description": "Indian restaurant with seating and truck parking near I-5 in Covington, Washington.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -2063,7 +2074,7 @@
         "Truck Parking",
         "Oregon"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
@@ -2356,6 +2367,7 @@
       "slug": "punjabi-indian-restaurant",
       "title": "Punjabi Indian Restaurant",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Indian+Restaurant/data=!4m2!3m1!1s0x8082f2f5372f47f7:0xa6d539a20ea3e9c4",
+      "description": "Dhaba with seating and truck parking near I-5 in Corning, California, open 7 AM to 10 PM.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -2488,6 +2500,7 @@
       "slug": "sandhu-dhaba",
       "title": "Sandhu Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Sandhu+Dhaba/data=!4m2!3m1!1s0x809045eeac6b53cd:0xe9dcd2eeb63f46a1",
+      "description": "Dhaba with truck parking near I-5 in Ripon, California.",
       "tags": [
         "Truck Parking",
         "California"
@@ -2520,11 +2533,12 @@
       "slug": "mangi-da-dhaba",
       "title": "Mangi da Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Mangi+da+Dhaba/data=!4m2!3m1!1s0x80906d002dd74b15:0x106e845d30bc8b2b",
+      "description": "24-hour dhaba with truck parking near I-5 in Stockton, California.",
       "tags": [
         "Truck Parking",
         "California"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
@@ -2557,7 +2571,7 @@
         "Truck Parking",
         "California"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
@@ -2585,11 +2599,12 @@
       "slug": "kaler-punjabi-dhaba",
       "title": "Kaler Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Kaler+Punjabi+Dhaba/data=!4m2!3m1!1s0x80ea6b2b85ffd9f5:0x51c80f8d5c4d5175",
+      "description": "24-hour Punjabi dhaba with truck parking in Bakersfield, near I-5.",
       "tags": [
         "Truck Parking",
         "California"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
@@ -2656,7 +2671,7 @@
         "Truck Parking",
         "California"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
@@ -2718,6 +2733,7 @@
       "slug": "ghar-di-roti-punjabi-dhaba-2",
       "title": "Ghar Di Roti Punjabi Dhaba 2",
       "mapsUrl": "https://www.google.com/maps/place/Ghar+Di+Roti+Punjabi+Dhaba+2/data=!4m2!3m1!1s0x80ea153cb06b7499:0x4b83f6cef1ebc843",
+      "description": "Punjabi dhaba with truck parking in Bakersfield, open 24 hours most days.",
       "tags": [
         "Truck Parking",
         "California"
@@ -2750,6 +2766,7 @@
       "slug": "ronak-dhaba",
       "title": "Ronak Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Ronak+Dhaba/data=!4m2!3m1!1s0x80ea6b8ddb3cdf11:0x3613652ce9f7dfbe",
+      "description": "Dhaba with truck parking in Bakersfield, near I-5.",
       "tags": [
         "Truck Parking",
         "California"
@@ -2782,6 +2799,7 @@
       "slug": "the-royal-indian-cuisine",
       "title": "The Royal Indian Cuisine",
       "mapsUrl": "https://www.google.com/maps/place/The+Royal+Indian+Cuisine/data=!4m2!3m1!1s0x80ea6d1d77ab4483:0x3a98dcbcc1d1cb3",
+      "description": "Indian restaurant with seating and truck parking in Bakersfield, open from 7 AM daily.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -2815,11 +2833,12 @@
       "slug": "sandhu-punjabi-dhaba",
       "title": "Sandhu Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Sandhu+Punjabi+Dhaba/data=!4m2!3m1!1s0x80eb11572a41df8d:0x93889174047ace46",
+      "description": "24-hour Punjabi dhaba with truck parking in Lost Hills, near I-5.",
       "tags": [
         "Truck Parking",
         "California"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-5 · CA",
       "featured": false,
       "needsReview": true,
@@ -2847,13 +2866,14 @@
       "slug": "san-simon-travel-center",
       "title": "San Simon Travel Center",
       "mapsUrl": "https://www.google.com/maps/place/San+Simon+Travel+Center/data=!4m2!3m1!1s0x86d9cb224ba2e58f:0xe6e7aadbabd7bade",
+      "description": "24-hour travel center on I-10 in San Simon, Arizona with gas, showers, and truck parking.",
       "tags": [
         "Truck Parking",
         "Gas",
         "Showers",
         "Arizona"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-10 · AZ",
       "featured": true,
       "needsReview": true,
@@ -2921,7 +2941,7 @@
         "Seating",
         "Nevada"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-40 · AZ",
       "featured": true,
       "needsReview": true,
@@ -2949,11 +2969,12 @@
       "slug": "kohinoor-dhaba-indian-food-punjabi-dhaba",
       "title": "Kohinoor Dhaba Indian Food (Punjabi Dhaba)",
       "mapsUrl": "https://www.google.com/maps/place/Kohinoor+Dhaba+Indian+Food+(Punjabi+Dhaba)/data=!4m2!3m1!1s0x80ce01df14a185f7:0xddbb8afc15a86667",
+      "description": "24-hour dhaba with truck parking on the I-40 frontage road in Yucca, Arizona.",
       "tags": [
         "Truck Parking",
         "California"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-40 · AZ",
       "featured": false,
       "needsReview": true,
@@ -3047,13 +3068,14 @@
       "slug": "24-seven-travel-plaza",
       "title": "24 Seven Travel Plaza",
       "mapsUrl": "https://www.google.com/maps/place/24+Seven+Travel+Plaza/data=!4m2!3m1!1s0x80ea6cf924283977:0x2feea8d01eeb6112",
+      "description": "24-hour travel plaza in Bakersfield with gas, showers, and truck parking.",
       "tags": [
         "Truck Parking",
         "Gas",
         "Showers",
         "California"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-5 · CA",
       "featured": true,
       "needsReview": true,
@@ -3081,6 +3103,7 @@
       "slug": "punjabi-dhaba-dixon-truck-parking-indian-food",
       "title": "Punjabi Dhaba Dixon, Truck Parking, Indian Food",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba+Dixon,+Truck+Parking,+Indian+Food/data=!4m2!3m1!1s0x808525bed03d4327:0x970f3926107493b3",
+      "description": "Punjabi dhaba with truck parking near I-80 in Dixon, California. Closed Mondays.",
       "tags": [
         "Truck Parking",
         "California"
@@ -3113,6 +3136,7 @@
       "slug": "punj-truck-stop-indian-restaurant",
       "title": "Punj Truck Stop & Indian restaurant",
       "mapsUrl": "https://www.google.com/maps/place/Punj+Truck+Stop+%26+Indian+restaurant/data=!4m2!3m1!1s0x86343bf5ab9adaa7:0x4f15592179f60a5f",
+      "description": "Truck stop and Indian restaurant on US-59 in Queen City, Texas with gas, showers, and seating.",
       "tags": [
         "Truck Parking",
         "Gas",
@@ -3181,6 +3205,7 @@
       "slug": "punjabi-dhaba-indian-cuisine-1-hammond",
       "title": "Punjabi Dhaba Indian cuisine #1 Hammond",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba+Indian+cuisine+%231+Hammond/data=!4m2!3m1!1s0x8627232916555555:0x55e9ea87ae6bb037",
+      "description": "Indian restaurant with seating and truck parking near I-10 in Hammond, Louisiana. Closed Mondays.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -3315,6 +3340,7 @@
       "slug": "flavors-of-india-24hrs-monday-to-friday-dhaba",
       "title": "Flavors Of India (24hrs Monday to Friday) Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Flavors+Of+India+(24hrs+Monday+to+Friday)+Dhaba/data=!4m2!3m1!1s0x80c3683ae678cefb:0x1e96042b014191f3",
+      "description": "Dhaba with truck parking near I-15 in Hesperia, California, open 24 hours on weekdays.",
       "tags": [
         "Truck Parking",
         "California"
@@ -3385,7 +3411,7 @@
         "Truck Parking",
         "Missouri"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-44 · MO",
       "featured": false,
       "needsReview": true,
@@ -3413,6 +3439,7 @@
       "slug": "india-restaurant",
       "title": "India Restaurant",
       "mapsUrl": "https://www.google.com/maps/place/India+Restaurant/data=!4m2!3m1!1s0x87cbc08be7b3d907:0xa1e7c7dab077eb07",
+      "description": "Indian restaurant with seating and truck parking near I-40 in Mulberry, Arkansas.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -3536,6 +3563,7 @@
       "slug": "punjabi-dhaba-kingston-springs-tn",
       "title": "Punjabi dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+dhaba/data=!4m2!3m1!1s0x886491d81427b86f:0x957e2452ff1b5586",
+      "description": "Dhaba with truck parking near I-40 in Kingston Springs, Tennessee.",
       "tags": [
         "Truck Parking",
         "Tennessee"
@@ -3633,6 +3661,7 @@
       "slug": "maharaja-indian-food",
       "title": "Maharaja Indian food",
       "mapsUrl": "https://www.google.com/maps/place/Maharaja+Indian+food/data=!4m2!3m1!1s0x80eb1195ed7bea9f:0x52954bebe3a4b842",
+      "description": "Indian restaurant with seating and truck parking in Lost Hills, near I-5.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -3838,7 +3867,7 @@
         "Truck Parking",
         "Utah"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "I-80 · UT",
       "featured": false,
       "needsReview": true,
@@ -3899,6 +3928,7 @@
       "slug": "punjabi-dhaba-kingman-az",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x80cdc307dd480d3b:0xe3311d64f73ebae7",
+      "description": "Dhaba with truck parking near I-40 in Kingman, Arizona, open 7 AM to 10 PM.",
       "tags": [
         "Truck Parking",
         "Arizona"
@@ -3931,6 +3961,7 @@
       "slug": "i-40-travel-plaza-punjabi-restaurant",
       "title": "I-40 Travel Plaza Punjabi Restaurant",
       "mapsUrl": "https://www.google.com/maps/place/I-40+Travel+Plaza+Punjabi+Restaurant/data=!4m2!3m1!1s0x87abc3217b5db73f:0xa5dfa398a2949",
+      "description": "24-hour travel plaza restaurant near I-40 in Sayre, Oklahoma with gas, showers, seating, and truck parking.",
       "tags": [
         "Truck Parking",
         "Gas",
@@ -3938,7 +3969,7 @@
         "Seating",
         "Texas"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-40 · OK",
       "featured": true,
       "needsReview": true,
@@ -3999,6 +4030,7 @@
       "slug": "dhillons-taste-of-india",
       "title": "Dhillon's Taste of India",
       "mapsUrl": "https://www.google.com/maps/place/Dhillon's+Taste+of+India/data=!4m2!3m1!1s0x870359bec7d08115:0x5eadc8304f789dd7",
+      "description": "Indian restaurant with truck parking near I-40 in San Jon, New Mexico.",
       "tags": [
         "Truck Parking",
         "New Mexico"
@@ -4031,6 +4063,7 @@
       "slug": "haveli-usa",
       "title": "Haveli Usa",
       "mapsUrl": "https://www.google.com/maps/place/Haveli+Usa/data=!4m2!3m1!1s0x87012964846b7e39:0x5a3e6b82d04c49ec",
+      "description": "Dhaba with truck parking on the I-40 frontage road in Panhandle, Texas.",
       "tags": [
         "Truck Parking",
         "Texas"
@@ -4054,6 +4087,7 @@
       "slug": "sahibs-rasoi",
       "title": "Sahib's Rasoi",
       "mapsUrl": "https://www.google.com/maps/place/Sahib's+Rasoi/data=!4m2!3m1!1s0x886b590a09ebc505:0x8712c112f2baedd6",
+      "description": "Dhaba with truck parking near I-70 on the south side of Indianapolis.",
       "tags": [
         "Truck Parking",
         "Indiana"
@@ -4086,6 +4120,7 @@
       "slug": "apna-dhaba-indiana-restaurant",
       "title": "APNA DHABA INDIANA RESTAURANT",
       "mapsUrl": "https://www.google.com/maps/place/APNA+DHABA+INDIANA+RESTAURANT/data=!4m2!3m1!1s0x886ceb053df6bf69:0xdac3fe28e5c2c4c5",
+      "description": "Dhaba with seating and truck parking near I-70 in Stilesville, Indiana, open until midnight.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -4153,6 +4188,7 @@
       "slug": "panjabi-dhaba-warren-in",
       "title": "Panjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Panjabi+Dhaba/data=!4m2!3m1!1s0x8815b11e1e07c407:0x956194b76c3b4751",
+      "description": "Dhaba with truck parking near I-69 in Warren, Indiana, open 6 AM to 11:30 PM.",
       "tags": [
         "Truck Parking",
         "Indiana"
@@ -4190,7 +4226,7 @@
         "Truck Parking",
         "Indiana"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-70 · IN",
       "featured": false,
       "needsReview": true,
@@ -4224,7 +4260,7 @@
         "Seating",
         "Missouri"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-44 · MO",
       "featured": false,
       "needsReview": true,
@@ -4252,11 +4288,12 @@
       "slug": "punjabi-dabha",
       "title": "Punjabi Dabha",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dabha/data=!4m2!3m1!1s0x87c581e4ad06d8cb:0xea60ffd282ff7e24",
+      "description": "24-hour dhaba with truck parking near I-44 in Strafford, Missouri.",
       "tags": [
         "Truck Parking",
         "Missouri"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-44 · MO",
       "featured": false,
       "needsReview": true,
@@ -4284,6 +4321,7 @@
       "slug": "punjabi-dhaba-bakersfield-ca",
       "title": "Punjabi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Punjabi+Dhaba/data=!4m2!3m1!1s0x80ea6adf271e4d87:0x270e1f4d6d0e9f50",
+      "description": "Dhaba with truck parking in Bakersfield, near I-5. Closed Wednesdays.",
       "tags": [
         "Truck Parking",
         "California"
@@ -4481,6 +4519,7 @@
       "slug": "plateau-indian-cuisine",
       "title": "Plateau indian cuisine",
       "mapsUrl": "https://www.google.com/maps/place/Plateau+indian+cuisine/data=!4m2!3m1!1s0x86e591532d903311:0x228703361793cb54",
+      "description": "Indian restaurant with seating and truck parking on I-10 in Van Horn, Texas.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -4514,6 +4553,7 @@
       "slug": "tiffin-indian-and-american-restaurant-bar",
       "title": "Tiffin Indian and American Restaurant & Bar",
       "mapsUrl": "https://www.google.com/maps/place/Tiffin+Indian+and+American+Restaurant+%26+Bar/data=!4m2!3m1!1s0x886ab2fd2ea4406f:0x7cbe9e4dbe4d6057",
+      "description": "Indian and American restaurant with seating and truck parking near I-70 in Cambridge City, Indiana, open until midnight.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -4585,7 +4625,7 @@
         "Truck Parking",
         "Virginia"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-78 · PA",
       "featured": false,
       "needsReview": true,
@@ -4646,11 +4686,12 @@
       "slug": "sizzling-tandoori-hut",
       "title": "Sizzling Tandoori Hut",
       "mapsUrl": "https://www.google.com/maps/place/Sizzling+Tandoori+Hut/data=!4m2!3m1!1s0x54956925b9ab496d:0x45539f23151cb7f0",
+      "description": "Tandoori spot with truck parking near I-5 in Aurora, Oregon, open 24 hours most days.",
       "tags": [
         "Truck Parking",
         "Oregon"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-5 · OR",
       "featured": false,
       "needsReview": true,
@@ -4678,6 +4719,7 @@
       "slug": "sher-e-punjab-dhaba-indian-restaurant",
       "title": "Sher E Punjab Dhaba Indian Restaurant",
       "mapsUrl": "https://www.google.com/maps/place/Sher+E+Punjab+Dhaba+Indian+Restaurant/data=!4m2!3m1!1s0x80a8d7c8f843b45b:0x8de9218632cce277",
+      "description": "Punjabi dhaba with seating and truck parking on US-93 in Wells, Nevada.",
       "tags": [
         "Truck Parking",
         "Seating",
@@ -4711,6 +4753,7 @@
       "slug": "dhaba-mitran-da",
       "title": "Dhaba Mitran Da",
       "mapsUrl": "https://www.google.com/maps/place/Dhaba+Mitran+Da/data=!4m2!3m1!1s0x864a09a5cfc8128f:0xff18e72c543e06f7",
+      "description": "Dhaba with truck parking near I-30 in Winfield, Texas, open 7 AM to 11 PM.",
       "tags": [
         "Truck Parking",
         "Texas"
@@ -4841,6 +4884,7 @@
       "slug": "sizzling-tandoori-hut-wasco",
       "title": "Sizzling Tandoori Hut | Wasco",
       "mapsUrl": "https://www.google.com/maps/place/Sizzling+Tandoori+Hut+%7C+Wasco/data=!4m2!3m1!1s0x54bd8728478d7b3d:0x2a85f44a42dfeeeb",
+      "description": "Tandoori spot with truck parking near I-84 in Wasco, Oregon. Closed Sundays.",
       "tags": [
         "Truck Parking",
         "California"
@@ -4878,7 +4922,7 @@
         "Truck Parking",
         "Illinois"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "Near I-80 · IN",
       "featured": false,
       "needsReview": true,
@@ -4906,6 +4950,7 @@
       "slug": "sisters-dhaba",
       "title": "Sisters Dhaba ਭੈਣਾਂ ਦਾ ਢਾਬਾ",
       "mapsUrl": "https://www.google.com/maps/place/Sisters+Dhaba+%E0%A8%AD%E0%A9%88%E0%A8%A3%E0%A8%BE%E0%A8%82+%E0%A8%A6%E0%A8%BE+%E0%A8%A2%E0%A8%BE%E0%A8%AC%E0%A8%BE/data=!4m2!3m1!1s0x864d8f0763d3ff1b:0x73d6a6cab1567763",
+      "description": "Dhaba with truck parking on US-287 in Alvord, Texas, open around the clock most days.",
       "tags": [
         "Truck Parking",
         "Texas"
@@ -4971,6 +5016,7 @@
       "slug": "desi-dhaba-winnie-tx",
       "title": "Desi Dhaba",
       "mapsUrl": "https://www.google.com/maps/place/Desi+Dhaba/data=!4m2!3m1!1s0x863ed93ac7902fc9:0xbdece0b8008c6b2c",
+      "description": "Dhaba with truck parking on I-10 in Winnie, Texas. Closed Mondays.",
       "tags": [
         "Truck Parking",
         "Texas"
@@ -5009,7 +5055,7 @@
         "Seating",
         "Texas"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "routeHint": "I-40 · TX",
       "featured": false,
       "needsReview": true,
@@ -5094,6 +5140,7 @@
       "slug": "taste-of-india-santa-nella-ca",
       "title": "Taste of India",
       "mapsUrl": "https://www.google.com/maps/place/Taste+of+India/data=!4m2!3m1!1s0x809185b0f3f2ae81:0xf5794fec53a0dc1f",
+      "description": "Indian restaurant with truck parking near I-5 in Santa Nella, California.",
       "tags": [
         "Truck Parking",
         "California"
@@ -5126,13 +5173,14 @@
       "slug": "valley-fuel-travel-plaza",
       "title": "Valley Fuel Travel Plaza",
       "mapsUrl": "https://www.google.com/maps/place/Valley+Fuel+Travel+Plaza/data=!4m2!3m1!1s0x8094d996e755447d:0xb417d8c7ebb7e379",
+      "description": "24-hour travel plaza in Visalia, California with gas, showers, and truck parking.",
       "tags": [
         "Truck Parking",
         "Gas",
         "Showers",
         "California"
       ],
-      "priority": "Medium",
+      "priority": "High",
       "featured": true,
       "needsReview": true,
       "published": true,

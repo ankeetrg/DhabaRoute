@@ -83,6 +83,7 @@ export interface Dhaba {
   // from undefined = not yet enriched). DhabaPhoto falls back to a warm
   // gradient + utensil glyph when null or missing.
   imageUrl?: string | null;
+  placeId?: string;
   website?: string;
   priceRange?: string;
   parking?: string;

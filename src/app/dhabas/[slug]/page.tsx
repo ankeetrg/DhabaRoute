@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
 import { distanceKm } from "@/lib/geo";
 import { parseRoute } from "@/lib/parseRoute";
+import { getDhabaPhotoSrc } from "@/lib/photo-url";
 import type { Dhaba } from "@/lib/types";
 import { DhabaCard } from "@/components/DhabaCard";
 import { DhabaDetailMap } from "@/components/DhabaDetailMap";
@@ -84,6 +85,7 @@ export default async function DhabaDetailPage({
   const formattedAddress = dhaba.address?.replace(/,\s*USA$/, "");
   const cityState = cityStateFromAddress(dhaba.address);
   const phoneHref = dhaba.phone ? `tel:${dhaba.phone.replace(/\D/g, "")}` : null;
+  const photoSrc = getDhabaPhotoSrc(dhaba);
   const aboutText =
     dhaba.description?.trim() ||
     "A listed dhaba-style stop on DhabaRoute. Details are being verified.";
@@ -141,13 +143,13 @@ export default async function DhabaDetailPage({
         </nav>
 
         {/* ── Hero photo ─────────────────────────────────────────────── */}
-        {dhaba.imageUrl ? (
-          <DhabaHeroPhoto src={dhaba.imageUrl} alt={dhaba.title} />
+        {photoSrc ? (
+          <DhabaHeroPhoto src={photoSrc} alt={dhaba.title} />
         ) : null}
 
         {/* ── Header block ───────────────────────────────────────────── */}
         <header
-          className={dhaba.imageUrl ? "mt-6" : "mt-5"}
+          className={photoSrc ? "mt-6" : "mt-5"}
           style={{ maxWidth: 760 }}
         >
           <RouteEyebrow routeHint={dhaba.routeHint} />

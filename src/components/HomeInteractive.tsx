@@ -8,6 +8,7 @@ import { rankByDistance, formatDistance } from "@/lib/geo";
 import { useGeolocation } from "@/lib/useGeolocation";
 import { getOpenStatus } from "@/lib/isOpenNow";
 import { parseRoute } from "@/lib/parseRoute";
+import { getDhabaPhotoSrc } from "@/lib/photo-url";
 import { DhabaCard } from "./DhabaCard";
 import { DhabaPhoto } from "./DhabaPhoto";
 import { Tag } from "./Tag";
@@ -905,6 +906,7 @@ function MapPinPreview({
   // timezone, off by ±3h for far-away browsing. Good enough until we
   // persist timezone per listing.
   const openStatus = getOpenStatus(dhaba.hours);
+  const photoSrc = getDhabaPhotoSrc(dhaba);
   const today = new Date().toLocaleDateString("en-US", { weekday: "long" });
   const todayLine = dhaba.hours?.find((h) => h.startsWith(today));
   // "Monday: 6:00 AM – 10:00 PM" → day short + trimmed time
@@ -941,7 +943,7 @@ function MapPinPreview({
             rendering if we ever move this inside the map tree. No hover
             zoom here — the preview isn't a card-shaped target. */}
         <DhabaPhoto
-          src={dhaba.imageUrl}
+          src={photoSrc}
           alt=""
           className="block w-full h-28"
           raw
