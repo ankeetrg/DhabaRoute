@@ -71,7 +71,8 @@
       "Bash(curl -s -o /tmp/dhaba-wiki/palampur.jpg \"https://upload.wikimedia.org/wikipedia/commons/6/6c/The_Dhaba_of_Palampur.jpg\")",
       "Bash(curl -s -o /tmp/dhaba-wiki/sartaj.jpg \"https://upload.wikimedia.org/wikipedia/commons/2/26/Photograph_of_the_Sartaj_Haveli_dhaba_in_Maujgarh%2C_Punjab%2C_India%2C_8_April_2023.jpg\")",
       "Bash(curl -s -o /tmp/dhaba-wiki/jnu.jpg \"https://upload.wikimedia.org/wikipedia/commons/d/d9/Ganga_Dhaba%2C_JNU.jpg\")",
-      "Bash(curl -s -o /tmp/dhaba-wiki/varanasi.jpg \"https://upload.wikimedia.org/wikipedia/commons/0/0e/Varanasi_673_-_dhaba_%2833262795054%29.jpg\")"
+      "Bash(curl -s -o /tmp/dhaba-wiki/varanasi.jpg \"https://upload.wikimedia.org/wikipedia/commons/0/0e/Varanasi_673_-_dhaba_%2833262795054%29.jpg\")",
+      "Bash(echo \"exit=$?\")"
     ]
   }
 }
