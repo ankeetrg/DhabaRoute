@@ -7,6 +7,7 @@ out
 .vercel
 .turbo
 .numbers
+tsconfig.tsbuildinfo
 
 # Places API response cache (regeneratable, contains a copy of API responses)
 .cache/

@@ -355,9 +355,8 @@ function main() {
 
   // ── Write output ─────────────────────────────────────────────────────────
   const payload = {
-    generatedAt : new Date().toISOString(),
-    count       : out.length,
-    dhabas      : out,
+    count  : out.length,
+    dhabas : out,
   };
   writeFileSync(OUT_PATH, JSON.stringify(payload, null, 2) + "\n", "utf8");
 
