@@ -206,3 +206,47 @@ A focused pass on `/dhabas/[slug]` to make the page useful for a driver deciding
 ### Verification
 - `npx tsc --noEmit` — clean.
 - No new dependencies, no schema changes. All six changes read from existing fields on `Dhaba`.
+
+## Mobile-first detail page redesign (2026-06)
+
+A ground-up restructure of `/dhabas/[slug]` for the actual reading environment: a phone held in one hand at a truck stop. The previous version was a two-column desktop card layout that collapsed to mobile; this version is mobile-first at every breakpoint.
+
+### Layout philosophy
+
+- **Single column at every breakpoint.** No `lg:grid-cols-*`. Container `max-width: 640px` centered — desktop visitors see the same column a phone visitor sees, just centered with whitespace on either side. Easier to design, easier to maintain, faster to read.
+- **Dividers, not cards.** Every `<SectionCard>` (white background, 1.5px border, soft shadow) is gone. Sections are separated by `<Divider />` — a thin `<hr>` (`border-top: 1px solid #ede5da; margin: 18px 0`). Whitespace and type hierarchy do the work boxes used to. Result: less visual noise, faster scanning, lighter feel.
+- **CTAs above the fold.** "Get directions" and "Call · {phone}" land immediately under the title, before any divider, before any prose. Both full-width (`w-full`), stacked vertically (`flex flex-col gap-2`). For a driver who already knows the place, the page is essentially "title + tap" with zero scroll.
+- **Information hierarchy follows decision time.** Order is: title → CTAs → open status → description → amenities → menu → facts → route badge → map → secondary surfaces. Decision-critical info is up top; engagement surfaces (community contribute, owner update, similar stops) are below.
+
+### "On the menu" inline-text format
+
+Replaces the old "What to order" card with a single line of prose:
+
+```
+Aloo Paratha, Dal Makhani, Samosa, Chana Masala, Lassi
+```
+
+- **Source priority:** structured `dhaba.menu` first (flattened across all categories' items), falls back to keyword extraction from `description` if no menu is on file. If neither produces dishes, the whole section is skipped — no placeholder.
+- **Popular dishes highlighted in saffron** (`#df6028`, `font-weight: 600`). Popularity is driven by the `POPULAR_DISHES` constant defined at the top of [`src/app/dhabas/[slug]/page.tsx`](src/app/dhabas/[slug]/page.tsx) — 12 entries covering the staples (paratha, dal, chai, biryani, lassi, paneer, naan, chole, tandoori, plus their `aloo`/`makhani`/`masala` qualified forms). Matching is case-insensitive substring on each dish name, so "Aloo Paratha" matches both `aloo paratha` and `paratha`.
+- **Why inline text and not chips?** Chips imply filtering or interactivity; this is informational. Prose reads faster, keeps section height tight, and the saffron highlights still make the "headline" items pop visually.
+
+### `TodayStatus` component
+
+New client component at [`src/components/TodayStatus.tsx`](src/components/TodayStatus.tsx). Renders one line: `● Open · 9:00 AM – 8:30 PM` or `● Closed · Opens tomorrow 9:00 AM`; nothing when status is `unknown`.
+
+- **Must be a client component.** `getOpenStatus()` uses `new Date()` — server-rendering it would freeze the status at build time. Lives in its own file because page.tsx is a Server Component (with `await params`, `notFound()`, `generateMetadata`) and `"use client"` can't be added partway down a module. The spec called for "in page.tsx" — same logical location, separate file by necessity.
+- **`suppressHydrationWarning`** on the root `<p>`. SSR will render the build-time status; the client hydrates with the user's real current time; these legitimately differ and the warning isn't actionable.
+- **Closed-state "Opens tomorrow X" lookup walks up to 7 days forward** in case multiple consecutive days are closed (rare but real — some dhabas close Sun + Mon). Day label is "tomorrow" only when literally tomorrow; otherwise the actual day name ("Opens Wednesday 9:00 AM").
+
+### Other changes worth noting
+
+- **CTA buttons swapped from `flex-1` to `w-full`.** The previous round added `flex-1` for the side-by-side variant; the stacked variant needs `w-full` instead — `flex-1` in a `flex-col` would stretch buttons vertically rather than horizontally.
+- **Fact rows are `<div>`-wrapped `<dt>`/`<dd>` inside a plain `<dl>`** (HTML5 valid). 56px label column, body text in `#3c3128`, phone is the only tappable row (`#df6028 font-semibold` `tel:` link). Rows skip themselves when the underlying field is missing — no "Address being verified" placeholders.
+- **`AmenityStrip` restyled to flat pills.** "Truck parking" and "24 hours" get the leaf-green treatment (`rgba(19,136,8,*)`); "Gas" and "Showers" use the warm beige (`#f3ede2` / `#e4d8c6`). Dot prefix removed — pills don't need it.
+- **`TagList` removed from the detail page render** (the component definition is gone too). The amenity strip is now the only chip-style surface on the page; the long tag list was redundant noise.
+- **"Been here?" lost its card wrapper.** The success state still uses a tinted leaf pill (`#f0f7f0` background, `rgba(26,107,71,0.20)` border), but the surrounding white card box is gone.
+- **Deleted local components:** `SectionCard`, `FactList`, `FactRow`, `WhatToOrderCard`, `HoursList`. No longer referenced after the redesign.
+
+### Verification
+- `npx tsc --noEmit` — clean.
+- One new component file (`TodayStatus.tsx`). No new dependencies. No schema changes.

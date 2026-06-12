@@ -1,28 +1,61 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
 import { distanceKm } from "@/lib/geo";
 import { parseRoute, highwaySlug } from "@/lib/parseRoute";
 import { getOpenStatus } from "@/lib/isOpenNow";
 import { getDhabaPhotoSrc } from "@/lib/photo-url";
-import type { Dhaba } from "@/lib/types";
+import type { Dhaba, DhabaMenu } from "@/lib/types";
 import { DhabaCard } from "@/components/DhabaCard";
 import { DhabaDetailMap } from "@/components/DhabaDetailMap";
 import { DhabaHeroPhoto } from "@/components/DhabaHeroPhoto";
 import { ContributeForm } from "@/components/ContributeForm";
+import { TodayStatus } from "@/components/TodayStatus";
 
-// ── Detail page — design spec (Step 11) ───────────────────────────────────
-//   Max-width 1056px, padding 24px top / 72px bottom
-//   Breadcrumb: 13px, #8a7a6a → #1c1814 on hover, separator #e4d8c6
-//   Hero: 280px, rounded-2xl
-//   Route eyebrow: 11px, 700, uppercase, 0.08em, var(--accent), dot prefix
-//   H1: clamp(28px,4vw,44px), Bricolage Grotesque 800, -0.01em
-//   Tags: 999px radius, 11.5px; Vegetarian → sage tint
-//   Info grid: 1.6fr/1fr, gap 16px; 1.5px #e8dfd4 border
-//   Community card: max-width 580px, ghost button
-//   Similar stops: auto-fill minmax(272px,1fr), gap 16px
+// Mobile-first detail page.
+//   Single column at every breakpoint — no grid, no cards. Sections separated
+//   by thin <hr> dividers; whitespace + typography do the work. CTAs land
+//   above the fold immediately under the title.
+//   POPULAR_DISHES drives the saffron highlight inside the inline "On the menu"
+//   line; the same constant is reused whether dishes come from the structured
+//   menu or fall back to keyword extraction from the description.
+
+const POPULAR_DISHES = [
+  "aloo paratha",
+  "paratha",
+  "dal makhani",
+  "dal",
+  "masala chai",
+  "chai",
+  "biryani",
+  "lassi",
+  "paneer",
+  "naan",
+  "chole",
+  "tandoori",
+];
+
+const DISH_KEYWORDS = [
+  "paratha",
+  "biryani",
+  "dal",
+  "chai",
+  "roti",
+  "naan",
+  "curry",
+  "tandoori",
+  "lassi",
+  "dosa",
+  "samosa",
+  "chaat",
+  "thali",
+  "paneer",
+  "chole",
+  "rice",
+  "kebab",
+] as const;
 
 type RouteParams = Promise<{ slug: string }>;
 
@@ -80,25 +113,26 @@ export default async function DhabaDetailPage({
   const dhaba = getDhabaBySlug(slug);
   if (!dhaba) notFound();
 
-  const others = getAllDhabas().filter((d) => d.slug !== dhaba.slug);
+  const allDhabas = getAllDhabas();
+  const others = allDhabas.filter((d) => d.slug !== dhaba.slug);
   const related = getRelatedDhabas(dhaba, others);
-  const routeData = getRouteBadgeData(dhaba, getAllDhabas());
+  const routeData = getRouteBadgeData(dhaba, allDhabas);
 
   const formattedAddress = dhaba.address?.replace(/,\s*USA$/, "");
   const cityState = cityStateFromAddress(dhaba.address);
   const phoneHref = dhaba.phone ? `tel:${dhaba.phone.replace(/\D/g, "")}` : null;
   const photoSrc = getDhabaPhotoSrc(dhaba);
-  const aboutText =
-    dhaba.description?.trim() ||
-    "A listed dhaba-style stop on DhabaRoute. Details are being verified.";
 
-  // Owner update form — Airtable with Dhaba Name + Slug pre-filled.
-  // Submissions are reviewed and applied within 48h (per the helper text).
+  // Menu source: structured menu first, fall back to keyword scan of the
+  // description. Empty result → skip the section entirely.
+  const menuDishes = collectMenuDishes(dhaba.menu);
+  const dishesToShow =
+    menuDishes.length > 0
+      ? menuDishes
+      : extractDishes(dhaba.description).map((d) => d.name);
+
   const formUrl = `https://airtable.com/appsoULcfjfSmuKqL/shrt7RJTHxvGwFU01?prefill_Dhaba+Name=${encodeURIComponent(dhaba.title)}&prefill_Dhaba+Slug=${encodeURIComponent(dhaba.slug)}`;
 
-  // Schema.org FoodEstablishment payload — only fields already on the
-  // Dhaba type (no schema additions). Undefined values are stripped by
-  // JSON.stringify so we don't emit empty keys.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
@@ -118,7 +152,7 @@ export default async function DhabaDetailPage({
     <>
       <article
         className="mx-auto w-full px-5 sm:px-8 pt-6 pb-[72px]"
-        style={{ maxWidth: 1056 }}
+        style={{ maxWidth: 640 }}
       >
         {/* ── Breadcrumb ─────────────────────────────────────────────── */}
         <nav
@@ -132,11 +166,7 @@ export default async function DhabaDetailPage({
           >
             All dhabas
           </Link>
-          <span
-            aria-hidden
-            className="mx-2"
-            style={{ color: "#e4d8c6" }}
-          >
+          <span aria-hidden className="mx-2" style={{ color: "#e4d8c6" }}>
             ·
           </span>
           <span style={{ color: "#1c1814" }} className="min-w-0 truncate">
@@ -149,17 +179,14 @@ export default async function DhabaDetailPage({
           <DhabaHeroPhoto src={photoSrc} alt={dhaba.title} hours={dhaba.hours} />
         ) : null}
 
-        {/* ── Header block ───────────────────────────────────────────── */}
-        <header
-          className={photoSrc ? "mt-6" : "mt-5"}
-          style={{ maxWidth: 760 }}
-        >
+        {/* ── Header: eyebrow + title + city/state ──────────────────── */}
+        <header className="mt-5">
           <RouteEyebrow routeHint={dhaba.routeHint} />
 
           <h1
             className="font-display font-extrabold leading-[1.08] break-words"
             style={{
-              fontSize: "clamp(30px, 4.4vw, 48px)",
+              fontSize: "clamp(28px, 6vw, 36px)",
               color: "#1c1814",
               letterSpacing: "-0.01em",
               marginTop: dhaba.routeHint ? 8 : 0,
@@ -172,100 +199,97 @@ export default async function DhabaDetailPage({
           {cityState || dhaba.routeHint ? (
             <p
               className="mt-2 font-ui leading-snug"
-              style={{ fontSize: 15, color: "var(--ink-muted)" }}
+              style={{ fontSize: 14, color: "var(--ink-muted)" }}
             >
               {[cityState, dhaba.routeHint].filter(Boolean).join(" · ")}
             </p>
           ) : null}
-
-          <TagList tags={dhaba.tags} />
-
-          <AmenityStrip tags={dhaba.tags} hours={dhaba.hours} />
-
-          {dhaba.mapsUrl || phoneHref ? (
-            <div className="mt-5 flex gap-3">
-              {dhaba.mapsUrl ? (
-                <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
-              ) : null}
-              {phoneHref ? (
-                <SecondaryAction href={phoneHref}>Call {dhaba.phone}</SecondaryAction>
-              ) : null}
-            </div>
-          ) : null}
         </header>
 
-        {/* ── Decision support ──────────────────────────────────────── */}
-        <section
-          className="mt-7 grid grid-cols-1 lg:grid-cols-[1.45fr_1fr]"
-          style={{ gap: 16 }}
-        >
-          <div className="space-y-4">
-            <SectionCard title="Why stop here?">
-              <p
-                className="font-ui leading-[1.72]"
-                style={{ fontSize: "16px", color: "#3c3128" }}
-              >
-                {aboutText}
-              </p>
-              {dhaba.needsReview && !dhaba.featured ? (
-                <p className="mt-4 inline-flex items-center gap-1.5 font-ui text-[11px] text-ink-muted">
-                  <span aria-hidden className="w-1 h-1 rounded-full bg-haldi" />
-                  Community-submitted · pending review
-                </p>
-              ) : null}
-            </SectionCard>
-
-            <WhatToOrderCard description={dhaba.description} tags={dhaba.tags} />
+        {/* ── CTAs (above the fold, stacked, full width) ────────────── */}
+        {dhaba.mapsUrl || phoneHref ? (
+          <div className="mt-4 flex flex-col gap-2">
+            {dhaba.mapsUrl ? (
+              <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
+            ) : null}
+            {phoneHref ? (
+              <SecondaryAction href={phoneHref}>
+                Call · {dhaba.phone}
+              </SecondaryAction>
+            ) : null}
           </div>
+        ) : null}
 
-          <aside className="space-y-4">
-            <SectionCard title="Quick facts">
-              <FactList>
-                <FactRow label="Address" value={formattedAddress ?? "Address being verified"} />
-                <FactRow label="Route" value={dhaba.routeHint ?? "Route details being verified"} />
-                <FactRow label="Area" value={cityState ?? "Location details being verified"} />
-                <FactRow label="Phone" value={dhaba.phone ?? "Phone being verified"} href={phoneHref} />
-                <FactRow
-                  label="Useful for"
-                  value={dhaba.tags.length > 0 ? dhaba.tags.join(", ") : "Traveler details being verified"}
-                />
-              </FactList>
-            </SectionCard>
+        <Divider />
 
-            <SectionCard title="Visit details">
-              {dhaba.hours && dhaba.hours.length > 0 ? (
-                <HoursList hours={dhaba.hours} />
-              ) : (
-                <p className="font-ui text-[13px] text-ink-muted">
-                  Hours are being verified. Call before making a detour.
-                </p>
-              )}
-              {dhaba.mapsUrl || phoneHref ? (
-                <div className="mt-5 flex flex-col gap-2">
-                  {dhaba.mapsUrl ? (
-                    <PrimaryAction href={dhaba.mapsUrl}>Open in Google Maps</PrimaryAction>
-                  ) : null}
-                  {phoneHref ? (
-                    <SecondaryAction href={phoneHref}>Call ahead</SecondaryAction>
-                  ) : null}
-                </div>
-              ) : null}
-              {routeData ? (
-                <Link
-                  href={routeData.href}
-                  className="mt-4 flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
-                  style={{
-                    background: "rgba(26,107,71,0.10)",
-                    border: "1px solid rgba(26,107,71,0.30)",
-                    color: "#1a6b47",
-                  }}
-                >
-                  {routeData.highway} · {routeData.count} stops on this route →
-                </Link>
-              ) : null}
-            </SectionCard>
-          </aside>
-        </section>
+        {/* ── Open status + today's hours ───────────────────────────── */}
+        <TodayStatus hours={dhaba.hours} />
+
+        {/* ── Description (no card) ─────────────────────────────────── */}
+        {dhaba.description ? (
+          <p className="font-ui text-[14px] leading-[1.7] text-[#3c3128] mt-3">
+            {dhaba.description}
+          </p>
+        ) : null}
+
+        {/* ── Amenity pills ──────────────────────────────────────────── */}
+        <AmenityStrip tags={dhaba.tags} hours={dhaba.hours} />
+
+        {/* ── On the menu (inline text, popular dishes in saffron) ─── */}
+        {dishesToShow.length > 0 ? (
+          <>
+            <Divider />
+            <section>
+              <p className="font-ui font-bold uppercase text-[9.5px] tracking-[0.07em] text-[#c4b4a4] mb-2">
+                On the menu
+              </p>
+              <p className="font-ui text-[13.5px] leading-[1.65] text-[#3c3128]">
+                {dishesToShow.map((dish, i) => (
+                  <Fragment key={`${dish}-${i}`}>
+                    {i > 0 ? ", " : ""}
+                    {isPopularDish(dish) ? (
+                      <span style={{ color: "#df6028", fontWeight: 600 }}>
+                        {dish}
+                      </span>
+                    ) : (
+                      dish
+                    )}
+                  </Fragment>
+                ))}
+              </p>
+            </section>
+          </>
+        ) : null}
+
+        <Divider />
+
+        {/* ── Fact rows ──────────────────────────────────────────────── */}
+        <dl>
+          {formattedAddress ? (
+            <Fact label="Address" value={formattedAddress} />
+          ) : null}
+          {dhaba.phone && phoneHref ? (
+            <Fact label="Phone" value={dhaba.phone} href={phoneHref} />
+          ) : null}
+          {dhaba.routeHint ? (
+            <Fact label="Route" value={dhaba.routeHint} />
+          ) : null}
+        </dl>
+
+        {/* ── Route badge ────────────────────────────────────────────── */}
+        {routeData ? (
+          <Link
+            href={routeData.href}
+            className="mt-4 flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
+            style={{
+              background: "rgba(26,107,71,0.10)",
+              border: "1px solid rgba(26,107,71,0.30)",
+              color: "#1a6b47",
+            }}
+          >
+            {routeData.highway} · {routeData.count} stops on this route →
+          </Link>
+        ) : null}
 
         {/* ── Map ────────────────────────────────────────────────────── */}
         {dhaba.lat != null && dhaba.lng != null ? (
@@ -274,51 +298,47 @@ export default async function DhabaDetailPage({
           </section>
         ) : null}
 
-        {/* ── Community card ─────────────────────────────────────────── */}
+        {/* ── Been here? ─────────────────────────────────────────────── */}
         <section className="mt-10">
-          <div
-            className="rounded-2xl"
+          <p
+            className="font-ui font-semibold uppercase"
             style={{
-              maxWidth: 580,
-              background: "#fff",
-              border: "1.5px solid #e8dfd4",
-              padding: "24px 28px",
-              boxShadow: "0 1px 4px rgba(28,24,20,0.05)",
+              fontSize: "10.5px",
+              color: "#c4b4a4",
+              letterSpacing: "0.08em",
             }}
           >
+            Been here?
+          </p>
+          {contributed === "true" ? (
             <p
-              className="font-ui font-semibold uppercase"
+              className="mt-4 rounded-xl px-4 py-3 text-[14px] font-ui"
               style={{
-                fontSize: "10.5px",
-                color: "#c4b4a4",
-                letterSpacing: "0.08em",
+                background: "#f0f7f0",
+                color: "#1a6b47",
+                border: "1px solid rgba(26,107,71,0.20)",
               }}
             >
-              Been here?
+              Thanks for contributing — we&rsquo;ll add it to the listing soon.
             </p>
-            {contributed === "true" ? (
-              <p className="mt-4 rounded-xl bg-leaf-soft border border-leaf-line text-leaf px-4 py-3 text-[14px] font-ui">
-                Thanks for contributing — we&rsquo;ll add it to the listing soon.
+          ) : (
+            <>
+              <p
+                className="mt-2 font-ui leading-[1.65]"
+                style={{ fontSize: 14, color: "#3c3128" }}
+              >
+                Share a photo or menu — help other drivers know what to expect.
               </p>
-            ) : (
-              <>
-                <p
-                  className="mt-2 font-ui leading-[1.65]"
-                  style={{ fontSize: 15, color: "#3c3128" }}
-                >
-                  Share a photo or menu — help other drivers know what to expect.
-                </p>
-                <ContributeForm
-                  dhabaTitle={dhaba.title}
-                  dhabaSlug={dhaba.slug}
-                />
-              </>
-            )}
-          </div>
+              <ContributeForm
+                dhabaTitle={dhaba.title}
+                dhabaSlug={dhaba.slug}
+              />
+            </>
+          )}
         </section>
 
         {/* ── Owner: update your listing ─────────────────────────────── */}
-        <div className="max-w-[580px] mt-6">
+        <div className="mt-8">
           <p className="text-[11px] uppercase tracking-widest text-[var(--ink-muted)] mb-3">
             Is this your dhaba?
           </p>
@@ -357,7 +377,9 @@ export default async function DhabaDetailPage({
                 <li key={r.dhaba.id}>
                   <DhabaCard
                     dhaba={r.dhaba}
-                    distanceLabel={r.distanceMi != null ? `${r.distanceMi} mi` : undefined}
+                    distanceLabel={
+                      r.distanceMi != null ? `${r.distanceMi} mi` : undefined
+                    }
                   />
                 </li>
               ))}
@@ -371,6 +393,20 @@ export default async function DhabaDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     </>
+  );
+}
+
+// ── Layout primitives ─────────────────────────────────────────────────────
+
+function Divider() {
+  return (
+    <hr
+      style={{
+        border: "none",
+        borderTop: "1px solid #ede5da",
+        margin: "18px 0",
+      }}
+    />
   );
 }
 
@@ -402,82 +438,6 @@ function RouteEyebrow({ routeHint }: { routeHint?: string }) {
   );
 }
 
-function TagList({ tags }: { tags: string[] }) {
-  if (tags.length === 0) return null;
-  return (
-    <ul className="mt-4 flex flex-wrap gap-1.5" role="list">
-      {tags.map((tag) => {
-        const isVeg = tag === "Vegetarian";
-        return (
-          <li key={tag}>
-            <Link
-              href={`/?tag=${encodeURIComponent(tag)}`}
-              className="hover:opacity-80 transition inline-flex items-center gap-1 font-ui font-medium"
-              style={{
-                fontSize: "11.5px",
-                borderRadius: 999,
-                padding: "3px 10px",
-                background: isVeg ? "rgba(107,142,95,0.10)" : "#f3ede2",
-                border: isVeg
-                  ? "1px solid rgba(107,142,95,0.30)"
-                  : "1px solid #e4d8c6",
-                color: isVeg ? "#3a7c52" : "#6a5a4a",
-              }}
-            >
-              {isVeg ? (
-                <span
-                  aria-hidden
-                  style={{
-                    display: "inline-block",
-                    width: 5,
-                    height: 5,
-                    borderRadius: "50%",
-                    background: "#3a7c52",
-                    flexShrink: 0,
-                  }}
-                />
-              ) : null}
-              {tag}
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-function SectionCard({
-  title,
-  children,
-}: {
-  title: string;
-  children: ReactNode;
-}) {
-  return (
-    <section
-      className="rounded-2xl"
-      style={{
-        background: "#fff",
-        border: "1.5px solid #e8dfd4",
-        padding: "22px 24px",
-        boxShadow: "0 1px 4px rgba(28,24,20,0.05)",
-      }}
-    >
-      <p
-        className="font-ui font-semibold uppercase"
-        style={{
-          fontSize: "10.5px",
-          color: "#c4b4a4",
-          letterSpacing: "0.08em",
-        }}
-      >
-        {title}
-      </p>
-      <div className="mt-3">{children}</div>
-    </section>
-  );
-}
-
 function PrimaryAction({
   href,
   children,
@@ -490,7 +450,7 @@ function PrimaryAction({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex-1 inline-flex h-11 items-center justify-center rounded-xl px-5 text-center font-ui font-semibold text-white transition-opacity duration-150 hover:opacity-[0.86]"
+      className="w-full inline-flex h-11 items-center justify-center rounded-xl px-5 text-center font-ui font-semibold text-white transition-opacity duration-150 hover:opacity-[0.86]"
       style={{ background: "var(--accent)", fontSize: 14 }}
     >
       {children}
@@ -508,7 +468,7 @@ function SecondaryAction({
   return (
     <a
       href={href}
-      className="flex-1 inline-flex h-11 items-center justify-center rounded-xl border border-paper-warm bg-white px-5 text-center font-ui font-semibold transition-colors duration-150 hover:border-clay-300 hover:text-accent"
+      className="w-full inline-flex h-11 items-center justify-center rounded-xl border border-paper-warm bg-white px-5 text-center font-ui font-semibold transition-colors duration-150 hover:border-clay-300 hover:text-accent"
       style={{ fontSize: 14, color: "var(--ink-soft)" }}
     >
       {children}
@@ -516,11 +476,7 @@ function SecondaryAction({
   );
 }
 
-function FactList({ children }: { children: ReactNode }) {
-  return <dl className="space-y-3">{children}</dl>;
-}
-
-function FactRow({
+function Fact({
   label,
   value,
   href,
@@ -530,70 +486,117 @@ function FactRow({
   href?: string | null;
 }) {
   return (
-    <div>
-      <dt
-        className="font-ui font-semibold uppercase"
-        style={{ fontSize: 10, color: "#c4b4a4", letterSpacing: "0.06em" }}
-      >
+    <div className="flex gap-3 mb-3">
+      <dt className="font-ui font-bold uppercase text-[10px] tracking-[0.06em] text-[#c4b4a4] w-14 flex-none pt-px">
         {label}
       </dt>
-      <dd
-        className="mt-1 font-ui leading-snug break-words"
-        style={{ fontSize: 13.5 }}
-      >
+      <dd className="font-ui text-[13px] text-[#3c3128] min-w-0 break-words">
         {href ? (
           <a
             href={href}
-            className="font-semibold transition-colors duration-150 hover:text-accent"
-            style={{ color: "#1c1814" }}
+            className="font-semibold transition-opacity duration-150 hover:opacity-80"
+            style={{ color: "#df6028" }}
           >
             {value}
           </a>
         ) : (
-          <span style={{ color: "#3c3128" }}>{value}</span>
+          value
         )}
       </dd>
     </div>
   );
 }
 
-function HoursList({ hours }: { hours: string[] }) {
+function AmenityStrip({
+  tags,
+  hours,
+}: {
+  tags: string[];
+  hours: string[] | undefined;
+}) {
+  const tiles: string[] = [];
+  if (tags.some((t) => t.includes("Truck"))) tiles.push("Truck parking");
+  if (
+    getOpenStatus(hours) === "open" &&
+    (hours ?? []).some((line) => line.includes("24"))
+  ) {
+    tiles.push("24 hours");
+  }
+  if (tags.some((t) => t.includes("Gas"))) tiles.push("Gas");
+  if (tags.some((t) => t.includes("Shower"))) tiles.push("Showers");
+
+  if (tiles.length === 0) return null;
+
+  const priority = (label: string) =>
+    label === "Truck parking" || label === "24 hours";
+
   return (
-    <ul className="space-y-1.5">
-      {hours.map((line, idx) => {
-        const colonAt = line.indexOf(":");
-        if (colonAt === -1) {
-          return (
-            <li
-              key={`${line}-${idx}`}
-              className="font-ui"
-              style={{ fontSize: "12.5px", color: "#1c1814" }}
-            >
-              {line}
-            </li>
-          );
-        }
-        const day = line.slice(0, colonAt);
-        const time = line.slice(colonAt + 1).trim();
+    <ul role="list" className="mt-3 flex flex-wrap gap-1.5">
+      {tiles.map((label) => {
+        const isPriority = priority(label);
         return (
-          <li key={`${day}-${idx}`} className="flex justify-between gap-3">
-            <span
-              className="font-ui flex-none"
-              style={{ fontSize: 10, color: "#9a8a7a" }}
-            >
-              {day}
-            </span>
-            <span
-              className="font-ui text-right"
-              style={{ fontSize: "12.5px", color: "#1c1814" }}
-            >
-              {time || "Closed"}
-            </span>
+          <li
+            key={label}
+            className="inline-flex items-center font-medium"
+            style={{
+              fontSize: "11.5px",
+              borderRadius: 999,
+              padding: "3px 10px",
+              background: isPriority ? "rgba(19,136,8,0.07)" : "#f3ede2",
+              border: isPriority
+                ? "1px solid rgba(19,136,8,0.25)"
+                : "1px solid #e4d8c6",
+              color: isPriority ? "#1a6b47" : "#6a5a4a",
+            }}
+          >
+            {label}
           </li>
         );
       })}
     </ul>
   );
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+
+function collectMenuDishes(menu: DhabaMenu | undefined): string[] {
+  if (!menu?.categories?.length) return [];
+  const names: string[] = [];
+  for (const cat of menu.categories) {
+    if (!cat.items) continue;
+    for (const item of cat.items) {
+      if (item.name) names.push(item.name);
+    }
+  }
+  return names;
+}
+
+function isPopularDish(dish: string): boolean {
+  const lower = dish.toLowerCase();
+  return POPULAR_DISHES.some((p) => lower.includes(p));
+}
+
+function extractDishes(
+  description: string | undefined,
+): Array<{ name: string; note: string }> {
+  if (!description) return [];
+  const segments = description
+    .split(/[.,]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const found: Array<{ name: string; note: string }> = [];
+  const seen = new Set<string>();
+  for (const keyword of DISH_KEYWORDS) {
+    if (found.length >= 3) break;
+    if (seen.has(keyword)) continue;
+    const segment = segments.find((s) => s.toLowerCase().includes(keyword));
+    if (!segment) continue;
+    seen.add(keyword);
+    const name = keyword.charAt(0).toUpperCase() + keyword.slice(1);
+    const note = segment.length > 60 ? segment.slice(0, 60).trim() + "…" : segment;
+    found.push({ name, note });
+  }
+  return found;
 }
 
 function getRelatedDhabas(
@@ -650,128 +653,6 @@ function getRelatedDhabas(
       dhaba: candidate,
       distanceMi: Number.isFinite(km) ? Math.round(km * 0.621) : null,
     }));
-}
-
-function AmenityStrip({
-  tags,
-  hours,
-}: {
-  tags: string[];
-  hours: string[] | undefined;
-}) {
-  const tiles: string[] = [];
-  if (tags.some((t) => t.includes("Truck"))) tiles.push("Truck parking");
-  if (
-    getOpenStatus(hours) === "open" &&
-    (hours ?? []).some((line) => line.includes("24"))
-  ) {
-    tiles.push("24 hours");
-  }
-  if (tags.some((t) => t.includes("Gas"))) tiles.push("Gas");
-  if (tags.some((t) => t.includes("Shower"))) tiles.push("Showers");
-
-  if (tiles.length === 0) return null;
-
-  return (
-    <ul role="list" className="mt-3 flex flex-wrap gap-2">
-      {tiles.map((label) => (
-        <li
-          key={label}
-          className="inline-flex items-center gap-1.5 bg-white border border-[#e4d8c6] rounded-[10px] px-3.5 py-2 text-[12.5px] font-semibold text-[#3c3128]"
-        >
-          <span
-            aria-hidden
-            style={{
-              display: "inline-block",
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              background: "var(--accent)",
-              flexShrink: 0,
-            }}
-          />
-          {label}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-const DISH_KEYWORDS = [
-  "paratha",
-  "biryani",
-  "dal",
-  "chai",
-  "roti",
-  "naan",
-  "curry",
-  "tandoori",
-  "lassi",
-  "dosa",
-  "samosa",
-  "chaat",
-  "thali",
-  "paneer",
-  "chole",
-  "rice",
-  "kebab",
-] as const;
-
-function extractDishes(
-  description: string | undefined,
-): Array<{ name: string; note: string }> {
-  if (!description) return [];
-  const segments = description
-    .split(/[.,]/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-  const found: Array<{ name: string; note: string }> = [];
-  const seen = new Set<string>();
-  for (const keyword of DISH_KEYWORDS) {
-    if (found.length >= 3) break;
-    if (seen.has(keyword)) continue;
-    const segment = segments.find((s) => s.toLowerCase().includes(keyword));
-    if (!segment) continue;
-    seen.add(keyword);
-    const name = keyword.charAt(0).toUpperCase() + keyword.slice(1);
-    const note = segment.length > 60 ? segment.slice(0, 60).trim() + "…" : segment;
-    found.push({ name, note });
-  }
-  return found;
-}
-
-function WhatToOrderCard({
-  description,
-  tags,
-}: {
-  description: string | undefined;
-  tags: string[];
-}) {
-  const dishes = extractDishes(description);
-  return (
-    <SectionCard title="What to order">
-      {dishes.length > 0 ? (
-        <div className="space-y-3">
-          {dishes.map((d) => (
-            <div key={d.name}>
-              <div className="font-semibold text-[13px] text-[#1c1814]">
-                {d.name}
-              </div>
-              <div className="text-[12px] text-[#8a7a6a]">{d.note}</div>
-            </div>
-          ))}
-        </div>
-      ) : tags.length > 0 ? (
-        <p className="text-[13px] text-[var(--ink-muted)]">
-          Known for: {tags.join(", ")}
-        </p>
-      ) : (
-        <p className="text-[13px] text-[var(--ink-muted)]">
-          Menu details are being verified.
-        </p>
-      )}
-    </SectionCard>
-  );
 }
 
 function getRouteBadgeData(
