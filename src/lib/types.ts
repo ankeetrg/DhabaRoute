@@ -111,7 +111,10 @@ export interface RankedDhaba extends Dhaba {
 }
 
 export interface DhabaPayload {
-  generatedAt: string;
+  // generatedAt was removed from the JSON output (build-data.mjs) to prevent
+  // dirty working tree on every rebuild. getDataMeta() derives the date from
+  // the file's mtime instead — so this field is optional and ignored at runtime.
+  generatedAt?: string;
   count: number;
   dhabas: Dhaba[];
 }

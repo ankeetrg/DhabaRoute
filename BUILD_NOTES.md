@@ -168,3 +168,41 @@ After running, commit `data/dhabas.json` and push — Vercel will redeploy with 
 Blob files are stored at `dhabas/{slug}.jpg` in your Vercel Blob store. View and manage them in Vercel Dashboard → Storage → your Blob store.
 
 The free Vercel Blob tier covers ~1 GB — more than enough for 157 photos (~500 KB each = ~80 MB total).
+
+## Detail page improvements (added 2026-06)
+
+A focused pass on `/dhabas/[slug]` to make the page useful for a driver deciding whether to stop, not just a directory entry. Six changes — each narrow, additive, and verifiable.
+
+### 1. Open/closed badge on the hero photo
+- **File:** [`src/components/DhabaHeroPhoto.tsx`](src/components/DhabaHeroPhoto.tsx), wired from [`src/app/dhabas/[slug]/page.tsx`](src/app/dhabas/[slug]/page.tsx)
+- **What:** New optional `hours?: string[]` prop. Renders a pill absolutely positioned `top-3 right-3` over the photo: green (`#138808`) "Open now" or red (`#b94040`) "Closed". `"unknown"` renders nothing — we don't fabricate a status.
+- **Why:** "Are they open?" is the single most expensive question a driver answers via a phone call right now. Putting the answer on the hero turns a 30-second decision into a 1-second one.
+
+### 2. Amenity strip under the header
+- **File:** [`src/app/dhabas/[slug]/page.tsx`](src/app/dhabas/[slug]/page.tsx) — new local `AmenityStrip` component
+- **What:** Light tiles between `TagList` and the CTA buttons. Derives up to four tiles from data we already have: "Truck parking" (tag contains "Truck"), "24 hours" (open status + any hours line containing "24"), "Gas" (tag contains "Gas"), "Showers" (tag contains "Shower"). Renders nothing when no tiles match. Each tile uses an accent-colored dot — no emoji.
+- **Why:** Tags work for filtering on the homepage, but on a detail page a driver wants the few stop-decision facts surfaced as distinct chips, not buried in a comma list. The derivation is conservative — only render what we can prove from the data.
+
+### 3. Equal-weight CTA buttons
+- **File:** [`src/app/dhabas/[slug]/page.tsx`](src/app/dhabas/[slug]/page.tsx) — `PrimaryAction` and `SecondaryAction`, plus the header CTA wrapper
+- **What:** Added `flex-1` to both `<a>` components and changed the header wrapper from `flex-col gap-2.5 sm:flex-row` to `flex gap-3` so the buttons are always side-by-side and split the row evenly.
+- **Why:** On mobile, "Get directions" and "Call" are equal-priority actions for a hungry driver. Stacking the call button below de-emphasizes it; splitting the row gives both equal optical weight and bigger tap targets without changing the layout language.
+
+### 4. "What to order" replaces the placeholder food card
+- **File:** [`src/app/dhabas/[slug]/page.tsx`](src/app/dhabas/[slug]/page.tsx) — new local `WhatToOrderCard` component plus `extractDishes` helper
+- **What:** Replaced the static "Menu details are being verified" block with a card that scans the description for any of 17 dish keywords (paratha, biryani, dal, chai, roti, naan, curry, tandoori, lassi, dosa, samosa, chaat, thali, paneer, chole, rice, kebab), takes the first three matches, and renders the dish name with the surrounding sentence (trimmed to 60 chars) as a note. When no keywords match, falls back to "Known for: {tags}" — and to a single verification line when even tags are empty.
+- **Why:** Most descriptions already mention specific dishes ("famous for their parathas and biryani") but that signal was being buried in a paragraph. Surfacing it as a structured "What to order" list turns a paragraph into a scannable shortlist — and it costs nothing in data because it reads from the description we already have.
+
+### 5. Route badge in the Visit details sidebar
+- **File:** [`src/app/dhabas/[slug]/page.tsx`](src/app/dhabas/[slug]/page.tsx) — new local `getRouteBadgeData` helper
+- **What:** When the dhaba's `routeHint` has a parseable highway, the Visit details card now ends with a leaf-green pill linking to `/routes/{highway}`, labelled e.g. "I-80 · 12 stops on this route →". `null` when no highway parses; uses the existing `parseRoute` + `highwaySlug` so it stays consistent with the homepage card.
+- **Why:** A driver on I-80 will hit several stops on the same trip. Right now the detail page is a dead-end — surfacing the highway count here turns each detail page into an entry point to route planning, and reuses an existing route page (zero new pages).
+
+### 6. Distance on similar stops
+- **File:** [`src/app/dhabas/[slug]/page.tsx`](src/app/dhabas/[slug]/page.tsx) — `getRelatedDhabas` return type changed to `Array<{ dhaba: Dhaba; distanceMi: number | null }>`
+- **What:** The related-dhabas scorer already computes great-circle km; we now round it to miles and pass it through as `distanceLabel="{n} mi"` to each `DhabaCard` in the "Similar stops" section. Cards without coords on either end (or when the current dhaba has no coords) get `null` and render without a distance — same DhabaCard handles that gracefully.
+- **Why:** "Similar stops" without distance is just "more dhabas." With a mileage figure the section turns into actionable backup options ("23 mi away on the same route"). Reuses the existing `DhabaCard` `distanceLabel` prop — no card edits required.
+
+### Verification
+- `npx tsc --noEmit` — clean.
+- No new dependencies, no schema changes. All six changes read from existing fields on `Dhaba`.

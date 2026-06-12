@@ -28,13 +28,14 @@ function loadPayload(): DhabaPayload {
   const payload = JSON.parse(readFileSync(DATA_PATH, "utf8")) as DhabaPayload;
   _cache = { mtime, payload };
 
-  // Debug: only log when the JSON was rebuilt (new generatedAt), so the
+  // Debug: only log when the JSON was rebuilt (new mtime), so the
   // terminal isn't flooded on every HMR reload in dev.
-  if (process.env.NODE_ENV !== "production" && payload.generatedAt !== _lastLoggedAt) {
-    _lastLoggedAt = payload.generatedAt;
+  const mtimeStr = new Date(mtime).toISOString().slice(0, 10);
+  if (process.env.NODE_ENV !== "production" && mtimeStr !== _lastLoggedAt) {
+    _lastLoggedAt = mtimeStr;
     const first = payload.dhabas[0] ?? null;
     console.log(
-      `[DhabaRoute] data reloaded — ${payload.count} dhabas (built ${payload.generatedAt}). First record:`,
+      `[DhabaRoute] data reloaded — ${payload.count} dhabas (file mtime ${mtimeStr}). First record:`,
       JSON.stringify({
         id: first?.id,
         title: first?.title,
@@ -110,11 +111,13 @@ export function getAllSlugs(): string[] {
 }
 
 export function getDataMeta() {
-  const p = loadPayload();
+  loadPayload(); // ensures _cache is populated
   return {
-    generatedAt: p.generatedAt,
-    count: p.count,
-    withCoords: p.dhabas.filter(
+    // Derive the date from the file's mtime — generatedAt was removed from the
+    // JSON output to keep the working tree clean between rebuilds.
+    generatedAt: new Date(_cache!.mtime).toISOString().slice(0, 10),
+    count: _cache!.payload.count,
+    withCoords: _cache!.payload.dhabas.filter(
       (d) => typeof d.lat === "number" && typeof d.lng === "number",
     ).length,
   };

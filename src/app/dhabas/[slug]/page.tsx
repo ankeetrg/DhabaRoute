@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
 import { distanceKm } from "@/lib/geo";
-import { parseRoute } from "@/lib/parseRoute";
+import { parseRoute, highwaySlug } from "@/lib/parseRoute";
+import { getOpenStatus } from "@/lib/isOpenNow";
 import { getDhabaPhotoSrc } from "@/lib/photo-url";
 import type { Dhaba } from "@/lib/types";
 import { DhabaCard } from "@/components/DhabaCard";
@@ -81,6 +82,7 @@ export default async function DhabaDetailPage({
 
   const others = getAllDhabas().filter((d) => d.slug !== dhaba.slug);
   const related = getRelatedDhabas(dhaba, others);
+  const routeData = getRouteBadgeData(dhaba, getAllDhabas());
 
   const formattedAddress = dhaba.address?.replace(/,\s*USA$/, "");
   const cityState = cityStateFromAddress(dhaba.address);
@@ -144,7 +146,7 @@ export default async function DhabaDetailPage({
 
         {/* ── Hero photo ─────────────────────────────────────────────── */}
         {photoSrc ? (
-          <DhabaHeroPhoto src={photoSrc} alt={dhaba.title} />
+          <DhabaHeroPhoto src={photoSrc} alt={dhaba.title} hours={dhaba.hours} />
         ) : null}
 
         {/* ── Header block ───────────────────────────────────────────── */}
@@ -178,8 +180,10 @@ export default async function DhabaDetailPage({
 
           <TagList tags={dhaba.tags} />
 
+          <AmenityStrip tags={dhaba.tags} hours={dhaba.hours} />
+
           {dhaba.mapsUrl || phoneHref ? (
-            <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
+            <div className="mt-5 flex gap-3">
               {dhaba.mapsUrl ? (
                 <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
               ) : null}
@@ -211,22 +215,7 @@ export default async function DhabaDetailPage({
               ) : null}
             </SectionCard>
 
-            <SectionCard title="Food and menu">
-              <p
-                className="font-ui leading-[1.65]"
-                style={{ fontSize: 14, color: "var(--ink-soft)" }}
-              >
-                Menu details are being verified. Check with the restaurant before visiting.
-              </p>
-              {dhaba.tags.length > 0 ? (
-                <p
-                  className="mt-3 font-ui"
-                  style={{ fontSize: "13px", color: "var(--ink-muted)" }}
-                >
-                  Listed cues: {dhaba.tags.join(", ")}
-                </p>
-              ) : null}
-            </SectionCard>
+            <WhatToOrderCard description={dhaba.description} tags={dhaba.tags} />
           </div>
 
           <aside className="space-y-4">
@@ -260,6 +249,19 @@ export default async function DhabaDetailPage({
                     <SecondaryAction href={phoneHref}>Call ahead</SecondaryAction>
                   ) : null}
                 </div>
+              ) : null}
+              {routeData ? (
+                <Link
+                  href={routeData.href}
+                  className="mt-4 flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
+                  style={{
+                    background: "rgba(26,107,71,0.10)",
+                    border: "1px solid rgba(26,107,71,0.30)",
+                    color: "#1a6b47",
+                  }}
+                >
+                  {routeData.highway} · {routeData.count} stops on this route →
+                </Link>
               ) : null}
             </SectionCard>
           </aside>
@@ -351,9 +353,12 @@ export default async function DhabaDetailPage({
                 gap: 16,
               }}
             >
-              {related.map((d) => (
-                <li key={d.id}>
-                  <DhabaCard dhaba={d} />
+              {related.map((r) => (
+                <li key={r.dhaba.id}>
+                  <DhabaCard
+                    dhaba={r.dhaba}
+                    distanceLabel={r.distanceMi != null ? `${r.distanceMi} mi` : undefined}
+                  />
                 </li>
               ))}
             </ul>
@@ -485,7 +490,7 @@ function PrimaryAction({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex h-11 items-center justify-center rounded-xl px-5 text-center font-ui font-semibold text-white transition-opacity duration-150 hover:opacity-[0.86]"
+      className="flex-1 inline-flex h-11 items-center justify-center rounded-xl px-5 text-center font-ui font-semibold text-white transition-opacity duration-150 hover:opacity-[0.86]"
       style={{ background: "var(--accent)", fontSize: 14 }}
     >
       {children}
@@ -503,7 +508,7 @@ function SecondaryAction({
   return (
     <a
       href={href}
-      className="inline-flex h-11 items-center justify-center rounded-xl border border-paper-warm bg-white px-5 text-center font-ui font-semibold transition-colors duration-150 hover:border-clay-300 hover:text-accent"
+      className="flex-1 inline-flex h-11 items-center justify-center rounded-xl border border-paper-warm bg-white px-5 text-center font-ui font-semibold transition-colors duration-150 hover:border-clay-300 hover:text-accent"
       style={{ fontSize: 14, color: "var(--ink-soft)" }}
     >
       {children}
@@ -591,7 +596,10 @@ function HoursList({ hours }: { hours: string[] }) {
   );
 }
 
-function getRelatedDhabas(dhaba: Dhaba, others: Dhaba[]): Dhaba[] {
+function getRelatedDhabas(
+  dhaba: Dhaba,
+  others: Dhaba[],
+): Array<{ dhaba: Dhaba; distanceMi: number | null }> {
   const here =
     typeof dhaba.lat === "number" && typeof dhaba.lng === "number"
       ? { lat: dhaba.lat, lng: dhaba.lng }
@@ -638,7 +646,144 @@ function getRelatedDhabas(dhaba: Dhaba, others: Dhaba[]): Dhaba[] {
       return a.index - b.index;
     })
     .slice(0, 3)
-    .map(({ candidate }) => candidate);
+    .map(({ candidate, km }) => ({
+      dhaba: candidate,
+      distanceMi: Number.isFinite(km) ? Math.round(km * 0.621) : null,
+    }));
+}
+
+function AmenityStrip({
+  tags,
+  hours,
+}: {
+  tags: string[];
+  hours: string[] | undefined;
+}) {
+  const tiles: string[] = [];
+  if (tags.some((t) => t.includes("Truck"))) tiles.push("Truck parking");
+  if (
+    getOpenStatus(hours) === "open" &&
+    (hours ?? []).some((line) => line.includes("24"))
+  ) {
+    tiles.push("24 hours");
+  }
+  if (tags.some((t) => t.includes("Gas"))) tiles.push("Gas");
+  if (tags.some((t) => t.includes("Shower"))) tiles.push("Showers");
+
+  if (tiles.length === 0) return null;
+
+  return (
+    <ul role="list" className="mt-3 flex flex-wrap gap-2">
+      {tiles.map((label) => (
+        <li
+          key={label}
+          className="inline-flex items-center gap-1.5 bg-white border border-[#e4d8c6] rounded-[10px] px-3.5 py-2 text-[12.5px] font-semibold text-[#3c3128]"
+        >
+          <span
+            aria-hidden
+            style={{
+              display: "inline-block",
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: "var(--accent)",
+              flexShrink: 0,
+            }}
+          />
+          {label}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+const DISH_KEYWORDS = [
+  "paratha",
+  "biryani",
+  "dal",
+  "chai",
+  "roti",
+  "naan",
+  "curry",
+  "tandoori",
+  "lassi",
+  "dosa",
+  "samosa",
+  "chaat",
+  "thali",
+  "paneer",
+  "chole",
+  "rice",
+  "kebab",
+] as const;
+
+function extractDishes(
+  description: string | undefined,
+): Array<{ name: string; note: string }> {
+  if (!description) return [];
+  const segments = description
+    .split(/[.,]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const found: Array<{ name: string; note: string }> = [];
+  const seen = new Set<string>();
+  for (const keyword of DISH_KEYWORDS) {
+    if (found.length >= 3) break;
+    if (seen.has(keyword)) continue;
+    const segment = segments.find((s) => s.toLowerCase().includes(keyword));
+    if (!segment) continue;
+    seen.add(keyword);
+    const name = keyword.charAt(0).toUpperCase() + keyword.slice(1);
+    const note = segment.length > 60 ? segment.slice(0, 60).trim() + "…" : segment;
+    found.push({ name, note });
+  }
+  return found;
+}
+
+function WhatToOrderCard({
+  description,
+  tags,
+}: {
+  description: string | undefined;
+  tags: string[];
+}) {
+  const dishes = extractDishes(description);
+  return (
+    <SectionCard title="What to order">
+      {dishes.length > 0 ? (
+        <div className="space-y-3">
+          {dishes.map((d) => (
+            <div key={d.name}>
+              <div className="font-semibold text-[13px] text-[#1c1814]">
+                {d.name}
+              </div>
+              <div className="text-[12px] text-[#8a7a6a]">{d.note}</div>
+            </div>
+          ))}
+        </div>
+      ) : tags.length > 0 ? (
+        <p className="text-[13px] text-[var(--ink-muted)]">
+          Known for: {tags.join(", ")}
+        </p>
+      ) : (
+        <p className="text-[13px] text-[var(--ink-muted)]">
+          Menu details are being verified.
+        </p>
+      )}
+    </SectionCard>
+  );
+}
+
+function getRouteBadgeData(
+  dhaba: Dhaba,
+  all: Dhaba[],
+): { highway: string; count: number; href: string } | null {
+  const highway = parseRoute(dhaba.routeHint).highway;
+  if (!highway) return null;
+  const count = all.filter(
+    (d) => d.slug !== dhaba.slug && parseRoute(d.routeHint).highway === highway,
+  ).length;
+  return { highway, count, href: `/routes/${highwaySlug(highway)}` };
 }
 
 function cityStateFromAddress(address: string | undefined): string | null {
