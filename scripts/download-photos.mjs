@@ -57,7 +57,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { put } from "@vercel/blob";
+import { put, head } from "@vercel/blob";
 import { config } from "dotenv";
 
 // ── Setup ─────────────────────────────────────────────────────────────────
@@ -133,22 +133,31 @@ async function main() {
         throw new Error(`HTTP ${res.status} from ${photoUrl}`);
       }
 
-      const contentType = res.headers.get("content-type") ?? "image/jpeg";
-      const buffer = await res.arrayBuffer();
-
-      // Upload to Vercel Blob with a stable, human-readable path
       const filename = `dhabas/${dhaba.slug}.jpg`;
-      const blob = await put(filename, buffer, {
-        access: "public",
-        contentType,
-        // addRandomSuffix: false keeps the path stable across re-runs
-        addRandomSuffix: false,
-      });
 
-      dhabas[i] = { ...dhaba, storedImageUrl: blob.url };
+      // Check if the blob already exists — if so, just grab its URL without
+      // re-uploading. This handles the case where storedImageUrl was wiped
+      // from dhabas.json but the photos are still safely in Vercel Blob.
+      let blobUrl;
+      try {
+        const existing = await head(filename, { token: process.env.BLOB_READ_WRITE_TOKEN });
+        blobUrl = existing.url;
+        console.log(`${progress} ♻️  ${dhaba.slug} — already in Blob, reusing URL`);
+      } catch {
+        // Blob doesn't exist — fetch photo and upload it
+        const contentType = res.headers.get("content-type") ?? "image/jpeg";
+        const buffer = await res.arrayBuffer();
+        const blob = await put(filename, buffer, {
+          access: "public",
+          contentType,
+          addRandomSuffix: false,
+        });
+        blobUrl = blob.url;
+        console.log(`${progress} ✅  ${dhaba.slug}`);
+        console.log(`          → ${blobUrl}`);
+      }
 
-      console.log(`${progress} ✅  ${dhaba.slug}`);
-      console.log(`          → ${blob.url}`);
+      dhabas[i] = { ...dhaba, storedImageUrl: blobUrl };
       succeeded++;
 
       // Small delay to avoid hammering the Google Places API

@@ -34,6 +34,7 @@ const OUT_PATH  = join(ROOT, "data", "dhabas.json");
 const PRESERVED_FIELDS = [
   "imageUrl",
   "placeId",
+  "storedImageUrl",
   "website",
   "priceRange",
   "parking",
