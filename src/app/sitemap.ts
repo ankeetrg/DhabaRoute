@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${ORIGIN}/what-is-a-dhaba`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${ORIGIN}/submit`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${ORIGIN}/update-listing`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${ORIGIN}/for-owners`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${ORIGIN}/claim`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${ORIGIN}/privacy`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${ORIGIN}/disclaimer`, changeFrequency: "yearly", priority: 0.3 },
   ];

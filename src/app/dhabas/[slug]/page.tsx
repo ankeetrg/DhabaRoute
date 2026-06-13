@@ -125,13 +125,17 @@ export default async function DhabaDetailPage({
   const phoneHref = dhaba.phone ? `tel:${dhaba.phone.replace(/\D/g, "")}` : null;
   const photoSrc = getDhabaPhotoSrc(dhaba);
 
-  // Menu source: structured menu first, fall back to keyword scan of the
-  // description. Empty result → skip the section entirely.
+  // Menu source: structured menu first, fall back to keyword scan only when
+  // the description is long enough (>60 chars) and mentions ≥2 dish keywords —
+  // prevents low-signal "On the menu" sections for generic descriptions.
   const menuDishes = collectMenuDishes(dhaba.menu);
+  const extractedDishes = extractDishes(dhaba.description);
   const dishesToShow =
     menuDishes.length > 0
       ? menuDishes
-      : extractDishes(dhaba.description).map((d) => d.name);
+      : (dhaba.description ?? "").length > 60 && extractedDishes.length >= 2
+        ? extractedDishes.map((d) => d.name)
+        : [];
 
   const jsonLd = {
     "@context": "https://schema.org",

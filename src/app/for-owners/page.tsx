@@ -20,7 +20,14 @@ export const metadata: Metadata = {
     "Own or manage a dhaba? Claim your free listing on DhabaRoute to update hours, menus, and photos — and get found by truckers and road travelers.",
 };
 
-export default function ForOwnersPage() {
+export default async function ForOwnersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ ref?: string }>;
+}) {
+  const { ref } = await searchParams;
+  const claimHref = ref ? `/claim?ref=${encodeURIComponent(ref)}` : "/claim";
+
   return (
     <main className="mx-auto w-full px-5 pt-10 pb-[72px] sm:px-8" style={{ maxWidth: 780 }}>
 
@@ -40,7 +47,7 @@ export default function ForOwnersPage() {
       </p>
 
       <Link
-        href="/claim"
+        href={claimHref}
         className="mt-6 inline-flex h-12 items-center justify-center rounded-xl px-7 text-[15px] font-semibold text-white shadow-cta transition hover:opacity-90"
         style={{ background: "#df6028" }}
       >
@@ -149,7 +156,7 @@ export default function ForOwnersPage() {
           48 hours.
         </p>
         <Link
-          href="/claim"
+          href={claimHref}
           className="mt-5 inline-flex h-12 items-center justify-center rounded-xl px-8 text-[15px] font-semibold text-white shadow-cta transition hover:opacity-90"
           style={{ background: "#df6028" }}
         >
