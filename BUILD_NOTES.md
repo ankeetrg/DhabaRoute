@@ -250,3 +250,55 @@ New client component at [`src/components/TodayStatus.tsx`](src/components/TodayS
 ### Verification
 - `npx tsc --noEmit` — clean.
 - One new component file (`TodayStatus.tsx`). No new dependencies. No schema changes.
+
+## Detail page: two-column desktop layout + Blob URL restore (2026-06)
+
+### Layout redesign — dead space fix
+- **Problem**: `maxWidth: 640` on `<article>` left ~230px dead space on each side on desktop.
+- **Fix**: Replaced the single-column narrow wrapper with `container-page` (max 1200px) and a
+  `md:grid-cols-[minmax(0,1fr)_296px]` two-column grid below the hero.
+  - Left column: header, description, amenity pills, menu, "Been here?", owner CTA
+  - Right sidebar (sticky `top-24`): Get directions + Call CTAs, TodayStatus, fact rows
+    (address/phone/route), route badge, 210px map
+  - Mobile: single column — CTAs and TodayStatus appear inline after the header;
+    facts/route badge/map appear after the menu section; sidebar is `hidden md:flex`
+- **Hero photo**: now full container width (`h-[260px] md:h-[400px]`); removed "Photo via Google"
+  caption (photos permanently stored in Vercel Blob); updated `sizes` attribute.
+- **DhabaDetailMap**: added optional `height` prop (sidebar uses `"210px"`, mobile default
+  `clamp(260px, 40vw, 460px)`).
+- **Files changed**: `src/app/dhabas/[slug]/page.tsx`, `src/components/DhabaHeroPhoto.tsx`,
+  `src/components/DhabaDetailMap.tsx`
+
+### storedImageUrl restore
+- All 157 dhabas had `storedImageUrl` wiped by a prior Vercel build (field was missing from
+  `PRESERVED_FIELDS` in `build-data.mjs`).
+- Recovery: `head()` check in `download-photos.mjs` reused existing Blob URLs without
+  re-uploading. All 157 restored in one run.
+- `dhabas.json` now has 157/157 `storedImageUrl` entries pointing to
+  `public.blob.vercel-storage.com`.
+
+## Owner claim flow (2026-06)
+
+### New pages and components
+- **`/claim`** (`src/app/claim/page.tsx`) — Owner-facing claim page. Server component reads
+  `?dhaba={slug}` from the URL, looks up the dhaba title via `getDhabaBySlug()`, and passes
+  it to `ClaimForm` as a pre-filled read-only field. Falls back to a free-text input if no
+  slug is provided (e.g. direct navigation).
+- **`ClaimForm`** (`src/components/ClaimForm.tsx`) — Client component. Collects: dhaba name
+  (pre-filled or free text), owner name*, email*, phone*, role, what to update (checkboxes:
+  hours/menu/photos/specials/parking/other), notes, premium interest opt-in. Submits to
+  Formspree (`NEXT_PUBLIC_FORMSPREE_CLAIM_URL`). Success state acknowledges premium interest.
+
+### Detail page CTA
+- Changed "Is this your dhaba?" button from:
+    `href="/update-listing"` text: "Update your listing →"
+  to:
+    `href="/claim?dhaba={slug}"` text: "Claim this listing →"
+- Updated subtext to: "Verified listings rank above unclaimed stops on route pages."
+- Removed the unused Airtable `formUrl` variable.
+
+### Env var required
+Add to `.env.local` and Vercel:
+  NEXT_PUBLIC_FORMSPREE_CLAIM_URL=https://formspree.io/f/<your-form-id>
+Create the form at formspree.io — set subject to "Claim Listing - DhabaRoute".
+Until this is set, the form renders a yellow notice but the page still loads.

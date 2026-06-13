@@ -28,14 +28,15 @@ const MapView = dynamic(
 // active (clay) state to anchor the eye.
 const NOOP = () => {};
 
-export function DhabaDetailMap({ dhaba }: { dhaba: Dhaba }) {
+export function DhabaDetailMap({ dhaba, height }: { dhaba: Dhaba; height?: string }) {
   if (dhaba.lat == null || dhaba.lng == null) return null;
   return (
     <div
       style={{
         // Slightly shorter than the home map so the detail page's other
         // content (About, CTA, similar stops) stays in view on mobile.
-        ["--map-h" as string]: "clamp(260px, 40vw, 460px)",
+        // Pass height prop to override (e.g. sidebar uses "200px").
+        ["--map-h" as string]: height ?? "clamp(260px, 40vw, 460px)",
       } as React.CSSProperties}
     >
       <MapView

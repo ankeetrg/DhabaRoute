@@ -131,8 +131,6 @@ export default async function DhabaDetailPage({
       ? menuDishes
       : extractDishes(dhaba.description).map((d) => d.name);
 
-  const formUrl = `https://airtable.com/appsoULcfjfSmuKqL/shrt7RJTHxvGwFU01?prefill_Dhaba+Name=${encodeURIComponent(dhaba.title)}&prefill_Dhaba+Slug=${encodeURIComponent(dhaba.slug)}`;
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
@@ -150,10 +148,8 @@ export default async function DhabaDetailPage({
 
   return (
     <>
-      <article
-        className="mx-auto w-full px-5 sm:px-8 pt-6 pb-[72px]"
-        style={{ maxWidth: 640 }}
-      >
+      <article className="container-page pt-6 pb-[72px]">
+
         {/* ── Breadcrumb ─────────────────────────────────────────────── */}
         <nav
           aria-label="Breadcrumb"
@@ -174,188 +170,245 @@ export default async function DhabaDetailPage({
           </span>
         </nav>
 
-        {/* ── Hero photo ─────────────────────────────────────────────── */}
+        {/* ── Hero photo — full container width ─────────────────────── */}
         {photoSrc ? (
           <DhabaHeroPhoto src={photoSrc} alt={dhaba.title} hours={dhaba.hours} />
         ) : null}
 
-        {/* ── Header: eyebrow + title + city/state ──────────────────── */}
-        <header className="mt-5">
-          <RouteEyebrow routeHint={dhaba.routeHint} />
+        {/* ── Two-column grid: content left | sidebar right ─────────── */}
+        {/* Mobile: single column. md+: [1fr 296px] with sticky sidebar. */}
+        <div className="mt-6 md:grid md:grid-cols-[minmax(0,1fr)_296px] md:gap-12 md:items-start">
 
-          <h1
-            className="font-display font-extrabold leading-[1.08] break-words"
-            style={{
-              fontSize: "clamp(28px, 6vw, 36px)",
-              color: "#1c1814",
-              letterSpacing: "-0.01em",
-              marginTop: dhaba.routeHint ? 8 : 0,
-              overflowWrap: "anywhere",
-            }}
-          >
-            {dhaba.title}
-          </h1>
+          {/* ── LEFT COLUMN ────────────────────────────────────────── */}
+          <div className="min-w-0">
 
-          {cityState || dhaba.routeHint ? (
-            <p
-              className="mt-2 font-ui leading-snug"
-              style={{ fontSize: 14, color: "var(--ink-muted)" }}
-            >
-              {[cityState, dhaba.routeHint].filter(Boolean).join(" · ")}
-            </p>
-          ) : null}
-        </header>
-
-        {/* ── CTAs (above the fold, stacked, full width) ────────────── */}
-        {dhaba.mapsUrl || phoneHref ? (
-          <div className="mt-4 flex flex-col gap-2">
-            {dhaba.mapsUrl ? (
-              <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
-            ) : null}
-            {phoneHref ? (
-              <SecondaryAction href={phoneHref}>
-                Call · {dhaba.phone}
-              </SecondaryAction>
-            ) : null}
-          </div>
-        ) : null}
-
-        <Divider />
-
-        {/* ── Open status + today's hours ───────────────────────────── */}
-        <TodayStatus hours={dhaba.hours} />
-
-        {/* ── Description (no card) ─────────────────────────────────── */}
-        {dhaba.description ? (
-          <p className="font-ui text-[14px] leading-[1.7] text-[#3c3128] mt-3">
-            {dhaba.description}
-          </p>
-        ) : null}
-
-        {/* ── Amenity pills ──────────────────────────────────────────── */}
-        <AmenityStrip tags={dhaba.tags} hours={dhaba.hours} />
-
-        {/* ── On the menu (inline text, popular dishes in saffron) ─── */}
-        {dishesToShow.length > 0 ? (
-          <>
-            <Divider />
-            <section>
-              <p className="font-ui font-bold uppercase text-[9.5px] tracking-[0.07em] text-[#c4b4a4] mb-2">
-                On the menu
-              </p>
-              <p className="font-ui text-[13.5px] leading-[1.65] text-[#3c3128]">
-                {dishesToShow.map((dish, i) => (
-                  <Fragment key={`${dish}-${i}`}>
-                    {i > 0 ? ", " : ""}
-                    {isPopularDish(dish) ? (
-                      <span style={{ color: "#df6028", fontWeight: 600 }}>
-                        {dish}
-                      </span>
-                    ) : (
-                      dish
-                    )}
-                  </Fragment>
-                ))}
-              </p>
-            </section>
-          </>
-        ) : null}
-
-        <Divider />
-
-        {/* ── Fact rows ──────────────────────────────────────────────── */}
-        <dl>
-          {formattedAddress ? (
-            <Fact label="Address" value={formattedAddress} />
-          ) : null}
-          {dhaba.phone && phoneHref ? (
-            <Fact label="Phone" value={dhaba.phone} href={phoneHref} />
-          ) : null}
-          {dhaba.routeHint ? (
-            <Fact label="Route" value={dhaba.routeHint} />
-          ) : null}
-        </dl>
-
-        {/* ── Route badge ────────────────────────────────────────────── */}
-        {routeData ? (
-          <Link
-            href={routeData.href}
-            className="mt-4 flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
-            style={{
-              background: "rgba(26,107,71,0.10)",
-              border: "1px solid rgba(26,107,71,0.30)",
-              color: "#1a6b47",
-            }}
-          >
-            {routeData.highway} · {routeData.count} stops on this route →
-          </Link>
-        ) : null}
-
-        {/* ── Map ────────────────────────────────────────────────────── */}
-        {dhaba.lat != null && dhaba.lng != null ? (
-          <section className="mt-7 rounded-2xl overflow-hidden">
-            <DhabaDetailMap dhaba={dhaba} />
-          </section>
-        ) : null}
-
-        {/* ── Been here? ─────────────────────────────────────────────── */}
-        <section className="mt-10">
-          <p
-            className="font-ui font-semibold uppercase"
-            style={{
-              fontSize: "10.5px",
-              color: "#c4b4a4",
-              letterSpacing: "0.08em",
-            }}
-          >
-            Been here?
-          </p>
-          {contributed === "true" ? (
-            <p
-              className="mt-4 rounded-xl px-4 py-3 text-[14px] font-ui"
-              style={{
-                background: "#f0f7f0",
-                color: "#1a6b47",
-                border: "1px solid rgba(26,107,71,0.20)",
-              }}
-            >
-              Thanks for contributing — we&rsquo;ll add it to the listing soon.
-            </p>
-          ) : (
-            <>
-              <p
-                className="mt-2 font-ui leading-[1.65]"
-                style={{ fontSize: 14, color: "#3c3128" }}
+            {/* Header: eyebrow + title + city/state */}
+            <header>
+              <RouteEyebrow routeHint={dhaba.routeHint} />
+              <h1
+                className="font-display font-extrabold leading-[1.08] break-words"
+                style={{
+                  fontSize: "clamp(26px, 5vw, 34px)",
+                  color: "#1c1814",
+                  letterSpacing: "-0.01em",
+                  marginTop: dhaba.routeHint ? 8 : 0,
+                  overflowWrap: "anywhere",
+                }}
               >
-                Share a photo or menu — help other drivers know what to expect.
+                {dhaba.title}
+              </h1>
+              {cityState || dhaba.routeHint ? (
+                <p
+                  className="mt-2 font-ui leading-snug"
+                  style={{ fontSize: 14, color: "var(--ink-muted)" }}
+                >
+                  {[cityState, dhaba.routeHint].filter(Boolean).join(" · ")}
+                </p>
+              ) : null}
+            </header>
+
+            {/* CTAs — mobile only (desktop gets them in the sidebar) */}
+            {dhaba.mapsUrl || phoneHref ? (
+              <div className="mt-4 flex flex-col gap-2 md:hidden">
+                {dhaba.mapsUrl ? (
+                  <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
+                ) : null}
+                {phoneHref ? (
+                  <SecondaryAction href={phoneHref}>
+                    Call · {dhaba.phone}
+                  </SecondaryAction>
+                ) : null}
+              </div>
+            ) : null}
+
+            {/* Open status — mobile only */}
+            <div className="md:hidden">
+              <Divider />
+              <TodayStatus hours={dhaba.hours} />
+            </div>
+
+            {/* Description */}
+            {dhaba.description ? (
+              <p className="font-ui text-[14px] leading-[1.7] text-[#3c3128] mt-4">
+                {dhaba.description}
               </p>
-              <ContributeForm
-                dhabaTitle={dhaba.title}
-                dhabaSlug={dhaba.slug}
-              />
-            </>
-          )}
-        </section>
+            ) : null}
 
-        {/* ── Owner: update your listing ─────────────────────────────── */}
-        <div className="mt-8">
-          <p className="text-[11px] uppercase tracking-widest text-[var(--ink-muted)] mb-3">
-            Is this your dhaba?
-          </p>
-          <a
-            href={formUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full text-center py-3 rounded-xl border border-[var(--paper-warm)] text-[var(--ink-soft)] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-150"
-          >
-            Update your listing →
-          </a>
-          <p className="text-[12px] text-[var(--ink-muted)] text-center mt-2">
-            Hours, photos, specials — we review and apply updates within 48 hours.
-          </p>
-        </div>
+            {/* Amenity pills */}
+            <AmenityStrip tags={dhaba.tags} hours={dhaba.hours} />
 
-        {/* ── Similar stops ──────────────────────────────────────────── */}
+            {/* On the menu */}
+            {dishesToShow.length > 0 ? (
+              <>
+                <Divider />
+                <section>
+                  <p className="font-ui font-bold uppercase text-[9.5px] tracking-[0.07em] text-[#c4b4a4] mb-2">
+                    On the menu
+                  </p>
+                  <p className="font-ui text-[13.5px] leading-[1.65] text-[#3c3128]">
+                    {dishesToShow.map((dish, i) => (
+                      <Fragment key={`${dish}-${i}`}>
+                        {i > 0 ? ", " : ""}
+                        {isPopularDish(dish) ? (
+                          <span style={{ color: "#df6028", fontWeight: 600 }}>
+                            {dish}
+                          </span>
+                        ) : (
+                          dish
+                        )}
+                      </Fragment>
+                    ))}
+                  </p>
+                </section>
+              </>
+            ) : null}
+
+            {/* Facts + route badge + map — mobile only */}
+            <div className="md:hidden">
+              <Divider />
+              <dl>
+                {formattedAddress ? (
+                  <Fact label="Address" value={formattedAddress} />
+                ) : null}
+                {dhaba.phone && phoneHref ? (
+                  <Fact label="Phone" value={dhaba.phone} href={phoneHref} />
+                ) : null}
+                {dhaba.routeHint ? (
+                  <Fact label="Route" value={dhaba.routeHint} />
+                ) : null}
+              </dl>
+              {routeData ? (
+                <Link
+                  href={routeData.href}
+                  className="mt-2 flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
+                  style={{
+                    background: "rgba(26,107,71,0.10)",
+                    border: "1px solid rgba(26,107,71,0.30)",
+                    color: "#1a6b47",
+                  }}
+                >
+                  {routeData.highway} · {routeData.count} stops on this route →
+                </Link>
+              ) : null}
+              {dhaba.lat != null && dhaba.lng != null ? (
+                <section className="mt-6 rounded-2xl overflow-hidden">
+                  <DhabaDetailMap dhaba={dhaba} />
+                </section>
+              ) : null}
+            </div>
+
+            {/* Been here? */}
+            <section className="mt-10">
+              <p
+                className="font-ui font-semibold uppercase"
+                style={{ fontSize: "10.5px", color: "#c4b4a4", letterSpacing: "0.08em" }}
+              >
+                Been here?
+              </p>
+              {contributed === "true" ? (
+                <p
+                  className="mt-4 rounded-xl px-4 py-3 text-[14px] font-ui"
+                  style={{
+                    background: "#f0f7f0",
+                    color: "#1a6b47",
+                    border: "1px solid rgba(26,107,71,0.20)",
+                  }}
+                >
+                  Thanks for contributing — we&rsquo;ll add it to the listing soon.
+                </p>
+              ) : (
+                <>
+                  <p
+                    className="mt-2 font-ui leading-[1.65]"
+                    style={{ fontSize: 14, color: "#3c3128" }}
+                  >
+                    Share a photo or menu — help other drivers know what to expect.
+                  </p>
+                  <ContributeForm dhabaTitle={dhaba.title} dhabaSlug={dhaba.slug} />
+                </>
+              )}
+            </section>
+
+            {/* Owner: claim listing */}
+            <div className="mt-8">
+              <p className="text-[11px] uppercase tracking-widest text-[var(--ink-muted)] mb-3">
+                Is this your dhaba?
+              </p>
+              <Link
+                href={`/claim?dhaba=${dhaba.slug}`}
+                className="block w-full text-center py-3 rounded-xl border border-[var(--paper-warm)] text-[var(--ink-soft)] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-150"
+              >
+                Claim this listing →
+              </Link>
+              <p className="text-[12px] text-[var(--ink-muted)] text-center mt-2">
+                Verified listings rank above unclaimed stops on route pages.
+              </p>
+            </div>
+
+          </div>{/* end LEFT COLUMN */}
+
+          {/* ── RIGHT SIDEBAR — desktop only ───────────────────────── */}
+          <aside className="hidden md:flex md:flex-col md:gap-3 md:sticky md:top-24">
+
+            {/* CTAs */}
+            {dhaba.mapsUrl || phoneHref ? (
+              <div className="flex flex-col gap-2">
+                {dhaba.mapsUrl ? (
+                  <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
+                ) : null}
+                {phoneHref ? (
+                  <SecondaryAction href={phoneHref}>
+                    Call · {dhaba.phone}
+                  </SecondaryAction>
+                ) : null}
+              </div>
+            ) : null}
+
+            {/* Open status + today's hours */}
+            <TodayStatus hours={dhaba.hours} />
+
+            <Divider />
+
+            {/* Fact rows */}
+            <dl className="mt-0">
+              {formattedAddress ? (
+                <Fact label="Address" value={formattedAddress} />
+              ) : null}
+              {dhaba.phone && phoneHref ? (
+                <Fact label="Phone" value={dhaba.phone} href={phoneHref} />
+              ) : null}
+              {dhaba.routeHint ? (
+                <Fact label="Route" value={dhaba.routeHint} />
+              ) : null}
+            </dl>
+
+            {/* Route badge */}
+            {routeData ? (
+              <Link
+                href={routeData.href}
+                className="flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
+                style={{
+                  background: "rgba(26,107,71,0.10)",
+                  border: "1px solid rgba(26,107,71,0.30)",
+                  color: "#1a6b47",
+                }}
+              >
+                {routeData.highway} · {routeData.count} stops on this route →
+              </Link>
+            ) : null}
+
+            {/* Map */}
+            {dhaba.lat != null && dhaba.lng != null ? (
+              <section className="rounded-2xl overflow-hidden">
+                <DhabaDetailMap dhaba={dhaba} height="210px" />
+              </section>
+            ) : null}
+
+          </aside>{/* end RIGHT SIDEBAR */}
+
+        </div>{/* end grid */}
+
+        {/* ── Similar stops — full width below grid ──────────────────── */}
         {related.length > 0 ? (
           <section className="mt-12">
             <h2
@@ -386,6 +439,7 @@ export default async function DhabaDetailPage({
             </ul>
           </section>
         ) : null}
+
       </article>
       <script
         type="application/ld+json"
