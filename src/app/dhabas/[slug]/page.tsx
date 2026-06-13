@@ -85,8 +85,8 @@ export async function generateMetadata({
         `A listed dhaba-style stop for your route.`,
       url: `https://dhabaroute.com/dhabas/${dhaba.slug}`,
       siteName: "DhabaRoute",
-      images: dhaba.imageUrl
-        ? [{ url: dhaba.imageUrl, width: 800, height: 600, alt: dhaba.title }]
+      images: (dhaba.storedImageUrl ?? dhaba.imageUrl)
+        ? [{ url: (dhaba.storedImageUrl ?? dhaba.imageUrl) as string, width: 800, height: 600, alt: dhaba.title }]
         : [],
       type: "website",
     },
@@ -96,7 +96,9 @@ export async function generateMetadata({
       description:
         dhaba.description?.slice(0, 155) ??
         `A listed dhaba-style stop for your route.`,
-      images: dhaba.imageUrl ? [dhaba.imageUrl] : [],
+      images: (dhaba.storedImageUrl ?? dhaba.imageUrl)
+        ? [(dhaba.storedImageUrl ?? dhaba.imageUrl) as string]
+        : [],
     },
   };
 }

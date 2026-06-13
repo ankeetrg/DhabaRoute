@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About DhabaRoute",
   description:
-    "Learn what DhabaRoute is, who it is for, and how listings are improved over time.",
+    "DhabaRoute is a practical directory of dhaba-style Indian food stops for road travelers across the U.S. Learn who it's for and how listings work.",
 };
 
 export default function AboutPage() {
@@ -26,17 +26,17 @@ export default function AboutPage() {
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         <InfoCard title="Built for quick decisions">
-          Listings focus on the things travelers actually need: route context,
-          address, phone, hours when available, parking notes, and directions.
+          Listings focus on what travelers actually need: route context,
+          address, phone, hours, parking notes, and one-tap directions.
         </InfoCard>
         <InfoCard title="Improving over time">
           DhabaRoute is a living directory. Owners and visitors can submit new
-          places or suggest corrections, and updates are reviewed before being
-          added.
+          places or suggest corrections, and updates are reviewed before going
+          live.
         </InfoCard>
       </div>
 
-      <section className="mt-10 rounded-2xl border border-paper-warm bg-white p-5 shadow-card sm:p-7">
+      <section className="mt-8 rounded-2xl border border-paper-warm bg-white p-5 shadow-card sm:p-7">
         <h2 className="font-display text-[22px] font-bold text-ink">A note on trust</h2>
         <p className="mt-3 font-ui text-[15px] leading-[1.75] text-ink-soft">
           Restaurant details can change quickly. Hours, menus, prices, photos,
@@ -46,6 +46,39 @@ export default function AboutPage() {
         </p>
       </section>
 
+      {/* ── For owners ──────────────────────────────────────────────── */}
+      <section className="mt-8 rounded-2xl border border-leaf-line bg-leaf-soft/40 p-5 sm:p-7">
+        <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.08em]" style={{ color: "#1a6b47" }}>
+          <span aria-hidden className="h-1 w-1 rounded-full bg-current" />
+          For owners
+        </p>
+        <h2 className="mt-2 font-display text-[22px] font-bold text-ink">
+          Is your dhaba listed?
+        </h2>
+        <p className="mt-3 font-ui text-[15px] leading-[1.75] text-ink-soft">
+          If your dhaba appears on DhabaRoute, you can claim the listing to
+          keep hours, menus, and photos accurate. Verified listings get a badge
+          and rank above unclaimed stops on route and state pages — free to
+          start.
+        </p>
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/claim"
+            className="inline-flex h-11 items-center justify-center rounded-xl px-5 text-[14px] font-semibold text-white shadow-cta transition"
+            style={{ background: "#1a6b47" }}
+          >
+            Claim your listing
+          </Link>
+          <Link
+            href="/for-owners"
+            className="inline-flex h-11 items-center justify-center rounded-xl border border-paper-warm bg-white px-5 text-[14px] font-semibold text-ink-soft transition hover:border-clay-300 hover:text-accent"
+          >
+            Learn more →
+          </Link>
+        </div>
+      </section>
+
+      {/* ── Traveler CTAs ────────────────────────────────────────────── */}
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Link
           href="/submit"

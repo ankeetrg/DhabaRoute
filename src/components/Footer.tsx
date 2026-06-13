@@ -114,11 +114,20 @@ export async function Footer() {
               </div>
               <div>
                 <p className="font-semibold text-[11px] uppercase tracking-widest mb-3" style={{ color: "var(--ink-muted)" }}>
+                  Owners
+                </p>
+                <ul className="flex flex-col gap-2.5">
+                  <li><Link href="/for-owners" className="dr-footer-link">For owners</Link></li>
+                  <li><Link href="/claim" className="dr-footer-link">Claim your listing</Link></li>
+                  <li><Link href="/update-listing" className="dr-footer-link">Update listing</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-[11px] uppercase tracking-widest mb-3" style={{ color: "var(--ink-muted)" }}>
                   Help
                 </p>
                 <ul className="flex flex-col gap-2.5">
                   <li><Link href="/contact" className="dr-footer-link">Contact</Link></li>
-                  <li><Link href="/update-listing" className="dr-footer-link">Update listing</Link></li>
                   <li><Link href="/privacy" className="dr-footer-link">Privacy</Link></li>
                   <li><Link href="/disclaimer" className="dr-footer-link">Disclaimer</Link></li>
                 </ul>
