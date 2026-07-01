@@ -124,6 +124,15 @@ input[type="search"]::-webkit-search-cancel-button {
   font-family: inherit;
   background: theme("colors.paper.soft");
   height: var(--map-h);
+  /* Contain Leaflet's internal stacking context. Leaflet's panes/controls use
+     very high z-indexes (panes 400, markers 600, popups 700, controls 1000).
+     Without a containing stacking context they escape and paint OVER the
+     sticky header (z-30) and search bar as the map scrolls beneath them.
+     position:relative + z-index:0 + isolation:isolate keeps that z-index war
+     boxed inside the map, so the sticky header always wins. */
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
 }
 
 /* Soften Leaflet chrome to match the palette */
