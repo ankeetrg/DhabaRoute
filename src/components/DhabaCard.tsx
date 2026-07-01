@@ -28,6 +28,7 @@ interface DhabaCardProps {
   distanceLabel?: string;
   isSelected?: boolean;
   onActivate?: () => void;
+  onDeactivate?: () => void;
 }
 
 export function DhabaCard({
@@ -36,6 +37,7 @@ export function DhabaCard({
   distanceLabel,
   isSelected = false,
   onActivate,
+  onDeactivate,
 }: DhabaCardProps) {
   const openStatus = getOpenStatus(dhaba.hours);
   const todayHours = getTodayHoursString(dhaba.hours);
@@ -58,8 +60,12 @@ export function DhabaCard({
 
   return (
     <article
+      // Hover/focus opens the map preview; leaving/blurring the card closes it
+      // automatically so the preview never lingers after the cursor moves away.
       onMouseEnter={onActivate}
+      onMouseLeave={onDeactivate}
       onFocus={onActivate}
+      onBlur={onDeactivate}
       data-selected={isSelected || undefined}
       style={{
         border: `1px solid ${borderColor}`,

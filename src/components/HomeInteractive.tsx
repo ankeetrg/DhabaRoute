@@ -286,6 +286,13 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
               distanceLabel={d.distanceKm != null ? formatDistance(d.distanceKm) : undefined}
               isSelected={d.id === selectedId}
               onActivate={() => setSelectedId(d.id)}
+              // Clear only if this card is still the selected one. Moving the
+              // cursor from card A to card B fires A's leave then B's enter —
+              // guarding on the id keeps B selected instead of the stale leave
+              // wiping it out.
+              onDeactivate={() =>
+                setSelectedId((prev) => (prev === d.id ? null : prev))
+              }
             />
           </li>
         ))}
