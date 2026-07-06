@@ -7,6 +7,32 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-07 — Home page: mobile spacing + Submit relocated out of header
+
+**Commit:** [`89fa663`](https://github.com/ankeetrg/DhabaRoute/commit/89fa663)
+
+**Changes:**
+- `HomeInteractive.tsx` — search bar wrapped in `mt-3 sm:mt-0` so it isn't
+  crowded against the "Find real dhabas on your route." heading on mobile,
+  where the subline (which provided that gap on desktop) is hidden.
+- `Header.tsx` — "+ Submit" removed from the top nav entirely (still
+  reachable via the Footer's "Explore" column and its CTA button).
+- `HomeInteractive.tsx` — "+ Submit" re-added, right-aligned, directly below
+  the State/Highway/tag filter chips and the list/split/map view toggle.
+- `Header.tsx` — "What is a Dhaba?" link's `hidden sm:inline-flex` removed
+  so it now shows on mobile too, taking the header slot Submit vacated. This
+  partially reverses the e166e5d fix below (which hid it on mobile to avoid
+  nav overflow under ~330px); removing Submit freed up the room. If a
+  narrow-phone overflow complaint resurfaces, check here first.
+
+**Verified:** Node still isn't available locally, so this was checked via a
+hand-built static HTML mockup served with the `preview_start` static-server
+pattern and inspected with `preview_inspect`/`preview_snapshot` (the
+screenshot tool timed out, a known issue in this environment) — confirmed
+correct heading→search-bar gap and DOM order (chips → toggle → Submit link).
+
+---
+
 ## 2026-07-07 — Home page: mobile-first pass + State/Highway filters
 
 **Commit:** [`e166e5d`](https://github.com/ankeetrg/DhabaRoute/commit/e166e5d)
