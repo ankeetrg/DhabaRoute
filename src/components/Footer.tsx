@@ -48,8 +48,12 @@ export async function Footer() {
   return (
     <footer>
       {/* ── 1. CTA BAND ──────────────────────────────────────────── */}
+      {/* Horizontal padding starts at 0 and only turns on at sm: — the
+          inner .container-page already carries its own px-5/sm:px-8 gutter,
+          so leaving this at a flat px-8 double-padded mobile (32px + 20px
+          per side) while desktop's 32px + 32px stayed correct. */}
       <div
-        className="px-8 py-12"
+        className="px-0 sm:px-8 py-12"
         style={{ background: "var(--accent)" }}
       >
         <div className="container-page flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">

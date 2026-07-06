@@ -68,9 +68,12 @@ export function Header({ telegramUrl }: HeaderProps) {
 
         {/* Nav — DM Sans 13.5px weight 500 */}
         <nav className="flex items-center gap-4 sm:gap-5 font-ui">
+          {/* Hidden below sm: — "What is a Dhaba?" + Submit + Telegram icon
+              together overflow the viewport on phones under ~330px wide.
+              Still reachable via the footer's Explore column on mobile. */}
           <Link
             href="/what-is-a-dhaba"
-            className="dr-nav-link text-[13.5px] font-medium whitespace-nowrap"
+            className="dr-nav-link text-[13.5px] font-medium whitespace-nowrap hidden sm:inline-flex"
           >
             What is a Dhaba?
           </Link>
@@ -81,7 +84,9 @@ export function Header({ telegramUrl }: HeaderProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Join us on Telegram"
-              className="dr-nav-link flex-none"
+              // Larger invisible tap area on mobile (44px) via negative-margin
+              // padding — the icon itself stays visually 16px on all sizes.
+              className="dr-nav-link flex-none p-[14px] -m-[14px] sm:p-0 sm:m-0"
             >
               <TelegramIcon className="w-4 h-4" />
             </a>
