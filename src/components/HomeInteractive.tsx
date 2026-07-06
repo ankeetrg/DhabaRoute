@@ -680,6 +680,14 @@ function FilterChips({
   const chipBase =
     "inline-flex items-center h-11 sm:h-9 px-4 rounded-full whitespace-nowrap text-[12.5px] font-medium border-[1.5px] transition select-none";
 
+  // Nudges the ribbon forward by roughly one "page" of chips per tap — a
+  // plain scroll-affordance for touch users who don't intuit that the fade
+  // means "swipe" (mobile only; desktop can already see whether it overflows
+  // and has a mouse/trackpad to scroll with).
+  const scrollByPage = useCallback(() => {
+    scrollRef.current?.scrollBy({ left: 160, behavior: "smooth" });
+  }, []);
+
   return (
     // Wrapper is relative so the absolute fade overlay sits on the right edge.
     // The fade signals "scroll for more" on mobile and at any width where the
@@ -801,6 +809,28 @@ function FilterChips({
           atEnd ? "opacity-0" : "opacity-100",
         ].join(" ")}
       />
+      {/* Scroll-forward arrow — mobile only. The fade above hints that more
+          chips exist, but users kept missing that it's a swipe cue, so this
+          gives them a tappable affordance that actually scrolls the ribbon.
+          Hidden once the end is reached (nothing left to scroll to) and on
+          sm+ (desktop already sees the full row or can scroll with a mouse). */}
+      {!atEnd ? (
+        <button
+          type="button"
+          onClick={scrollByPage}
+          aria-label="Scroll filters right"
+          className={[
+            "sm:hidden absolute right-1 top-1/2 -translate-y-1/2 z-10",
+            "flex items-center justify-center w-7 h-7 rounded-full",
+            "bg-white border border-paper-warm shadow-cardHover text-ink-muted",
+            "active:scale-95 transition",
+          ].join(" ")}
+        >
+          <svg aria-hidden viewBox="0 0 10 10" className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 1.5 7 5l-4 3.5" />
+          </svg>
+        </button>
+      ) : null}
     </div>
   );
 }
