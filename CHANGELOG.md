@@ -1,0 +1,112 @@
+# Changelog
+
+A log of user-facing fixes and features pushed to `main`, kept alongside the
+code so the history survives outside chat history. Newest entries first.
+
+Each entry: date, commit hash, what changed, why, and how it was verified.
+
+---
+
+## 2026-07-07 — Home page: mobile-first pass + State/Highway filters
+
+**Commit:** [`e166e5d`](https://github.com/ankeetrg/DhabaRoute/commit/e166e5d)
+
+**Mobile fixes** (all scoped with Tailwind `sm:` breakpoints so desktop is unchanged):
+- `Header.tsx` — "What is a Dhaba?" nav link was overflowing the viewport
+  horizontally on phones under ~330px wide; hidden below `sm:`. Telegram icon
+  got a larger invisible tap-padding on mobile.
+- `HomeInteractive.tsx` — map now renders *after* the list on mobile (CSS
+  `order`, DOM order unchanged) since the map is largely inert on touch
+  (drag disabled, hover-preview needs a mouse). Bigger tap targets on filter
+  chips, the view-mode toggle, and the search-clear button.
+- `Footer.tsx` — the CTA band's outer `px-8` was stacking with the inner
+  `.container-page`'s own gutter, double-padding the band on mobile only;
+  changed to `px-0 sm:px-8`.
+
+**New: State / Highway filter dropdowns** — ordered State → Highway → Truck
+Parking → Open Now → All on the home page filter ribbon.
+- `src/lib/regionData.ts` (new) — exhaustive North America state/province
+  list (US + DC + Canadian provinces/territories) and primary 1–2 digit US
+  Interstate list, independent of what's actually in the current dataset.
+- Single-select combobox: unselected shows a "State ▾" chip that opens a
+  searchable list; selecting shows a filled pill with an inline × to clear.
+- Selecting a state/highway filters both the list and map to matching
+  dhabas; picking one with zero current coverage falls through to the
+  existing "nearest dhabas" fallback banner rather than showing empty.
+- The dropdown panel is portaled to `<body>` with `position: fixed`,
+  computed from the trigger's live bounding rect — necessary because the
+  chip row is `overflow-x-auto` (for mobile horizontal scrolling), which
+  per the CSS overflow spec also clips vertical overflow; an in-flow
+  `absolute` panel would have been cut off the instant it opened.
+- Panel repositions on scroll/resize, flips above the trigger and
+  clamps its height when there isn't enough room below (short/landscape
+  viewports), and clamps horizontally so it can't run off a narrow screen.
+- Mobile hardening: search-input autofocus suppressed on touch devices
+  (`pointer: coarse`) so opening a picker doesn't pop the keyboard over the
+  option list; bigger × and option-row tap targets on touch; outside-tap-to-
+  close uses `pointerdown` (not `mousedown`, which iOS Safari doesn't
+  reliably synthesize on non-interactive elements); focus is restored to
+  the trigger after selecting/clearing/Escape (the trigger's DOM node swaps
+  between plain button and pill, which would otherwise drop focus).
+
+**Verified:** live on the deployed site at a true 371px viewport (same-origin
+iframe technique — no Node available locally to run `next dev`). Confirmed:
+no horizontal overflow, ribbon scrolls horizontally, correct chip order,
+list-before-map, State/Highway filtering end-to-end (Nevada: 157→3 stops,
+I-40: 157→26 stops), × clear resets correctly, panel flips up and clamps
+height on a 356px-tall viewport. Not yet confirmed on a real touch device
+(the autofocus-suppression and pointerdown paths need an actual phone).
+
+---
+
+## 2026-07-01 — Home page: dhaba-card hover preview auto-closes
+
+**Commit:** [`a8a4963`](https://github.com/ankeetrg/DhabaRoute/commit/a8a4963)
+
+Hovering a dhaba card opened a preview card over the map (`setSelectedId`)
+but nothing ever cleared it, so it stayed open until manually dismissed.
+
+**Fix:** `DhabaCard.tsx` gained an `onDeactivate` prop wired to
+`onMouseLeave`/`onBlur` (open still triggers on `onMouseEnter`/`onFocus`).
+`HomeInteractive.tsx` clears the selection only if the leaving card is still
+the selected one — `setSelectedId(prev => prev === d.id ? null : prev)` —
+so moving the cursor directly from card A to card B doesn't have A's
+mouseleave wipe out B's mouseenter.
+
+**Verified:** live interaction sequence tested via a same-origin iframe
+harness (hover A → shows A; move A→B → switches to B; leave B → closes;
+hover C → shows C; leave C → closes).
+
+---
+
+## 2026-07-01 — Home page: map no longer overlaps sticky header
+
+**Commit:** [`1b2717e`](https://github.com/ankeetrg/DhabaRoute/commit/1b2717e)
+
+The Leaflet map was rendering *over* the sticky header and search/filter bar
+on scroll, while the dhaba list correctly scrolled underneath. Root cause:
+Leaflet's own CSS gives its internal panes/controls/popups very high
+z-indexes (panes 400, markers 600, popups 700, controls 1000), and
+`.leaflet-container` wasn't forming its own stacking context, so those
+elements escaped past the header/search bar's `z-30`.
+
+**Fix:** added `position: relative; z-index: 0; isolation: isolate;` to
+`.leaflet-container` in `src/app/globals.css`, containing Leaflet's internal
+stacking context inside the map box so the sticky header always wins.
+
+**Verified:** live on dhabaroute.com same day. Note: the Vercel/CDN deploy
+needed a browser hard refresh to show — a normal reload served stale CSS.
+
+---
+
+<!--
+When adding a new entry:
+1. Newest entry goes at the top, right after this file's header.
+2. Include: date, commit hash (linked), what changed, why (root cause if
+   it's a bug fix), and how it was verified.
+3. Screenshots: not yet wired into this file (the automation environment
+   used to build these fixes can't reliably save browser screenshots to
+   disk for committing). If/when that's solved, embed via
+   ![alt](docs/screenshots/YYYY-MM-DD-slug.png) and add the file under
+   docs/screenshots/.
+-->
