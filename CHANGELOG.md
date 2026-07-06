@@ -7,6 +7,31 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-07 — Home page: tap-to-scroll arrow on filter chip ribbon (mobile)
+
+**Commit:** [`5e2ac8c`](https://github.com/ankeetrg/DhabaRoute/commit/5e2ac8c)
+
+The filter chip ribbon (State/Highway/tags/Open Now/All) already faded out
+at the right edge when it overflowed, as a "there's more, scroll" hint —
+but users weren't reading that as a swipe cue and didn't realize the row
+scrolled horizontally at all.
+
+**Fix:** added a small circular arrow button next to the fade, mobile only
+(`sm:hidden`). Tapping it calls `scrollBy({ left: 160, behavior: "smooth" })`
+on the chip row; it shares the same `atEnd` tracking as the fade, so both
+disappear together once the ribbon is fully scrolled.
+
+**Verified:** via a static HTML mockup (still no Node locally) exercised
+with `preview_eval` — confirmed the button only renders while there's
+unscrolled content, that clicking it moves `scrollLeft`, and that both the
+arrow and fade hide once the end is reached. `behavior: "smooth"` didn't
+visibly animate under headless Chrome in this harness (a known headless
+quirk, not a code issue) — the underlying scroll offset itself moved
+correctly, and `smooth` is a standard, well-supported option on real
+browsers/devices.
+
+---
+
 ## 2026-07-07 — Home page: mobile spacing + Submit relocated out of header
 
 **Commit:** [`89fa663`](https://github.com/ankeetrg/DhabaRoute/commit/89fa663)
