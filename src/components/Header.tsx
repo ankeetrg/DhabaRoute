@@ -68,12 +68,12 @@ export function Header({ telegramUrl }: HeaderProps) {
 
         {/* Nav — DM Sans 13.5px weight 500 */}
         <nav className="flex items-center gap-4 sm:gap-5 font-ui">
-          {/* Hidden below sm: — "What is a Dhaba?" + Submit + Telegram icon
-              together overflow the viewport on phones under ~330px wide.
-              Still reachable via the footer's Explore column on mobile. */}
+          {/* "+ Submit" moved out of the header (now lives below the home
+              page's filter selectors) so "What is a Dhaba?" now has room to
+              show at every width, including mobile. */}
           <Link
             href="/what-is-a-dhaba"
-            className="dr-nav-link text-[13.5px] font-medium whitespace-nowrap hidden sm:inline-flex"
+            className="dr-nav-link text-[13.5px] font-medium whitespace-nowrap"
           >
             What is a Dhaba?
           </Link>
@@ -91,14 +91,6 @@ export function Header({ telegramUrl }: HeaderProps) {
               <TelegramIcon className="w-4 h-4" />
             </a>
           ) : null}
-
-          <Link
-            href="/submit"
-            className="text-[13.5px] font-semibold whitespace-nowrap transition-opacity duration-150 hover:opacity-75"
-            style={{ color: "var(--green)" }}
-          >
-            + Submit
-          </Link>
         </nav>
       </div>
     </header>

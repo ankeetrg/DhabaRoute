@@ -413,13 +413,17 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
           </p>
 
           {/* Search bar with embedded "Near me" pill (saffron, right side).
-              The pill slides left when a clear-× appears so both stay visible. */}
-          <SearchBar
-            query={query}
-            setQuery={setQuery}
-            onNearMe={() => geo.request()}
-            geoStatus={geo.status}
-          />
+              The pill slides left when a clear-× appears so both stay visible.
+              Extra top margin on mobile — the subline above is hidden there,
+              so the bar would otherwise sit right under the H1. */}
+          <div className="mt-3 sm:mt-0">
+            <SearchBar
+              query={query}
+              setQuery={setQuery}
+              onNearMe={() => geo.request()}
+              geoStatus={geo.status}
+            />
+          </div>
 
           {/* Filter chips + view toggle */}
           <div className="mt-2.5 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3">
@@ -442,6 +446,18 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
                 <ViewToggle mode={viewMode} setMode={setViewMode} />
               </div>
             ) : null}
+          </div>
+
+          {/* "+ Submit" — moved down from the header so it sits under the
+              State/Highway/tag selectors instead of crowding the top nav. */}
+          <div className="mt-2.5 flex justify-end">
+            <Link
+              href="/submit"
+              className="text-[13px] font-semibold whitespace-nowrap transition-opacity duration-150 hover:opacity-75"
+              style={{ color: "var(--green)" }}
+            >
+              + Submit
+            </Link>
           </div>
         </div>
       </div>
