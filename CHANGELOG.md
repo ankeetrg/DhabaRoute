@@ -7,6 +7,34 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-07 — Home page: tooltips on the view-toggle buttons
+
+**Commit:** [`e07643e`](https://github.com/ankeetrg/DhabaRoute/commit/e07643e)
+
+The list/split/map view-toggle icons had no visible label — only an
+`aria-label` for screen readers — so sighted users had to guess what each
+icon did.
+
+**Fix:**
+- Desktop (fine pointer): hovering a button now shows a small dark tooltip
+  bubble with its label, for as long as the pointer stays over it. Reuses
+  the file's existing `IS_COARSE_POINTER` check (already used to suppress
+  autofocus on the State/Highway dropdown search input) to gate this to
+  non-touch input.
+- Mobile (coarse pointer): there's no hover state to reveal a label, so
+  tapping a button shows its tooltip for 1.5s before auto-hiding — the tap
+  still switches the view immediately, same as before.
+- Renamed the middle button's label from "Split view" to "List & Map" —
+  "split" didn't describe what was actually split (it stacks the list and
+  map, it isn't a side-by-side split pane).
+
+**Verified:** via the static HTML mockup — since real hover vs. touch input
+can't be toggled through the browser preview tools, simulated both paths
+with a small JS harness driven by `preview_eval` (mouseenter/mouseleave for
+desktop, click for mobile) and confirmed each shows/hides as expected.
+
+---
+
 ## 2026-07-07 — Home page: tap-to-scroll arrow on filter chip ribbon (mobile)
 
 **Commit:** [`5e2ac8c`](https://github.com/ankeetrg/DhabaRoute/commit/5e2ac8c)
