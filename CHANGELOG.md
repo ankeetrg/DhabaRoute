@@ -7,6 +7,33 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-07 — Home page: map now shows in "List & Map" mode on mobile
+
+**Commit:** [`1f2430a`](https://github.com/ankeetrg/DhabaRoute/commit/1f2430a)
+
+Users reported not seeing a map on mobile at all in the "List & Map" view.
+
+**Root cause:** an earlier mobile-first pass (e166e5d, below) added a CSS
+`order` flip so the dhaba list showed before the map on mobile — the
+reasoning at the time was that the map is largely inert on touch (drag
+disabled, hover-preview needs a mouse). In practice this buried the map
+below a list of up to 30 cards, so it never became visible without a lot
+of scrolling.
+
+**Fix:** removed the mobile-only reorder in `HomeInteractive.tsx`. Map now
+renders before the list at every width, same as desktop.
+
+**Verified:** inspected the live deployed site directly (not a local
+mockup) — confirmed Leaflet tiles and all 157 dhaba pins render correctly
+(tiles load from `tile.openstreetmap.org`, 314 marker-pane elements
+present), so the map itself was never broken, just positioned below the
+fold on narrow screens. Could not visually reproduce a true ~375px mobile
+viewport against the live site in this environment (browser window is
+fixed at 1280px wide here) — the fix was verified by reading the
+responsive layout logic directly rather than a pixel-level mobile check.
+
+---
+
 ## 2026-07-07 — Home page: tooltips on the view-toggle buttons
 
 **Commit:** [`e07643e`](https://github.com/ankeetrg/DhabaRoute/commit/e07643e)
