@@ -7,6 +7,20 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-07 — Home page: Submit link left-aligned under State chip
+
+**Commit:** [`5332980`](https://github.com/ankeetrg/DhabaRoute/commit/5332980)
+
+The "+ Submit" link below the filter selectors (added in `89fa663`) was
+right-aligned under the whole chip+toggle row. Changed to `justify-start`
+so it now sits directly under the "State" chip instead.
+
+**Verified:** via the static mockup at a 375px viewport — Submit link and
+State chip share the same left edge (x=20/37, both against the container's
+left padding).
+
+---
+
 ## 2026-07-07 — Home page: map now shows in "List & Map" mode on mobile
 
 **Commit:** [`1f2430a`](https://github.com/ankeetrg/DhabaRoute/commit/1f2430a)
