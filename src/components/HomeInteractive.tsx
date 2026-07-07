@@ -1231,7 +1231,9 @@ function ViewToggle({
     },
     {
       id: "split",
-      label: "Split view",
+      // "Split view" didn't say what the split actually contains — this
+      // toggle stacks the list and map together, so name it after that.
+      label: "List & Map",
       icon: (
         <svg viewBox="0 0 14 14" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round">
           <rect x="2" y="2.5" width="10" height="9" rx="1" />
@@ -1250,6 +1252,25 @@ function ViewToggle({
     },
   ];
 
+  // Which button's label bubble is showing. Desktop shows it continuously
+  // on hover (mouseenter/leave below); touch devices have no hover, so a
+  // tap shows it briefly instead — hideTimer clears any previous timer so
+  // rapid taps across buttons don't stack up stale auto-hides.
+  const [tooltipId, setTooltipId] = useState<ViewMode | null>(null);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (hideTimer.current) clearTimeout(hideTimer.current);
+    };
+  }, []);
+
+  const showBriefly = useCallback((id: ViewMode) => {
+    setTooltipId(id);
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => setTooltipId(null), 1500);
+  }, []);
+
   return (
     <div
       role="tablist"
@@ -1259,22 +1280,48 @@ function ViewToggle({
       {items.map((it) => {
         const active = mode === it.id;
         return (
-          <button
-            key={it.id}
-            role="tab"
-            type="button"
-            aria-selected={active}
-            aria-label={it.label}
-            onClick={() => setMode(it.id)}
-            className={[
-              "inline-flex items-center justify-center w-11 h-11 sm:w-9 sm:h-9 rounded-full transition",
-              active
-                ? "bg-clay-500 text-white shadow-cta"
-                : "text-ink-muted hover:text-ink",
-            ].join(" ")}
-          >
-            {it.icon}
-          </button>
+          <div key={it.id} className="relative">
+            <button
+              role="tab"
+              type="button"
+              aria-selected={active}
+              aria-label={it.label}
+              onClick={() => {
+                setMode(it.id);
+                // Touch has no hover state to reveal the label, so a tap
+                // shows it for a moment instead of leaving mouse-only users
+                // as the sole audience for the tooltip.
+                if (IS_COARSE_POINTER) showBriefly(it.id);
+              }}
+              onMouseEnter={() => {
+                if (!IS_COARSE_POINTER) setTooltipId(it.id);
+              }}
+              onMouseLeave={() => {
+                if (!IS_COARSE_POINTER) setTooltipId(null);
+              }}
+              className={[
+                "inline-flex items-center justify-center w-11 h-11 sm:w-9 sm:h-9 rounded-full transition",
+                active
+                  ? "bg-clay-500 text-white shadow-cta"
+                  : "text-ink-muted hover:text-ink",
+              ].join(" ")}
+            >
+              {it.icon}
+            </button>
+
+            {tooltipId === it.id ? (
+              <div
+                role="tooltip"
+                className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full z-20 whitespace-nowrap rounded-md bg-ink px-2 py-1 text-[11px] font-medium text-white shadow-cardHover pointer-events-none"
+              >
+                {it.label}
+                <span
+                  aria-hidden
+                  className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-4 border-transparent border-t-ink"
+                />
+              </div>
+            ) : null}
+          </div>
         );
       })}
     </div>
