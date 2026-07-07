@@ -449,8 +449,9 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
           </div>
 
           {/* "+ Submit" — moved down from the header so it sits under the
-              State/Highway/tag selectors instead of crowding the top nav. */}
-          <div className="mt-2.5 flex justify-end">
+              State/Highway/tag selectors instead of crowding the top nav.
+              Left-aligned so it sits directly under the "State" chip. */}
+          <div className="mt-2.5 flex justify-start">
             <Link
               href="/submit"
               className="text-[13px] font-semibold whitespace-nowrap transition-opacity duration-150 hover:opacity-75"
