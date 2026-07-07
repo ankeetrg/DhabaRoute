@@ -495,13 +495,15 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
           ) : null}
         </>
       ) : (
-        // Visual-only reorder: list first on mobile (map is largely inert on
-        // touch — drag is disabled and hover-preview needs a mouse), map
-        // first on sm+ same as before. DOM order is unchanged so this is a
-        // pure CSS flip, not a JS viewport check — no hydration mismatch.
+        // Map first, then list — same order on every width. This used to
+        // flip to list-first on mobile (map is largely inert on touch: drag
+        // is disabled, hover-preview needs a mouse), but that buried the map
+        // below a long list of cards, and mobile users reported not seeing
+        // a map in "List & Map" at all. Matching the desktop order keeps it
+        // visible right under the filters on every device.
         <div className="flex flex-col">
-          <div className="order-2 sm:order-1">{mapSection}</div>
-          <div className="order-1 sm:order-2">{listSection}</div>
+          {mapSection}
+          {listSection}
         </div>
       )}
     </section>
