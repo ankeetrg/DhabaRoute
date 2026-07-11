@@ -184,9 +184,14 @@ export function DhabaCard({
               row. `relative z-10` lifts the row above the title's overlay
               link so touch-drags scroll the pills instead of activating the
               card; -mr-3/pr-3 bleeds the row to the card edge as a visual
-              "more to scroll" cue. */}
+              "more to scroll" cue. `w-0 min-w-full` zeroes the row's
+              intrinsic min-content width — without it the pill row's
+              max-content width propagates up through the flex column into
+              the grid track and blows the whole page out sideways on
+              mobile (overflow-x-auto alone doesn't stop that propagation
+              because this div is a block child, not a flex/grid item). */}
           {dhaba.tags.length > 0 ? (
-            <div className="mt-auto pt-1.5 -mr-3 relative z-10 overflow-x-auto no-scrollbar">
+            <div className="mt-auto pt-1.5 -mr-3 relative z-10 overflow-x-auto no-scrollbar w-0 min-w-full">
               <ul role="list" className="flex gap-1.5 min-w-max pr-3">
                 {dhaba.tags.map((t) => (
                   <li

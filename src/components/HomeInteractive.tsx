@@ -320,7 +320,10 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
         className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
       >
         {ranked.slice(0, 30).map((d) => (
-          <li key={d.id} data-dhaba-id={d.id}>
+          // min-w-0 keeps the grid track from being widened by a card's
+          // intrinsic (max-content) size — see the compact card's amenity
+          // row, whose pill strip is wider than the viewport on mobile.
+          <li key={d.id} data-dhaba-id={d.id} className="min-w-0">
             <DhabaCard
               dhaba={d}
               // Compact cards are List-view only for now — "List & Map"

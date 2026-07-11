@@ -7,6 +7,35 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Fix: List view compact cards blew the page out sideways on mobile
+
+**Commit:** _(this commit)_
+
+After the compact-card release below, the home page overflowed
+horizontally on mobile in List view (page ~569px wide at a 375px
+viewport, everything cut off at the left edge; user reported with a
+screenshot).
+
+**Root cause:** the amenity pill row's `max-content` width propagated
+up through the card's flex column into the grid track — the classic
+CSS grid `min-width: auto` blow-out. `overflow-x-auto` on the pill row
+didn't help because a scroll container only gets an automatic minimum
+size of zero when it is itself the flex/grid item; as a plain block
+child its intrinsic min-content width still includes the full
+un-scrolled pill strip, so the card grew instead of the bar scrolling.
+
+**Fix:** two guards — `min-w-0` on the list's grid `<li>` items, and
+`w-0 min-w-full` on the pill row's scroll container (zeroes its
+intrinsic width contribution while `min-width:100%` keeps its used
+width filling the card).
+
+**Verified:** reproduced and then re-tested in a 375px same-origin
+iframe against the static mockup built from real data: page scrollWidth
+569 → 375 after the fix, and the pill bars now actually scroll
+(6 of 12 sample cards have overflowing pills that scroll in place).
+
+---
+
 ## 2026-07-12 — Home page: compact cards in List view
 
 **Commit:** [`362892c`](https://github.com/ankeetrg/DhabaRoute/commit/362892c)
