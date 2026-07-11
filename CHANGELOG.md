@@ -9,7 +9,7 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ## 2026-07-12 — Fix: List view compact cards blew the page out sideways on mobile
 
-**Commit:** _(this commit)_
+**Commit:** [`af1101e`](https://github.com/ankeetrg/DhabaRoute/commit/af1101e)
 
 After the compact-card release below, the home page overflowed
 horizontally on mobile in List view (page ~569px wide at a 375px
