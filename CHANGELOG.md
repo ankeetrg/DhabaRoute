@@ -9,7 +9,7 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ## 2026-07-12 — Home page: compact cards in List view
 
-**Commit:** _(this commit)_
+**Commit:** [`362892c`](https://github.com/ankeetrg/DhabaRoute/commit/362892c)
 
 The "All dhabas" cards in List view are now compact horizontal cards
 (Zomato/Swiggy list pattern): 104px square photo on the left; name,
