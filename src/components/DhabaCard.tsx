@@ -29,6 +29,14 @@ interface DhabaCardProps {
   isSelected?: boolean;
   onActivate?: () => void;
   onDeactivate?: () => void;
+  /**
+   * Compact horizontal layout — small square thumbnail on the left, dense
+   * text stack on the right (the Zomato/Swiggy list-card pattern). Used by
+   * the home page List / List & Map views so more stops fit per screen.
+   * The default (false) keeps the big vertical card for routes/states/detail
+   * pages.
+   */
+  compact?: boolean;
 }
 
 export function DhabaCard({
@@ -38,6 +46,7 @@ export function DhabaCard({
   isSelected = false,
   onActivate,
   onDeactivate,
+  compact = false,
 }: DhabaCardProps) {
   const openStatus = getOpenStatus(dhaba.hours);
   const todayHours = getTodayHoursString(dhaba.hours);
@@ -57,6 +66,149 @@ export function DhabaCard({
     : emphasis
     ? "rgba(223,96,40,0.25)"
     : "rgba(28,24,20,0.08)";
+
+  if (compact) {
+    return (
+      <article
+        onMouseEnter={onActivate}
+        onMouseLeave={onDeactivate}
+        onFocus={onActivate}
+        onBlur={onDeactivate}
+        data-selected={isSelected || undefined}
+        style={{
+          border: `1px solid ${borderColor}`,
+          boxShadow: "0 2px 12px rgba(28,24,20,0.06)",
+          transition:
+            "transform 220ms cubic-bezier(0.34,1.4,0.64,1), box-shadow 220ms cubic-bezier(0.34,1.4,0.64,1)",
+        }}
+        className={[
+          "group relative flex gap-3 rounded-2xl bg-white p-3 h-full",
+          // Gentler lift than the big card — compact rows sit closer together.
+          "motion-safe:hover:-translate-y-0.5",
+          "motion-safe:hover:shadow-[0_10px_30px_rgba(28,24,20,0.12),0_2px_8px_rgba(28,24,20,0.05)]",
+        ].join(" ")}
+      >
+        {/* Thumbnail — square, self-rounded (the card isn't overflow-hidden
+            in compact mode, so the photo clips itself via rounded-xl). */}
+        <DhabaPhoto
+          src={photoSrc}
+          alt=""
+          className="w-[104px] h-[104px] flex-none rounded-xl"
+          sizes="104px"
+          hoverZoom
+        />
+
+        <div className="min-w-0 flex flex-col flex-1">
+          {/* NAME — 15px, 2-line clamp; overlay link spans the whole card. */}
+          <h3
+            className="min-w-0 font-display font-bold text-[15px] leading-[1.25] text-ink line-clamp-2"
+            style={{ letterSpacing: "-0.01em" }}
+          >
+            <Link
+              href={`/dhabas/${dhaba.slug}`}
+              className="after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none"
+            >
+              {dhaba.title}
+            </Link>
+          </h3>
+
+          {/* PLACE — "City, ST" from the listing address (distance-first
+              when geolocation is on: "12 km · City, ST"). */}
+          {city || distanceLabel ? (
+            <p
+              className="mt-0.5 truncate"
+              style={{ fontSize: "12px", color: "#9a8a7a" }}
+            >
+              {distanceLabel ? (
+                <span className="tabular-nums">{distanceLabel} · </span>
+              ) : null}
+              {city}
+            </p>
+          ) : null}
+
+          {/* ROUTE — saffron micro-label, linked to the highway page when
+              parseable (relative z-10 lifts it above the overlay link). */}
+          {dhaba.routeHint ? (
+            highwayHref ? (
+              <Link
+                href={highwayHref}
+                className="mt-1 self-start truncate max-w-full font-semibold relative z-10 transition-opacity duration-150 hover:opacity-75"
+                style={{
+                  fontSize: "10px",
+                  color: "var(--accent)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {dhaba.routeHint}
+              </Link>
+            ) : (
+              <span
+                className="mt-1 self-start truncate max-w-full font-semibold"
+                style={{
+                  fontSize: "10px",
+                  color: "var(--accent)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {dhaba.routeHint}
+              </span>
+            )
+          ) : null}
+
+          {/* STATUS + TODAY'S HOURS */}
+          {openStatus !== "unknown" ? (
+            <div className="mt-1 flex items-center gap-1 leading-none min-w-0">
+              <span
+                className="font-bold flex-none"
+                style={{
+                  fontSize: "11px",
+                  color: openStatus === "open" ? "var(--leaf)" : "#b04020",
+                }}
+              >
+                {openStatus === "open" ? "Open now" : "Closed"}
+              </span>
+              {todayHours ? (
+                <span
+                  className="font-medium truncate"
+                  style={{ fontSize: "11px", color: "#9a8a7a" }}
+                >
+                  · {todayHours}
+                </span>
+              ) : null}
+            </div>
+          ) : null}
+
+          {/* AMENITIES — every tag as a pill in a horizontally scrollable
+              row. `relative z-10` lifts the row above the title's overlay
+              link so touch-drags scroll the pills instead of activating the
+              card; -mr-3/pr-3 bleeds the row to the card edge as a visual
+              "more to scroll" cue. */}
+          {dhaba.tags.length > 0 ? (
+            <div className="mt-auto pt-1.5 -mr-3 relative z-10 overflow-x-auto no-scrollbar">
+              <ul role="list" className="flex gap-1.5 min-w-max pr-3">
+                {dhaba.tags.map((t) => (
+                  <li
+                    key={t}
+                    className="inline-flex items-center gap-1 rounded-full px-2 py-1 font-medium whitespace-nowrap"
+                    style={{
+                      fontSize: "11px",
+                      color: "var(--accent)",
+                      background: "rgba(223,96,40,0.10)",
+                    }}
+                  >
+                    <AmenityIcon tag={t} />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      </article>
+    );
+  }
 
   return (
     <article

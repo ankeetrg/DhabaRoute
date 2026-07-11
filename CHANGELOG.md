@@ -7,6 +7,33 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Home page: compact cards in List view
+
+**Commit:** _(this commit)_
+
+The "All dhabas" cards in List view are now compact horizontal cards
+(Zomato/Swiggy list pattern): 104px square photo on the left; name,
+"City, ST" (from the listing address — prefixed with distance when
+"Near me" is active), saffron highway label, Open/Closed + today's
+hours, and a horizontally scrollable amenities bar showing every tag
+as a pill on the right. Roughly 3× more stops fit per screen.
+
+Scope: List view only. "List & Map" (split), Map view, routes/states
+pages, and the detail page's nearby cards all keep the big vertical
+card — the change is an additive `compact` prop on `DhabaCard`, gated
+on `viewMode === "list"` in `HomeInteractive`.
+
+The amenity pill bar sits above the card's whole-card overlay link
+(`relative z-10`) so swiping it scrolls the pills instead of opening
+the detail page.
+
+**Verified:** via a static HTML mockup built from `data/dhabas.json`
+(12 real listings, photos, hours, tags) served locally and inspected
+in the browser at mobile and desktop widths; layout approved by the
+user before push.
+
+---
+
 ## 2026-07-07 — Home page: Submit link left-aligned under State chip
 
 **Commit:** [`5332980`](https://github.com/ankeetrg/DhabaRoute/commit/5332980)

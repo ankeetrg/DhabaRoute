@@ -323,6 +323,9 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
           <li key={d.id} data-dhaba-id={d.id}>
             <DhabaCard
               dhaba={d}
+              // Compact cards are List-view only for now — "List & Map"
+              // (split) and every other surface keep the big vertical card.
+              compact={viewMode === "list"}
               distanceLabel={d.distanceKm != null ? formatDistance(d.distanceKm) : undefined}
               isSelected={d.id === selectedId}
               onActivate={() => setSelectedId(d.id)}
