@@ -49,6 +49,9 @@ interface DhabaPhotoProps {
   raw?: boolean;
   /** Opt-in to the card-hover zoom. Needs a `group` ancestor. */
   hoverZoom?: boolean;
+  /** "cover" (default, crops to fill) or "contain" (letterboxed, no crop —
+   * used by the hero lightbox so the full uncropped photo is visible). */
+  objectFit?: "cover" | "contain";
   /** Called only when the real image bytes load successfully. */
   onLoadSuccess?: () => void;
   /** Called when the browser cannot load the provided image URL. */
@@ -63,6 +66,7 @@ export function DhabaPhoto({
   priority = false,
   raw = false,
   hoverZoom = false,
+  objectFit = "cover",
   onLoadSuccess,
   onLoadError,
 }: DhabaPhotoProps) {
@@ -138,7 +142,8 @@ export function DhabaPhoto({
   }
 
   const imageClass = [
-    "object-cover transition-opacity duration-200",
+    objectFit === "contain" ? "object-contain" : "object-cover",
+    "transition-opacity duration-200",
     loaded ? "opacity-100" : "opacity-0",
     hoverZoom
       ? "motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:scale-[1.03]"

@@ -1,6 +1,12 @@
 "use client";
 
-import { useRef, useState, type TouchEvent as ReactTouchEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+  type TouchEvent as ReactTouchEvent,
+} from "react";
 import { DhabaPhoto } from "./DhabaPhoto";
 import { getOpenStatus } from "@/lib/isOpenNow";
 
@@ -30,11 +36,10 @@ interface DhabaHeroCarouselProps {
 
 export function DhabaHeroCarousel({ slides, hours }: DhabaHeroCarouselProps) {
   const [index, setIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const status = getOpenStatus(hours);
   const count = slides.length;
-
-  if (count === 0) return null;
 
   const go = (dir: number) => setIndex((i) => (i + dir + count) % count);
 
@@ -48,17 +53,50 @@ export function DhabaHeroCarousel({ slides, hours }: DhabaHeroCarouselProps) {
     touchStartX.current = null;
   };
 
+  // Lock page scroll while the lightbox is open, and let Escape close it.
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "ArrowRight") go(1);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightboxOpen, count]);
+
+  if (count === 0) return null;
+
   const current = slides[index];
 
   return (
+    <>
     <figure
       className="relative overflow-hidden rounded-2xl w-full"
       onTouchStart={count > 1 ? onTouchStart : undefined}
       onTouchEnd={count > 1 ? onTouchEnd : undefined}
     >
-      {/* Track — slides sit side by side; translateX moves the strip. */}
+      {/* Track — slides sit side by side; translateX moves the strip.
+          Clicking/tapping the photo (not the arrow/dot controls, which are
+          separate sibling elements) opens the full-size lightbox below. */}
       <div
-        className="flex h-[30vh] min-h-[160px] max-h-[280px] md:h-[24vh] md:min-h-[230px] md:max-h-[280px] motion-safe:transition-transform motion-safe:duration-300"
+        role="button"
+        tabIndex={0}
+        aria-label="View full-size photo"
+        onClick={() => setLightboxOpen(true)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setLightboxOpen(true);
+          }
+        }}
+        className="flex h-[30vh] min-h-[160px] max-h-[280px] md:h-[24vh] md:min-h-[230px] md:max-h-[280px] cursor-pointer motion-safe:transition-transform motion-safe:duration-300"
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {slides.map((slide, i) => (
@@ -121,6 +159,113 @@ export function DhabaHeroCarousel({ slides, hours }: DhabaHeroCarouselProps) {
         </>
       ) : null}
     </figure>
+
+    {lightboxOpen ? (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+        onClick={() => setLightboxOpen(false)}
+        onTouchStart={count > 1 ? onTouchStart : undefined}
+        onTouchEnd={count > 1 ? onTouchEnd : undefined}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${current.alt} — full size photo`}
+      >
+        <button
+          type="button"
+          aria-label="Close photo"
+          onClick={(e) => {
+            e.stopPropagation();
+            setLightboxOpen(false);
+          }}
+          className="absolute top-4 right-4 grid place-items-center w-10 h-10 rounded-full border-0 cursor-pointer hover:opacity-90"
+          style={{ background: "rgba(255,255,255,0.12)", color: "#fff" }}
+        >
+          <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+
+        {count > 1 ? (
+          <span
+            className="absolute top-5 left-1/2 -translate-x-1/2 text-white/90 text-sm font-medium"
+            style={{ fontVariantNumeric: "tabular-nums" }}
+          >
+            {index + 1} / {count}
+          </span>
+        ) : null}
+
+        <div
+          className="relative w-full h-full max-w-5xl max-h-[85vh] mx-6"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <DhabaPhoto
+            src={current.src}
+            alt={current.alt}
+            className="w-full h-full"
+            sizes="100vw"
+            objectFit="contain"
+          />
+        </div>
+
+        {current.attribution ? (
+          <span
+            className="absolute bottom-5 left-1/2 -translate-x-1/2 text-[13px] font-medium text-white/90"
+          >
+            📷 {current.attribution}
+          </span>
+        ) : null}
+
+        {count > 1 ? (
+          <>
+            <LightboxArrow
+              side="left"
+              onClick={(e) => {
+                e.stopPropagation();
+                go(-1);
+              }}
+            />
+            <LightboxArrow
+              side="right"
+              onClick={(e) => {
+                e.stopPropagation();
+                go(1);
+              }}
+            />
+          </>
+        ) : null}
+      </div>
+    ) : null}
+    </>
+  );
+}
+
+function LightboxArrow({
+  side,
+  onClick,
+}: {
+  side: "left" | "right";
+  onClick: (e: ReactMouseEvent) => void;
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={side === "left" ? "Previous photo" : "Next photo"}
+      onClick={onClick}
+      className="absolute top-1/2 -translate-y-1/2 grid place-items-center w-11 h-11 rounded-full border-0 cursor-pointer hover:opacity-90"
+      style={{ [side]: 16, background: "rgba(255,255,255,0.14)", color: "#fff" }}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {side === "left" ? <path d="M15 18l-6-6 6-6" /> : <path d="M9 6l6 6-6 6" />}
+      </svg>
+    </button>
   );
 }
 
