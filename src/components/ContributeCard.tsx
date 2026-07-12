@@ -57,9 +57,37 @@ export function ContributeCard({
           </IntentButton>
         </div>
       ) : (
-        <ContributeForm dhabaTitle={dhabaTitle} dhabaSlug={dhabaSlug} />
+        <div className="mt-3">
+          <button
+            type="button"
+            onClick={() => setExpanded(false)}
+            className="inline-flex items-center gap-1 font-ui font-semibold cursor-pointer transition-opacity duration-150 hover:opacity-70"
+            style={{ fontSize: 12.5, color: "#8a7a6a" }}
+          >
+            <CloseIcon />
+            Close
+          </button>
+          <ContributeForm dhabaTitle={dhabaTitle} dhabaSlug={dhabaSlug} />
+        </div>
       )}
     </div>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="w-3.5 h-3.5 flex-none"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M18 6L6 18M6 6l12 12" />
+    </svg>
   );
 }
 
