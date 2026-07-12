@@ -7,6 +7,25 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Fix: detail-page hero photo took up too much of the mobile screen
+
+**Commit:** [`5687d90`](https://github.com/ankeetrg/DhabaRoute/commit/5687d90)
+
+The hero photo carousel's fixed 260px mobile height ate most of the
+screen above the fold on short phones — flagged by the user with a
+screenshot showing the name and "Closed" badge barely visible below it.
+
+**Fix:** mobile height changed from a fixed `260px` to `30vh`, clamped
+between `160px` (so it never collapses on very short viewports) and
+`280px` (so it doesn't balloon on tall ones). Desktop keeps its
+unrelated fixed `400px` hero.
+
+**Verified:** deploy confirmed via the GitHub commit-status API
+(`state: success`) — Node still isn't installed locally, so this is
+reviewed-then-shipped rather than build-tested first.
+
+---
+
 ## 2026-07-12 — Home page: Submit link merged into the view-toggle row
 
 **Commit:** [`d00fc63`](https://github.com/ankeetrg/DhabaRoute/commit/d00fc63)
