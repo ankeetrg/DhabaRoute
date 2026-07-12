@@ -7,6 +7,33 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Mobile detail-page tabs: real panels instead of scroll anchors
+
+**Commits:** [`88573ad`](https://github.com/ankeetrg/DhabaRoute/commit/88573ad), [`cb1a544`](https://github.com/ankeetrg/DhabaRoute/commit/cb1a544), [`82fdcf1`](https://github.com/ankeetrg/DhabaRoute/commit/82fdcf1)
+
+Two follow-ups to the detail page redesign below, both on mobile:
+
+- The three "Add photo" / "Add menu" / "Add a note" contribute buttons
+  were collapsed into a single **"Add Photo / Menu / Note"** button that
+  expands the same contribution form in place.
+- User feedback: tapping the Amenities/Details tab scrollIntoView'd the
+  *whole page* down past Overview, which read as the page jumping around.
+  **Overview / Amenities / Menu / Details are now real tab panels**
+  (`DetailTabPanels`) — only the active one renders, swapped in place
+  directly under the sticky tab bar, so switching tabs never scrolls past
+  unrelated content. **Nearby is intentionally not a panel** — it's a
+  distinct section further down the page (next-stops cards), so its tab
+  keeps the old jump-to-section behavior on purpose. Desktop is
+  unaffected — there's no tab bar there; Overview/Amenities/Menu still
+  stack as plain content and Details stays hidden in favor of the
+  sidebar's own copy.
+
+**Verified:** deploys confirmed via the GitHub commit-status API
+(`state: success` on all three commits) — Node still isn't installed
+locally, so this is reviewed-then-shipped rather than build-tested first.
+
+---
+
 ## 2026-07-12 — Dhaba detail page redesign: built around the driver's decision, not booking/paying
 
 **Commit:** [`1ae25c2`](https://github.com/ankeetrg/DhabaRoute/commit/1ae25c2)
