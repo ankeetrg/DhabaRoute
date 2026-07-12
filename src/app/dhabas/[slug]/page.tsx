@@ -8,7 +8,7 @@ import { parseRoute, highwaySlug } from "@/lib/parseRoute";
 import { getDhabaPhotoSrc } from "@/lib/photo-url";
 import type { Dhaba, DhabaMenu } from "@/lib/types";
 import { DhabaCard } from "@/components/DhabaCard";
-import { DhabaDetailMap } from "@/components/DhabaDetailMap";
+import { MapRibbon } from "@/components/MapRibbon";
 import { DhabaHeroCarousel, type HeroSlide } from "@/components/DhabaHeroCarousel";
 import { DetailTabPanels, type DetailPanel } from "@/components/DetailTabPanels";
 import { DetailActionChips } from "@/components/DetailActionChips";
@@ -16,14 +16,17 @@ import { ContributeCard } from "@/components/ContributeCard";
 import { TodayStatus } from "@/components/TodayStatus";
 
 // Detail page, 2026-07 redesign ("pull off the highway?" page).
-//   Mobile-first single column with a sticky section-tab bar (Overview /
-//   Amenities / Menu / Details / Nearby); desktop keeps the two-column
-//   grid with the sticky sidebar. The spine of the page is the driver's
-//   decision: photo carousel hero → identity + route strip → action chips
-//   → trucker essentials → dishes → details → contribute → next stops.
-//   Everything renders from fields that already exist in dhabas.json and
-//   degrades gracefully when a field is missing — a brand-new CSV row
-//   with just a title and address still produces a complete page.
+//   Mobile: hero photo full width, then a single column with a sticky
+//   section-tab bar (Overview / Amenities / Menu / Details / Nearby).
+//   Desktop: hero photo + directions/call/facts/map side by side (each
+//   ~half width) above a single-column write-up — no more full-width
+//   hero eating the top of the page before you can even get directions.
+//   The spine of the page is the driver's decision: photo → directions/
+//   facts/map → identity + route strip → action chips → trucker
+//   essentials → dishes → details → contribute → next stops. Everything
+//   renders from fields that already exist in dhabas.json and degrades
+//   gracefully when a field is missing — a brand-new CSV row with just a
+//   title and address still produces a complete page.
 
 const POPULAR_DISHES = [
   "aloo paratha",
@@ -162,7 +165,7 @@ export default async function DhabaDetailPage({
 
   // Mobile tab panels — Overview/Amenities/Menu stay visible on desktop
   // (no tab UI there, just plain stacked content); Details is mobile-only
-  // since desktop shows the same facts + map in the sidebar instead.
+  // since desktop shows the same facts + map beside the hero photo instead.
   const panels: DetailPanel[] = [
     {
       id: "overview",
@@ -247,8 +250,8 @@ export default async function DhabaDetailPage({
             ) : null}
           </dl>
           {dhaba.lat != null && dhaba.lng != null ? (
-            <div className="mt-4 rounded-2xl overflow-hidden">
-              <DhabaDetailMap dhaba={dhaba} />
+            <div className="mt-4">
+              <MapRibbon dhaba={dhaba} />
             </div>
           ) : null}
         </div>
@@ -295,15 +298,57 @@ export default async function DhabaDetailPage({
           </span>
         </nav>
 
-        {/* ── Hero photo carousel ────────────────────────────────────── */}
-        <DhabaHeroCarousel slides={slides} hours={dhaba.hours} />
+        {/* ── Hero photo + directions/facts/map ───────────────────────── */}
+        {/* Mobile: hero alone, full width (info block hidden — mobile has
+            the action chips + the Details tab panel instead). Desktop:
+            side by side, 60% photo / 40% info. The map collapses into a
+            hover/tap ribbon (MapRibbon) instead of always showing a full
+            210px map, so this column's natural height stays close to the
+            hero photo's fixed size — its bottom edge lands right at the
+            ribbon button's bottom edge. items-stretch (the flex default, so
+            no class needed) then makes both column BOXES exactly the same
+            height regardless — the photo itself keeps its own fixed size
+            (never stretched/deformed) and is simply centered within
+            whatever height the row ends up being. */}
+        <div className="mt-4 md:flex md:gap-8">
+          <div className="md:w-3/5 md:flex md:items-center md:justify-center">
+            <DhabaHeroCarousel slides={slides} hours={dhaba.hours} />
+          </div>
 
-        {/* ── Two-column grid: content left | sidebar right ─────────── */}
-        {/* Mobile: single column. md+: [1fr 296px] with sticky sidebar. */}
-        <div className="mt-6 md:grid md:grid-cols-[minmax(0,1fr)_296px] md:gap-12 md:items-start">
+          <aside className="hidden md:flex md:w-2/5 md:flex-col md:gap-3">
+            {dhaba.mapsUrl || phoneHref ? (
+              <div className="flex flex-col items-center gap-2">
+                {dhaba.mapsUrl ? (
+                  <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
+                ) : null}
+                {phoneHref ? (
+                  <SecondaryAction href={phoneHref}>
+                    Call · {dhaba.phone}
+                  </SecondaryAction>
+                ) : null}
+              </div>
+            ) : null}
 
-          {/* ── LEFT COLUMN ────────────────────────────────────────── */}
-          <div className="min-w-0">
+            <Divider />
+
+            <dl className="mt-0">
+              {formattedAddress ? (
+                <Fact label="Address" value={formattedAddress} />
+              ) : null}
+              {dhaba.phone && phoneHref ? (
+                <Fact label="Phone" value={dhaba.phone} href={phoneHref} />
+              ) : null}
+              {dhaba.routeHint ? (
+                <Fact label="Route" value={dhaba.routeHint} />
+              ) : null}
+            </dl>
+
+            <MapRibbon dhaba={dhaba} />
+          </aside>
+        </div>
+
+        {/* ── Main content — single column at every breakpoint ───────── */}
+        <div className="mt-6">
 
             {/* Identity: eyebrow + title + city/state + open status */}
             <header>
@@ -364,7 +409,8 @@ export default async function DhabaDetailPage({
 
             {/* Section tabs (mobile: real swappable panels) + panel content.
                 Overview/Amenities/Menu stay stacked & visible on desktop;
-                Details is mobile-only (desktop sidebar has its own copy). */}
+                Details is mobile-only (desktop shows the same facts + map
+                beside the hero photo instead). */}
             <DetailTabPanels
               panels={panels}
               jumpTab={
@@ -399,52 +445,9 @@ export default async function DhabaDetailPage({
               </p>
             </div>
 
-          </div>{/* end LEFT COLUMN */}
+        </div>{/* end main content */}
 
-          {/* ── RIGHT SIDEBAR — desktop only ───────────────────────── */}
-          <aside className="hidden md:flex md:flex-col md:gap-3 md:sticky md:top-24">
-
-            {/* CTAs */}
-            {dhaba.mapsUrl || phoneHref ? (
-              <div className="flex flex-col gap-2">
-                {dhaba.mapsUrl ? (
-                  <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
-                ) : null}
-                {phoneHref ? (
-                  <SecondaryAction href={phoneHref}>
-                    Call · {dhaba.phone}
-                  </SecondaryAction>
-                ) : null}
-              </div>
-            ) : null}
-
-            <Divider />
-
-            {/* Fact rows */}
-            <dl className="mt-0">
-              {formattedAddress ? (
-                <Fact label="Address" value={formattedAddress} />
-              ) : null}
-              {dhaba.phone && phoneHref ? (
-                <Fact label="Phone" value={dhaba.phone} href={phoneHref} />
-              ) : null}
-              {dhaba.routeHint ? (
-                <Fact label="Route" value={dhaba.routeHint} />
-              ) : null}
-            </dl>
-
-            {/* Map */}
-            {dhaba.lat != null && dhaba.lng != null ? (
-              <section className="rounded-2xl overflow-hidden">
-                <DhabaDetailMap dhaba={dhaba} height="210px" />
-              </section>
-            ) : null}
-
-          </aside>{/* end RIGHT SIDEBAR */}
-
-        </div>{/* end grid */}
-
-        {/* ── Next stops — full width below grid ─────────────────────── */}
+        {/* ── Next stops — full width, below the main content ─────────── */}
         {related.length > 0 ? (
           <section
             id="nearby"
@@ -555,8 +558,8 @@ function PrimaryAction({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-full inline-flex h-11 items-center justify-center rounded-xl px-5 text-center font-ui font-semibold text-white transition-opacity duration-150 hover:opacity-[0.86]"
-      style={{ background: "var(--accent)", fontSize: 14 }}
+      className="w-4/5 inline-flex h-9 items-center justify-center rounded-xl px-4 text-center font-ui font-semibold text-white transition-opacity duration-150 hover:opacity-[0.86]"
+      style={{ background: "var(--accent)", fontSize: 13 }}
     >
       {children}
     </a>
@@ -573,8 +576,8 @@ function SecondaryAction({
   return (
     <a
       href={href}
-      className="w-full inline-flex h-11 items-center justify-center rounded-xl border border-paper-warm bg-white px-5 text-center font-ui font-semibold transition-colors duration-150 hover:border-clay-300 hover:text-accent"
-      style={{ fontSize: 14, color: "var(--ink-soft)" }}
+      className="w-4/5 inline-flex h-9 items-center justify-center rounded-xl border border-paper-warm bg-white px-4 text-center font-ui font-semibold transition-colors duration-150 hover:border-clay-300 hover:text-accent"
+      style={{ fontSize: 13, color: "var(--ink-soft)" }}
     >
       {children}
     </a>

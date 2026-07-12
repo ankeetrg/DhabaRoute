@@ -8,6 +8,14 @@ import { getOpenStatus } from "@/lib/isOpenNow";
 // Today every dhaba has a single storedImageUrl, so the arrows/dots only
 // render when a listing gains a photos[] array — the carousel activates
 // automatically as community photos land, with zero dead UI before then.
+//
+// Sizing is deliberately compact, not full-bleed: mobile is h-[30vh]
+// (clamped 160–280px) full width; desktop is h-[24vh] (clamped 230–280px)
+// at md:w-3/5, beside the CTAs/facts/map column — sized to land close to
+// that column's natural height (now that its map collapses into a ribbon)
+// so there's little to no visible gap. The photo keeps this fixed size on
+// both breakpoints — it is never stretched to fill the row; the caller
+// centers it vertically within the (usually near-equal) row instead.
 
 export interface HeroSlide {
   src: string;
@@ -44,13 +52,13 @@ export function DhabaHeroCarousel({ slides, hours }: DhabaHeroCarouselProps) {
 
   return (
     <figure
-      className="mt-4 relative overflow-hidden rounded-2xl"
+      className="relative overflow-hidden rounded-2xl w-full"
       onTouchStart={count > 1 ? onTouchStart : undefined}
       onTouchEnd={count > 1 ? onTouchEnd : undefined}
     >
       {/* Track — slides sit side by side; translateX moves the strip. */}
       <div
-        className="flex h-[30vh] min-h-[160px] max-h-[280px] md:h-[400px] md:max-h-none motion-safe:transition-transform motion-safe:duration-300"
+        className="flex h-[30vh] min-h-[160px] max-h-[280px] md:h-[24vh] md:min-h-[230px] md:max-h-[280px] motion-safe:transition-transform motion-safe:duration-300"
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {slides.map((slide, i) => (
@@ -59,7 +67,7 @@ export function DhabaHeroCarousel({ slides, hours }: DhabaHeroCarouselProps) {
               src={slide.src}
               alt={slide.alt}
               className="w-full h-full"
-              sizes="(max-width: 640px) 100vw, (max-width: 1200px) calc(100vw - 64px), 1136px"
+              sizes="(max-width: 767px) 100vw, 50vw"
               priority={i === 0}
             />
           </div>
