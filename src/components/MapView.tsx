@@ -163,6 +163,36 @@ function FitToBounds({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userLocation]);
 
+  // Leaflet measures the container at the moment it fits/renders tiles. If
+  // this map first mounts inside a hidden element (e.g. the dhaba detail
+  // page's mobile "Details" tab panel, which starts inactive/display:none),
+  // the mount-time fit above runs against a 0×0 box and produces blank or
+  // garbled tiles that never recover once the panel becomes visible. Watch
+  // for the container's first real (nonzero) size and, if it wasn't
+  // already visible at mount, re-measure + re-fit exactly once — this never
+  // fires for already-visible maps (home page, desktop sidebar), so it
+  // can't fight a user's manual pan/zoom on later resizes.
+  useEffect(() => {
+    const container = map.getContainer();
+    if (container.offsetWidth > 0 && container.offsetHeight > 0) return;
+
+    let done = false;
+    const observer = new ResizeObserver((entries) => {
+      if (done) return;
+      const entry = entries[0];
+      if (!entry || entry.contentRect.width === 0 || entry.contentRect.height === 0) {
+        return;
+      }
+      done = true;
+      map.invalidateSize();
+      doFit(pointsRef.current);
+      observer.disconnect();
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map]);
+
   return null;
 }
 
