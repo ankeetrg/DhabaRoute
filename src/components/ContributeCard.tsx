@@ -61,8 +61,14 @@ export function ContributeCard({
           <button
             type="button"
             onClick={() => setExpanded(false)}
-            className="inline-flex items-center gap-1 font-ui font-semibold cursor-pointer transition-opacity duration-150 hover:opacity-70"
-            style={{ fontSize: 12.5, color: "#8a7a6a" }}
+            className="inline-flex items-center gap-1.5 rounded-full font-ui font-bold cursor-pointer transition-opacity duration-150 hover:opacity-85"
+            style={{
+              fontSize: 12.5,
+              padding: "8px 14px",
+              border: "1px solid rgba(223,96,40,0.45)",
+              background: "#ffffff",
+              color: "var(--accent)",
+            }}
           >
             <CloseIcon />
             Close
