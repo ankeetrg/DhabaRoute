@@ -1,26 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Fragment, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { getAllSlugs, getDhabaBySlug, getAllDhabas } from "@/lib/dhabas";
 import { distanceKm } from "@/lib/geo";
 import { parseRoute, highwaySlug } from "@/lib/parseRoute";
-import { getOpenStatus } from "@/lib/isOpenNow";
 import { getDhabaPhotoSrc } from "@/lib/photo-url";
 import type { Dhaba, DhabaMenu } from "@/lib/types";
 import { DhabaCard } from "@/components/DhabaCard";
 import { DhabaDetailMap } from "@/components/DhabaDetailMap";
-import { DhabaHeroPhoto } from "@/components/DhabaHeroPhoto";
-import { ContributeForm } from "@/components/ContributeForm";
+import { DhabaHeroCarousel, type HeroSlide } from "@/components/DhabaHeroCarousel";
+import { DetailTabs, type DetailTab } from "@/components/DetailTabs";
+import { DetailActionChips } from "@/components/DetailActionChips";
+import { ContributeCard } from "@/components/ContributeCard";
 import { TodayStatus } from "@/components/TodayStatus";
 
-// Mobile-first detail page.
-//   Single column at every breakpoint — no grid, no cards. Sections separated
-//   by thin <hr> dividers; whitespace + typography do the work. CTAs land
-//   above the fold immediately under the title.
-//   POPULAR_DISHES drives the saffron highlight inside the inline "On the menu"
-//   line; the same constant is reused whether dishes come from the structured
-//   menu or fall back to keyword extraction from the description.
+// Detail page, 2026-07 redesign ("pull off the highway?" page).
+//   Mobile-first single column with a sticky section-tab bar (Overview /
+//   Amenities / Menu / Details / Nearby); desktop keeps the two-column
+//   grid with the sticky sidebar. The spine of the page is the driver's
+//   decision: photo carousel hero → identity + route strip → action chips
+//   → trucker essentials → dishes → details → contribute → next stops.
+//   Everything renders from fields that already exist in dhabas.json and
+//   degrades gracefully when a field is missing — a brand-new CSV row
+//   with just a title and address still produces a complete page.
 
 const POPULAR_DISHES = [
   "aloo paratha",
@@ -56,6 +59,9 @@ const DISH_KEYWORDS = [
   "rice",
   "kebab",
 ] as const;
+
+// Anchored sections sit under two sticky bars (60px header + ~46px tabs).
+const SCROLL_MARGIN = 112;
 
 type RouteParams = Promise<{ slug: string }>;
 
@@ -123,11 +129,24 @@ export default async function DhabaDetailPage({
   const formattedAddress = dhaba.address?.replace(/,\s*USA$/, "");
   const cityState = cityStateFromAddress(dhaba.address);
   const phoneHref = dhaba.phone ? `tel:${dhaba.phone.replace(/\D/g, "")}` : null;
-  const photoSrc = getDhabaPhotoSrc(dhaba);
+  const pageUrl = `https://dhabaroute.com/dhabas/${dhaba.slug}`;
+
+  // Hero slides: the curated photos[] array when a listing has one,
+  // otherwise the single stored/proxied photo. The carousel's arrows and
+  // dots only appear once there is more than one slide.
+  const slides: HeroSlide[] = (dhaba.photos ?? []).map((p) => ({
+    src: p.url,
+    alt: p.alt ?? dhaba.title,
+    attribution: p.attribution,
+  }));
+  if (slides.length === 0) {
+    const single = getDhabaPhotoSrc(dhaba);
+    if (single) slides.push({ src: single, alt: dhaba.title });
+  }
 
   // Menu source: structured menu first, fall back to keyword scan only when
   // the description is long enough (>60 chars) and mentions ≥2 dish keywords —
-  // prevents low-signal "On the menu" sections for generic descriptions.
+  // prevents low-signal menu sections for generic descriptions.
   const menuDishes = collectMenuDishes(dhaba.menu);
   const extractedDishes = extractDishes(dhaba.description);
   const dishesToShow =
@@ -136,6 +155,16 @@ export default async function DhabaDetailPage({
       : (dhaba.description ?? "").length > 60 && extractedDishes.length >= 2
         ? extractedDishes.map((d) => d.name)
         : [];
+
+  const essentials = getEssentials(dhaba.tags, dhaba.hours);
+
+  const tabs: DetailTab[] = [
+    { id: "overview", label: "Overview" },
+    { id: "essentials", label: "Amenities" },
+    ...(dishesToShow.length > 0 ? [{ id: "menu", label: "Menu" }] : []),
+    { id: "details", label: "Details" },
+    ...(related.length > 0 ? [{ id: "nearby", label: "Nearby" }] : []),
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -176,10 +205,8 @@ export default async function DhabaDetailPage({
           </span>
         </nav>
 
-        {/* ── Hero photo — full container width ─────────────────────── */}
-        {photoSrc ? (
-          <DhabaHeroPhoto src={photoSrc} alt={dhaba.title} hours={dhaba.hours} />
-        ) : null}
+        {/* ── Hero photo carousel ────────────────────────────────────── */}
+        <DhabaHeroCarousel slides={slides} hours={dhaba.hours} />
 
         {/* ── Two-column grid: content left | sidebar right ─────────── */}
         {/* Mobile: single column. md+: [1fr 296px] with sticky sidebar. */}
@@ -188,7 +215,7 @@ export default async function DhabaDetailPage({
           {/* ── LEFT COLUMN ────────────────────────────────────────── */}
           <div className="min-w-0">
 
-            {/* Header: eyebrow + title + city/state */}
+            {/* Identity: eyebrow + title + city/state + open status */}
             <header>
               <RouteEyebrow routeHint={dhaba.routeHint} />
               <h1
@@ -211,68 +238,112 @@ export default async function DhabaDetailPage({
                   {[cityState, dhaba.routeHint].filter(Boolean).join(" · ")}
                 </p>
               ) : null}
+              <TodayStatus hours={dhaba.hours} />
             </header>
 
-            {/* CTAs — mobile only (desktop gets them in the sidebar) */}
-            {dhaba.mapsUrl || phoneHref ? (
-              <div className="mt-4 flex flex-col gap-2 md:hidden">
-                {dhaba.mapsUrl ? (
-                  <PrimaryAction href={dhaba.mapsUrl}>Get directions</PrimaryAction>
-                ) : null}
-                {phoneHref ? (
-                  <SecondaryAction href={phoneHref}>
-                    Call · {dhaba.phone}
-                  </SecondaryAction>
-                ) : null}
-              </div>
+            {/* Route strip — the line no city dining app can offer. */}
+            {routeData ? (
+              <Link
+                href={routeData.href}
+                className="mt-3 flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
+                style={{
+                  background: "rgba(26,107,71,0.10)",
+                  border: "1px solid rgba(26,107,71,0.30)",
+                  color: "#1a6b47",
+                }}
+              >
+                <span
+                  className="rounded-[6px] px-1.5 py-0.5 text-[11px] font-extrabold text-white"
+                  style={{ background: "#1a6b47", letterSpacing: "0.03em" }}
+                >
+                  {routeData.highway}
+                </span>
+                {routeData.count} stops on this route →
+              </Link>
             ) : null}
 
-            {/* Open status — mobile only */}
+            {/* Action chips — every chip works today. */}
+            <DetailActionChips
+              mapsUrl={dhaba.mapsUrl}
+              phone={dhaba.phone}
+              phoneHref={phoneHref}
+              hasMenuSection={dishesToShow.length > 0}
+              shareTitle={dhaba.title}
+              shareUrl={pageUrl}
+            />
+
+            {/* Sticky section tabs — mobile only; desktop has the sidebar. */}
             <div className="md:hidden">
-              <Divider />
-              <TodayStatus hours={dhaba.hours} />
+              <DetailTabs tabs={tabs} />
             </div>
 
-            {/* Description */}
-            {dhaba.description ? (
-              <p className="font-ui text-[14px] leading-[1.7] text-[#3c3128] mt-4">
-                {dhaba.description}
-              </p>
-            ) : null}
+            {/* Overview: description */}
+            <section id="overview" style={{ scrollMarginTop: SCROLL_MARGIN }}>
+              {dhaba.description ? (
+                <p className="font-ui text-[14px] leading-[1.7] text-[#3c3128] mt-5">
+                  {dhaba.description}
+                </p>
+              ) : null}
+            </section>
 
-            {/* Amenity pills */}
-            <AmenityStrip tags={dhaba.tags} hours={dhaba.hours} />
+            {/* Trucker essentials — scannable in under a second. */}
+            <section
+              id="essentials"
+              className="mt-6"
+              style={{ scrollMarginTop: SCROLL_MARGIN }}
+            >
+              <SectionTitle>Trucker essentials</SectionTitle>
+              <ul role="list" className="mt-3 grid grid-cols-2 gap-2">
+                {essentials.map((tile) => (
+                  <EssentialTile key={tile.label} {...tile} />
+                ))}
+              </ul>
+            </section>
 
-            {/* On the menu */}
+            {/* What's good here */}
             {dishesToShow.length > 0 ? (
-              <>
-                <Divider />
-                <section>
-                  <p className="font-ui font-bold uppercase text-[9.5px] tracking-[0.07em] text-[#c4b4a4] mb-2">
-                    On the menu
-                  </p>
-                  <p className="font-ui text-[13.5px] leading-[1.65] text-[#3c3128]">
-                    {dishesToShow.map((dish, i) => (
-                      <Fragment key={`${dish}-${i}`}>
-                        {i > 0 ? ", " : ""}
-                        {isPopularDish(dish) ? (
-                          <span style={{ color: "#df6028", fontWeight: 600 }}>
-                            {dish}
-                          </span>
-                        ) : (
-                          dish
-                        )}
-                      </Fragment>
-                    ))}
-                  </p>
-                </section>
-              </>
+              <section
+                id="menu"
+                className="mt-6"
+                style={{ scrollMarginTop: SCROLL_MARGIN }}
+              >
+                <SectionTitle>What&rsquo;s good here</SectionTitle>
+                <ul role="list" className="mt-3 flex flex-wrap gap-1.5">
+                  {dishesToShow.map((dish, i) => {
+                    const popular = isPopularDish(dish);
+                    return (
+                      <li
+                        key={`${dish}-${i}`}
+                        className="inline-flex items-center font-ui font-semibold"
+                        style={{
+                          fontSize: 12.5,
+                          borderRadius: 999,
+                          padding: "5px 12px",
+                          background: popular
+                            ? "rgba(223,96,40,0.10)"
+                            : "#f3ede2",
+                          border: popular
+                            ? "1px solid rgba(223,96,40,0.30)"
+                            : "1px solid #e4d8c6",
+                          color: popular ? "var(--accent)" : "#6a5a4a",
+                        }}
+                      >
+                        {dish}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
             ) : null}
 
-            {/* Facts + route badge + map — mobile only */}
-            <div className="md:hidden">
-              <Divider />
-              <dl>
+            {/* Details: facts + map — mobile only (desktop sidebar has them) */}
+            <section
+              id="details"
+              className="mt-6 md:hidden"
+              style={{ scrollMarginTop: SCROLL_MARGIN }}
+            >
+              <SectionTitle>Details</SectionTitle>
+              <dl className="mt-3">
                 {formattedAddress ? (
                   <Fact label="Address" value={formattedAddress} />
                 ) : null}
@@ -283,56 +354,20 @@ export default async function DhabaDetailPage({
                   <Fact label="Route" value={dhaba.routeHint} />
                 ) : null}
               </dl>
-              {routeData ? (
-                <Link
-                  href={routeData.href}
-                  className="mt-2 flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
-                  style={{
-                    background: "rgba(26,107,71,0.10)",
-                    border: "1px solid rgba(26,107,71,0.30)",
-                    color: "#1a6b47",
-                  }}
-                >
-                  {routeData.highway} · {routeData.count} stops on this route →
-                </Link>
-              ) : null}
               {dhaba.lat != null && dhaba.lng != null ? (
-                <section className="mt-6 rounded-2xl overflow-hidden">
+                <div className="mt-4 rounded-2xl overflow-hidden">
                   <DhabaDetailMap dhaba={dhaba} />
-                </section>
+                </div>
               ) : null}
-            </div>
+            </section>
 
-            {/* Been here? */}
-            <section className="mt-10">
-              <p
-                className="font-ui font-semibold uppercase"
-                style={{ fontSize: "10.5px", color: "#c4b4a4", letterSpacing: "0.08em" }}
-              >
-                Been here?
-              </p>
-              {contributed === "true" ? (
-                <p
-                  className="mt-4 rounded-xl px-4 py-3 text-[14px] font-ui"
-                  style={{
-                    background: "#f0f7f0",
-                    color: "#1a6b47",
-                    border: "1px solid rgba(26,107,71,0.20)",
-                  }}
-                >
-                  Thanks for contributing — we&rsquo;ll add it to the listing soon.
-                </p>
-              ) : (
-                <>
-                  <p
-                    className="mt-2 font-ui leading-[1.65]"
-                    style={{ fontSize: 14, color: "#3c3128" }}
-                  >
-                    Share a photo or menu — help other drivers know what to expect.
-                  </p>
-                  <ContributeForm dhabaTitle={dhaba.title} dhabaSlug={dhaba.slug} />
-                </>
-              )}
+            {/* Been here? — compact card, expands to the full form. */}
+            <section className="mt-8">
+              <ContributeCard
+                dhabaTitle={dhaba.title}
+                dhabaSlug={dhaba.slug}
+                contributed={contributed === "true"}
+              />
             </section>
 
             {/* Owner: claim listing */}
@@ -370,9 +405,6 @@ export default async function DhabaDetailPage({
               </div>
             ) : null}
 
-            {/* Open status + today's hours */}
-            <TodayStatus hours={dhaba.hours} />
-
             <Divider />
 
             {/* Fact rows */}
@@ -388,21 +420,6 @@ export default async function DhabaDetailPage({
               ) : null}
             </dl>
 
-            {/* Route badge */}
-            {routeData ? (
-              <Link
-                href={routeData.href}
-                className="flex items-center gap-2 rounded-[10px] px-3.5 py-2.5 text-[12px] font-semibold"
-                style={{
-                  background: "rgba(26,107,71,0.10)",
-                  border: "1px solid rgba(26,107,71,0.30)",
-                  color: "#1a6b47",
-                }}
-              >
-                {routeData.highway} · {routeData.count} stops on this route →
-              </Link>
-            ) : null}
-
             {/* Map */}
             {dhaba.lat != null && dhaba.lng != null ? (
               <section className="rounded-2xl overflow-hidden">
@@ -414,14 +431,18 @@ export default async function DhabaDetailPage({
 
         </div>{/* end grid */}
 
-        {/* ── Similar stops — full width below grid ──────────────────── */}
+        {/* ── Next stops — full width below grid ─────────────────────── */}
         {related.length > 0 ? (
-          <section className="mt-12">
+          <section
+            id="nearby"
+            className="mt-12"
+            style={{ scrollMarginTop: SCROLL_MARGIN }}
+          >
             <h2
               className="font-ui font-bold"
               style={{ fontSize: 19, color: "#1c1814" }}
             >
-              Similar stops
+              {routeData ? `Next stops on ${routeData.highway}` : "Similar stops"}
             </h2>
             <ul
               role="list"
@@ -467,6 +488,17 @@ function Divider() {
         margin: "18px 0",
       }}
     />
+  );
+}
+
+function SectionTitle({ children }: { children: ReactNode }) {
+  return (
+    <h2
+      className="font-ui font-bold"
+      style={{ fontSize: 16.5, color: "#1c1814" }}
+    >
+      {children}
+    </h2>
   );
 }
 
@@ -567,53 +599,135 @@ function Fact({
   );
 }
 
-function AmenityStrip({
-  tags,
-  hours,
-}: {
-  tags: string[];
-  hours: string[] | undefined;
-}) {
-  const tiles: string[] = [];
-  if (tags.some((t) => t.includes("Truck"))) tiles.push("Truck parking");
-  if (
-    getOpenStatus(hours) === "open" &&
-    (hours ?? []).some((line) => line.includes("24"))
-  ) {
-    tiles.push("24 hours");
-  }
-  if (tags.some((t) => t.includes("Gas"))) tiles.push("Gas");
-  if (tags.some((t) => t.includes("Shower"))) tiles.push("Showers");
+// ── Trucker essentials ─────────────────────────────────────────────────────
+// The four things a driver filters by, answerable in under a second.
+// A missing tag renders as "Not listed" — data absence is unknown, not "no",
+// and honest gaps build more trust than hidden ones.
 
-  if (tiles.length === 0) return null;
+interface EssentialTileData {
+  label: string;
+  icon: "truck" | "shower" | "fuel" | "wc" | "clock";
+  status: string;
+  yes: boolean;
+}
 
-  const priority = (label: string) =>
-    label === "Truck parking" || label === "24 hours";
+function getEssentials(
+  tags: string[],
+  hours: string[] | undefined,
+): EssentialTileData[] {
+  const has = (...keywords: string[]) =>
+    tags.some((t) => keywords.some((k) => t.toLowerCase().includes(k)));
+  const open24 = (hours ?? []).some((line) => line.includes("24"));
 
+  return [
+    {
+      label: "Truck parking",
+      icon: "truck",
+      yes: has("truck"),
+      status: has("truck") ? "Yes" : "Not listed",
+    },
+    {
+      label: open24 ? "Open 24 hours" : "Showers",
+      icon: open24 ? "clock" : "shower",
+      yes: open24 || has("shower"),
+      status: open24 ? "Yes" : has("shower") ? "Yes" : "Not listed",
+    },
+    {
+      label: "Gas / fuel",
+      icon: "fuel",
+      yes: has("gas", "fuel"),
+      status: has("gas", "fuel") ? "Yes" : "Not listed",
+    },
+    {
+      label: "Bathrooms",
+      icon: "wc",
+      yes: has("bathroom", "restroom"),
+      status: has("bathroom", "restroom") ? "Yes" : "Not listed",
+    },
+  ];
+}
+
+function EssentialTile({ label, icon, status, yes }: EssentialTileData) {
   return (
-    <ul role="list" className="mt-3 flex flex-wrap gap-1.5">
-      {tiles.map((label) => {
-        const isPriority = priority(label);
-        return (
-          <li
-            key={label}
-            className="inline-flex items-center font-medium"
-            style={{
-              fontSize: "11.5px",
-              borderRadius: 999,
-              padding: "3px 10px",
-              background: isPriority ? "rgba(19,136,8,0.07)" : "#f3ede2",
-              border: isPriority
-                ? "1px solid rgba(19,136,8,0.25)"
-                : "1px solid #e4d8c6",
-              color: isPriority ? "#1a6b47" : "#6a5a4a",
-            }}
-          >
-            {label}
-          </li>
-        );
-      })}
-    </ul>
+    <li
+      className="flex items-center gap-2.5 rounded-xl font-ui font-semibold"
+      style={{
+        fontSize: 12.5,
+        padding: "11px 12px",
+        background: yes ? "rgba(19,136,8,0.07)" : "#ffffff",
+        border: yes
+          ? "1px solid rgba(19,136,8,0.25)"
+          : "1px solid #e4d8c6",
+        color: yes ? "#1a6b47" : "#8a7a6a",
+      }}
+    >
+      <EssentialIcon icon={icon} yes={yes} />
+      <span className="min-w-0 truncate">{label}</span>
+      <span
+        className="ml-auto flex-none font-bold uppercase"
+        style={{ fontSize: 10.5, color: yes ? "#138808" : "#c4b4a4" }}
+      >
+        {status}
+      </span>
+    </li>
+  );
+}
+
+function EssentialIcon({
+  icon,
+  yes,
+}: {
+  icon: EssentialTileData["icon"];
+  yes: boolean;
+}) {
+  const paths: Record<EssentialTileData["icon"], ReactNode> = {
+    truck: (
+      <>
+        <path d="M1 8h13v8H1zM14 11h4l3 3v2h-7z" />
+        <circle cx="6" cy="18" r="1.8" />
+        <circle cx="17.5" cy="18" r="1.8" />
+      </>
+    ),
+    shower: (
+      <>
+        <path d="M4 21V6a3 3 0 0 1 6 0v1" />
+        <path d="M7 7h6" />
+        <path d="M10 11v.01M13 11v.01M16 11v.01M10 15v.01M13 15v.01M16 15v.01M13 19v.01" />
+      </>
+    ),
+    fuel: (
+      <>
+        <path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M14 8h3a2 2 0 0 1 2 2v7a1.5 1.5 0 0 0 3 0V9l-3-3" />
+        <path d="M3 21h12" />
+      </>
+    ),
+    wc: (
+      <>
+        <circle cx="12" cy="5" r="2" />
+        <path d="M9 22v-6H7l2.5-7h5L17 16h-2v6" />
+      </>
+    ),
+    clock: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </>
+    ),
+  };
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="w-[18px] h-[18px] flex-none"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ color: yes ? "#138808" : "#c4b4a4" }}
+      aria-hidden
+    >
+      {paths[icon]}
+    </svg>
   );
 }
 
