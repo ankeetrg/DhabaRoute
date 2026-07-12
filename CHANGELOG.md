@@ -7,6 +7,39 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Desktop detail page: 60/40 hero/facts split with a collapsible map ribbon
+
+**Commit:** [`1fd67cd`](https://github.com/ankeetrg/DhabaRoute/commit/1fd67cd)
+
+Follow-up to the desktop hero+sidebar layout above, iterated through
+several rounds of user feedback on a static mockup before shipping:
+
+- **Column widths changed from 50/50 to 60% photo / 40% CTAs+facts+map.**
+- **The map now collapses into a "View map" ribbon** (new `MapRibbon.tsx`)
+  instead of always showing a full 210px map, which had made the info
+  column noticeably taller than the photo. Desktop: hover the ribbon (or
+  focus it via keyboard) to expand; move the cursor away (or blur) and it
+  collapses. Mobile/touch: tap to open, tap again to close — reusing the
+  `(pointer: coarse)` check already used by `MapView.tsx`. Also swapped
+  into the mobile "Details" tab panel, so mobile gets the same behavior.
+- **Get directions / Call / View map shrink to 80% width (centered), 36px
+  tall, 13px font** (previously full-width, 44px, 14px) so they read as
+  normal buttons instead of oversized bars in the narrower column. The
+  map itself stays full width once opened — only the trigger shrinks.
+- **Hero photo height bumped from 20vh (200–260px) to 24vh (230–280px)**
+  so its fixed size lands close to the now-compact info column's natural
+  height, minimizing empty space beneath it. The photo is still never
+  stretched/deformed — it keeps a fixed size and is centered in the row;
+  the two column *boxes* are height-matched via flex's default
+  `items-stretch`.
+
+**Verified:** iterated through five rounds of a static HTML mockup
+(Node isn't installed locally) matching the real Tailwind classes,
+approved by the user before each push; deploy confirmed via the GitHub
+commit-status API (`state: success`).
+
+---
+
 ## 2026-07-12 — Fix: detail-page hero photo took up too much of the mobile screen
 
 **Commit:** [`5687d90`](https://github.com/ankeetrg/DhabaRoute/commit/5687d90)
