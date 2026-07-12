@@ -7,6 +7,34 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Fix: blank/broken map on the detail page's mobile Details tab
+
+**Commit:** [`551bd64`](https://github.com/ankeetrg/DhabaRoute/commit/551bd64)
+
+Regression from the tab-panels rework above: the Details panel now starts
+hidden (`display:none`) until tapped, since only Overview is active on
+load. The Leaflet map inside it (`MapView.tsx` → `DhabaDetailMap`) mounts
+via react-leaflet's `MapContainer`, which measures its container at mount
+to fit the initial view — mounting inside a 0×0 hidden box produced a map
+fitted/tiled against zero size: blank tiles with a stray vector fragment
+in the corner, and it never recovered once the panel became visible
+because nothing told Leaflet to re-measure.
+
+**Fix:** `FitToBounds` in `MapView.tsx` now watches the container with a
+one-shot `ResizeObserver` when it isn't already visible at mount. The
+first time the container gets a real size (the tab becoming active), it
+calls `map.invalidateSize()` and re-runs the same initial fit, then
+disconnects. Scoped so it only fires for maps that mount hidden — the
+home page map and the desktop sidebar map (both visible at mount) are
+untouched, and it never re-fights a user's manual pan/zoom on later
+resizes since it only runs once.
+
+**Verified:** deploy confirmed via the GitHub commit-status API
+(`state: success`) — Node still isn't installed locally, so this is
+reviewed-then-shipped rather than build-tested first.
+
+---
+
 ## 2026-07-12 — Mobile detail-page tabs: real panels instead of scroll anchors
 
 **Commits:** [`88573ad`](https://github.com/ankeetrg/DhabaRoute/commit/88573ad), [`cb1a544`](https://github.com/ankeetrg/DhabaRoute/commit/cb1a544), [`82fdcf1`](https://github.com/ankeetrg/DhabaRoute/commit/82fdcf1)
