@@ -7,6 +7,59 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Dhaba detail page redesign: built around the driver's decision, not booking/paying
+
+**Commit:** [`1ae25c2`](https://github.com/ankeetrg/DhabaRoute/commit/1ae25c2)
+
+Rebuilt `src/app/dhabas/[slug]/page.tsx` — the single template statically
+generated for every slug in `dhabas.json` — around one question: "should I
+pull off the highway for this?" Previously validated as an interactive
+Claude Artifact mockup against Preet Dhaba's real data before implementation.
+
+**What changed:**
+- Photo hero is now a one-photo-at-a-time carousel (`DhabaHeroCarousel`)
+  with clickable prev/next arrows and pagination dots; renders a plain
+  static photo (no dead controls) when a listing has only one image, and
+  activates automatically once a listing's `photos[]` array has more than one.
+- New route strip under the title ("I-40 · N stops on this route →") using
+  the site's existing green route-badge treatment.
+- New action-chip row (`DetailActionChips`) — every chip is functional:
+  "What's good here?" scrolls to the dish list, Directions/Call use real
+  `mapsUrl`/`tel:` links, Share uses `navigator.share` with a clipboard
+  fallback, and a new "Report an update" chip links to `/update-listing`.
+- New "Trucker essentials" 2×2 grid (truck parking, showers/24-hr, fuel,
+  bathrooms) — green when present, "Not listed" (not a false "No") when the
+  CSV has no matching tag.
+- New sticky in-page tab bar (`DetailTabs`, mobile only) that scroll-anchors
+  to Overview / Amenities / Menu / Details / Nearby — one server-rendered
+  page, no client-side view switching.
+- Contribution form collapsed into a compact dashed card (`ContributeCard`)
+  with three one-tap intents (photo / menu / note) that expand the existing
+  Formspree form in place.
+- "Similar stops" renamed to "Next stops on {highway}" when the dhaba has a
+  parsed route.
+- Removed the now-unused `DhabaHeroPhoto` component (superseded by the
+  carousel).
+
+**Why:** the reference design (a city dining app) is built around booking
+a table and paying a bill; a roadside dhaba page has no such transaction —
+its job is to answer a driver's amenity and route questions in a few
+seconds. See `dhaba-page-preview.html`-adjacent design rationale in the
+Claude Artifact linked from this session.
+
+**New CSV entries get this design automatically:** the page is generated
+via `generateStaticParams()` over every slug in `dhabas.json`, which is
+rebuilt from `dhabas.csv` by the existing `prebuild`/`predev` hook
+(`scripts/build-data.mjs`) — no per-listing work needed.
+
+**Verified:** reviewed line-by-line against existing component signatures
+and types (Node is not installed on this dev machine, so this is
+untested locally); pushed to `main` and confirmed the Vercel production
+build succeeded via the GitHub commit status API
+(`GET /repos/ankeetrg/DhabaRoute/commits/1ae25c2/status` → `"state": "success"`).
+
+---
+
 ## 2026-07-12 — Fix: List view compact cards blew the page out sideways on mobile
 
 **Commit:** [`af1101e`](https://github.com/ankeetrg/DhabaRoute/commit/af1101e)
