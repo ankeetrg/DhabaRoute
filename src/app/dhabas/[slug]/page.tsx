@@ -10,7 +10,7 @@ import type { Dhaba, DhabaMenu } from "@/lib/types";
 import { DhabaCard } from "@/components/DhabaCard";
 import { DhabaDetailMap } from "@/components/DhabaDetailMap";
 import { DhabaHeroCarousel, type HeroSlide } from "@/components/DhabaHeroCarousel";
-import { DetailTabs, type DetailTab } from "@/components/DetailTabs";
+import { DetailTabPanels, type DetailPanel } from "@/components/DetailTabPanels";
 import { DetailActionChips } from "@/components/DetailActionChips";
 import { ContributeCard } from "@/components/ContributeCard";
 import { TodayStatus } from "@/components/TodayStatus";
@@ -60,8 +60,10 @@ const DISH_KEYWORDS = [
   "kebab",
 ] as const;
 
-// Anchored sections sit under two sticky bars (60px header + ~46px tabs).
-const SCROLL_MARGIN = 112;
+// The "Nearby" section lives outside the tab-panel component, further down
+// the page; scrolling to it only has the global sticky header (60px) to
+// clear, since the mobile tab bar's own sticky box has long scrolled away.
+const HEADER_H = 60;
 
 type RouteParams = Promise<{ slug: string }>;
 
@@ -158,12 +160,100 @@ export default async function DhabaDetailPage({
 
   const essentials = getEssentials(dhaba.tags, dhaba.hours);
 
-  const tabs: DetailTab[] = [
-    { id: "overview", label: "Overview" },
-    { id: "essentials", label: "Amenities" },
-    ...(dishesToShow.length > 0 ? [{ id: "menu", label: "Menu" }] : []),
-    { id: "details", label: "Details" },
-    ...(related.length > 0 ? [{ id: "nearby", label: "Nearby" }] : []),
+  // Mobile tab panels — Overview/Amenities/Menu stay visible on desktop
+  // (no tab UI there, just plain stacked content); Details is mobile-only
+  // since desktop shows the same facts + map in the sidebar instead.
+  const panels: DetailPanel[] = [
+    {
+      id: "overview",
+      label: "Overview",
+      desktopAlwaysVisible: true,
+      content: dhaba.description ? (
+        <p className="font-ui text-[14px] leading-[1.7] text-[#3c3128] mt-5">
+          {dhaba.description}
+        </p>
+      ) : null,
+    },
+    {
+      id: "essentials",
+      label: "Amenities",
+      desktopAlwaysVisible: true,
+      content: (
+        <div className="mt-5">
+          <SectionTitle>Trucker essentials</SectionTitle>
+          <ul role="list" className="mt-3 grid grid-cols-2 gap-2">
+            {essentials.map((tile) => (
+              <EssentialTile key={tile.label} {...tile} />
+            ))}
+          </ul>
+        </div>
+      ),
+    },
+    ...(dishesToShow.length > 0
+      ? [
+          {
+            id: "menu",
+            label: "Menu",
+            desktopAlwaysVisible: true,
+            content: (
+              <div className="mt-5">
+                <SectionTitle>What&rsquo;s good here</SectionTitle>
+                <ul role="list" className="mt-3 flex flex-wrap gap-1.5">
+                  {dishesToShow.map((dish, i) => {
+                    const popular = isPopularDish(dish);
+                    return (
+                      <li
+                        key={`${dish}-${i}`}
+                        className="inline-flex items-center font-ui font-semibold"
+                        style={{
+                          fontSize: 12.5,
+                          borderRadius: 999,
+                          padding: "5px 12px",
+                          background: popular
+                            ? "rgba(223,96,40,0.10)"
+                            : "#f3ede2",
+                          border: popular
+                            ? "1px solid rgba(223,96,40,0.30)"
+                            : "1px solid #e4d8c6",
+                          color: popular ? "var(--accent)" : "#6a5a4a",
+                        }}
+                      >
+                        {dish}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ),
+          },
+        ]
+      : []),
+    {
+      id: "details",
+      label: "Details",
+      desktopAlwaysVisible: false,
+      content: (
+        <div className="mt-5">
+          <SectionTitle>Details</SectionTitle>
+          <dl className="mt-3">
+            {formattedAddress ? (
+              <Fact label="Address" value={formattedAddress} />
+            ) : null}
+            {dhaba.phone && phoneHref ? (
+              <Fact label="Phone" value={dhaba.phone} href={phoneHref} />
+            ) : null}
+            {dhaba.routeHint ? (
+              <Fact label="Route" value={dhaba.routeHint} />
+            ) : null}
+          </dl>
+          {dhaba.lat != null && dhaba.lng != null ? (
+            <div className="mt-4 rounded-2xl overflow-hidden">
+              <DhabaDetailMap dhaba={dhaba} />
+            </div>
+          ) : null}
+        </div>
+      ),
+    },
   ];
 
   const jsonLd = {
@@ -272,94 +362,17 @@ export default async function DhabaDetailPage({
               shareUrl={pageUrl}
             />
 
-            {/* Sticky section tabs — mobile only; desktop has the sidebar. */}
-            <div className="md:hidden">
-              <DetailTabs tabs={tabs} />
-            </div>
-
-            {/* Overview: description */}
-            <section id="overview" style={{ scrollMarginTop: SCROLL_MARGIN }}>
-              {dhaba.description ? (
-                <p className="font-ui text-[14px] leading-[1.7] text-[#3c3128] mt-5">
-                  {dhaba.description}
-                </p>
-              ) : null}
-            </section>
-
-            {/* Trucker essentials — scannable in under a second. */}
-            <section
-              id="essentials"
-              className="mt-6"
-              style={{ scrollMarginTop: SCROLL_MARGIN }}
-            >
-              <SectionTitle>Trucker essentials</SectionTitle>
-              <ul role="list" className="mt-3 grid grid-cols-2 gap-2">
-                {essentials.map((tile) => (
-                  <EssentialTile key={tile.label} {...tile} />
-                ))}
-              </ul>
-            </section>
-
-            {/* What's good here */}
-            {dishesToShow.length > 0 ? (
-              <section
-                id="menu"
-                className="mt-6"
-                style={{ scrollMarginTop: SCROLL_MARGIN }}
-              >
-                <SectionTitle>What&rsquo;s good here</SectionTitle>
-                <ul role="list" className="mt-3 flex flex-wrap gap-1.5">
-                  {dishesToShow.map((dish, i) => {
-                    const popular = isPopularDish(dish);
-                    return (
-                      <li
-                        key={`${dish}-${i}`}
-                        className="inline-flex items-center font-ui font-semibold"
-                        style={{
-                          fontSize: 12.5,
-                          borderRadius: 999,
-                          padding: "5px 12px",
-                          background: popular
-                            ? "rgba(223,96,40,0.10)"
-                            : "#f3ede2",
-                          border: popular
-                            ? "1px solid rgba(223,96,40,0.30)"
-                            : "1px solid #e4d8c6",
-                          color: popular ? "var(--accent)" : "#6a5a4a",
-                        }}
-                      >
-                        {dish}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
-            ) : null}
-
-            {/* Details: facts + map — mobile only (desktop sidebar has them) */}
-            <section
-              id="details"
-              className="mt-6 md:hidden"
-              style={{ scrollMarginTop: SCROLL_MARGIN }}
-            >
-              <SectionTitle>Details</SectionTitle>
-              <dl className="mt-3">
-                {formattedAddress ? (
-                  <Fact label="Address" value={formattedAddress} />
-                ) : null}
-                {dhaba.phone && phoneHref ? (
-                  <Fact label="Phone" value={dhaba.phone} href={phoneHref} />
-                ) : null}
-                {dhaba.routeHint ? (
-                  <Fact label="Route" value={dhaba.routeHint} />
-                ) : null}
-              </dl>
-              {dhaba.lat != null && dhaba.lng != null ? (
-                <div className="mt-4 rounded-2xl overflow-hidden">
-                  <DhabaDetailMap dhaba={dhaba} />
-                </div>
-              ) : null}
-            </section>
+            {/* Section tabs (mobile: real swappable panels) + panel content.
+                Overview/Amenities/Menu stay stacked & visible on desktop;
+                Details is mobile-only (desktop sidebar has its own copy). */}
+            <DetailTabPanels
+              panels={panels}
+              jumpTab={
+                related.length > 0
+                  ? { label: "Nearby", targetId: "nearby" }
+                  : undefined
+              }
+            />
 
             {/* Been here? — compact card, expands to the full form. */}
             <section className="mt-8">
@@ -436,7 +449,7 @@ export default async function DhabaDetailPage({
           <section
             id="nearby"
             className="mt-12"
-            style={{ scrollMarginTop: SCROLL_MARGIN }}
+            style={{ scrollMarginTop: HEADER_H }}
           >
             <h2
               className="font-ui font-bold"
