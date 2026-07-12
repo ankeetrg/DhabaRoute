@@ -51,12 +51,10 @@ export function ContributeCard({
       </p>
 
       {!expanded ? (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-3">
           <IntentButton solid onClick={() => setExpanded(true)}>
-            Add photo
+            Add photo / menu / note
           </IntentButton>
-          <IntentButton onClick={() => setExpanded(true)}>Add menu</IntentButton>
-          <IntentButton onClick={() => setExpanded(true)}>Add a note</IntentButton>
         </div>
       ) : (
         <ContributeForm dhabaTitle={dhabaTitle} dhabaSlug={dhabaSlug} />
