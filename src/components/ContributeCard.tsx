@@ -53,7 +53,7 @@ export function ContributeCard({
       {!expanded ? (
         <div className="mt-3">
           <IntentButton solid onClick={() => setExpanded(true)}>
-            Add photo / menu / note
+            Add Photo / Menu / Note
           </IntentButton>
         </div>
       ) : (
