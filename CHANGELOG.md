@@ -7,6 +7,25 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Fix: no way to close the expanded contribute form
+
+**Commits:** [`be5aecc`](https://github.com/ankeetrg/DhabaRoute/commit/be5aecc), [`8ead1e8`](https://github.com/ankeetrg/DhabaRoute/commit/8ead1e8)
+
+Tapping "Add Photo / Menu / Note" on the detail page expanded the
+contribution form in place with no way back to the collapsed view —
+flagged by the user.
+
+**Fix:** added a "Close" control above the form (`ContributeCard.tsx`)
+that collapses it back to the initial intent-button state. First shipped
+as plain muted text, then restyled as an orange outline pill button
+(same shape/family as "Add Photo / Menu / Note") per follow-up feedback,
+since the plain text read as secondary/easy to miss.
+
+**Verified:** deploys confirmed via the GitHub commit-status API
+(`state: success` on both commits) — Node still isn't installed locally.
+
+---
+
 ## 2026-07-12 — Desktop detail page: 60/40 hero/facts split with a collapsible map ribbon
 
 **Commit:** [`1fd67cd`](https://github.com/ankeetrg/DhabaRoute/commit/1fd67cd)
