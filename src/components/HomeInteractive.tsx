@@ -447,24 +447,21 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
                 setSelectedHighway={setSelectedHighway}
               />
             </div>
-            {hasAnyPins ? (
-              <div className="self-end sm:self-auto">
+            {/* "+ Submit" shares this row with the view toggle instead of
+                getting its own row below — that extra row was mostly empty
+                space and made the page noticeably longer. */}
+            <div className="flex items-center gap-3 self-end sm:self-auto">
+              {hasAnyPins ? (
                 <ViewToggle mode={viewMode} setMode={setViewMode} />
-              </div>
-            ) : null}
-          </div>
-
-          {/* "+ Submit" — moved down from the header so it sits under the
-              State/Highway/tag selectors instead of crowding the top nav.
-              Left-aligned so it sits directly under the "State" chip. */}
-          <div className="mt-2.5 flex justify-start">
-            <Link
-              href="/submit"
-              className="text-[13px] font-semibold whitespace-nowrap transition-opacity duration-150 hover:opacity-75"
-              style={{ color: "var(--green)" }}
-            >
-              + Submit
-            </Link>
+              ) : null}
+              <Link
+                href="/submit"
+                className="text-[13px] font-semibold whitespace-nowrap transition-opacity duration-150 hover:opacity-75"
+                style={{ color: "var(--green)" }}
+              >
+                + Submit
+              </Link>
+            </div>
           </div>
         </div>
       </div>
