@@ -7,6 +7,28 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-13 — Detail page: full-size photo lightbox
+
+**Commit:** [`ba4200d`](https://github.com/ankeetrg/DhabaRoute/commit/ba4200d)
+
+The hero carousel (`DhabaHeroCarousel.tsx`) already supported multiple
+photos with arrows/dots, but there was no way to see a photo at full
+size — asked for directly by the user.
+
+**What changed:** clicking/tapping the hero photo now opens a full-screen
+lightbox showing the uncropped image (new `objectFit` prop on
+`DhabaPhoto.tsx`, `"cover"` by default so every existing caller is
+unaffected — the lightbox is the first to opt into `"contain"`). When a
+dhaba has more than one photo, the lightbox gets its own prev/next
+arrows, a "2 / 5" counter, and reuses the same swipe handlers as the
+inline carousel. Closes via the X button, clicking the dark backdrop, or
+Escape; body scroll is locked while it's open.
+
+**Verified:** deploy confirmed via the GitHub commit-status API
+(`state: success`) — Node still isn't installed locally.
+
+---
+
 ## 2026-07-12 — Fix: no way to close the expanded contribute form
 
 **Commits:** [`be5aecc`](https://github.com/ankeetrg/DhabaRoute/commit/be5aecc), [`8ead1e8`](https://github.com/ankeetrg/DhabaRoute/commit/8ead1e8)
