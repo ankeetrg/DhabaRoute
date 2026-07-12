@@ -50,7 +50,7 @@ export function DhabaHeroCarousel({ slides, hours }: DhabaHeroCarouselProps) {
     >
       {/* Track — slides sit side by side; translateX moves the strip. */}
       <div
-        className="flex h-[260px] md:h-[400px] motion-safe:transition-transform motion-safe:duration-300"
+        className="flex h-[30vh] min-h-[160px] max-h-[280px] md:h-[400px] md:max-h-none motion-safe:transition-transform motion-safe:duration-300"
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {slides.map((slide, i) => (
