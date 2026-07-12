@@ -7,6 +7,25 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-07-12 — Home page: Submit link merged into the view-toggle row
+
+**Commit:** [`d00fc63`](https://github.com/ankeetrg/DhabaRoute/commit/d00fc63)
+
+The "+ Submit" link (added below the filters in `89fa663`) had its own row,
+which was mostly empty space and made the page noticeably longer — flagged
+by the user with a screenshot.
+
+**Fix:** moved it inline next to the list/split/map toggle — both now share
+one `flex items-center gap-3` row instead of Submit getting a dedicated row
+underneath. The view toggle still only renders when there are pins to show
+(`hasAnyPins`); Submit always renders regardless.
+
+**Verified:** static mobile mockup at a 375px viewport — Submit and the
+toggle share one 49px-tall row, and the sticky filter header now ends
+immediately after it with no extra gap.
+
+---
+
 ## 2026-07-12 — Fix: blank/broken map on the detail page's mobile Details tab
 
 **Commit:** [`551bd64`](https://github.com/ankeetrg/DhabaRoute/commit/551bd64)
