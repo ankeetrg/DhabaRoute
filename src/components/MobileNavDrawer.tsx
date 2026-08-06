@@ -22,7 +22,6 @@ const TOP_LINKS: MenuLink[] = [
   { label: "Search Dhabas", href: "/search" },
   { label: "All Dhabas", href: "/all-dhabas" },
   { label: "Submit a new Dhaba", href: "/submit" },
-  { label: "Claim a listing", href: "/claim-listing" },
 ];
 
 const OWNER_LINKS: MenuLink[] = [
@@ -100,7 +99,11 @@ export function MobileNavDrawer() {
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"
-            className="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col bg-white shadow-cardHover motion-safe:transition-transform motion-safe:duration-200"
+            // bg-paper (not bg-white) — matches the site's actual warm
+            // cream background (Header.tsx's own background is the same
+            // token, just as a translucent rgba). Plain white read as
+            // visibly off against the rest of the page.
+            className="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col bg-paper shadow-cardHover motion-safe:transition-transform motion-safe:duration-200"
           >
             <div className="flex items-center justify-between border-b border-paper-warm px-4 h-[60px] flex-none">
               <span className="font-logo font-extrabold text-[16px] text-ink">Menu</span>
