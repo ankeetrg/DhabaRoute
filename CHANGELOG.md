@@ -7,6 +7,34 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-08-07 — Fix: mobile menu drawer collapsed to a 60px sliver
+
+**Commit:** [`551c7d1`](https://github.com/ankeetrg/DhabaRoute/commit/551c7d1)
+
+User reported (with a screenshot) that tapping the hamburger on a real
+phone opened a drawer showing only the "Menu"/close-button row — no nav
+links visible, overlapping the site header instead of covering the screen.
+This also resolved the verification gap flagged in the entry below: the
+mobile hero/CTA/ad-placeholder were confirmed working correctly on the
+user's real phone in that same screenshot.
+
+**Root cause:** `MobileNavDrawer.tsx` renders from inside `Header.tsx`,
+and `<header>` sets an inline `backdropFilter` — which per the CSS spec
+establishes a new containing block for any `position: fixed` descendant.
+The drawer's backdrop/panel are `fixed inset-y-0`, so instead of sizing
+against the viewport they sized against the 60px-tall header box.
+
+**Fix:** portal the open drawer's backdrop+panel to `document.body` (same
+technique already used by the State/Highway filter dropdown panels).
+Reproduced the exact 60px-tall/0-width collapse against the live site via
+`getBoundingClientRect`/`getComputedStyle` at a genuine 375px viewport
+before the fix, then confirmed after redeploying that the panel correctly
+measures 288×812 (full height) with the backdrop covering the full
+375×812 viewport, and that the Owners section still expands to reveal all
+3 of its links.
+
+---
+
 ## 2026-08-06 — Mobile home redesign + hamburger submenu (Search/All Dhabas/Claim a listing)
 
 **Commits:** [`d1e4e1c`](https://github.com/ankeetrg/DhabaRoute/commit/d1e4e1c), [`1bcf976`](https://github.com/ankeetrg/DhabaRoute/commit/1bcf976), [`08f967b`](https://github.com/ankeetrg/DhabaRoute/commit/08f967b)
