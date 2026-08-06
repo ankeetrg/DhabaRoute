@@ -15,6 +15,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { MobileNavDrawer } from "./MobileNavDrawer";
 
 interface HeaderProps {
   telegramUrl?: string | null;
@@ -45,26 +46,29 @@ export function Header({ telegramUrl }: HeaderProps) {
       }}
     >
       <div className="container-page flex items-center justify-between h-[60px]">
-        {/* Wordmark */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 hover:opacity-80 motion-safe:transition-opacity duration-150"
-          aria-label="DhabaRoute — home"
-        >
-          <LogoMark />
-          <span className="flex items-baseline gap-px">
-            {/* v2: wordmark in Space Grotesk only (font-logo), not the display font */}
-            <span className="font-logo font-extrabold text-[19px] leading-none text-ink tracking-tight">
-              Dhaba
+        {/* Hamburger (mobile only) + wordmark */}
+        <div className="flex items-center gap-1">
+          <MobileNavDrawer />
+          <Link
+            href="/"
+            className="flex items-center gap-2 hover:opacity-80 motion-safe:transition-opacity duration-150"
+            aria-label="DhabaRoute — home"
+          >
+            <LogoMark />
+            <span className="flex items-baseline gap-px">
+              {/* v2: wordmark in Space Grotesk only (font-logo), not the display font */}
+              <span className="font-logo font-extrabold text-[19px] leading-none text-ink tracking-tight">
+                Dhaba
+              </span>
+              <span
+                className="font-logo font-bold text-[17px] leading-none"
+                style={{ color: "var(--accent)" }}
+              >
+                Route
+              </span>
             </span>
-            <span
-              className="font-logo font-bold text-[17px] leading-none"
-              style={{ color: "var(--accent)" }}
-            >
-              Route
-            </span>
-          </span>
-        </Link>
+          </Link>
+        </div>
 
         {/* Nav — DM Sans 13.5px weight 500 */}
         <nav className="flex items-center gap-4 sm:gap-5 font-ui">
