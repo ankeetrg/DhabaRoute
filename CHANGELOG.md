@@ -7,6 +7,59 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-08-06 — Mobile home redesign + hamburger submenu (Search/All Dhabas/Claim a listing)
+
+**Commits:** [`d1e4e1c`](https://github.com/ankeetrg/DhabaRoute/commit/d1e4e1c), [`1bcf976`](https://github.com/ankeetrg/DhabaRoute/commit/1bcf976), [`08f967b`](https://github.com/ankeetrg/DhabaRoute/commit/08f967b)
+
+Mobile home was dominated by the search bar, State/Highway filter
+dropdowns, and the full list/map results — no room above the fold for
+ads, and the page felt cluttered before a driver saw any real content.
+User asked for a mobile-only redesign with search/browse/claim moved
+behind a collapsible left-side hamburger submenu.
+
+**What changed:** a new hamburger button (`MobileNavDrawer.tsx`, `sm:hidden`,
+rendered from `Header.tsx`) opens a slide-in drawer with Search Dhabas
+(`/search`), All Dhabas (`/all-dhabas`), Submit a new Dhaba (existing
+`/submit`), Claim a listing (`/claim-listing`, new), and an expandable
+Owners section linking the existing `/for-owners`, `/claim`, and
+`/update-listing` pages. `/search` shows the search bar + State/Highway/tag
+filters but deliberately shows nothing until a query/filter is active — no
+157-listing dump. `/all-dhabas` keeps the list/split/map `ViewToggle` with
+just a plain text search, no filter chips. The mobile home page itself
+(`HomeInteractive.tsx`) now renders a slim hero + one "Find dhabas near
+you" CTA + a visible dashed-border "Ad space" placeholder instead of the
+full search/filter/list/map UI, gated by a `useState`+`useEffect`
+`matchMedia("(max-width: 639px)")` check (not a module constant, to avoid
+a hydration mismatch) with a `resize` listener + one `requestAnimationFrame`
+re-check as fallbacks. Desktop is untouched — the existing UI only moved
+inside a `!isMobile` branch. The State/Highway/tag filter UI and its
+matching logic were lifted out of `HomeInteractive.tsx` into
+`src/lib/useDhabaFilters.ts` and `src/components/search/{SearchBar,
+FilterChips,ListMapPrimitives}.tsx` so `/search` and `/all-dhabas` reuse
+the same implementation instead of a rewrite.
+
+**Verified:** all three commits deployed successfully per the GitHub
+commit-status API (`state: success`). Confirmed live: all four new/updated
+routes return 200 with the expected markup, the hamburger drawer opens and
+its Owners section expands (tested directly against the live site with a
+short delay after the click to let React commit, via `Claude_Browser`'s
+`javascript_tool`), and the desktop home page still renders its full
+search/filter/list/map UI unchanged. Could NOT independently confirm the
+mobile-only hero/CTA/ad-placeholder actually appears on a real phone from
+within this session — this session's remote browser tooling was
+demonstrated (via a control test: `window.scrollTo()`, a trusted native
+API call, failed to trigger the site's pre-existing, long-working
+`Header.tsx` scroll listener) to not reliably deliver native browser
+events to page-registered listeners, so the `isMobile` flip couldn't be
+observed here even though the exact shipped code was inspected byte-for-
+byte in the minified bundle and is a standard, widely-used React pattern.
+The equivalent hamburger/drawer/hero/CTA/ad-placeholder markup and
+interactions were separately confirmed working in a plain static HTML/JS
+mockup at a true 375px viewport, which isn't subject to that same
+limitation. Worth a real-phone check next time someone's on site.
+
+---
+
 ## 2026-07-13 — Detail page: full-size photo lightbox
 
 **Commit:** [`ba4200d`](https://github.com/ankeetrg/DhabaRoute/commit/ba4200d)
