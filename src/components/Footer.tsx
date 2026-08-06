@@ -1,18 +1,21 @@
 // Footer — server component.
 //
 // Structure (top → bottom):
-//   1. CTA band — accent background, "Know a spot we're missing?" + submit button
+//   1. CTA band — "Know a spot we're missing?" + submit button on the home
+//      page; an ad placeholder on every other page (see FooterCtaBand.tsx —
+//      split into its own client component since that per-page check needs
+//      usePathname()).
 //   2. Lower footer — paper-soft background, logo/tagline, nav columns,
 //      bottom bar with copyright and "Free forever" note.
 //
 // No "use client" — the Telegram URL resolved in layout.tsx flows in via
-// getDataMeta() + the existing pattern. The submit button is an <a> link,
-// not a form, so no client JS needed.
+// getDataMeta() + the existing pattern.
 
 import Link from "next/link";
 import { getAllDhabas, getDataMeta } from "@/lib/dhabas";
 import { parseRoute, highwaySlug, stateSlug } from "@/lib/parseRoute";
 import { getTelegramUrl } from "@/lib/telegram";
+import { FooterCtaBand } from "./FooterCtaBand";
 
 export async function Footer() {
   const { count, generatedAt } = getDataMeta();
@@ -48,34 +51,7 @@ export async function Footer() {
   return (
     <footer>
       {/* ── 1. CTA BAND ──────────────────────────────────────────── */}
-      {/* Horizontal padding starts at 0 and only turns on at sm: — the
-          inner .container-page already carries its own px-5/sm:px-8 gutter,
-          so leaving this at a flat px-8 double-padded mobile (32px + 20px
-          per side) while desktop's 32px + 32px stayed correct. */}
-      <div
-        className="px-0 sm:px-8 py-12"
-        style={{ background: "var(--accent)" }}
-      >
-        <div className="container-page flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-          <div className="max-w-[380px]">
-            <h2
-              className="font-display text-[22px] font-normal italic text-white leading-snug"
-            >
-              Know a spot we&apos;re missing?
-            </h2>
-            <p className="text-[14.5px] mt-1.5" style={{ color: "rgba(255,255,255,0.80)" }}>
-              Help us map every dhaba worth stopping for.
-            </p>
-          </div>
-          <Link
-            href="/submit"
-            className="inline-flex items-center justify-center h-12 px-7 rounded-xl font-ui font-bold text-[14.5px] bg-white transition-opacity duration-150 hover:opacity-[0.88] whitespace-nowrap flex-none"
-            style={{ color: "var(--accent)" }}
-          >
-            Submit a dhaba
-          </Link>
-        </div>
-      </div>
+      <FooterCtaBand />
 
       {/* ── 2. LOWER FOOTER ──────────────────────────────────────── */}
       <div style={{ background: "var(--paper-soft)", borderTop: "1px solid var(--paper-warm)" }}>
