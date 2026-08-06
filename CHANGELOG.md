@@ -7,6 +7,29 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-08-07 — Fix: mobile menu drawer color + removed "Claim a listing" link
+
+**Commit:** [`aadfa7f`](https://github.com/ankeetrg/DhabaRoute/commit/aadfa7f)
+
+User flagged (with a screenshot) that the mobile menu drawer's background
+didn't match the rest of the site, and asked to drop the "Claim a listing"
+item from the menu.
+
+**Fix:** the drawer panel used Tailwind's `bg-white` (`#ffffff`), while
+`Header.tsx`'s own background is `rgba(250,248,243,0.97)` — the site's
+warm cream `--paper` tone, not pure white. Switched the panel to
+Tailwind's `bg-paper` (`#FAF7F2`, effectively the same color). Also
+removed the top-level "Claim a listing" link from `MobileNavDrawer.tsx`
+(the `/claim-listing` page itself is untouched — just unlinked from the
+drawer; Owners → "Claim your listing" still covers claiming a listing).
+
+**Verified:** live via `getComputedStyle` in a real mobile-width browser
+session — drawer panel now renders `rgb(250, 247, 242)`, closely matching
+the header's `rgba(250, 248, 243, 0.97)`, and the drawer's link list is
+now exactly Search Dhabas / All Dhabas / Submit a new Dhaba / Owners.
+
+---
+
 ## 2026-08-07 — Fix: mobile menu drawer collapsed to a 60px sliver
 
 **Commit:** [`551c7d1`](https://github.com/ankeetrg/DhabaRoute/commit/551c7d1)
