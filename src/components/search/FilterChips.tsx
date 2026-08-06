@@ -25,6 +25,7 @@ const IS_COARSE_POINTER =
 export function FilterChips({
   tags, active, toggle, clearTags, openNowActive, toggleOpenNow,
   selectedState, setSelectedState, selectedHighway, setSelectedHighway,
+  showAllChip = true,
 }: {
   tags: TagType[];
   active: Set<string>;
@@ -36,6 +37,11 @@ export function FilterChips({
   setSelectedState: (v: string | null) => void;
   selectedHighway: string | null;
   setSelectedHighway: (v: string | null) => void;
+  /** Defaults to true (home page's existing behavior). /search passes
+   * false — it has no other reset affordance to anchor since it starts
+   * with no filters active by design, so the "clear everything" chip was
+   * redundant there. */
+  showAllChip?: boolean;
 }) {
   // "All" acts as the implicit empty-selection state — clicking it clears
   // every filter dimension (tags, Open Now, State, Highway). It's rendered
@@ -175,22 +181,24 @@ export function FilterChips({
 
           {/* All — reset chip, now last so State/Highway/Truck Parking/Open
               Now read left-to-right as the primary filter order. */}
-          <li>
-            <button
-              type="button"
-              onClick={clearTags}
-              aria-pressed={noneActive}
-              className={[
-                chipBase,
-                noneActive
-                  ? "bg-clay-500 text-white border-clay-500 shadow-cta"
-                  : "bg-white border-paper-warm hover:border-clay-300 hover:text-ink",
-              ].join(" ")}
-              style={noneActive ? undefined : { color: "#6a5a4a" }}
-            >
-              All
-            </button>
-          </li>
+          {showAllChip ? (
+            <li>
+              <button
+                type="button"
+                onClick={clearTags}
+                aria-pressed={noneActive}
+                className={[
+                  chipBase,
+                  noneActive
+                    ? "bg-clay-500 text-white border-clay-500 shadow-cta"
+                    : "bg-white border-paper-warm hover:border-clay-300 hover:text-ink",
+                ].join(" ")}
+                style={noneActive ? undefined : { color: "#6a5a4a" }}
+              >
+                All
+              </button>
+            </li>
+          ) : null}
         </ul>
       </div>
       <div

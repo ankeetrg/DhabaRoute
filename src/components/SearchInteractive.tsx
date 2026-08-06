@@ -84,6 +84,10 @@ export function SearchInteractive({ dhabas, filterTags }: Props) {
           setSelectedState={setSelectedState}
           selectedHighway={selectedHighway}
           setSelectedHighway={setSelectedHighway}
+          // No "All" reset chip on /search — unlike the home page, this
+          // page starts with every filter already off, so a "clear
+          // everything" chip had nothing to anchor against.
+          showAllChip={false}
         />
       </div>
 
