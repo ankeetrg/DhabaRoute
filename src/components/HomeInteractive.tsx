@@ -72,14 +72,23 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
   // because that pattern is only safe when the value is read inside
   // handlers/effects. Here the value branches the render TREE itself, so a
   // server/client mismatch would trigger a hydration error. Corrects itself
-  // on viewport resize via the matchMedia "change" listener below.
+  // on viewport resize — both via matchMedia's "change" event AND a plain
+  // window "resize" listener. Belt-and-suspenders deliberately: some
+  // browser/WebView combinations (seen firsthand in this environment's
+  // remote viewport emulation) don't reliably fire MediaQueryList "change"
+  // after a viewport override, so the resize listener is the fallback that
+  // actually re-triggers the check in those cases.
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const mql = window.matchMedia("(max-width: 639px)");
     const update = () => setIsMobile(mql.matches);
     update();
     mql.addEventListener("change", update);
-    return () => mql.removeEventListener("change", update);
+    window.addEventListener("resize", update);
+    return () => {
+      mql.removeEventListener("change", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   const geo = useGeolocation();
