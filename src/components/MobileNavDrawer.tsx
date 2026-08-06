@@ -11,6 +11,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 interface MenuLink {
   label: string;
@@ -76,8 +77,16 @@ export function MobileNavDrawer() {
         </svg>
       </button>
 
-      {open ? (
-        <div className="sm:hidden">
+      {open && typeof document !== "undefined"
+        ? createPortal(
+            // Portaled to <body> — this drawer is rendered from inside
+            // Header.tsx, and Header's <header> element sets an inline
+            // backdrop-filter, which per spec establishes a new containing
+            // block for any `position: fixed` descendant. Without the
+            // portal, this panel's `fixed inset-y-0` computed relative to
+            // the 60px-tall header box instead of the viewport, collapsing
+            // it to a 60px sliver instead of a full-height drawer.
+            <div className="sm:hidden">
           {/* Backdrop */}
           <button
             type="button"
@@ -163,9 +172,11 @@ export function MobileNavDrawer() {
                 </li>
               </ul>
             </nav>
-          </div>
-        </div>
-      ) : null}
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </>
   );
 }
