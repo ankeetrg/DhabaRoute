@@ -7,6 +7,31 @@ Each entry: date, commit hash, what changed, why, and how it was verified.
 
 ---
 
+## 2026-08-07 — Home page: removed "Stops worth the detour" + footer CTA is ad space everywhere but home
+
+**Commit:** [`afbf21a`](https://github.com/ankeetrg/DhabaRoute/commit/afbf21a)
+
+User asked to drop the "Stops worth the detour" 3-card row from the home
+page, and to turn the footer's "Submit a dhaba" CTA band into ad space —
+clarified that the CTA should stay on the home page specifically, and
+become ad space on every other page (it's rendered by the shared
+`Footer.tsx`, so it appears on every page site-wide).
+
+**What changed:** removed the `<DhabaRow title="Stops worth the detour"
+.../>` block from `src/app/page.tsx` entirely. Split the footer's CTA
+band out into `FooterCtaBand.tsx` — a small client component (needs
+`usePathname()`) that renders the existing orange "Know a spot we're
+missing? / Submit a dhaba" band only when `pathname === "/"`, and a
+dashed-border "Ad space" placeholder (matching the style already used on
+the mobile home hero) everywhere else.
+
+**Verified:** deploy succeeded per the GitHub commit-status API. Confirmed
+live: home page has no "Stops worth the detour" text and still shows
+"Submit a dhaba" with no "Ad space"; `/submit` and `/about` (and by the
+same logic every other page) show "Ad space" instead.
+
+---
+
 ## 2026-08-07 — Fix: mobile menu drawer color + removed "Claim a listing" link
 
 **Commit:** [`aadfa7f`](https://github.com/ankeetrg/DhabaRoute/commit/aadfa7f)
