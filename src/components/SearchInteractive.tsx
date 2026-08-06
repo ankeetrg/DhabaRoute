@@ -14,6 +14,7 @@ import { useGeolocation } from "@/lib/useGeolocation";
 import { useDhabaFilters } from "@/lib/useDhabaFilters";
 import { DhabaCard } from "./DhabaCard";
 import { SearchBar } from "./search/SearchBar";
+import { FilterChips } from "./search/FilterChips";
 
 interface Props {
   dhabas: Dhaba[];
@@ -21,15 +22,22 @@ interface Props {
 }
 
 export function SearchInteractive({ dhabas, filterTags }: Props) {
-  // Only query/setQuery drive this page's UI now — the State/Highway/tag/
-  // Open Now filter-chip row was removed (kept the page's own button count
-  // down to just the search bar's Near me pill and clear-×), so the other
-  // filter dimensions the hook exposes just stay at their default "off"
-  // values and hasFilters reduces to "is there a query".
-  const { query, setQuery, hasFilters, filtered } = useDhabaFilters(
-    dhabas,
-    filterTags,
-  );
+  const {
+    query,
+    setQuery,
+    activeTags,
+    toggleTag,
+    openNowActive,
+    toggleOpenNow,
+    selectedState,
+    setSelectedState,
+    selectedHighway,
+    setSelectedHighway,
+    clearAllFilters,
+    hasFilters,
+    filtered,
+    presentTags,
+  } = useDhabaFilters(dhabas, filterTags);
 
   const geo = useGeolocation();
 
@@ -52,7 +60,7 @@ export function SearchInteractive({ dhabas, filterTags }: Props) {
         Search dhabas
       </h1>
       <p className="mt-1 text-[13.5px] text-ink-muted leading-relaxed">
-        Search by name, highway, city, or cuisine.
+        Search by name, highway, city, or filter by state, highway, or amenity.
       </p>
 
       <div className="mt-4">
@@ -64,13 +72,29 @@ export function SearchInteractive({ dhabas, filterTags }: Props) {
         />
       </div>
 
+      <div className="mt-2.5">
+        <FilterChips
+          tags={presentTags}
+          active={activeTags}
+          toggle={toggleTag}
+          clearTags={clearAllFilters}
+          openNowActive={openNowActive}
+          toggleOpenNow={toggleOpenNow}
+          selectedState={selectedState}
+          setSelectedState={setSelectedState}
+          selectedHighway={selectedHighway}
+          setSelectedHighway={setSelectedHighway}
+        />
+      </div>
+
       {!hasFilters ? (
         <div className="mt-8 rounded-2xl border border-paper-warm bg-paper-soft px-5 py-9 text-center">
           <p className="text-[14px] font-medium text-ink">
-            Start typing to search.
+            Start typing or pick a filter above.
           </p>
           <p className="mt-1 text-[12.5px] text-ink-muted">
-            Search by name, highway, city, or cuisine.
+            Search by name, highway, city, or cuisine — or filter by state,
+            highway, amenity, or Open Now.
           </p>
           <Link
             href="/all-dhabas"
@@ -97,10 +121,13 @@ export function SearchInteractive({ dhabas, filterTags }: Props) {
                 No dhabas match that search.{" "}
                 <button
                   type="button"
-                  onClick={() => setQuery("")}
+                  onClick={() => {
+                    setQuery("");
+                    clearAllFilters();
+                  }}
                   className="font-semibold text-clay-700 hover:text-clay-800 underline-offset-2 hover:underline transition"
                 >
-                  Clear search
+                  Clear filters
                 </button>
               </p>
             </div>
