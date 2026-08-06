@@ -83,9 +83,18 @@ export function HomeInteractive({ dhabas, filterTags }: Props) {
     const mql = window.matchMedia("(max-width: 639px)");
     const update = () => setIsMobile(mql.matches);
     update();
+    // Also re-check one paint later. Verified against the live deploy that
+    // some viewport-override paths (seen in this environment's remote
+    // testing tools) apply the new width to layout/CSS a frame or two
+    // before window.innerWidth/matchMedia become consistent for a script
+    // that already started running — a plain mount-time synchronous check
+    // can race that and read the old width. A single rAF re-check is a
+    // free, event-independent way to self-correct from that race.
+    const raf = requestAnimationFrame(update);
     mql.addEventListener("change", update);
     window.addEventListener("resize", update);
     return () => {
+      cancelAnimationFrame(raf);
       mql.removeEventListener("change", update);
       window.removeEventListener("resize", update);
     };
